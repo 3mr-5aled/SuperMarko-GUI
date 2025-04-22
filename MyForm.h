@@ -350,8 +350,8 @@ namespace SuperMarkoGUI {
 			// 
 			// pn_start
 			// 
-			this->pn_start->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-				static_cast<System::Int32>(static_cast<System::Byte>(230)));
+			this->pn_start->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(51)), static_cast<System::Int32>(static_cast<System::Byte>(55)),
+				static_cast<System::Int32>(static_cast<System::Byte>(69)));
 			this->pn_start->Controls->Add(this->btn_start);
 			this->pn_start->Controls->Add(this->btn_exit);
 			this->pn_start->Controls->Add(this->welcomeScreen);
@@ -404,7 +404,8 @@ namespace SuperMarkoGUI {
 			// welcomeScreen
 			// 
 			this->welcomeScreen->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"welcomeScreen.BackgroundImage")));
-			this->welcomeScreen->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->welcomeScreen->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
+			this->welcomeScreen->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"welcomeScreen.Image")));
 			this->welcomeScreen->Location = System::Drawing::Point(0, 0);
 			this->welcomeScreen->Name = L"welcomeScreen";
 			this->welcomeScreen->Size = System::Drawing::Size(1125, 605);
