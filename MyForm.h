@@ -232,12 +232,12 @@ namespace SuperMarkoGUI {
 			this->lb_profile = (gcnew System::Windows::Forms::Label());
 			this->pb_profile = (gcnew System::Windows::Forms::PictureBox());
 			this->pn_thankyou = (gcnew System::Windows::Forms::Panel());
+			this->thankyou = (gcnew System::Windows::Forms::PictureBox());
 			this->pn_login = (gcnew System::Windows::Forms::Panel());
 			this->btn_register_loginpanel = (gcnew System::Windows::Forms::Button());
 			this->btn_back_loginpanal = (gcnew System::Windows::Forms::Button());
 			this->btn_login_loginpanel = (gcnew System::Windows::Forms::Button());
 			this->pn_register = (gcnew System::Windows::Forms::Panel());
-			this->thankyou = (gcnew System::Windows::Forms::PictureBox());
 			this->pn_upper_bar->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_icon))->BeginInit();
 			this->pn_main_dashboard->SuspendLayout();
@@ -256,8 +256,8 @@ namespace SuperMarkoGUI {
 			this->pn_picture->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_profile))->BeginInit();
 			this->pn_thankyou->SuspendLayout();
-			this->pn_login->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->thankyou))->BeginInit();
+			this->pn_login->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// pn_upper_bar
@@ -315,6 +315,7 @@ namespace SuperMarkoGUI {
 			this->btn_minimize->TabIndex = 2;
 			this->btn_minimize->UseVisualStyleBackColor = true;
 			this->btn_minimize->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+			this->btn_minimize->MouseHover += gcnew System::EventHandler(this, &MyForm::btn_minimize_MouseHover);
 			// 
 			// btn_close
 			// 
@@ -403,14 +404,14 @@ namespace SuperMarkoGUI {
 			// 
 			// welcomeScreen
 			// 
-			this->welcomeScreen->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"welcomeScreen.BackgroundImage")));
 			this->welcomeScreen->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->welcomeScreen->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"welcomeScreen.Image")));
-			this->welcomeScreen->Location = System::Drawing::Point(0, 0);
+			this->welcomeScreen->Location = System::Drawing::Point(0, 3);
 			this->welcomeScreen->Name = L"welcomeScreen";
-			this->welcomeScreen->Size = System::Drawing::Size(1125, 605);
+			this->welcomeScreen->Size = System::Drawing::Size(1164, 632);
 			this->welcomeScreen->TabIndex = 2;
 			this->welcomeScreen->TabStop = false;
+			this->welcomeScreen->Click += gcnew System::EventHandler(this, &MyForm::welcomeScreen_Click);
 			// 
 			// pn_defualt
 			// 
@@ -1002,6 +1003,18 @@ namespace SuperMarkoGUI {
 			this->pn_thankyou->Size = System::Drawing::Size(1125, 605);
 			this->pn_thankyou->TabIndex = 0;
 			// 
+			// thankyou
+			// 
+			this->thankyou->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(51)), static_cast<System::Int32>(static_cast<System::Byte>(55)),
+				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->thankyou->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->thankyou->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"thankyou.Image")));
+			this->thankyou->Location = System::Drawing::Point(0, 0);
+			this->thankyou->Name = L"thankyou";
+			this->thankyou->Size = System::Drawing::Size(1125, 605);
+			this->thankyou->TabIndex = 0;
+			this->thankyou->TabStop = false;
+			// 
 			// pn_login
 			// 
 			this->pn_login->Controls->Add(this->btn_register_loginpanel);
@@ -1082,18 +1095,6 @@ namespace SuperMarkoGUI {
 			this->pn_register->Size = System::Drawing::Size(1125, 605);
 			this->pn_register->TabIndex = 1;
 			// 
-			// thankyou
-			// 
-			this->thankyou->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(51)), static_cast<System::Int32>(static_cast<System::Byte>(55)),
-				static_cast<System::Int32>(static_cast<System::Byte>(69)));
-			this->thankyou->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->thankyou->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"thankyou.Image")));
-			this->thankyou->Location = System::Drawing::Point(0, 0);
-			this->thankyou->Name = L"thankyou";
-			this->thankyou->Size = System::Drawing::Size(1125, 605);
-			this->thankyou->TabIndex = 0;
-			this->thankyou->TabStop = false;
-			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -1125,8 +1126,8 @@ namespace SuperMarkoGUI {
 			this->pn_picture->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_profile))->EndInit();
 			this->pn_thankyou->ResumeLayout(false);
-			this->pn_login->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->thankyou))->EndInit();
+			this->pn_login->ResumeLayout(false);
 			this->ResumeLayout(false);
 
 		}
@@ -1163,9 +1164,11 @@ private: System::Void button1_MouseEnter(System::Object^ sender, System::EventAr
 	btn_exit->ForeColor = Color::FromArgb(0xE6, 0x34, 0x62);
 }
 private: System::Void btn_start_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
-	btn_start->ForeColor = Color::FromArgb(0xDA, 0xF5, 0xF2);
+	btn_start->BackColor = Color::White;
+	btn_start->BackColor = Color::FromArgb(123, 255, 149);
 }
 private: System::Void btn_start_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
+	btn_start->ForeColor = Color::FromArgb(0xDA, 0xF5, 0xF2);
 	btn_start->ForeColor = Color::Black;
 }
 private: System::Void btn_start_MouseHover(System::Object^ sender, System::EventArgs^ e) {
@@ -1183,6 +1186,18 @@ private: System::Void btn_register_loginpanel_Click(System::Object^ sender, Syst
 private: System::Void lb_profile_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void label6_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void welcomeScreen_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void btn_minimize_MouseHover(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void btn_minimize_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
+		   // Change the button's background image on hover
+	btn_minimize->BackgroundImage = Image::FromFile("ProjectImages/minus-circle.png");
+}
+private: System::Void btn_minimize_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
+	// Revert the button's background image when the mouse leaves
+	btn_minimize->BackgroundImage = Image::FromFile("ProjectImages/minus-circle-colored.png");
 }
 };
 }
