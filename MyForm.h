@@ -316,6 +316,7 @@ namespace SuperMarkoGUI {
 			this->btn_minimize->UseVisualStyleBackColor = true;
 			this->btn_minimize->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			this->btn_minimize->MouseHover += gcnew System::EventHandler(this, &MyForm::btn_minimize_MouseHover);
+		
 			// 
 			// btn_close
 			// 
@@ -1191,13 +1192,6 @@ private: System::Void welcomeScreen_Click(System::Object^ sender, System::EventA
 }
 private: System::Void btn_minimize_MouseHover(System::Object^ sender, System::EventArgs^ e) {
 }
-private: System::Void btn_minimize_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
-		   // Change the button's background image on hover
-	btn_minimize->BackgroundImage = Image::FromFile("ProjectImages/minus-circle.png");
-}
-private: System::Void btn_minimize_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
-	// Revert the button's background image when the mouse leaves
-	btn_minimize->BackgroundImage = Image::FromFile("ProjectImages/minus-circle-colored.png");
-}
+
 };
 }
