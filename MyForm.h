@@ -67,7 +67,7 @@ namespace SuperMarkoGUI {
 	private: System::Windows::Forms::Panel^ pn_blank;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label4;
-	private: System::Windows::Forms::Label^ label3;
+
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Button^ btn_exit;
 	private: System::Windows::Forms::Button^ btn_start;
@@ -76,16 +76,22 @@ namespace SuperMarkoGUI {
 
 
 	private: System::Windows::Forms::Button^ btn_back_loginpanal;
-	private: System::Windows::Forms::Panel^ panel10;
-	private: System::Windows::Forms::Panel^ panel9;
-	private: System::Windows::Forms::Panel^ panel8;
-	private: System::Windows::Forms::Panel^ panel7;
-	private: System::Windows::Forms::Panel^ panel6;
+	private: System::Windows::Forms::Panel^ pn_vegetable;
+	private: System::Windows::Forms::Panel^ pn_dairy;
+	private: System::Windows::Forms::Panel^ pn_butcher_shop;
+	private: System::Windows::Forms::Panel^ pn_seafood;
+	private: System::Windows::Forms::Panel^ pn_;
+
+
+
+
+
 	private: System::Windows::Forms::Panel^ panel5;
 	private: System::Windows::Forms::Panel^ panel4;
 	private: System::Windows::Forms::Panel^ panel3;
 	private: System::Windows::Forms::Panel^ panel2;
-	private: System::Windows::Forms::Panel^ panel1;
+	private: System::Windows::Forms::Panel^ pn_fruits;
+
 	private: System::Windows::Forms::Panel^ pn_main_window;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Panel^ panel11;
@@ -113,6 +119,8 @@ namespace SuperMarkoGUI {
 
 
 
+	private: System::Windows::Forms::Button^ btn_category_household;
+	private: System::Windows::Forms::Button^ btn_category_pet_supplies;
 
 
 
@@ -203,17 +211,12 @@ namespace SuperMarkoGUI {
 			this->button8 = (gcnew System::Windows::Forms::Button());
 			this->button9 = (gcnew System::Windows::Forms::Button());
 			this->button10 = (gcnew System::Windows::Forms::Button());
-			this->panel1 = (gcnew System::Windows::Forms::Panel());
-			this->panel10 = (gcnew System::Windows::Forms::Panel());
-			this->panel9 = (gcnew System::Windows::Forms::Panel());
-			this->panel8 = (gcnew System::Windows::Forms::Panel());
-			this->panel7 = (gcnew System::Windows::Forms::Panel());
-			this->panel6 = (gcnew System::Windows::Forms::Panel());
+			
 			this->panel5 = (gcnew System::Windows::Forms::Panel());
 			this->panel4 = (gcnew System::Windows::Forms::Panel());
 			this->panel3 = (gcnew System::Windows::Forms::Panel());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
-			this->label3 = (gcnew System::Windows::Forms::Label());
+		
 			this->pn_main_window = (gcnew System::Windows::Forms::Panel());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->pn_edit_information = (gcnew System::Windows::Forms::Panel());
@@ -232,12 +235,12 @@ namespace SuperMarkoGUI {
 			this->lb_profile = (gcnew System::Windows::Forms::Label());
 			this->pb_profile = (gcnew System::Windows::Forms::PictureBox());
 			this->pn_thankyou = (gcnew System::Windows::Forms::Panel());
-			this->thankyou = (gcnew System::Windows::Forms::PictureBox());
 			this->pn_login = (gcnew System::Windows::Forms::Panel());
 			this->btn_register_loginpanel = (gcnew System::Windows::Forms::Button());
 			this->btn_back_loginpanal = (gcnew System::Windows::Forms::Button());
 			this->btn_login_loginpanel = (gcnew System::Windows::Forms::Button());
 			this->pn_register = (gcnew System::Windows::Forms::Panel());
+			this->thankyou = (gcnew System::Windows::Forms::PictureBox());
 			this->pn_upper_bar->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_icon))->BeginInit();
 			this->pn_main_dashboard->SuspendLayout();
@@ -256,8 +259,8 @@ namespace SuperMarkoGUI {
 			this->pn_picture->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_profile))->BeginInit();
 			this->pn_thankyou->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->thankyou))->BeginInit();
 			this->pn_login->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->thankyou))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// pn_upper_bar
@@ -364,7 +367,7 @@ namespace SuperMarkoGUI {
 			this->pn_start->Size = System::Drawing::Size(1125, 605);
 			this->pn_start->TabIndex = 3;
 			// 
-			// btn_start
+			// btn_category_pet_supplies
 			// 
 			this->btn_start->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(123)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
 				static_cast<System::Int32>(static_cast<System::Byte>(149)));
@@ -384,13 +387,9 @@ namespace SuperMarkoGUI {
 			this->btn_start->MouseEnter += gcnew System::EventHandler(this, &MyForm::btn_start_MouseEnter);
 			this->btn_start->MouseLeave += gcnew System::EventHandler(this, &MyForm::btn_start_MouseLeave);
 			// 
-			// btn_exit
+			// label5
 			// 
-			this->btn_exit->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(218)), static_cast<System::Int32>(static_cast<System::Byte>(245)),
-				static_cast<System::Int32>(static_cast<System::Byte>(242)));
-			this->btn_exit->FlatAppearance->BorderSize = 0;
-			this->btn_exit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btn_exit->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btn_exit->Location = System::Drawing::Point(476, 446);
 			this->btn_exit->Margin = System::Windows::Forms::Padding(2);
@@ -405,16 +404,16 @@ namespace SuperMarkoGUI {
 			// 
 			// welcomeScreen
 			// 
+			this->welcomeScreen->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"welcomeScreen.BackgroundImage")));
 			this->welcomeScreen->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->welcomeScreen->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"welcomeScreen.Image")));
-			this->welcomeScreen->Location = System::Drawing::Point(0, 3);
+			this->welcomeScreen->Location = System::Drawing::Point(0, 0);
 			this->welcomeScreen->Name = L"welcomeScreen";
-			this->welcomeScreen->Size = System::Drawing::Size(1164, 632);
+			this->welcomeScreen->Size = System::Drawing::Size(1125, 605);
 			this->welcomeScreen->TabIndex = 2;
 			this->welcomeScreen->TabStop = false;
-			this->welcomeScreen->Click += gcnew System::EventHandler(this, &MyForm::welcomeScreen_Click);
 			// 
-			// pn_defualt
+			// label1
 			// 
 			this->pn_defualt->Controls->Add(this->pn_products);
 			this->pn_defualt->Controls->Add(this->pn_main_window);
@@ -432,17 +431,12 @@ namespace SuperMarkoGUI {
 			// pn_products
 			// 
 			this->pn_products->Controls->Add(this->panel11);
-			this->pn_products->Controls->Add(this->panel1);
-			this->pn_products->Controls->Add(this->panel10);
-			this->pn_products->Controls->Add(this->panel9);
-			this->pn_products->Controls->Add(this->panel8);
-			this->pn_products->Controls->Add(this->panel7);
-			this->pn_products->Controls->Add(this->panel6);
+			
 			this->pn_products->Controls->Add(this->panel5);
 			this->pn_products->Controls->Add(this->panel4);
 			this->pn_products->Controls->Add(this->panel3);
 			this->pn_products->Controls->Add(this->panel2);
-			this->pn_products->Controls->Add(this->label3);
+			
 			this->pn_products->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_products->Location = System::Drawing::Point(222, 0);
 			this->pn_products->Margin = System::Windows::Forms::Padding(2);
@@ -519,7 +513,7 @@ namespace SuperMarkoGUI {
 			this->button2->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->button2->UseVisualStyleBackColor = false;
 			// 
-			// button3
+			// pn_start
 			// 
 			this->button3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(254)), static_cast<System::Int32>(static_cast<System::Byte>(95)),
 				static_cast<System::Int32>(static_cast<System::Byte>(85)));
@@ -538,13 +532,14 @@ namespace SuperMarkoGUI {
 			this->button3->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->button3->UseVisualStyleBackColor = false;
 			// 
-			// button4
+			// btn_start
 			// 
-			this->button4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(230)), static_cast<System::Int32>(static_cast<System::Byte>(52)),
+			this->btn_start->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(230)), static_cast<System::Int32>(static_cast<System::Byte>(52)),
 				static_cast<System::Int32>(static_cast<System::Byte>(98)));
-			this->button4->FlatAppearance->BorderSize = 0;
-			this->button4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->btn_start->FlatAppearance->BorderColor = System::Drawing::Color::White;
+			this->btn_start->FlatAppearance->BorderSize = 0;
+			this->btn_start->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btn_start->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button4.Image")));
 			this->button4->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
@@ -557,13 +552,13 @@ namespace SuperMarkoGUI {
 			this->button4->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->button4->UseVisualStyleBackColor = false;
 			// 
-			// button5
+			// btn_exit
 			// 
-			this->button5->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(230)), static_cast<System::Int32>(static_cast<System::Byte>(52)),
-				static_cast<System::Int32>(static_cast<System::Byte>(98)));
-			this->button5->FlatAppearance->BorderSize = 0;
-			this->button5->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->btn_exit->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(218)), static_cast<System::Int32>(static_cast<System::Byte>(245)),
+				static_cast<System::Int32>(static_cast<System::Byte>(242)));
+			this->btn_exit->FlatAppearance->BorderSize = 0;
+			this->btn_exit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btn_exit->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button5.Image")));
 			this->button5->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
@@ -576,7 +571,7 @@ namespace SuperMarkoGUI {
 			this->button5->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->button5->UseVisualStyleBackColor = false;
 			// 
-			// button6
+			// pn_login
 			// 
 			this->button6->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(254)), static_cast<System::Int32>(static_cast<System::Byte>(95)),
 				static_cast<System::Int32>(static_cast<System::Byte>(85)));
@@ -595,7 +590,7 @@ namespace SuperMarkoGUI {
 			this->button6->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->button6->UseVisualStyleBackColor = false;
 			// 
-			// button7
+			// btn_register_loginpanel
 			// 
 			this->button7->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(254)), static_cast<System::Int32>(static_cast<System::Byte>(95)),
 				static_cast<System::Int32>(static_cast<System::Byte>(85)));
@@ -614,7 +609,7 @@ namespace SuperMarkoGUI {
 			this->button7->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->button7->UseVisualStyleBackColor = false;
 			// 
-			// button8
+			// btn_back_loginpanal
 			// 
 			this->button8->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(230)), static_cast<System::Int32>(static_cast<System::Byte>(52)),
 				static_cast<System::Int32>(static_cast<System::Byte>(98)));
@@ -633,7 +628,7 @@ namespace SuperMarkoGUI {
 			this->button8->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->button8->UseVisualStyleBackColor = false;
 			// 
-			// button9
+			// btn_login_loginpanel
 			// 
 			this->button9->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(230)), static_cast<System::Int32>(static_cast<System::Byte>(52)),
 				static_cast<System::Int32>(static_cast<System::Byte>(98)));
@@ -652,7 +647,7 @@ namespace SuperMarkoGUI {
 			this->button9->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->button9->UseVisualStyleBackColor = false;
 			// 
-			// button10
+			// pn_register
 			// 
 			this->button10->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(254)), static_cast<System::Int32>(static_cast<System::Byte>(95)),
 				static_cast<System::Int32>(static_cast<System::Byte>(85)));
@@ -670,60 +665,8 @@ namespace SuperMarkoGUI {
 			this->button10->Text = L"Fresh Produce(fruits)";
 			this->button10->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->button10->UseVisualStyleBackColor = false;
-			// 
-			// panel1
-			// 
-			this->panel1->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->panel1->Location = System::Drawing::Point(0, 0);
-			this->panel1->Margin = System::Windows::Forms::Padding(2);
-			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(903, 605);
-			this->panel1->TabIndex = 4;
-			// 
-			// panel10
-			// 
-			this->panel10->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->panel10->Location = System::Drawing::Point(0, 0);
-			this->panel10->Margin = System::Windows::Forms::Padding(2);
-			this->panel10->Name = L"panel10";
-			this->panel10->Size = System::Drawing::Size(903, 605);
-			this->panel10->TabIndex = 13;
-			// 
-			// panel9
-			// 
-			this->panel9->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->panel9->Location = System::Drawing::Point(0, 0);
-			this->panel9->Margin = System::Windows::Forms::Padding(2);
-			this->panel9->Name = L"panel9";
-			this->panel9->Size = System::Drawing::Size(903, 605);
-			this->panel9->TabIndex = 12;
-			// 
-			// panel8
-			// 
-			this->panel8->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->panel8->Location = System::Drawing::Point(0, 0);
-			this->panel8->Margin = System::Windows::Forms::Padding(2);
-			this->panel8->Name = L"panel8";
-			this->panel8->Size = System::Drawing::Size(903, 605);
-			this->panel8->TabIndex = 11;
-			// 
-			// panel7
-			// 
-			this->panel7->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->panel7->Location = System::Drawing::Point(0, 0);
-			this->panel7->Margin = System::Windows::Forms::Padding(2);
-			this->panel7->Name = L"panel7";
-			this->panel7->Size = System::Drawing::Size(903, 605);
-			this->panel7->TabIndex = 10;
-			// 
-			// panel6
-			// 
-			this->panel6->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->panel6->Location = System::Drawing::Point(0, 0);
-			this->panel6->Margin = System::Windows::Forms::Padding(2);
-			this->panel6->Name = L"panel6";
-			this->panel6->Size = System::Drawing::Size(903, 605);
-			this->panel6->TabIndex = 9;
+			
+			
 			// 
 			// panel5
 			// 
@@ -760,17 +703,7 @@ namespace SuperMarkoGUI {
 			this->panel2->Name = L"panel2";
 			this->panel2->Size = System::Drawing::Size(903, 605);
 			this->panel2->TabIndex = 5;
-			// 
-			// label3
-			// 
-			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(203, 241);
-			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(497, 123);
-			this->label3->TabIndex = 1;
-			this->label3->Text = L"products";
+		
 			// 
 			// pn_main_window
 			// 
@@ -1004,18 +937,6 @@ namespace SuperMarkoGUI {
 			this->pn_thankyou->Size = System::Drawing::Size(1125, 605);
 			this->pn_thankyou->TabIndex = 0;
 			// 
-			// thankyou
-			// 
-			this->thankyou->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(51)), static_cast<System::Int32>(static_cast<System::Byte>(55)),
-				static_cast<System::Int32>(static_cast<System::Byte>(69)));
-			this->thankyou->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->thankyou->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"thankyou.Image")));
-			this->thankyou->Location = System::Drawing::Point(0, 0);
-			this->thankyou->Name = L"thankyou";
-			this->thankyou->Size = System::Drawing::Size(1125, 605);
-			this->thankyou->TabIndex = 0;
-			this->thankyou->TabStop = false;
-			// 
 			// pn_login
 			// 
 			this->pn_login->Controls->Add(this->btn_register_loginpanel);
@@ -1096,6 +1017,18 @@ namespace SuperMarkoGUI {
 			this->pn_register->Size = System::Drawing::Size(1125, 605);
 			this->pn_register->TabIndex = 1;
 			// 
+			// thankyou
+			// 
+			this->thankyou->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(51)), static_cast<System::Int32>(static_cast<System::Byte>(55)),
+				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->thankyou->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->thankyou->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"thankyou.Image")));
+			this->thankyou->Location = System::Drawing::Point(0, 0);
+			this->thankyou->Name = L"thankyou";
+			this->thankyou->Size = System::Drawing::Size(1125, 605);
+			this->thankyou->TabIndex = 0;
+			this->thankyou->TabStop = false;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -1127,8 +1060,8 @@ namespace SuperMarkoGUI {
 			this->pn_picture->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_profile))->EndInit();
 			this->pn_thankyou->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->thankyou))->EndInit();
 			this->pn_login->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->thankyou))->EndInit();
 			this->ResumeLayout(false);
 
 		}
@@ -1165,11 +1098,9 @@ private: System::Void button1_MouseEnter(System::Object^ sender, System::EventAr
 	btn_exit->ForeColor = Color::FromArgb(0xE6, 0x34, 0x62);
 }
 private: System::Void btn_start_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
-	btn_start->BackColor = Color::White;
-	btn_start->BackColor = Color::FromArgb(123, 255, 149);
+	btn_start->ForeColor = Color::FromArgb(0xDA, 0xF5, 0xF2);
 }
 private: System::Void btn_start_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
-	btn_start->ForeColor = Color::FromArgb(0xDA, 0xF5, 0xF2);
 	btn_start->ForeColor = Color::Black;
 }
 private: System::Void btn_start_MouseHover(System::Object^ sender, System::EventArgs^ e) {
