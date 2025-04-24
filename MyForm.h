@@ -312,6 +312,7 @@ private: System::ComponentModel::IContainer^ components;
 			this->btn_household = (gcnew System::Windows::Forms::Button());
 			this->btn_pet = (gcnew System::Windows::Forms::Button());
 			this->pn_fruits_category = (gcnew System::Windows::Forms::Panel());
+			this->flowLayoutPanel3 = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->pn_vegetable_category = (gcnew System::Windows::Forms::Panel());
 			this->pn_bakery_category = (gcnew System::Windows::Forms::Panel());
 			this->pn_household_category = (gcnew System::Windows::Forms::Panel());
@@ -380,7 +381,6 @@ private: System::ComponentModel::IContainer^ components;
 			this->pn_thankyou = (gcnew System::Windows::Forms::Panel());
 			this->thankyou = (gcnew System::Windows::Forms::PictureBox());
 			this->imageList1 = (gcnew System::Windows::Forms::ImageList(this->components));
-			this->flowLayoutPanel3 = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->pn_upper_bar->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_icon))->BeginInit();
 			this->pn_main_dashboard->SuspendLayout();
@@ -520,8 +520,8 @@ private: System::ComponentModel::IContainer^ components;
 			// 
 			// pn_products
 			// 
-			this->pn_products->Controls->Add(this->pn_main_category);
 			this->pn_products->Controls->Add(this->pn_fruits_category);
+			this->pn_products->Controls->Add(this->pn_main_category);
 			this->pn_products->Controls->Add(this->pn_vegetable_category);
 			this->pn_products->Controls->Add(this->pn_bakery_category);
 			this->pn_products->Controls->Add(this->pn_household_category);
@@ -782,6 +782,15 @@ private: System::ComponentModel::IContainer^ components;
 			this->pn_fruits_category->Size = System::Drawing::Size(1204, 745);
 			this->pn_fruits_category->TabIndex = 20;
 			this->pn_fruits_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_fruits_category_Paint);
+			// 
+			// flowLayoutPanel3
+			// 
+			this->flowLayoutPanel3->AutoScroll = true;
+			this->flowLayoutPanel3->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->flowLayoutPanel3->Location = System::Drawing::Point(0, 0);
+			this->flowLayoutPanel3->Name = L"flowLayoutPanel3";
+			this->flowLayoutPanel3->Size = System::Drawing::Size(1204, 745);
+			this->flowLayoutPanel3->TabIndex = 0;
 			// 
 			// pn_vegetable_category
 			// 
@@ -1719,14 +1728,6 @@ private: System::ComponentModel::IContainer^ components;
 			this->imageList1->ImageSize = System::Drawing::Size(16, 16);
 			this->imageList1->TransparentColor = System::Drawing::Color::Transparent;
 			// 
-			// flowLayoutPanel3
-			// 
-			this->flowLayoutPanel3->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->flowLayoutPanel3->Location = System::Drawing::Point(0, 0);
-			this->flowLayoutPanel3->Name = L"flowLayoutPanel3";
-			this->flowLayoutPanel3->Size = System::Drawing::Size(1204, 745);
-			this->flowLayoutPanel3->TabIndex = 0;
-			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -1788,13 +1789,14 @@ private: System::Void btn_products_Click(System::Object^ sender, System::EventAr
 		String^ line;
 		while ((line = sr->ReadLine()) != nullptr) {
 			array<String^>^ parts = line->Split(',');
-			if (parts->Length == 6) {
-				String^ productCode = parts[0];
-				String^ productName = parts[1];
-				String^ productCategory = parts[2];
-				String^ productExpired = parts[3];
-				String^ productProdiction = parts[4];
-				String^ productPrice = parts[5];
+			if (parts[0]=="1") {
+				String^ productId = parts[0];
+				String^ productCode = parts[1];
+				String^ productName = parts[2];
+				String^ productCategory = parts[3];
+				String^ productExpired = parts[4];
+				String^ productProdiction = parts[5];
+				String^ productPrice = parts[6];
 
 				//create a panel for each product
 				Panel^ productPanel = gcnew Panel();
