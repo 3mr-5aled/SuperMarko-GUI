@@ -200,6 +200,15 @@ private: System::Windows::Forms::PictureBox^ pictureBox1;
 private: System::Windows::Forms::PictureBox^ pictureBox2;
 private: System::Windows::Forms::Label^ label3;
 private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel3;
+private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel12;
+private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel11;
+private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel10;
+private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel9;
+private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel8;
+private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel7;
+private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel6;
+private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel5;
+private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel4;
 
 
 private: System::ComponentModel::IContainer^ components;
@@ -299,6 +308,26 @@ private: System::ComponentModel::IContainer^ components;
 			this->pn_main_dashboard = (gcnew System::Windows::Forms::Panel());
 			this->pn_defualt = (gcnew System::Windows::Forms::Panel());
 			this->pn_products = (gcnew System::Windows::Forms::Panel());
+			this->pn_pet_supplies_category = (gcnew System::Windows::Forms::Panel());
+			this->flowLayoutPanel12 = (gcnew System::Windows::Forms::FlowLayoutPanel());
+			this->pn_household_category = (gcnew System::Windows::Forms::Panel());
+			this->flowLayoutPanel11 = (gcnew System::Windows::Forms::FlowLayoutPanel());
+			this->pn_snacks_category = (gcnew System::Windows::Forms::Panel());
+			this->flowLayoutPanel10 = (gcnew System::Windows::Forms::FlowLayoutPanel());
+			this->pn_bakery_category = (gcnew System::Windows::Forms::Panel());
+			this->flowLayoutPanel9 = (gcnew System::Windows::Forms::FlowLayoutPanel());
+			this->pn_poultry_category = (gcnew System::Windows::Forms::Panel());
+			this->flowLayoutPanel8 = (gcnew System::Windows::Forms::FlowLayoutPanel());
+			this->pn_seafood_category = (gcnew System::Windows::Forms::Panel());
+			this->flowLayoutPanel7 = (gcnew System::Windows::Forms::FlowLayoutPanel());
+			this->pn_butchershop_category = (gcnew System::Windows::Forms::Panel());
+			this->flowLayoutPanel6 = (gcnew System::Windows::Forms::FlowLayoutPanel());
+			this->pn_dairy_category = (gcnew System::Windows::Forms::Panel());
+			this->flowLayoutPanel5 = (gcnew System::Windows::Forms::FlowLayoutPanel());
+			this->pn_vegetable_category = (gcnew System::Windows::Forms::Panel());
+			this->flowLayoutPanel4 = (gcnew System::Windows::Forms::FlowLayoutPanel());
+			this->pn_fruits_category = (gcnew System::Windows::Forms::Panel());
+			this->flowLayoutPanel3 = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->pn_main_category = (gcnew System::Windows::Forms::Panel());
 			this->flowLayoutPanel2 = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->btn_fruits = (gcnew System::Windows::Forms::Button());
@@ -311,17 +340,6 @@ private: System::ComponentModel::IContainer^ components;
 			this->btn_snacks = (gcnew System::Windows::Forms::Button());
 			this->btn_household = (gcnew System::Windows::Forms::Button());
 			this->btn_pet = (gcnew System::Windows::Forms::Button());
-			this->pn_fruits_category = (gcnew System::Windows::Forms::Panel());
-			this->flowLayoutPanel3 = (gcnew System::Windows::Forms::FlowLayoutPanel());
-			this->pn_vegetable_category = (gcnew System::Windows::Forms::Panel());
-			this->pn_bakery_category = (gcnew System::Windows::Forms::Panel());
-			this->pn_household_category = (gcnew System::Windows::Forms::Panel());
-			this->pn_snacks_category = (gcnew System::Windows::Forms::Panel());
-			this->pn_poultry_category = (gcnew System::Windows::Forms::Panel());
-			this->pn_butchershop_category = (gcnew System::Windows::Forms::Panel());
-			this->pn_seafood_category = (gcnew System::Windows::Forms::Panel());
-			this->pn_pet_supplies_category = (gcnew System::Windows::Forms::Panel());
-			this->pn_dairy_category = (gcnew System::Windows::Forms::Panel());
 			this->pn_blank = (gcnew System::Windows::Forms::Panel());
 			this->pb_blankpicutre = (gcnew System::Windows::Forms::PictureBox());
 			this->pn_edit_information = (gcnew System::Windows::Forms::Panel());
@@ -386,9 +404,18 @@ private: System::ComponentModel::IContainer^ components;
 			this->pn_main_dashboard->SuspendLayout();
 			this->pn_defualt->SuspendLayout();
 			this->pn_products->SuspendLayout();
+			this->pn_pet_supplies_category->SuspendLayout();
+			this->pn_household_category->SuspendLayout();
+			this->pn_snacks_category->SuspendLayout();
+			this->pn_bakery_category->SuspendLayout();
+			this->pn_poultry_category->SuspendLayout();
+			this->pn_seafood_category->SuspendLayout();
+			this->pn_butchershop_category->SuspendLayout();
+			this->pn_dairy_category->SuspendLayout();
+			this->pn_vegetable_category->SuspendLayout();
+			this->pn_fruits_category->SuspendLayout();
 			this->pn_main_category->SuspendLayout();
 			this->flowLayoutPanel2->SuspendLayout();
-			this->pn_fruits_category->SuspendLayout();
 			this->pn_blank->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_blankpicutre))->BeginInit();
 			this->pn_edit_information->SuspendLayout();
@@ -520,17 +547,17 @@ private: System::ComponentModel::IContainer^ components;
 			// 
 			// pn_products
 			// 
-			this->pn_products->Controls->Add(this->pn_fruits_category);
-			this->pn_products->Controls->Add(this->pn_main_category);
-			this->pn_products->Controls->Add(this->pn_vegetable_category);
-			this->pn_products->Controls->Add(this->pn_bakery_category);
+			this->pn_products->Controls->Add(this->pn_pet_supplies_category);
 			this->pn_products->Controls->Add(this->pn_household_category);
 			this->pn_products->Controls->Add(this->pn_snacks_category);
+			this->pn_products->Controls->Add(this->pn_bakery_category);
 			this->pn_products->Controls->Add(this->pn_poultry_category);
-			this->pn_products->Controls->Add(this->pn_butchershop_category);
 			this->pn_products->Controls->Add(this->pn_seafood_category);
-			this->pn_products->Controls->Add(this->pn_pet_supplies_category);
+			this->pn_products->Controls->Add(this->pn_butchershop_category);
 			this->pn_products->Controls->Add(this->pn_dairy_category);
+			this->pn_products->Controls->Add(this->pn_vegetable_category);
+			this->pn_products->Controls->Add(this->pn_fruits_category);
+			this->pn_products->Controls->Add(this->pn_main_category);
 			this->pn_products->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_products->Location = System::Drawing::Point(296, 0);
 			this->pn_products->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
@@ -538,6 +565,206 @@ private: System::ComponentModel::IContainer^ components;
 			this->pn_products->Size = System::Drawing::Size(1204, 745);
 			this->pn_products->TabIndex = 2;
 			this->pn_products->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_products_Paint);
+			// 
+			// pn_pet_supplies_category
+			// 
+			this->pn_pet_supplies_category->Controls->Add(this->flowLayoutPanel12);
+			this->pn_pet_supplies_category->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->pn_pet_supplies_category->Location = System::Drawing::Point(0, 0);
+			this->pn_pet_supplies_category->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->pn_pet_supplies_category->Name = L"pn_pet_supplies_category";
+			this->pn_pet_supplies_category->Size = System::Drawing::Size(1204, 745);
+			this->pn_pet_supplies_category->TabIndex = 6;
+			this->pn_pet_supplies_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_pet_supplies_category_Paint);
+			// 
+			// flowLayoutPanel12
+			// 
+			this->flowLayoutPanel12->AutoScroll = true;
+			this->flowLayoutPanel12->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->flowLayoutPanel12->Location = System::Drawing::Point(0, 0);
+			this->flowLayoutPanel12->Name = L"flowLayoutPanel12";
+			this->flowLayoutPanel12->Size = System::Drawing::Size(1204, 745);
+			this->flowLayoutPanel12->TabIndex = 0;
+			// 
+			// pn_household_category
+			// 
+			this->pn_household_category->Controls->Add(this->flowLayoutPanel11);
+			this->pn_household_category->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->pn_household_category->Location = System::Drawing::Point(0, 0);
+			this->pn_household_category->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->pn_household_category->Name = L"pn_household_category";
+			this->pn_household_category->Size = System::Drawing::Size(1204, 745);
+			this->pn_household_category->TabIndex = 17;
+			this->pn_household_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_household_category_Paint);
+			// 
+			// flowLayoutPanel11
+			// 
+			this->flowLayoutPanel11->AutoScroll = true;
+			this->flowLayoutPanel11->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->flowLayoutPanel11->Location = System::Drawing::Point(0, 0);
+			this->flowLayoutPanel11->Name = L"flowLayoutPanel11";
+			this->flowLayoutPanel11->Size = System::Drawing::Size(1204, 745);
+			this->flowLayoutPanel11->TabIndex = 0;
+			// 
+			// pn_snacks_category
+			// 
+			this->pn_snacks_category->Controls->Add(this->flowLayoutPanel10);
+			this->pn_snacks_category->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->pn_snacks_category->Location = System::Drawing::Point(0, 0);
+			this->pn_snacks_category->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->pn_snacks_category->Name = L"pn_snacks_category";
+			this->pn_snacks_category->Size = System::Drawing::Size(1204, 745);
+			this->pn_snacks_category->TabIndex = 16;
+			this->pn_snacks_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_snacks_category_Paint);
+			// 
+			// flowLayoutPanel10
+			// 
+			this->flowLayoutPanel10->AutoScroll = true;
+			this->flowLayoutPanel10->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->flowLayoutPanel10->Location = System::Drawing::Point(0, 0);
+			this->flowLayoutPanel10->Name = L"flowLayoutPanel10";
+			this->flowLayoutPanel10->Size = System::Drawing::Size(1204, 745);
+			this->flowLayoutPanel10->TabIndex = 0;
+			// 
+			// pn_bakery_category
+			// 
+			this->pn_bakery_category->Controls->Add(this->flowLayoutPanel9);
+			this->pn_bakery_category->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->pn_bakery_category->Location = System::Drawing::Point(0, 0);
+			this->pn_bakery_category->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->pn_bakery_category->Name = L"pn_bakery_category";
+			this->pn_bakery_category->Size = System::Drawing::Size(1204, 745);
+			this->pn_bakery_category->TabIndex = 18;
+			this->pn_bakery_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_bakery_category_Paint);
+			// 
+			// flowLayoutPanel9
+			// 
+			this->flowLayoutPanel9->AutoScroll = true;
+			this->flowLayoutPanel9->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->flowLayoutPanel9->Location = System::Drawing::Point(0, 0);
+			this->flowLayoutPanel9->Name = L"flowLayoutPanel9";
+			this->flowLayoutPanel9->Size = System::Drawing::Size(1204, 745);
+			this->flowLayoutPanel9->TabIndex = 0;
+			// 
+			// pn_poultry_category
+			// 
+			this->pn_poultry_category->Controls->Add(this->flowLayoutPanel8);
+			this->pn_poultry_category->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->pn_poultry_category->Location = System::Drawing::Point(0, 0);
+			this->pn_poultry_category->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->pn_poultry_category->Name = L"pn_poultry_category";
+			this->pn_poultry_category->Size = System::Drawing::Size(1204, 745);
+			this->pn_poultry_category->TabIndex = 15;
+			this->pn_poultry_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_poultry_category_Paint);
+			// 
+			// flowLayoutPanel8
+			// 
+			this->flowLayoutPanel8->AutoScroll = true;
+			this->flowLayoutPanel8->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->flowLayoutPanel8->Location = System::Drawing::Point(0, 0);
+			this->flowLayoutPanel8->Name = L"flowLayoutPanel8";
+			this->flowLayoutPanel8->Size = System::Drawing::Size(1204, 745);
+			this->flowLayoutPanel8->TabIndex = 0;
+			// 
+			// pn_seafood_category
+			// 
+			this->pn_seafood_category->Controls->Add(this->flowLayoutPanel7);
+			this->pn_seafood_category->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->pn_seafood_category->Location = System::Drawing::Point(0, 0);
+			this->pn_seafood_category->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->pn_seafood_category->Name = L"pn_seafood_category";
+			this->pn_seafood_category->Size = System::Drawing::Size(1204, 745);
+			this->pn_seafood_category->TabIndex = 7;
+			this->pn_seafood_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_seafood_category_Paint);
+			// 
+			// flowLayoutPanel7
+			// 
+			this->flowLayoutPanel7->AutoScroll = true;
+			this->flowLayoutPanel7->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->flowLayoutPanel7->Location = System::Drawing::Point(0, 0);
+			this->flowLayoutPanel7->Name = L"flowLayoutPanel7";
+			this->flowLayoutPanel7->Size = System::Drawing::Size(1204, 745);
+			this->flowLayoutPanel7->TabIndex = 0;
+			// 
+			// pn_butchershop_category
+			// 
+			this->pn_butchershop_category->Controls->Add(this->flowLayoutPanel6);
+			this->pn_butchershop_category->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->pn_butchershop_category->Location = System::Drawing::Point(0, 0);
+			this->pn_butchershop_category->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->pn_butchershop_category->Name = L"pn_butchershop_category";
+			this->pn_butchershop_category->Size = System::Drawing::Size(1204, 745);
+			this->pn_butchershop_category->TabIndex = 8;
+			this->pn_butchershop_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_butchershop_category_Paint);
+			// 
+			// flowLayoutPanel6
+			// 
+			this->flowLayoutPanel6->AutoScroll = true;
+			this->flowLayoutPanel6->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->flowLayoutPanel6->Location = System::Drawing::Point(0, 0);
+			this->flowLayoutPanel6->Name = L"flowLayoutPanel6";
+			this->flowLayoutPanel6->Size = System::Drawing::Size(1204, 745);
+			this->flowLayoutPanel6->TabIndex = 0;
+			// 
+			// pn_dairy_category
+			// 
+			this->pn_dairy_category->Controls->Add(this->flowLayoutPanel5);
+			this->pn_dairy_category->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->pn_dairy_category->Location = System::Drawing::Point(0, 0);
+			this->pn_dairy_category->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->pn_dairy_category->Name = L"pn_dairy_category";
+			this->pn_dairy_category->Size = System::Drawing::Size(1204, 745);
+			this->pn_dairy_category->TabIndex = 5;
+			this->pn_dairy_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_dairy_category_Paint);
+			// 
+			// flowLayoutPanel5
+			// 
+			this->flowLayoutPanel5->AutoScroll = true;
+			this->flowLayoutPanel5->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->flowLayoutPanel5->Location = System::Drawing::Point(0, 0);
+			this->flowLayoutPanel5->Name = L"flowLayoutPanel5";
+			this->flowLayoutPanel5->Size = System::Drawing::Size(1204, 745);
+			this->flowLayoutPanel5->TabIndex = 0;
+			// 
+			// pn_vegetable_category
+			// 
+			this->pn_vegetable_category->Controls->Add(this->flowLayoutPanel4);
+			this->pn_vegetable_category->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->pn_vegetable_category->Location = System::Drawing::Point(0, 0);
+			this->pn_vegetable_category->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->pn_vegetable_category->Name = L"pn_vegetable_category";
+			this->pn_vegetable_category->Size = System::Drawing::Size(1204, 745);
+			this->pn_vegetable_category->TabIndex = 19;
+			this->pn_vegetable_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_vegetable_category_Paint);
+			// 
+			// flowLayoutPanel4
+			// 
+			this->flowLayoutPanel4->AutoScroll = true;
+			this->flowLayoutPanel4->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->flowLayoutPanel4->Location = System::Drawing::Point(0, 0);
+			this->flowLayoutPanel4->Name = L"flowLayoutPanel4";
+			this->flowLayoutPanel4->Size = System::Drawing::Size(1204, 745);
+			this->flowLayoutPanel4->TabIndex = 0;
+			// 
+			// pn_fruits_category
+			// 
+			this->pn_fruits_category->Controls->Add(this->flowLayoutPanel3);
+			this->pn_fruits_category->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->pn_fruits_category->Location = System::Drawing::Point(0, 0);
+			this->pn_fruits_category->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->pn_fruits_category->Name = L"pn_fruits_category";
+			this->pn_fruits_category->Size = System::Drawing::Size(1204, 745);
+			this->pn_fruits_category->TabIndex = 20;
+			this->pn_fruits_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_fruits_category_Paint);
+			// 
+			// flowLayoutPanel3
+			// 
+			this->flowLayoutPanel3->AutoScroll = true;
+			this->flowLayoutPanel3->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->flowLayoutPanel3->Location = System::Drawing::Point(0, 0);
+			this->flowLayoutPanel3->Name = L"flowLayoutPanel3";
+			this->flowLayoutPanel3->Size = System::Drawing::Size(1204, 745);
+			this->flowLayoutPanel3->TabIndex = 0;
 			// 
 			// pn_main_category
 			// 
@@ -771,116 +998,6 @@ private: System::ComponentModel::IContainer^ components;
 			this->btn_pet->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->btn_pet->UseVisualStyleBackColor = false;
 			this->btn_pet->Click += gcnew System::EventHandler(this, &MyForm::btn_pet_Click);
-			// 
-			// pn_fruits_category
-			// 
-			this->pn_fruits_category->Controls->Add(this->flowLayoutPanel3);
-			this->pn_fruits_category->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn_fruits_category->Location = System::Drawing::Point(0, 0);
-			this->pn_fruits_category->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->pn_fruits_category->Name = L"pn_fruits_category";
-			this->pn_fruits_category->Size = System::Drawing::Size(1204, 745);
-			this->pn_fruits_category->TabIndex = 20;
-			this->pn_fruits_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_fruits_category_Paint);
-			// 
-			// flowLayoutPanel3
-			// 
-			this->flowLayoutPanel3->AutoScroll = true;
-			this->flowLayoutPanel3->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->flowLayoutPanel3->Location = System::Drawing::Point(0, 0);
-			this->flowLayoutPanel3->Name = L"flowLayoutPanel3";
-			this->flowLayoutPanel3->Size = System::Drawing::Size(1204, 745);
-			this->flowLayoutPanel3->TabIndex = 0;
-			// 
-			// pn_vegetable_category
-			// 
-			this->pn_vegetable_category->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn_vegetable_category->Location = System::Drawing::Point(0, 0);
-			this->pn_vegetable_category->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->pn_vegetable_category->Name = L"pn_vegetable_category";
-			this->pn_vegetable_category->Size = System::Drawing::Size(1204, 745);
-			this->pn_vegetable_category->TabIndex = 19;
-			this->pn_vegetable_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_vegetable_category_Paint);
-			// 
-			// pn_bakery_category
-			// 
-			this->pn_bakery_category->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn_bakery_category->Location = System::Drawing::Point(0, 0);
-			this->pn_bakery_category->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->pn_bakery_category->Name = L"pn_bakery_category";
-			this->pn_bakery_category->Size = System::Drawing::Size(1204, 745);
-			this->pn_bakery_category->TabIndex = 18;
-			this->pn_bakery_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_bakery_category_Paint);
-			// 
-			// pn_household_category
-			// 
-			this->pn_household_category->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn_household_category->Location = System::Drawing::Point(0, 0);
-			this->pn_household_category->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->pn_household_category->Name = L"pn_household_category";
-			this->pn_household_category->Size = System::Drawing::Size(1204, 745);
-			this->pn_household_category->TabIndex = 17;
-			this->pn_household_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_household_category_Paint);
-			// 
-			// pn_snacks_category
-			// 
-			this->pn_snacks_category->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn_snacks_category->Location = System::Drawing::Point(0, 0);
-			this->pn_snacks_category->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->pn_snacks_category->Name = L"pn_snacks_category";
-			this->pn_snacks_category->Size = System::Drawing::Size(1204, 745);
-			this->pn_snacks_category->TabIndex = 16;
-			this->pn_snacks_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_snacks_category_Paint);
-			// 
-			// pn_poultry_category
-			// 
-			this->pn_poultry_category->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn_poultry_category->Location = System::Drawing::Point(0, 0);
-			this->pn_poultry_category->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->pn_poultry_category->Name = L"pn_poultry_category";
-			this->pn_poultry_category->Size = System::Drawing::Size(1204, 745);
-			this->pn_poultry_category->TabIndex = 15;
-			this->pn_poultry_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_poultry_category_Paint);
-			// 
-			// pn_butchershop_category
-			// 
-			this->pn_butchershop_category->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn_butchershop_category->Location = System::Drawing::Point(0, 0);
-			this->pn_butchershop_category->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->pn_butchershop_category->Name = L"pn_butchershop_category";
-			this->pn_butchershop_category->Size = System::Drawing::Size(1204, 745);
-			this->pn_butchershop_category->TabIndex = 8;
-			this->pn_butchershop_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_butchershop_category_Paint);
-			// 
-			// pn_seafood_category
-			// 
-			this->pn_seafood_category->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn_seafood_category->Location = System::Drawing::Point(0, 0);
-			this->pn_seafood_category->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->pn_seafood_category->Name = L"pn_seafood_category";
-			this->pn_seafood_category->Size = System::Drawing::Size(1204, 745);
-			this->pn_seafood_category->TabIndex = 7;
-			this->pn_seafood_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_seafood_category_Paint);
-			// 
-			// pn_pet_supplies_category
-			// 
-			this->pn_pet_supplies_category->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn_pet_supplies_category->Location = System::Drawing::Point(0, 0);
-			this->pn_pet_supplies_category->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->pn_pet_supplies_category->Name = L"pn_pet_supplies_category";
-			this->pn_pet_supplies_category->Size = System::Drawing::Size(1204, 745);
-			this->pn_pet_supplies_category->TabIndex = 6;
-			this->pn_pet_supplies_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_pet_supplies_category_Paint);
-			// 
-			// pn_dairy_category
-			// 
-			this->pn_dairy_category->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn_dairy_category->Location = System::Drawing::Point(0, 0);
-			this->pn_dairy_category->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->pn_dairy_category->Name = L"pn_dairy_category";
-			this->pn_dairy_category->Size = System::Drawing::Size(1204, 745);
-			this->pn_dairy_category->TabIndex = 5;
-			this->pn_dairy_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_dairy_category_Paint);
 			// 
 			// pn_blank
 			// 
@@ -1746,9 +1863,18 @@ private: System::ComponentModel::IContainer^ components;
 			this->pn_main_dashboard->ResumeLayout(false);
 			this->pn_defualt->ResumeLayout(false);
 			this->pn_products->ResumeLayout(false);
+			this->pn_pet_supplies_category->ResumeLayout(false);
+			this->pn_household_category->ResumeLayout(false);
+			this->pn_snacks_category->ResumeLayout(false);
+			this->pn_bakery_category->ResumeLayout(false);
+			this->pn_poultry_category->ResumeLayout(false);
+			this->pn_seafood_category->ResumeLayout(false);
+			this->pn_butchershop_category->ResumeLayout(false);
+			this->pn_dairy_category->ResumeLayout(false);
+			this->pn_vegetable_category->ResumeLayout(false);
+			this->pn_fruits_category->ResumeLayout(false);
 			this->pn_main_category->ResumeLayout(false);
 			this->flowLayoutPanel2->ResumeLayout(false);
-			this->pn_fruits_category->ResumeLayout(false);
 			this->pn_blank->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_blankpicutre))->EndInit();
 			this->pn_edit_information->ResumeLayout(false);
@@ -1784,12 +1910,24 @@ private: System::Void btn_edit_information_Click(System::Object^ sender, System:
 private: System::Void btn_products_Click(System::Object^ sender, System::EventArgs^ e) {
 	try {
 		flowLayoutPanel3->Controls->Clear();
+		flowLayoutPanel4->Controls->Clear();
+		flowLayoutPanel5->Controls->Clear();
+		flowLayoutPanel6->Controls->Clear();
+		flowLayoutPanel7->Controls->Clear();
+		flowLayoutPanel8->Controls->Clear();
+		flowLayoutPanel9->Controls->Clear();
+		flowLayoutPanel10->Controls->Clear();
+		flowLayoutPanel11->Controls->Clear();
+		flowLayoutPanel12->Controls->Clear();
+
 
 		StreamReader^ sr = gcnew StreamReader("productmenu.txt");
 		String^ line;
-		while ((line = sr->ReadLine()) != nullptr) {
+		while ((line = sr->ReadLine()) != nullptr) 
+		{
 			array<String^>^ parts = line->Split(',');
-			if (parts[0]=="1") {
+			if (parts[0] == "1")
+			{
 				String^ productId = parts[0];
 				String^ productCode = parts[1];
 				String^ productName = parts[2];
@@ -1797,7 +1935,6 @@ private: System::Void btn_products_Click(System::Object^ sender, System::EventAr
 				String^ productExpired = parts[4];
 				String^ productProdiction = parts[5];
 				String^ productPrice = parts[6];
-
 				//create a panel for each product
 				Panel^ productPanel = gcnew Panel();
 				productPanel->Width = 250;
@@ -1809,27 +1946,22 @@ private: System::Void btn_products_Click(System::Object^ sender, System::EventAr
 				lblName->Text = "Name: " + productName;
 				lblName->Location = Point(10, 10);
 				lblName->AutoSize = true;
-
 				Label^ lblCode = gcnew Label();
 				lblCode->Text = "Code: " + productCode;
 				lblCode->Location = Point(10, 30);
 				lblCode->AutoSize = true;
-
 				Label^ lblCategory = gcnew Label();
 				lblCategory->Text = "Category " + productCategory;
 				lblCategory->Location = Point(10, 50);
 				lblCategory->AutoSize = true;
-
 				Label^ lblExpired = gcnew Label();
 				lblExpired->Text = "Production Date: " + productExpired;
 				lblExpired->Location = Point(10, 70);
 				lblExpired->AutoSize = true;
-
 				Label^ lblProdiction = gcnew Label();
 				lblProdiction->Text = "Expired Date" + productProdiction;
 				lblProdiction->Location = Point(10, 90);
 				lblProdiction->AutoSize = true;
-
 				Label^ lblPrice = gcnew Label();
 				lblPrice->Text = "Price " + productPrice + " L.E";
 				lblPrice->Location = Point(10, 110);
@@ -1852,8 +1984,6 @@ private: System::Void btn_products_Click(System::Object^ sender, System::EventAr
 				lblQuantity->ForeColor = Color::Black;
 				lblQuantity->Font = gcnew System::Drawing::Font("Arial", 10, FontStyle::Bold);
 				lblQuantity->BackColor = Color::Transparent;
-
-
 				//add the button to the panel
 				Button^ btnAddToCart = gcnew Button();
 				btnAddToCart->Text = "Add to Cart";
@@ -1862,9 +1992,7 @@ private: System::Void btn_products_Click(System::Object^ sender, System::EventAr
 				btnAddToCart->Height = 30;
 				btnAddToCart->BackColor = Color::FromArgb(0xE6, 0x34, 0x62);
 				btnAddToCart->ForeColor = Color::White;
-
 				//add to panel
-
 				productPanel->Controls->Add(lblCode);
 				productPanel->Controls->Add(lblName);
 				productPanel->Controls->Add(lblCategory);
@@ -1874,10 +2002,721 @@ private: System::Void btn_products_Click(System::Object^ sender, System::EventAr
 				productPanel->Controls->Add(lblQuantity);
 				productPanel->Controls->Add(num);
 				productPanel->Controls->Add(btnAddToCart);
-
 				flowLayoutPanel3->Controls->Add(productPanel);
 				flowLayoutPanel3->ScrollControlIntoView(productPanel);
 			}
+			else if (parts[0] == "2")
+			{
+				String^ productId = parts[0];
+				String^ productCode = parts[1];
+				String^ productName = parts[2];
+				String^ productCategory = parts[3];
+				String^ productExpired = parts[4];
+				String^ productProdiction = parts[5];
+				String^ productPrice = parts[6];
+				//create a panel for each product
+				Panel^ productPanel = gcnew Panel();
+				productPanel->Width = 250;
+				productPanel->Height = 200;
+				productPanel->BackColor = Color::LightGray;
+				productPanel->Margin = System::Windows::Forms::Padding(10);
+				//create a label for each product
+				Label^ lblName = gcnew Label();
+				lblName->Text = "Name: " + productName;
+				lblName->Location = Point(10, 10);
+				lblName->AutoSize = true;
+				Label^ lblCode = gcnew Label();
+				lblCode->Text = "Code: " + productCode;
+				lblCode->Location = Point(10, 30);
+				lblCode->AutoSize = true;
+				Label^ lblCategory = gcnew Label();
+				lblCategory->Text = "Category " + productCategory;
+				lblCategory->Location = Point(10, 50);
+				lblCategory->AutoSize = true;
+				Label^ lblExpired = gcnew Label();
+				lblExpired->Text = "Production Date: " + productExpired;
+				lblExpired->Location = Point(10, 70);
+				lblExpired->AutoSize = true;
+				Label^ lblProdiction = gcnew Label();
+				lblProdiction->Text = "Expired Date" + productProdiction;
+				lblProdiction->Location = Point(10, 90);
+				lblProdiction->AutoSize = true;
+				Label^ lblPrice = gcnew Label();
+				lblPrice->Text = "Price " + productPrice + " L.E";
+				lblPrice->Location = Point(10, 110);
+				lblPrice->AutoSize = true;
+				//addthe numetricupdown
+				NumericUpDown^ num = gcnew NumericUpDown();
+				num->Location = Point(90, 140);
+				num->Width = 90;
+				num->Height = 60;
+				num->Minimum = 0;
+				num->Maximum = 100;
+				num->Value = 0;
+				num->Increment = 1;
+				num->DecimalPlaces = 2;
+				//add the label to the panel
+				Label^ lblQuantity = gcnew Label();
+				lblQuantity->Text = "Quantity";
+				lblQuantity->Location = Point(20, 140);
+				lblQuantity->AutoSize = true;
+				lblQuantity->ForeColor = Color::Black;
+				lblQuantity->Font = gcnew System::Drawing::Font("Arial", 10, FontStyle::Bold);
+				lblQuantity->BackColor = Color::Transparent;
+				//add the button to the panel
+				Button^ btnAddToCart = gcnew Button();
+				btnAddToCart->Text = "Add to Cart";
+				btnAddToCart->Location = Point(45, 170);
+				btnAddToCart->Width = 150;
+				btnAddToCart->Height = 30;
+				btnAddToCart->BackColor = Color::FromArgb(0xE6, 0x34, 0x62);
+				btnAddToCart->ForeColor = Color::White;
+				//add to panel
+				productPanel->Controls->Add(lblCode);
+				productPanel->Controls->Add(lblName);
+				productPanel->Controls->Add(lblCategory);
+				productPanel->Controls->Add(lblExpired);
+				productPanel->Controls->Add(lblProdiction);
+				productPanel->Controls->Add(lblPrice);
+				productPanel->Controls->Add(lblQuantity);
+				productPanel->Controls->Add(num);
+				productPanel->Controls->Add(btnAddToCart);
+				flowLayoutPanel4->Controls->Add(productPanel);
+				flowLayoutPanel4->ScrollControlIntoView(productPanel);
+			}
+			else if (parts[0] == "3")
+			{
+				String^ productId = parts[0];
+				String^ productCode = parts[1];
+				String^ productName = parts[2];
+				String^ productCategory = parts[3];
+				String^ productExpired = parts[4];
+				String^ productProdiction = parts[5];
+				String^ productPrice = parts[6];
+				//create a panel for each product
+				Panel^ productPanel = gcnew Panel();
+				productPanel->Width = 250;
+				productPanel->Height = 200;
+				productPanel->BackColor = Color::LightGray;
+				productPanel->Margin = System::Windows::Forms::Padding(10);
+				//create a label for each product
+				Label^ lblName = gcnew Label();
+				lblName->Text = "Name: " + productName;
+				lblName->Location = Point(10, 10);
+				lblName->AutoSize = true;
+				Label^ lblCode = gcnew Label();
+				lblCode->Text = "Code: " + productCode;
+				lblCode->Location = Point(10, 30);
+				lblCode->AutoSize = true;
+				Label^ lblCategory = gcnew Label();
+				lblCategory->Text = "Category " + productCategory;
+				lblCategory->Location = Point(10, 50);
+				lblCategory->AutoSize = true;
+				Label^ lblExpired = gcnew Label();
+				lblExpired->Text = "Production Date: " + productExpired;
+				lblExpired->Location = Point(10, 70);
+				lblExpired->AutoSize = true;
+				Label^ lblProdiction = gcnew Label();
+				lblProdiction->Text = "Expired Date" + productProdiction;
+				lblProdiction->Location = Point(10, 90);
+				lblProdiction->AutoSize = true;
+				Label^ lblPrice = gcnew Label();
+				lblPrice->Text = "Price " + productPrice + " L.E";
+				lblPrice->Location = Point(10, 110);
+				lblPrice->AutoSize = true;
+				//addthe numetricupdown
+				NumericUpDown^ num = gcnew NumericUpDown();
+				num->Location = Point(90, 140);
+				num->Width = 90;
+				num->Height = 60;
+				num->Minimum = 0;
+				num->Maximum = 100;
+				num->Value = 0;
+				num->Increment = 1;
+				num->DecimalPlaces = 2;
+				//add the label to the panel
+				Label^ lblQuantity = gcnew Label();
+				lblQuantity->Text = "Quantity";
+				lblQuantity->Location = Point(20, 140);
+				lblQuantity->AutoSize = true;
+				lblQuantity->ForeColor = Color::Black;
+				lblQuantity->Font = gcnew System::Drawing::Font("Arial", 10, FontStyle::Bold);
+				lblQuantity->BackColor = Color::Transparent;
+				//add the button to the panel
+				Button^ btnAddToCart = gcnew Button();
+				btnAddToCart->Text = "Add to Cart";
+				btnAddToCart->Location = Point(45, 170);
+				btnAddToCart->Width = 150;
+				btnAddToCart->Height = 30;
+				btnAddToCart->BackColor = Color::FromArgb(0xE6, 0x34, 0x62);
+				btnAddToCart->ForeColor = Color::White;
+				//add to panel
+				productPanel->Controls->Add(lblCode);
+				productPanel->Controls->Add(lblName);
+				productPanel->Controls->Add(lblCategory);
+				productPanel->Controls->Add(lblExpired);
+				productPanel->Controls->Add(lblProdiction);
+				productPanel->Controls->Add(lblPrice);
+				productPanel->Controls->Add(lblQuantity);
+				productPanel->Controls->Add(num);
+				productPanel->Controls->Add(btnAddToCart);
+				flowLayoutPanel5->Controls->Add(productPanel);
+				flowLayoutPanel5->ScrollControlIntoView(productPanel);
+				}
+			else if (parts[0] == "4")
+			{
+				String^ productId = parts[0];
+				String^ productCode = parts[1];
+				String^ productName = parts[2];
+				String^ productCategory = parts[3];
+				String^ productExpired = parts[4];
+				String^ productProdiction = parts[5];
+				String^ productPrice = parts[6];
+				//create a panel for each product
+				Panel^ productPanel = gcnew Panel();
+				productPanel->Width = 250;
+				productPanel->Height = 200;
+				productPanel->BackColor = Color::LightGray;
+				productPanel->Margin = System::Windows::Forms::Padding(10);
+				//create a label for each product
+				Label^ lblName = gcnew Label();
+				lblName->Text = "Name: " + productName;
+				lblName->Location = Point(10, 10);
+				lblName->AutoSize = true;
+				Label^ lblCode = gcnew Label();
+				lblCode->Text = "Code: " + productCode;
+				lblCode->Location = Point(10, 30);
+				lblCode->AutoSize = true;
+				Label^ lblCategory = gcnew Label();
+				lblCategory->Text = "Category " + productCategory;
+				lblCategory->Location = Point(10, 50);
+				lblCategory->AutoSize = true;
+				Label^ lblExpired = gcnew Label();
+				lblExpired->Text = "Production Date: " + productExpired;
+				lblExpired->Location = Point(10, 70);
+				lblExpired->AutoSize = true;
+				Label^ lblProdiction = gcnew Label();
+				lblProdiction->Text = "Expired Date" + productProdiction;
+				lblProdiction->Location = Point(10, 90);
+				lblProdiction->AutoSize = true;
+				Label^ lblPrice = gcnew Label();
+				lblPrice->Text = "Price " + productPrice + " L.E";
+				lblPrice->Location = Point(10, 110);
+				lblPrice->AutoSize = true;
+				//addthe numetricupdown
+				NumericUpDown^ num = gcnew NumericUpDown();
+				num->Location = Point(90, 140);
+				num->Width = 90;
+				num->Height = 60;
+				num->Minimum = 0;
+				num->Maximum = 100;
+				num->Value = 0;
+				num->Increment = 1;
+				num->DecimalPlaces = 2;
+				//add the label to the panel
+				Label^ lblQuantity = gcnew Label();
+				lblQuantity->Text = "Quantity";
+				lblQuantity->Location = Point(20, 140);
+				lblQuantity->AutoSize = true;
+				lblQuantity->ForeColor = Color::Black;
+				lblQuantity->Font = gcnew System::Drawing::Font("Arial", 10, FontStyle::Bold);
+				lblQuantity->BackColor = Color::Transparent;
+				//add the button to the panel
+				Button^ btnAddToCart = gcnew Button();
+				btnAddToCart->Text = "Add to Cart";
+				btnAddToCart->Location = Point(45, 170);
+				btnAddToCart->Width = 150;
+				btnAddToCart->Height = 30;
+				btnAddToCart->BackColor = Color::FromArgb(0xE6, 0x34, 0x62);
+				btnAddToCart->ForeColor = Color::White;
+				//add to panel
+				productPanel->Controls->Add(lblCode);
+				productPanel->Controls->Add(lblName);
+				productPanel->Controls->Add(lblCategory);
+				productPanel->Controls->Add(lblExpired);
+				productPanel->Controls->Add(lblProdiction);
+				productPanel->Controls->Add(lblPrice);
+				productPanel->Controls->Add(lblQuantity);
+				productPanel->Controls->Add(num);
+				productPanel->Controls->Add(btnAddToCart);
+				flowLayoutPanel6->Controls->Add(productPanel);
+				flowLayoutPanel6->ScrollControlIntoView(productPanel);
+				}
+			else if (parts[0] == "5")
+			{
+				String^ productId = parts[0];
+				String^ productCode = parts[1];
+				String^ productName = parts[2];
+				String^ productCategory = parts[3];
+				String^ productExpired = parts[4];
+				String^ productProdiction = parts[5];
+				String^ productPrice = parts[6];
+				//create a panel for each product
+				Panel^ productPanel = gcnew Panel();
+				productPanel->Width = 250;
+				productPanel->Height = 200;
+				productPanel->BackColor = Color::LightGray;
+				productPanel->Margin = System::Windows::Forms::Padding(10);
+				//create a label for each product
+				Label^ lblName = gcnew Label();
+				lblName->Text = "Name: " + productName;
+				lblName->Location = Point(10, 10);
+				lblName->AutoSize = true;
+				Label^ lblCode = gcnew Label();
+				lblCode->Text = "Code: " + productCode;
+				lblCode->Location = Point(10, 30);
+				lblCode->AutoSize = true;
+				Label^ lblCategory = gcnew Label();
+				lblCategory->Text = "Category " + productCategory;
+				lblCategory->Location = Point(10, 50);
+				lblCategory->AutoSize = true;
+				Label^ lblExpired = gcnew Label();
+				lblExpired->Text = "Production Date: " + productExpired;
+				lblExpired->Location = Point(10, 70);
+				lblExpired->AutoSize = true;
+				Label^ lblProdiction = gcnew Label();
+				lblProdiction->Text = "Expired Date" + productProdiction;
+				lblProdiction->Location = Point(10, 90);
+				lblProdiction->AutoSize = true;
+				Label^ lblPrice = gcnew Label();
+				lblPrice->Text = "Price " + productPrice + " L.E";
+				lblPrice->Location = Point(10, 110);
+				lblPrice->AutoSize = true;
+				//addthe numetricupdown
+				NumericUpDown^ num = gcnew NumericUpDown();
+				num->Location = Point(90, 140);
+				num->Width = 90;
+				num->Height = 60;
+				num->Minimum = 0;
+				num->Maximum = 100;
+				num->Value = 0;
+				num->Increment = 1;
+				num->DecimalPlaces = 2;
+				//add the label to the panel
+				Label^ lblQuantity = gcnew Label();
+				lblQuantity->Text = "Quantity";
+				lblQuantity->Location = Point(20, 140);
+				lblQuantity->AutoSize = true;
+				lblQuantity->ForeColor = Color::Black;
+				lblQuantity->Font = gcnew System::Drawing::Font("Arial", 10, FontStyle::Bold);
+				lblQuantity->BackColor = Color::Transparent;
+				//add the button to the panel
+				Button^ btnAddToCart = gcnew Button();
+				btnAddToCart->Text = "Add to Cart";
+				btnAddToCart->Location = Point(45, 170);
+				btnAddToCart->Width = 150;
+				btnAddToCart->Height = 30;
+				btnAddToCart->BackColor = Color::FromArgb(0xE6, 0x34, 0x62);
+				btnAddToCart->ForeColor = Color::White;
+				//add to panel
+				productPanel->Controls->Add(lblCode);
+				productPanel->Controls->Add(lblName);
+				productPanel->Controls->Add(lblCategory);
+				productPanel->Controls->Add(lblExpired);
+				productPanel->Controls->Add(lblProdiction);
+				productPanel->Controls->Add(lblPrice);
+				productPanel->Controls->Add(lblQuantity);
+				productPanel->Controls->Add(num);
+				productPanel->Controls->Add(btnAddToCart);
+				flowLayoutPanel7->Controls->Add(productPanel);
+				flowLayoutPanel7->ScrollControlIntoView(productPanel);
+				}
+			else if (parts[0] == "6")
+			{
+				String^ productId = parts[0];
+				String^ productCode = parts[1];
+				String^ productName = parts[2];
+				String^ productCategory = parts[3];
+				String^ productExpired = parts[4];
+				String^ productProdiction = parts[5];
+				String^ productPrice = parts[6];
+				//create a panel for each product
+				Panel^ productPanel = gcnew Panel();
+				productPanel->Width = 250;
+				productPanel->Height = 200;
+				productPanel->BackColor = Color::LightGray;
+				productPanel->Margin = System::Windows::Forms::Padding(10);
+				//create a label for each product
+				Label^ lblName = gcnew Label();
+				lblName->Text = "Name: " + productName;
+				lblName->Location = Point(10, 10);
+				lblName->AutoSize = true;
+				Label^ lblCode = gcnew Label();
+				lblCode->Text = "Code: " + productCode;
+				lblCode->Location = Point(10, 30);
+				lblCode->AutoSize = true;
+				Label^ lblCategory = gcnew Label();
+				lblCategory->Text = "Category " + productCategory;
+				lblCategory->Location = Point(10, 50);
+				lblCategory->AutoSize = true;
+				Label^ lblExpired = gcnew Label();
+				lblExpired->Text = "Production Date: " + productExpired;
+				lblExpired->Location = Point(10, 70);
+				lblExpired->AutoSize = true;
+				Label^ lblProdiction = gcnew Label();
+				lblProdiction->Text = "Expired Date" + productProdiction;
+				lblProdiction->Location = Point(10, 90);
+				lblProdiction->AutoSize = true;
+				Label^ lblPrice = gcnew Label();
+				lblPrice->Text = "Price " + productPrice + " L.E";
+				lblPrice->Location = Point(10, 110);
+				lblPrice->AutoSize = true;
+				//addthe numetricupdown
+				NumericUpDown^ num = gcnew NumericUpDown();
+				num->Location = Point(90, 140);
+				num->Width = 90;
+				num->Height = 60;
+				num->Minimum = 0;
+				num->Maximum = 100;
+				num->Value = 0;
+				num->Increment = 1;
+				num->DecimalPlaces = 2;
+				//add the label to the panel
+				Label^ lblQuantity = gcnew Label();
+				lblQuantity->Text = "Quantity";
+				lblQuantity->Location = Point(20, 140);
+				lblQuantity->AutoSize = true;
+				lblQuantity->ForeColor = Color::Black;
+				lblQuantity->Font = gcnew System::Drawing::Font("Arial", 10, FontStyle::Bold);
+				lblQuantity->BackColor = Color::Transparent;
+				//add the button to the panel
+				Button^ btnAddToCart = gcnew Button();
+				btnAddToCart->Text = "Add to Cart";
+				btnAddToCart->Location = Point(45, 170);
+				btnAddToCart->Width = 150;
+				btnAddToCart->Height = 30;
+				btnAddToCart->BackColor = Color::FromArgb(0xE6, 0x34, 0x62);
+				btnAddToCart->ForeColor = Color::White;
+				//add to panel
+				productPanel->Controls->Add(lblCode);
+				productPanel->Controls->Add(lblName);
+				productPanel->Controls->Add(lblCategory);
+				productPanel->Controls->Add(lblExpired);
+				productPanel->Controls->Add(lblProdiction);
+				productPanel->Controls->Add(lblPrice);
+				productPanel->Controls->Add(lblQuantity);
+				productPanel->Controls->Add(num);
+				productPanel->Controls->Add(btnAddToCart);
+				flowLayoutPanel8->Controls->Add(productPanel);
+				flowLayoutPanel8->ScrollControlIntoView(productPanel);
+				}
+			else if (parts[0] == "7")
+			{
+				String^ productId = parts[0];
+				String^ productCode = parts[1];
+				String^ productName = parts[2];
+				String^ productCategory = parts[3];
+				String^ productExpired = parts[4];
+				String^ productProdiction = parts[5];
+				String^ productPrice = parts[6];
+				//create a panel for each product
+				Panel^ productPanel = gcnew Panel();
+				productPanel->Width = 250;
+				productPanel->Height = 200;
+				productPanel->BackColor = Color::LightGray;
+				productPanel->Margin = System::Windows::Forms::Padding(10);
+				//create a label for each product
+				Label^ lblName = gcnew Label();
+				lblName->Text = "Name: " + productName;
+				lblName->Location = Point(10, 10);
+				lblName->AutoSize = true;
+				Label^ lblCode = gcnew Label();
+				lblCode->Text = "Code: " + productCode;
+				lblCode->Location = Point(10, 30);
+				lblCode->AutoSize = true;
+				Label^ lblCategory = gcnew Label();
+				lblCategory->Text = "Category " + productCategory;
+				lblCategory->Location = Point(10, 50);
+				lblCategory->AutoSize = true;
+				Label^ lblExpired = gcnew Label();
+				lblExpired->Text = "Production Date: " + productExpired;
+				lblExpired->Location = Point(10, 70);
+				lblExpired->AutoSize = true;
+				Label^ lblProdiction = gcnew Label();
+				lblProdiction->Text = "Expired Date" + productProdiction;
+				lblProdiction->Location = Point(10, 90);
+				lblProdiction->AutoSize = true;
+				Label^ lblPrice = gcnew Label();
+				lblPrice->Text = "Price " + productPrice + " L.E";
+				lblPrice->Location = Point(10, 110);
+				lblPrice->AutoSize = true;
+				//addthe numetricupdown
+				NumericUpDown^ num = gcnew NumericUpDown();
+				num->Location = Point(90, 140);
+				num->Width = 90;
+				num->Height = 60;
+				num->Minimum = 0;
+				num->Maximum = 100;
+				num->Value = 0;
+				num->Increment = 1;
+				num->DecimalPlaces = 2;
+				//add the label to the panel
+				Label^ lblQuantity = gcnew Label();
+				lblQuantity->Text = "Quantity";
+				lblQuantity->Location = Point(20, 140);
+				lblQuantity->AutoSize = true;
+				lblQuantity->ForeColor = Color::Black;
+				lblQuantity->Font = gcnew System::Drawing::Font("Arial", 10, FontStyle::Bold);
+				lblQuantity->BackColor = Color::Transparent;
+				//add the button to the panel
+				Button^ btnAddToCart = gcnew Button();
+				btnAddToCart->Text = "Add to Cart";
+				btnAddToCart->Location = Point(45, 170);
+				btnAddToCart->Width = 150;
+				btnAddToCart->Height = 30;
+				btnAddToCart->BackColor = Color::FromArgb(0xE6, 0x34, 0x62);
+				btnAddToCart->ForeColor = Color::White;
+				//add to panel
+				productPanel->Controls->Add(lblCode);
+				productPanel->Controls->Add(lblName);
+				productPanel->Controls->Add(lblCategory);
+				productPanel->Controls->Add(lblExpired);
+				productPanel->Controls->Add(lblProdiction);
+				productPanel->Controls->Add(lblPrice);
+				productPanel->Controls->Add(lblQuantity);
+				productPanel->Controls->Add(num);
+				productPanel->Controls->Add(btnAddToCart);
+				flowLayoutPanel9->Controls->Add(productPanel);
+				flowLayoutPanel9->ScrollControlIntoView(productPanel);
+				}
+			else if (parts[0] == "8")
+			{
+				String^ productId = parts[0];
+				String^ productCode = parts[1];
+				String^ productName = parts[2];
+				String^ productCategory = parts[3];
+				String^ productExpired = parts[4];
+				String^ productProdiction = parts[5];
+				String^ productPrice = parts[6];
+				//create a panel for each product
+				Panel^ productPanel = gcnew Panel();
+				productPanel->Width = 250;
+				productPanel->Height = 200;
+				productPanel->BackColor = Color::LightGray;
+				productPanel->Margin = System::Windows::Forms::Padding(10);
+				//create a label for each product
+				Label^ lblName = gcnew Label();
+				lblName->Text = "Name: " + productName;
+				lblName->Location = Point(10, 10);
+				lblName->AutoSize = true;
+				Label^ lblCode = gcnew Label();
+				lblCode->Text = "Code: " + productCode;
+				lblCode->Location = Point(10, 30);
+				lblCode->AutoSize = true;
+				Label^ lblCategory = gcnew Label();
+				lblCategory->Text = "Category " + productCategory;
+				lblCategory->Location = Point(10, 50);
+				lblCategory->AutoSize = true;
+				Label^ lblExpired = gcnew Label();
+				lblExpired->Text = "Production Date: " + productExpired;
+				lblExpired->Location = Point(10, 70);
+				lblExpired->AutoSize = true;
+				Label^ lblProdiction = gcnew Label();
+				lblProdiction->Text = "Expired Date" + productProdiction;
+				lblProdiction->Location = Point(10, 90);
+				lblProdiction->AutoSize = true;
+				Label^ lblPrice = gcnew Label();
+				lblPrice->Text = "Price " + productPrice + " L.E";
+				lblPrice->Location = Point(10, 110);
+				lblPrice->AutoSize = true;
+				//addthe numetricupdown
+				NumericUpDown^ num = gcnew NumericUpDown();
+				num->Location = Point(90, 140);
+				num->Width = 90;
+				num->Height = 60;
+				num->Minimum = 0;
+				num->Maximum = 100;
+				num->Value = 0;
+				num->Increment = 1;
+				num->DecimalPlaces = 2;
+				//add the label to the panel
+				Label^ lblQuantity = gcnew Label();
+				lblQuantity->Text = "Quantity";
+				lblQuantity->Location = Point(20, 140);
+				lblQuantity->AutoSize = true;
+				lblQuantity->ForeColor = Color::Black;
+				lblQuantity->Font = gcnew System::Drawing::Font("Arial", 10, FontStyle::Bold);
+				lblQuantity->BackColor = Color::Transparent;
+				//add the button to the panel
+				Button^ btnAddToCart = gcnew Button();
+				btnAddToCart->Text = "Add to Cart";
+				btnAddToCart->Location = Point(45, 170);
+				btnAddToCart->Width = 150;
+				btnAddToCart->Height = 30;
+				btnAddToCart->BackColor = Color::FromArgb(0xE6, 0x34, 0x62);
+				btnAddToCart->ForeColor = Color::White;
+				//add to panel
+				productPanel->Controls->Add(lblCode);
+				productPanel->Controls->Add(lblName);
+				productPanel->Controls->Add(lblCategory);
+				productPanel->Controls->Add(lblExpired);
+				productPanel->Controls->Add(lblProdiction);
+				productPanel->Controls->Add(lblPrice);
+				productPanel->Controls->Add(lblQuantity);
+				productPanel->Controls->Add(num);
+				productPanel->Controls->Add(btnAddToCart);
+				flowLayoutPanel10->Controls->Add(productPanel);
+				flowLayoutPanel10->ScrollControlIntoView(productPanel);
+				}
+			else if (parts[0] == "9")
+			{
+				String^ productId = parts[0];
+				String^ productCode = parts[1];
+				String^ productName = parts[2];
+				String^ productCategory = parts[3];
+				String^ productExpired = parts[4];
+				String^ productProdiction = parts[5];
+				String^ productPrice = parts[6];
+				//create a panel for each product
+				Panel^ productPanel = gcnew Panel();
+				productPanel->Width = 250;
+				productPanel->Height = 200;
+				productPanel->BackColor = Color::LightGray;
+				productPanel->Margin = System::Windows::Forms::Padding(10);
+				//create a label for each product
+				Label^ lblName = gcnew Label();
+				lblName->Text = "Name: " + productName;
+				lblName->Location = Point(10, 10);
+				lblName->AutoSize = true;
+				Label^ lblCode = gcnew Label();
+				lblCode->Text = "Code: " + productCode;
+				lblCode->Location = Point(10, 30);
+				lblCode->AutoSize = true;
+				Label^ lblCategory = gcnew Label();
+				lblCategory->Text = "Category " + productCategory;
+				lblCategory->Location = Point(10, 50);
+				lblCategory->AutoSize = true;
+				Label^ lblExpired = gcnew Label();
+				lblExpired->Text = "Production Date: " + productExpired;
+				lblExpired->Location = Point(10, 70);
+				lblExpired->AutoSize = true;
+				Label^ lblProdiction = gcnew Label();
+				lblProdiction->Text = "Expired Date" + productProdiction;
+				lblProdiction->Location = Point(10, 90);
+				lblProdiction->AutoSize = true;
+				Label^ lblPrice = gcnew Label();
+				lblPrice->Text = "Price " + productPrice + " L.E";
+				lblPrice->Location = Point(10, 110);
+				lblPrice->AutoSize = true;
+				//addthe numetricupdown
+				NumericUpDown^ num = gcnew NumericUpDown();
+				num->Location = Point(90, 140);
+				num->Width = 90;
+				num->Height = 60;
+				num->Minimum = 0;
+				num->Maximum = 100;
+				num->Value = 0;
+				num->Increment = 1;
+				num->DecimalPlaces = 2;
+				//add the label to the panel
+				Label^ lblQuantity = gcnew Label();
+				lblQuantity->Text = "Quantity";
+				lblQuantity->Location = Point(20, 140);
+				lblQuantity->AutoSize = true;
+				lblQuantity->ForeColor = Color::Black;
+				lblQuantity->Font = gcnew System::Drawing::Font("Arial", 10, FontStyle::Bold);
+				lblQuantity->BackColor = Color::Transparent;
+				//add the button to the panel
+				Button^ btnAddToCart = gcnew Button();
+				btnAddToCart->Text = "Add to Cart";
+				btnAddToCart->Location = Point(45, 170);
+				btnAddToCart->Width = 150;
+				btnAddToCart->Height = 30;
+				btnAddToCart->BackColor = Color::FromArgb(0xE6, 0x34, 0x62);
+				btnAddToCart->ForeColor = Color::White;
+				//add to panel
+				productPanel->Controls->Add(lblCode);
+				productPanel->Controls->Add(lblName);
+				productPanel->Controls->Add(lblCategory);
+				productPanel->Controls->Add(lblExpired);
+				productPanel->Controls->Add(lblProdiction);
+				productPanel->Controls->Add(lblPrice);
+				productPanel->Controls->Add(lblQuantity);
+				productPanel->Controls->Add(num);
+				productPanel->Controls->Add(btnAddToCart);
+				flowLayoutPanel11->Controls->Add(productPanel);
+				flowLayoutPanel11->ScrollControlIntoView(productPanel);
+				}
+			else if (parts[0] == "10")
+			{
+				String^ productId = parts[0];
+				String^ productCode = parts[1];
+				String^ productName = parts[2];
+				String^ productCategory = parts[3];
+				String^ productExpired = parts[4];
+				String^ productProdiction = parts[5];
+				String^ productPrice = parts[6];
+				//create a panel for each product
+				Panel^ productPanel = gcnew Panel();
+				productPanel->Width = 250;
+				productPanel->Height = 200;
+				productPanel->BackColor = Color::LightGray;
+				productPanel->Margin = System::Windows::Forms::Padding(10);
+				//create a label for each product
+				Label^ lblName = gcnew Label();
+				lblName->Text = "Name: " + productName;
+				lblName->Location = Point(10, 10);
+				lblName->AutoSize = true;
+				Label^ lblCode = gcnew Label();
+				lblCode->Text = "Code: " + productCode;
+				lblCode->Location = Point(10, 30);
+				lblCode->AutoSize = true;
+				Label^ lblCategory = gcnew Label();
+				lblCategory->Text = "Category " + productCategory;
+				lblCategory->Location = Point(10, 50);
+				lblCategory->AutoSize = true;
+				Label^ lblExpired = gcnew Label();
+				lblExpired->Text = "Production Date: " + productExpired;
+				lblExpired->Location = Point(10, 70);
+				lblExpired->AutoSize = true;
+				Label^ lblProdiction = gcnew Label();
+				lblProdiction->Text = "Expired Date" + productProdiction;
+				lblProdiction->Location = Point(10, 90);
+				lblProdiction->AutoSize = true;
+				Label^ lblPrice = gcnew Label();
+				lblPrice->Text = "Price " + productPrice + " L.E";
+				lblPrice->Location = Point(10, 110);
+				lblPrice->AutoSize = true;
+				//addthe numetricupdown
+				NumericUpDown^ num = gcnew NumericUpDown();
+				num->Location = Point(90, 140);
+				num->Width = 90;
+				num->Height = 60;
+				num->Minimum = 0;
+				num->Maximum = 100;
+				num->Value = 0;
+				num->Increment = 1;
+				num->DecimalPlaces = 2;
+				//add the label to the panel
+				Label^ lblQuantity = gcnew Label();
+				lblQuantity->Text = "Quantity";
+				lblQuantity->Location = Point(20, 140);
+				lblQuantity->AutoSize = true;
+				lblQuantity->ForeColor = Color::Black;
+				lblQuantity->Font = gcnew System::Drawing::Font("Arial", 10, FontStyle::Bold);
+				lblQuantity->BackColor = Color::Transparent;
+				//add the button to the panel
+				Button^ btnAddToCart = gcnew Button();
+				btnAddToCart->Text = "Add to Cart";
+				btnAddToCart->Location = Point(45, 170);
+				btnAddToCart->Width = 150;
+				btnAddToCart->Height = 30;
+				btnAddToCart->BackColor = Color::FromArgb(0xE6, 0x34, 0x62);
+				btnAddToCart->ForeColor = Color::White;
+				//add to panel
+				productPanel->Controls->Add(lblCode);
+				productPanel->Controls->Add(lblName);
+				productPanel->Controls->Add(lblCategory);
+				productPanel->Controls->Add(lblExpired);
+				productPanel->Controls->Add(lblProdiction);
+				productPanel->Controls->Add(lblPrice);
+				productPanel->Controls->Add(lblQuantity);
+				productPanel->Controls->Add(num);
+				productPanel->Controls->Add(btnAddToCart);
+				flowLayoutPanel12->Controls->Add(productPanel);
+				flowLayoutPanel12->ScrollControlIntoView(productPanel);
+				}
+
 		}
 		sr->Close();
 	}
