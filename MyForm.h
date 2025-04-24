@@ -149,6 +149,7 @@ namespace SuperMarkoGUI {
 					NumericUpDown^ quantityBox = gcnew NumericUpDown();
 					quantityBox->Minimum = 0;
 					quantityBox->Maximum = 10;
+					quantityBox->DecimalPlaces = 2;
 					quantityBox->Size = System::Drawing::Size(140, 22);
 					quantityBox->Location = Point(80, 4);
 
