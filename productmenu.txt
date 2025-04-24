@@ -14,7 +14,7 @@
 2,VG#8012,Onion,Vegetables,9/4/2025,5/7/2025,13.5
 2,VG#8013,Carrot,Vegetables,8/4/2025,1/8/2025,7.5
 2,VG#8014,Cucumber,Vegetables,12/4/2025,6/8/2025,15
-2,VG#8015,eggcchini,Vegetables,16/4/2025,9/8/2025,18
+2,VG#8015,Eggplant,Vegetables,16/4/2025,9/8/2025,18
 2,VG#8016,Zucchini,Vegetables,13/4/2025,11/7/2025,20
 2,VG#8017,Potato,Vegetables,6/4/2025,12/7/2025,12
 2,VG#8018,Broccoli,Vegetables,1/4/2025,13/6/2025,60
@@ -22,8 +22,8 @@
 
 3,DE#7007,Loose_Milk,Dairy&Eggs,26/3/2025,3/9/2025,29.71
 3,DE#7008,Packaged_Milk,Dairy&Eggs,26/3/2025,3/9/2025,41.18
-3,DE#7009,White_Cheese("Thalaga"),Dairy&Eggs,17/3/2025,15/7/2025,130
-3,DE#7010,Baeamili_Kariibi_White_Cheese,Dairy&Eggs,23/4/2025,20/8/2025,160
+3,DE#7009,White_Cheese(Thalaga),Dairy&Eggs,17/3/2025,15/7/2025,130
+3,DE#7010,Baeamili_White_Cheese,Dairy&Eggs,23/4/2025,20/8/2025,160
 3,DE#7011,Istanbul_Cheese,Dairy&Eggs,26/4/2025,3/9/2025,150
 3,DE#7012,Aged_Romano_Cheese,Dairy&Eggs,12/4/2025,3/9/2025,299.96
 3,DE#7013,Flamingo_Cheese,Dairy&Eggs,4/5/2025,29/12/2025,498
@@ -31,12 +31,12 @@
 3,DE#7015,White_Eggs,Dairy&Eggs,20/3/2025,5/10/2025,154
 3,DE#7016,RedEggs,Dairy&Eggs,26/3/2025,3/10/2025,158
 
-4,M#9001,Beef(at_Aman_outlets) ,Meats,27/4/2025,5/5/2025,290 
+4,M#9001,Beef(at_Aman_outlets),Meats,27/4/2025,5/5/2025,290 
 4,M#9002,Beef(at_other_outlets),Meats,20/3/2025,12/5/2025,300
 4,M#9003,Beef(at_butcher_shops),Meats,4/3/2025,1/5/2025,350
 4,M#9004,Beef(at_hypermarkets),Meats,20/4/2025,5/6/2025,480
-4,M#9005,Lamb(at_government_outlets_like_Aman) ,Meats,15/3/2025,5/4/2025,350 
-4,M#9006,Lamb(at_butcher_shops) ,Meats,15/3/2025,5/6/2025,475 
+4,M#9005,Lamb,Meats,15/3/2025,5/4/2025,350 
+4,M#9006,Lamb(at_butcher_shops),Meats,15/3/2025,5/6/2025,475 
 4,M#9007,Sausage,Meats,27/4/2025,5/6/2025,325
 4,M#9008,Minced_Beef,Meats,21/3/2025,6/6/2025,360
 4,M#9009,Minced_Lamb,Meats,12/3/2025,5/7/2025,370
@@ -53,12 +53,12 @@
 5,F#10009,Lobster,Fish,12/2/2025,5/7/2025,700  
 5,F#10010,Catfish,Fish,19/3/2025,12/7/2025,200
   
-6,P#2005,Chicken(at_Aman_outlets),Poultry,27/3/2025,5/5/2025,150  
-6,P#2006,Chicken(at_other_outlets),Poultry,20/2/2025,12/5/2025,160  
-6,P#2007,Chicken(at_butcher_shops),Poulty,4/2/2025,1/5/2025,170  
-6,P#2008,Chicken(at_hypermarkets),Poultry,20/3/2025,5/6/2025,180  
-6,P#2009,Duck(at_government_outlets_like_Aman),Poultry,15/2/2025,5/4/2025,200  
-6,P#2010,Duck(at_butcher_shops),Poultry,15/4/2025,5/6/2025,210  
+6,P#2005,White_Chicken,Poultry,27/3/2025,5/5/2025,150  
+6,P#2006,Red_Chicken,Poultry,20/2/2025,12/5/2025,160  
+6,P#2007,Pigeon,Poultry,4/2/2025,1/5/2025,170  
+6,P#2008,Goose,Poultry,20/3/2025,5/6/2025,180  
+6,P#2009,Duck,Poultry,15/2/2025,5/4/2025,200  
+6,P#2010,Rabbit,Poultry,15/4/2025,5/6/2025,210  
 6,P#2011,Turkey,Poultry,27/2/2025,5/6/2025,250  
 6,P#2012,Chicken_Wings,Poultry,21/3/2025,6/6/2025,120  
 6,P#2013,Chicken_Liver,Poultry,12/2/2025,5/7/2025,100  

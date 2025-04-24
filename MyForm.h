@@ -1,6 +1,4 @@
 #pragma once
-
-
 namespace SuperMarkoGUI {
 
 	using namespace System;
@@ -14,16 +12,173 @@ namespace SuperMarkoGUI {
 	/// <summary>
 	/// Summary for MyForm
 	/// </summary>
+	
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 	public:
 		MyForm(void)
 		{
 			InitializeComponent();
+			
+			// Load by category into their dedicated panels
+			loadCategory("Fruit", flowLayoutPanel3);           // Fruits
+			loadCategory("Vegetables", flowLayoutPanel4);      // Vegetables
+			loadCategory("Dairy&Eggs", flowLayoutPanel5);      // Dairy
+			loadCategory("Meats", flowLayoutPanel6);           // Butcher shop
+			loadCategory("Fish", flowLayoutPanel7);            // Seafood
+			loadCategory("Poultry", flowLayoutPanel8);         // Poultry
+			loadCategory("Bakery&Bread", flowLayoutPanel9);    // Bakery
+			loadCategory("Snacks&Sweets", flowLayoutPanel10);  // Snacks
+			loadCategory("Household&Cleaning_Supplies", flowLayoutPanel11); // Household
+			loadCategory("Pet_Supplies", flowLayoutPanel12);   // Pet supplies
+
 			//
 			//TODO: Add the constructor code here
 			//
 		}
+		
+		void loadCategory(String^ categoryFilter, FlowLayoutPanel^ panelToFill) {
+			try {
+				StreamReader^ reader = gcnew StreamReader("productmenu.txt");
+				String^ line;
+
+				while ((line = reader->ReadLine()) != nullptr) {
+					array<String^>^ parts = line->Split(',');
+
+					if (parts->Length < 7) continue;
+					if (parts[3]->Trim()->ToLower() != categoryFilter->ToLower()) continue;
+
+					String^ code = parts[1];
+					String^ name = parts[2];
+					String^ prodDate = parts[4];
+					String^ expDate = parts[5];
+					String^ price = parts[6];
+					String^ categoryName = parts[3];  // actual category
+
+					// === Product Panel ===
+					Panel^ productPanel = gcnew Panel();
+					productPanel->BackColor = Color::White;
+					productPanel->Margin = System::Windows::Forms::Padding(10);
+					productPanel->Width = 250;
+					productPanel->AutoSize = true;
+					productPanel->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
+
+					// === Inner Stack Panel ===
+					FlowLayoutPanel^ innerPanel = gcnew FlowLayoutPanel();
+					innerPanel->FlowDirection = FlowDirection::TopDown;
+					innerPanel->WrapContents = false;
+					innerPanel->AutoSize = true;
+					innerPanel->AutoScroll = false;
+					innerPanel->Dock = DockStyle::Fill;
+					innerPanel->Padding = System::Windows::Forms::Padding(0, 0, 0, 10);
+
+					// === Image ===
+					PictureBox^ productImage = gcnew PictureBox();
+					productImage->Size = System::Drawing::Size(230, 100);
+					productImage->SizeMode = PictureBoxSizeMode::Zoom;
+
+					String^ imageName = name->Replace(" ", "_")->Replace("(", "")->Replace(")", "")->Replace("\"", "") + ".jpg";
+					String^ imagePath = "images\\" + imageName;
+
+					try {
+						productImage->Image = Image::FromFile(imagePath);
+					}
+					catch (...) {
+						productImage->Image = Image::FromFile("images\\placeholder.jpg");
+					}
+					innerPanel->Controls->Add(productImage);
+
+					// === Labels ===
+					Label^ lblName = gcnew Label();
+					lblName->Text = "Name: " + name;
+					lblName->AutoSize = false;
+					lblName->Width = 230;
+					lblName->TextAlign = ContentAlignment::MiddleCenter;
+
+					Label^ lblCode = gcnew Label();
+					lblCode->Text = "Code: " + code;
+					lblCode->AutoSize = false;
+					lblCode->Width = 230;
+					lblCode->TextAlign = ContentAlignment::MiddleCenter;
+
+					Label^ lblCategory = gcnew Label();
+					lblCategory->Text = "Category: " + categoryName;
+					lblCategory->AutoSize = false;
+					lblCategory->Width = 230;
+					lblCategory->TextAlign = ContentAlignment::MiddleCenter;
+
+					Label^ lblProd = gcnew Label();
+					lblProd->Text = "Production Date: " + prodDate;
+					lblProd->AutoSize = false;
+					lblProd->Width = 230;
+					lblProd->TextAlign = ContentAlignment::MiddleCenter;
+
+					Label^ lblExp = gcnew Label();
+					lblExp->Text = "Expiration Date: " + expDate;
+					lblExp->AutoSize = false;
+					lblExp->Width = 230;
+					lblExp->TextAlign = ContentAlignment::MiddleCenter;
+
+					Label^ lblPrice = gcnew Label();
+					lblPrice->Text = "Price: " + price + " EGP";
+					lblPrice->AutoSize = false;
+					lblPrice->Width = 230;
+					lblPrice->TextAlign = ContentAlignment::MiddleCenter;
+
+					// === Add labels to innerPanel ===
+					innerPanel->Controls->Add(lblName);
+					innerPanel->Controls->Add(lblCode);
+					innerPanel->Controls->Add(lblCategory);
+					innerPanel->Controls->Add(lblProd);
+					innerPanel->Controls->Add(lblExp);
+					innerPanel->Controls->Add(lblPrice);
+
+					// === Quantity Row (aligned horizontally) ===
+					Panel^ quantityRow = gcnew Panel();
+					quantityRow->Width = 230;
+					quantityRow->Height = 30;
+
+					Label^ lblQty = gcnew Label();
+					lblQty->Text = "Quantity:";
+					lblQty->AutoSize = false;
+					lblQty->Width = 70;
+					lblQty->Height = 22;
+					lblQty->Location = Point(0, 4); // slight vertical alignment
+					lblQty->TextAlign = ContentAlignment::MiddleRight;
+
+					NumericUpDown^ quantityBox = gcnew NumericUpDown();
+					quantityBox->Minimum = 0;
+					quantityBox->Maximum = 10;
+					quantityBox->Size = System::Drawing::Size(140, 22);
+					quantityBox->Location = Point(80, 4);
+
+					quantityRow->Controls->Add(lblQty);
+					quantityRow->Controls->Add(quantityBox);
+					innerPanel->Controls->Add(quantityRow);
+
+					// === Button ===
+					Button^ btnAdd = gcnew Button();
+					btnAdd->Text = "Add to Cart";
+					btnAdd->Width = 230;
+					btnAdd->Height = 35;
+					btnAdd->BackColor = Color::FromArgb(230, 52, 98);
+					btnAdd->ForeColor = Color::White;
+					innerPanel->Controls->Add(btnAdd);
+
+					// === Final Assembly ===
+					productPanel->Controls->Add(innerPanel);
+					panelToFill->Controls->Add(productPanel);
+				}
+
+				reader->Close();
+			}
+			catch (Exception^ ex) {
+				MessageBox::Show("Error loading category: " + categoryFilter + "\n" + ex->Message);
+			}
+		}
+
+
+
 
 	protected:
 		/// <summary>
@@ -212,75 +367,6 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel4;
 
 
 private: System::ComponentModel::IContainer^ components;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	protected:
 
@@ -1908,821 +1994,821 @@ private: System::Void btn_edit_information_Click(System::Object^ sender, System:
 	pn_edit_information->BringToFront();	
 }
 private: System::Void btn_products_Click(System::Object^ sender, System::EventArgs^ e) {
-	try {
-		flowLayoutPanel3->Controls->Clear();
-		flowLayoutPanel4->Controls->Clear();
-		flowLayoutPanel5->Controls->Clear();
-		flowLayoutPanel6->Controls->Clear();
-		flowLayoutPanel7->Controls->Clear();
-		flowLayoutPanel8->Controls->Clear();
-		flowLayoutPanel9->Controls->Clear();
-		flowLayoutPanel10->Controls->Clear();
-		flowLayoutPanel11->Controls->Clear();
-		flowLayoutPanel12->Controls->Clear();
+	//try {
+	//	flowLayoutPanel3->Controls->Clear();
+	//	flowLayoutPanel4->Controls->Clear();
+	//	flowLayoutPanel5->Controls->Clear();
+	//	flowLayoutPanel6->Controls->Clear();
+	//	flowLayoutPanel7->Controls->Clear();
+	//	flowLayoutPanel8->Controls->Clear();
+	//	flowLayoutPanel9->Controls->Clear();
+	//	flowLayoutPanel10->Controls->Clear();
+	//	flowLayoutPanel11->Controls->Clear();
+	//	flowLayoutPanel12->Controls->Clear();
 
 
-		StreamReader^ sr = gcnew StreamReader("productmenu.txt");
-		String^ line;
-		while ((line = sr->ReadLine()) != nullptr) 
-		{
-			array<String^>^ parts = line->Split(',');
-			if (parts[0] == "1")
-			{
-				String^ productId = parts[0];
-				String^ productCode = parts[1];
-				String^ productName = parts[2];
-				String^ productCategory = parts[3];
-				String^ productExpired = parts[4];
-				String^ productProdiction = parts[5];
-				String^ productPrice = parts[6];
-				//create a panel for each product
-				Panel^ productPanel = gcnew Panel();
-				productPanel->Width = 250;
-				productPanel->Height = 200;
-				productPanel->BackColor = Color::LightGray;
-				productPanel->Margin = System::Windows::Forms::Padding(10);
-				//create a label for each product
-				Label^ lblName = gcnew Label();
-				lblName->Text = "Name: " + productName;
-				lblName->Location = Point(10, 10);
-				lblName->AutoSize = true;
-				Label^ lblCode = gcnew Label();
-				lblCode->Text = "Code: " + productCode;
-				lblCode->Location = Point(10, 30);
-				lblCode->AutoSize = true;
-				Label^ lblCategory = gcnew Label();
-				lblCategory->Text = "Category " + productCategory;
-				lblCategory->Location = Point(10, 50);
-				lblCategory->AutoSize = true;
-				Label^ lblExpired = gcnew Label();
-				lblExpired->Text = "Production Date: " + productExpired;
-				lblExpired->Location = Point(10, 70);
-				lblExpired->AutoSize = true;
-				Label^ lblProdiction = gcnew Label();
-				lblProdiction->Text = "Expired Date" + productProdiction;
-				lblProdiction->Location = Point(10, 90);
-				lblProdiction->AutoSize = true;
-				Label^ lblPrice = gcnew Label();
-				lblPrice->Text = "Price " + productPrice + " L.E";
-				lblPrice->Location = Point(10, 110);
-				lblPrice->AutoSize = true;
-				//addthe numetricupdown
-				NumericUpDown^ num = gcnew NumericUpDown();
-				num->Location = Point(90, 140);
-				num->Width = 90;
-				num->Height = 60;
-				num->Minimum = 0;
-				num->Maximum = 100;
-				num->Value = 0;
-				num->Increment = 1;
-				num->DecimalPlaces = 2;
-				//add the label to the panel
-				Label^ lblQuantity = gcnew Label();
-				lblQuantity->Text = "Quantity";
-				lblQuantity->Location = Point(20, 140);
-				lblQuantity->AutoSize = true;
-				lblQuantity->ForeColor = Color::Black;
-				lblQuantity->Font = gcnew System::Drawing::Font("Arial", 10, FontStyle::Bold);
-				lblQuantity->BackColor = Color::Transparent;
-				//add the button to the panel
-				Button^ btnAddToCart = gcnew Button();
-				btnAddToCart->Text = "Add to Cart";
-				btnAddToCart->Location = Point(45, 170);
-				btnAddToCart->Width = 150;
-				btnAddToCart->Height = 30;
-				btnAddToCart->BackColor = Color::FromArgb(0xE6, 0x34, 0x62);
-				btnAddToCart->ForeColor = Color::White;
-				//add to panel
-				productPanel->Controls->Add(lblCode);
-				productPanel->Controls->Add(lblName);
-				productPanel->Controls->Add(lblCategory);
-				productPanel->Controls->Add(lblExpired);
-				productPanel->Controls->Add(lblProdiction);
-				productPanel->Controls->Add(lblPrice);
-				productPanel->Controls->Add(lblQuantity);
-				productPanel->Controls->Add(num);
-				productPanel->Controls->Add(btnAddToCart);
-				flowLayoutPanel3->Controls->Add(productPanel);
-				flowLayoutPanel3->ScrollControlIntoView(productPanel);
-			}
-			else if (parts[0] == "2")
-			{
-				String^ productId = parts[0];
-				String^ productCode = parts[1];
-				String^ productName = parts[2];
-				String^ productCategory = parts[3];
-				String^ productExpired = parts[4];
-				String^ productProdiction = parts[5];
-				String^ productPrice = parts[6];
-				//create a panel for each product
-				Panel^ productPanel = gcnew Panel();
-				productPanel->Width = 250;
-				productPanel->Height = 200;
-				productPanel->BackColor = Color::LightGray;
-				productPanel->Margin = System::Windows::Forms::Padding(10);
-				//create a label for each product
-				Label^ lblName = gcnew Label();
-				lblName->Text = "Name: " + productName;
-				lblName->Location = Point(10, 10);
-				lblName->AutoSize = true;
-				Label^ lblCode = gcnew Label();
-				lblCode->Text = "Code: " + productCode;
-				lblCode->Location = Point(10, 30);
-				lblCode->AutoSize = true;
-				Label^ lblCategory = gcnew Label();
-				lblCategory->Text = "Category " + productCategory;
-				lblCategory->Location = Point(10, 50);
-				lblCategory->AutoSize = true;
-				Label^ lblExpired = gcnew Label();
-				lblExpired->Text = "Production Date: " + productExpired;
-				lblExpired->Location = Point(10, 70);
-				lblExpired->AutoSize = true;
-				Label^ lblProdiction = gcnew Label();
-				lblProdiction->Text = "Expired Date" + productProdiction;
-				lblProdiction->Location = Point(10, 90);
-				lblProdiction->AutoSize = true;
-				Label^ lblPrice = gcnew Label();
-				lblPrice->Text = "Price " + productPrice + " L.E";
-				lblPrice->Location = Point(10, 110);
-				lblPrice->AutoSize = true;
-				//addthe numetricupdown
-				NumericUpDown^ num = gcnew NumericUpDown();
-				num->Location = Point(90, 140);
-				num->Width = 90;
-				num->Height = 60;
-				num->Minimum = 0;
-				num->Maximum = 100;
-				num->Value = 0;
-				num->Increment = 1;
-				num->DecimalPlaces = 2;
-				//add the label to the panel
-				Label^ lblQuantity = gcnew Label();
-				lblQuantity->Text = "Quantity";
-				lblQuantity->Location = Point(20, 140);
-				lblQuantity->AutoSize = true;
-				lblQuantity->ForeColor = Color::Black;
-				lblQuantity->Font = gcnew System::Drawing::Font("Arial", 10, FontStyle::Bold);
-				lblQuantity->BackColor = Color::Transparent;
-				//add the button to the panel
-				Button^ btnAddToCart = gcnew Button();
-				btnAddToCart->Text = "Add to Cart";
-				btnAddToCart->Location = Point(45, 170);
-				btnAddToCart->Width = 150;
-				btnAddToCart->Height = 30;
-				btnAddToCart->BackColor = Color::FromArgb(0xE6, 0x34, 0x62);
-				btnAddToCart->ForeColor = Color::White;
-				//add to panel
-				productPanel->Controls->Add(lblCode);
-				productPanel->Controls->Add(lblName);
-				productPanel->Controls->Add(lblCategory);
-				productPanel->Controls->Add(lblExpired);
-				productPanel->Controls->Add(lblProdiction);
-				productPanel->Controls->Add(lblPrice);
-				productPanel->Controls->Add(lblQuantity);
-				productPanel->Controls->Add(num);
-				productPanel->Controls->Add(btnAddToCart);
-				flowLayoutPanel4->Controls->Add(productPanel);
-				flowLayoutPanel4->ScrollControlIntoView(productPanel);
-			}
-			else if (parts[0] == "3")
-			{
-				String^ productId = parts[0];
-				String^ productCode = parts[1];
-				String^ productName = parts[2];
-				String^ productCategory = parts[3];
-				String^ productExpired = parts[4];
-				String^ productProdiction = parts[5];
-				String^ productPrice = parts[6];
-				//create a panel for each product
-				Panel^ productPanel = gcnew Panel();
-				productPanel->Width = 250;
-				productPanel->Height = 200;
-				productPanel->BackColor = Color::LightGray;
-				productPanel->Margin = System::Windows::Forms::Padding(10);
-				//create a label for each product
-				Label^ lblName = gcnew Label();
-				lblName->Text = "Name: " + productName;
-				lblName->Location = Point(10, 10);
-				lblName->AutoSize = true;
-				Label^ lblCode = gcnew Label();
-				lblCode->Text = "Code: " + productCode;
-				lblCode->Location = Point(10, 30);
-				lblCode->AutoSize = true;
-				Label^ lblCategory = gcnew Label();
-				lblCategory->Text = "Category " + productCategory;
-				lblCategory->Location = Point(10, 50);
-				lblCategory->AutoSize = true;
-				Label^ lblExpired = gcnew Label();
-				lblExpired->Text = "Production Date: " + productExpired;
-				lblExpired->Location = Point(10, 70);
-				lblExpired->AutoSize = true;
-				Label^ lblProdiction = gcnew Label();
-				lblProdiction->Text = "Expired Date" + productProdiction;
-				lblProdiction->Location = Point(10, 90);
-				lblProdiction->AutoSize = true;
-				Label^ lblPrice = gcnew Label();
-				lblPrice->Text = "Price " + productPrice + " L.E";
-				lblPrice->Location = Point(10, 110);
-				lblPrice->AutoSize = true;
-				//addthe numetricupdown
-				NumericUpDown^ num = gcnew NumericUpDown();
-				num->Location = Point(90, 140);
-				num->Width = 90;
-				num->Height = 60;
-				num->Minimum = 0;
-				num->Maximum = 100;
-				num->Value = 0;
-				num->Increment = 1;
-				num->DecimalPlaces = 2;
-				//add the label to the panel
-				Label^ lblQuantity = gcnew Label();
-				lblQuantity->Text = "Quantity";
-				lblQuantity->Location = Point(20, 140);
-				lblQuantity->AutoSize = true;
-				lblQuantity->ForeColor = Color::Black;
-				lblQuantity->Font = gcnew System::Drawing::Font("Arial", 10, FontStyle::Bold);
-				lblQuantity->BackColor = Color::Transparent;
-				//add the button to the panel
-				Button^ btnAddToCart = gcnew Button();
-				btnAddToCart->Text = "Add to Cart";
-				btnAddToCart->Location = Point(45, 170);
-				btnAddToCart->Width = 150;
-				btnAddToCart->Height = 30;
-				btnAddToCart->BackColor = Color::FromArgb(0xE6, 0x34, 0x62);
-				btnAddToCart->ForeColor = Color::White;
-				//add to panel
-				productPanel->Controls->Add(lblCode);
-				productPanel->Controls->Add(lblName);
-				productPanel->Controls->Add(lblCategory);
-				productPanel->Controls->Add(lblExpired);
-				productPanel->Controls->Add(lblProdiction);
-				productPanel->Controls->Add(lblPrice);
-				productPanel->Controls->Add(lblQuantity);
-				productPanel->Controls->Add(num);
-				productPanel->Controls->Add(btnAddToCart);
-				flowLayoutPanel5->Controls->Add(productPanel);
-				flowLayoutPanel5->ScrollControlIntoView(productPanel);
-				}
-			else if (parts[0] == "4")
-			{
-				String^ productId = parts[0];
-				String^ productCode = parts[1];
-				String^ productName = parts[2];
-				String^ productCategory = parts[3];
-				String^ productExpired = parts[4];
-				String^ productProdiction = parts[5];
-				String^ productPrice = parts[6];
-				//create a panel for each product
-				Panel^ productPanel = gcnew Panel();
-				productPanel->Width = 250;
-				productPanel->Height = 200;
-				productPanel->BackColor = Color::LightGray;
-				productPanel->Margin = System::Windows::Forms::Padding(10);
-				//create a label for each product
-				Label^ lblName = gcnew Label();
-				lblName->Text = "Name: " + productName;
-				lblName->Location = Point(10, 10);
-				lblName->AutoSize = true;
-				Label^ lblCode = gcnew Label();
-				lblCode->Text = "Code: " + productCode;
-				lblCode->Location = Point(10, 30);
-				lblCode->AutoSize = true;
-				Label^ lblCategory = gcnew Label();
-				lblCategory->Text = "Category " + productCategory;
-				lblCategory->Location = Point(10, 50);
-				lblCategory->AutoSize = true;
-				Label^ lblExpired = gcnew Label();
-				lblExpired->Text = "Production Date: " + productExpired;
-				lblExpired->Location = Point(10, 70);
-				lblExpired->AutoSize = true;
-				Label^ lblProdiction = gcnew Label();
-				lblProdiction->Text = "Expired Date" + productProdiction;
-				lblProdiction->Location = Point(10, 90);
-				lblProdiction->AutoSize = true;
-				Label^ lblPrice = gcnew Label();
-				lblPrice->Text = "Price " + productPrice + " L.E";
-				lblPrice->Location = Point(10, 110);
-				lblPrice->AutoSize = true;
-				//addthe numetricupdown
-				NumericUpDown^ num = gcnew NumericUpDown();
-				num->Location = Point(90, 140);
-				num->Width = 90;
-				num->Height = 60;
-				num->Minimum = 0;
-				num->Maximum = 100;
-				num->Value = 0;
-				num->Increment = 1;
-				num->DecimalPlaces = 2;
-				//add the label to the panel
-				Label^ lblQuantity = gcnew Label();
-				lblQuantity->Text = "Quantity";
-				lblQuantity->Location = Point(20, 140);
-				lblQuantity->AutoSize = true;
-				lblQuantity->ForeColor = Color::Black;
-				lblQuantity->Font = gcnew System::Drawing::Font("Arial", 10, FontStyle::Bold);
-				lblQuantity->BackColor = Color::Transparent;
-				//add the button to the panel
-				Button^ btnAddToCart = gcnew Button();
-				btnAddToCart->Text = "Add to Cart";
-				btnAddToCart->Location = Point(45, 170);
-				btnAddToCart->Width = 150;
-				btnAddToCart->Height = 30;
-				btnAddToCart->BackColor = Color::FromArgb(0xE6, 0x34, 0x62);
-				btnAddToCart->ForeColor = Color::White;
-				//add to panel
-				productPanel->Controls->Add(lblCode);
-				productPanel->Controls->Add(lblName);
-				productPanel->Controls->Add(lblCategory);
-				productPanel->Controls->Add(lblExpired);
-				productPanel->Controls->Add(lblProdiction);
-				productPanel->Controls->Add(lblPrice);
-				productPanel->Controls->Add(lblQuantity);
-				productPanel->Controls->Add(num);
-				productPanel->Controls->Add(btnAddToCart);
-				flowLayoutPanel6->Controls->Add(productPanel);
-				flowLayoutPanel6->ScrollControlIntoView(productPanel);
-				}
-			else if (parts[0] == "5")
-			{
-				String^ productId = parts[0];
-				String^ productCode = parts[1];
-				String^ productName = parts[2];
-				String^ productCategory = parts[3];
-				String^ productExpired = parts[4];
-				String^ productProdiction = parts[5];
-				String^ productPrice = parts[6];
-				//create a panel for each product
-				Panel^ productPanel = gcnew Panel();
-				productPanel->Width = 250;
-				productPanel->Height = 200;
-				productPanel->BackColor = Color::LightGray;
-				productPanel->Margin = System::Windows::Forms::Padding(10);
-				//create a label for each product
-				Label^ lblName = gcnew Label();
-				lblName->Text = "Name: " + productName;
-				lblName->Location = Point(10, 10);
-				lblName->AutoSize = true;
-				Label^ lblCode = gcnew Label();
-				lblCode->Text = "Code: " + productCode;
-				lblCode->Location = Point(10, 30);
-				lblCode->AutoSize = true;
-				Label^ lblCategory = gcnew Label();
-				lblCategory->Text = "Category " + productCategory;
-				lblCategory->Location = Point(10, 50);
-				lblCategory->AutoSize = true;
-				Label^ lblExpired = gcnew Label();
-				lblExpired->Text = "Production Date: " + productExpired;
-				lblExpired->Location = Point(10, 70);
-				lblExpired->AutoSize = true;
-				Label^ lblProdiction = gcnew Label();
-				lblProdiction->Text = "Expired Date" + productProdiction;
-				lblProdiction->Location = Point(10, 90);
-				lblProdiction->AutoSize = true;
-				Label^ lblPrice = gcnew Label();
-				lblPrice->Text = "Price " + productPrice + " L.E";
-				lblPrice->Location = Point(10, 110);
-				lblPrice->AutoSize = true;
-				//addthe numetricupdown
-				NumericUpDown^ num = gcnew NumericUpDown();
-				num->Location = Point(90, 140);
-				num->Width = 90;
-				num->Height = 60;
-				num->Minimum = 0;
-				num->Maximum = 100;
-				num->Value = 0;
-				num->Increment = 1;
-				num->DecimalPlaces = 2;
-				//add the label to the panel
-				Label^ lblQuantity = gcnew Label();
-				lblQuantity->Text = "Quantity";
-				lblQuantity->Location = Point(20, 140);
-				lblQuantity->AutoSize = true;
-				lblQuantity->ForeColor = Color::Black;
-				lblQuantity->Font = gcnew System::Drawing::Font("Arial", 10, FontStyle::Bold);
-				lblQuantity->BackColor = Color::Transparent;
-				//add the button to the panel
-				Button^ btnAddToCart = gcnew Button();
-				btnAddToCart->Text = "Add to Cart";
-				btnAddToCart->Location = Point(45, 170);
-				btnAddToCart->Width = 150;
-				btnAddToCart->Height = 30;
-				btnAddToCart->BackColor = Color::FromArgb(0xE6, 0x34, 0x62);
-				btnAddToCart->ForeColor = Color::White;
-				//add to panel
-				productPanel->Controls->Add(lblCode);
-				productPanel->Controls->Add(lblName);
-				productPanel->Controls->Add(lblCategory);
-				productPanel->Controls->Add(lblExpired);
-				productPanel->Controls->Add(lblProdiction);
-				productPanel->Controls->Add(lblPrice);
-				productPanel->Controls->Add(lblQuantity);
-				productPanel->Controls->Add(num);
-				productPanel->Controls->Add(btnAddToCart);
-				flowLayoutPanel7->Controls->Add(productPanel);
-				flowLayoutPanel7->ScrollControlIntoView(productPanel);
-				}
-			else if (parts[0] == "6")
-			{
-				String^ productId = parts[0];
-				String^ productCode = parts[1];
-				String^ productName = parts[2];
-				String^ productCategory = parts[3];
-				String^ productExpired = parts[4];
-				String^ productProdiction = parts[5];
-				String^ productPrice = parts[6];
-				//create a panel for each product
-				Panel^ productPanel = gcnew Panel();
-				productPanel->Width = 250;
-				productPanel->Height = 200;
-				productPanel->BackColor = Color::LightGray;
-				productPanel->Margin = System::Windows::Forms::Padding(10);
-				//create a label for each product
-				Label^ lblName = gcnew Label();
-				lblName->Text = "Name: " + productName;
-				lblName->Location = Point(10, 10);
-				lblName->AutoSize = true;
-				Label^ lblCode = gcnew Label();
-				lblCode->Text = "Code: " + productCode;
-				lblCode->Location = Point(10, 30);
-				lblCode->AutoSize = true;
-				Label^ lblCategory = gcnew Label();
-				lblCategory->Text = "Category " + productCategory;
-				lblCategory->Location = Point(10, 50);
-				lblCategory->AutoSize = true;
-				Label^ lblExpired = gcnew Label();
-				lblExpired->Text = "Production Date: " + productExpired;
-				lblExpired->Location = Point(10, 70);
-				lblExpired->AutoSize = true;
-				Label^ lblProdiction = gcnew Label();
-				lblProdiction->Text = "Expired Date" + productProdiction;
-				lblProdiction->Location = Point(10, 90);
-				lblProdiction->AutoSize = true;
-				Label^ lblPrice = gcnew Label();
-				lblPrice->Text = "Price " + productPrice + " L.E";
-				lblPrice->Location = Point(10, 110);
-				lblPrice->AutoSize = true;
-				//addthe numetricupdown
-				NumericUpDown^ num = gcnew NumericUpDown();
-				num->Location = Point(90, 140);
-				num->Width = 90;
-				num->Height = 60;
-				num->Minimum = 0;
-				num->Maximum = 100;
-				num->Value = 0;
-				num->Increment = 1;
-				num->DecimalPlaces = 2;
-				//add the label to the panel
-				Label^ lblQuantity = gcnew Label();
-				lblQuantity->Text = "Quantity";
-				lblQuantity->Location = Point(20, 140);
-				lblQuantity->AutoSize = true;
-				lblQuantity->ForeColor = Color::Black;
-				lblQuantity->Font = gcnew System::Drawing::Font("Arial", 10, FontStyle::Bold);
-				lblQuantity->BackColor = Color::Transparent;
-				//add the button to the panel
-				Button^ btnAddToCart = gcnew Button();
-				btnAddToCart->Text = "Add to Cart";
-				btnAddToCart->Location = Point(45, 170);
-				btnAddToCart->Width = 150;
-				btnAddToCart->Height = 30;
-				btnAddToCart->BackColor = Color::FromArgb(0xE6, 0x34, 0x62);
-				btnAddToCart->ForeColor = Color::White;
-				//add to panel
-				productPanel->Controls->Add(lblCode);
-				productPanel->Controls->Add(lblName);
-				productPanel->Controls->Add(lblCategory);
-				productPanel->Controls->Add(lblExpired);
-				productPanel->Controls->Add(lblProdiction);
-				productPanel->Controls->Add(lblPrice);
-				productPanel->Controls->Add(lblQuantity);
-				productPanel->Controls->Add(num);
-				productPanel->Controls->Add(btnAddToCart);
-				flowLayoutPanel8->Controls->Add(productPanel);
-				flowLayoutPanel8->ScrollControlIntoView(productPanel);
-				}
-			else if (parts[0] == "7")
-			{
-				String^ productId = parts[0];
-				String^ productCode = parts[1];
-				String^ productName = parts[2];
-				String^ productCategory = parts[3];
-				String^ productExpired = parts[4];
-				String^ productProdiction = parts[5];
-				String^ productPrice = parts[6];
-				//create a panel for each product
-				Panel^ productPanel = gcnew Panel();
-				productPanel->Width = 250;
-				productPanel->Height = 200;
-				productPanel->BackColor = Color::LightGray;
-				productPanel->Margin = System::Windows::Forms::Padding(10);
-				//create a label for each product
-				Label^ lblName = gcnew Label();
-				lblName->Text = "Name: " + productName;
-				lblName->Location = Point(10, 10);
-				lblName->AutoSize = true;
-				Label^ lblCode = gcnew Label();
-				lblCode->Text = "Code: " + productCode;
-				lblCode->Location = Point(10, 30);
-				lblCode->AutoSize = true;
-				Label^ lblCategory = gcnew Label();
-				lblCategory->Text = "Category " + productCategory;
-				lblCategory->Location = Point(10, 50);
-				lblCategory->AutoSize = true;
-				Label^ lblExpired = gcnew Label();
-				lblExpired->Text = "Production Date: " + productExpired;
-				lblExpired->Location = Point(10, 70);
-				lblExpired->AutoSize = true;
-				Label^ lblProdiction = gcnew Label();
-				lblProdiction->Text = "Expired Date" + productProdiction;
-				lblProdiction->Location = Point(10, 90);
-				lblProdiction->AutoSize = true;
-				Label^ lblPrice = gcnew Label();
-				lblPrice->Text = "Price " + productPrice + " L.E";
-				lblPrice->Location = Point(10, 110);
-				lblPrice->AutoSize = true;
-				//addthe numetricupdown
-				NumericUpDown^ num = gcnew NumericUpDown();
-				num->Location = Point(90, 140);
-				num->Width = 90;
-				num->Height = 60;
-				num->Minimum = 0;
-				num->Maximum = 100;
-				num->Value = 0;
-				num->Increment = 1;
-				num->DecimalPlaces = 2;
-				//add the label to the panel
-				Label^ lblQuantity = gcnew Label();
-				lblQuantity->Text = "Quantity";
-				lblQuantity->Location = Point(20, 140);
-				lblQuantity->AutoSize = true;
-				lblQuantity->ForeColor = Color::Black;
-				lblQuantity->Font = gcnew System::Drawing::Font("Arial", 10, FontStyle::Bold);
-				lblQuantity->BackColor = Color::Transparent;
-				//add the button to the panel
-				Button^ btnAddToCart = gcnew Button();
-				btnAddToCart->Text = "Add to Cart";
-				btnAddToCart->Location = Point(45, 170);
-				btnAddToCart->Width = 150;
-				btnAddToCart->Height = 30;
-				btnAddToCart->BackColor = Color::FromArgb(0xE6, 0x34, 0x62);
-				btnAddToCart->ForeColor = Color::White;
-				//add to panel
-				productPanel->Controls->Add(lblCode);
-				productPanel->Controls->Add(lblName);
-				productPanel->Controls->Add(lblCategory);
-				productPanel->Controls->Add(lblExpired);
-				productPanel->Controls->Add(lblProdiction);
-				productPanel->Controls->Add(lblPrice);
-				productPanel->Controls->Add(lblQuantity);
-				productPanel->Controls->Add(num);
-				productPanel->Controls->Add(btnAddToCart);
-				flowLayoutPanel9->Controls->Add(productPanel);
-				flowLayoutPanel9->ScrollControlIntoView(productPanel);
-				}
-			else if (parts[0] == "8")
-			{
-				String^ productId = parts[0];
-				String^ productCode = parts[1];
-				String^ productName = parts[2];
-				String^ productCategory = parts[3];
-				String^ productExpired = parts[4];
-				String^ productProdiction = parts[5];
-				String^ productPrice = parts[6];
-				//create a panel for each product
-				Panel^ productPanel = gcnew Panel();
-				productPanel->Width = 250;
-				productPanel->Height = 200;
-				productPanel->BackColor = Color::LightGray;
-				productPanel->Margin = System::Windows::Forms::Padding(10);
-				//create a label for each product
-				Label^ lblName = gcnew Label();
-				lblName->Text = "Name: " + productName;
-				lblName->Location = Point(10, 10);
-				lblName->AutoSize = true;
-				Label^ lblCode = gcnew Label();
-				lblCode->Text = "Code: " + productCode;
-				lblCode->Location = Point(10, 30);
-				lblCode->AutoSize = true;
-				Label^ lblCategory = gcnew Label();
-				lblCategory->Text = "Category " + productCategory;
-				lblCategory->Location = Point(10, 50);
-				lblCategory->AutoSize = true;
-				Label^ lblExpired = gcnew Label();
-				lblExpired->Text = "Production Date: " + productExpired;
-				lblExpired->Location = Point(10, 70);
-				lblExpired->AutoSize = true;
-				Label^ lblProdiction = gcnew Label();
-				lblProdiction->Text = "Expired Date" + productProdiction;
-				lblProdiction->Location = Point(10, 90);
-				lblProdiction->AutoSize = true;
-				Label^ lblPrice = gcnew Label();
-				lblPrice->Text = "Price " + productPrice + " L.E";
-				lblPrice->Location = Point(10, 110);
-				lblPrice->AutoSize = true;
-				//addthe numetricupdown
-				NumericUpDown^ num = gcnew NumericUpDown();
-				num->Location = Point(90, 140);
-				num->Width = 90;
-				num->Height = 60;
-				num->Minimum = 0;
-				num->Maximum = 100;
-				num->Value = 0;
-				num->Increment = 1;
-				num->DecimalPlaces = 2;
-				//add the label to the panel
-				Label^ lblQuantity = gcnew Label();
-				lblQuantity->Text = "Quantity";
-				lblQuantity->Location = Point(20, 140);
-				lblQuantity->AutoSize = true;
-				lblQuantity->ForeColor = Color::Black;
-				lblQuantity->Font = gcnew System::Drawing::Font("Arial", 10, FontStyle::Bold);
-				lblQuantity->BackColor = Color::Transparent;
-				//add the button to the panel
-				Button^ btnAddToCart = gcnew Button();
-				btnAddToCart->Text = "Add to Cart";
-				btnAddToCart->Location = Point(45, 170);
-				btnAddToCart->Width = 150;
-				btnAddToCart->Height = 30;
-				btnAddToCart->BackColor = Color::FromArgb(0xE6, 0x34, 0x62);
-				btnAddToCart->ForeColor = Color::White;
-				//add to panel
-				productPanel->Controls->Add(lblCode);
-				productPanel->Controls->Add(lblName);
-				productPanel->Controls->Add(lblCategory);
-				productPanel->Controls->Add(lblExpired);
-				productPanel->Controls->Add(lblProdiction);
-				productPanel->Controls->Add(lblPrice);
-				productPanel->Controls->Add(lblQuantity);
-				productPanel->Controls->Add(num);
-				productPanel->Controls->Add(btnAddToCart);
-				flowLayoutPanel10->Controls->Add(productPanel);
-				flowLayoutPanel10->ScrollControlIntoView(productPanel);
-				}
-			else if (parts[0] == "9")
-			{
-				String^ productId = parts[0];
-				String^ productCode = parts[1];
-				String^ productName = parts[2];
-				String^ productCategory = parts[3];
-				String^ productExpired = parts[4];
-				String^ productProdiction = parts[5];
-				String^ productPrice = parts[6];
-				//create a panel for each product
-				Panel^ productPanel = gcnew Panel();
-				productPanel->Width = 250;
-				productPanel->Height = 200;
-				productPanel->BackColor = Color::LightGray;
-				productPanel->Margin = System::Windows::Forms::Padding(10);
-				//create a label for each product
-				Label^ lblName = gcnew Label();
-				lblName->Text = "Name: " + productName;
-				lblName->Location = Point(10, 10);
-				lblName->AutoSize = true;
-				Label^ lblCode = gcnew Label();
-				lblCode->Text = "Code: " + productCode;
-				lblCode->Location = Point(10, 30);
-				lblCode->AutoSize = true;
-				Label^ lblCategory = gcnew Label();
-				lblCategory->Text = "Category " + productCategory;
-				lblCategory->Location = Point(10, 50);
-				lblCategory->AutoSize = true;
-				Label^ lblExpired = gcnew Label();
-				lblExpired->Text = "Production Date: " + productExpired;
-				lblExpired->Location = Point(10, 70);
-				lblExpired->AutoSize = true;
-				Label^ lblProdiction = gcnew Label();
-				lblProdiction->Text = "Expired Date" + productProdiction;
-				lblProdiction->Location = Point(10, 90);
-				lblProdiction->AutoSize = true;
-				Label^ lblPrice = gcnew Label();
-				lblPrice->Text = "Price " + productPrice + " L.E";
-				lblPrice->Location = Point(10, 110);
-				lblPrice->AutoSize = true;
-				//addthe numetricupdown
-				NumericUpDown^ num = gcnew NumericUpDown();
-				num->Location = Point(90, 140);
-				num->Width = 90;
-				num->Height = 60;
-				num->Minimum = 0;
-				num->Maximum = 100;
-				num->Value = 0;
-				num->Increment = 1;
-				num->DecimalPlaces = 2;
-				//add the label to the panel
-				Label^ lblQuantity = gcnew Label();
-				lblQuantity->Text = "Quantity";
-				lblQuantity->Location = Point(20, 140);
-				lblQuantity->AutoSize = true;
-				lblQuantity->ForeColor = Color::Black;
-				lblQuantity->Font = gcnew System::Drawing::Font("Arial", 10, FontStyle::Bold);
-				lblQuantity->BackColor = Color::Transparent;
-				//add the button to the panel
-				Button^ btnAddToCart = gcnew Button();
-				btnAddToCart->Text = "Add to Cart";
-				btnAddToCart->Location = Point(45, 170);
-				btnAddToCart->Width = 150;
-				btnAddToCart->Height = 30;
-				btnAddToCart->BackColor = Color::FromArgb(0xE6, 0x34, 0x62);
-				btnAddToCart->ForeColor = Color::White;
-				//add to panel
-				productPanel->Controls->Add(lblCode);
-				productPanel->Controls->Add(lblName);
-				productPanel->Controls->Add(lblCategory);
-				productPanel->Controls->Add(lblExpired);
-				productPanel->Controls->Add(lblProdiction);
-				productPanel->Controls->Add(lblPrice);
-				productPanel->Controls->Add(lblQuantity);
-				productPanel->Controls->Add(num);
-				productPanel->Controls->Add(btnAddToCart);
-				flowLayoutPanel11->Controls->Add(productPanel);
-				flowLayoutPanel11->ScrollControlIntoView(productPanel);
-				}
-			else if (parts[0] == "10")
-			{
-				String^ productId = parts[0];
-				String^ productCode = parts[1];
-				String^ productName = parts[2];
-				String^ productCategory = parts[3];
-				String^ productExpired = parts[4];
-				String^ productProdiction = parts[5];
-				String^ productPrice = parts[6];
-				//create a panel for each product
-				Panel^ productPanel = gcnew Panel();
-				productPanel->Width = 250;
-				productPanel->Height = 200;
-				productPanel->BackColor = Color::LightGray;
-				productPanel->Margin = System::Windows::Forms::Padding(10);
-				//create a label for each product
-				Label^ lblName = gcnew Label();
-				lblName->Text = "Name: " + productName;
-				lblName->Location = Point(10, 10);
-				lblName->AutoSize = true;
-				Label^ lblCode = gcnew Label();
-				lblCode->Text = "Code: " + productCode;
-				lblCode->Location = Point(10, 30);
-				lblCode->AutoSize = true;
-				Label^ lblCategory = gcnew Label();
-				lblCategory->Text = "Category " + productCategory;
-				lblCategory->Location = Point(10, 50);
-				lblCategory->AutoSize = true;
-				Label^ lblExpired = gcnew Label();
-				lblExpired->Text = "Production Date: " + productExpired;
-				lblExpired->Location = Point(10, 70);
-				lblExpired->AutoSize = true;
-				Label^ lblProdiction = gcnew Label();
-				lblProdiction->Text = "Expired Date" + productProdiction;
-				lblProdiction->Location = Point(10, 90);
-				lblProdiction->AutoSize = true;
-				Label^ lblPrice = gcnew Label();
-				lblPrice->Text = "Price " + productPrice + " L.E";
-				lblPrice->Location = Point(10, 110);
-				lblPrice->AutoSize = true;
-				//addthe numetricupdown
-				NumericUpDown^ num = gcnew NumericUpDown();
-				num->Location = Point(90, 140);
-				num->Width = 90;
-				num->Height = 60;
-				num->Minimum = 0;
-				num->Maximum = 100;
-				num->Value = 0;
-				num->Increment = 1;
-				num->DecimalPlaces = 2;
-				//add the label to the panel
-				Label^ lblQuantity = gcnew Label();
-				lblQuantity->Text = "Quantity";
-				lblQuantity->Location = Point(20, 140);
-				lblQuantity->AutoSize = true;
-				lblQuantity->ForeColor = Color::Black;
-				lblQuantity->Font = gcnew System::Drawing::Font("Arial", 10, FontStyle::Bold);
-				lblQuantity->BackColor = Color::Transparent;
-				//add the button to the panel
-				Button^ btnAddToCart = gcnew Button();
-				btnAddToCart->Text = "Add to Cart";
-				btnAddToCart->Location = Point(45, 170);
-				btnAddToCart->Width = 150;
-				btnAddToCart->Height = 30;
-				btnAddToCart->BackColor = Color::FromArgb(0xE6, 0x34, 0x62);
-				btnAddToCart->ForeColor = Color::White;
-				//add to panel
-				productPanel->Controls->Add(lblCode);
-				productPanel->Controls->Add(lblName);
-				productPanel->Controls->Add(lblCategory);
-				productPanel->Controls->Add(lblExpired);
-				productPanel->Controls->Add(lblProdiction);
-				productPanel->Controls->Add(lblPrice);
-				productPanel->Controls->Add(lblQuantity);
-				productPanel->Controls->Add(num);
-				productPanel->Controls->Add(btnAddToCart);
-				flowLayoutPanel12->Controls->Add(productPanel);
-				flowLayoutPanel12->ScrollControlIntoView(productPanel);
-				}
+	//	StreamReader^ sr = gcnew StreamReader("productmenu.txt");
+	//	String^ line;
+	//	while ((line = sr->ReadLine()) != nullptr) 
+	//	{
+	//		array<String^>^ parts = line->Split(',');
+	//		if (parts[0] == "1")
+	//		{
+	//			String^ productId = parts[0];
+	//			String^ productCode = parts[1];
+	//			String^ productName = parts[2];
+	//			String^ productCategory = parts[3];
+	//			String^ productExpired = parts[4];
+	//			String^ productProdiction = parts[5];
+	//			String^ productPrice = parts[6];
+	//			//create a panel for each product
+	//			Panel^ productPanel = gcnew Panel();
+	//			productPanel->Width = 250;
+	//			productPanel->Height = 200;
+	//			productPanel->BackColor = Color::LightGray;
+	//			productPanel->Margin = System::Windows::Forms::Padding(10);
+	//			//create a label for each product
+	//			Label^ lblName = gcnew Label();
+	//			lblName->Text = "Name: " + productName;
+	//			lblName->Location = Point(10, 10);
+	//			lblName->AutoSize = true;
+	//			Label^ lblCode = gcnew Label();
+	//			lblCode->Text = "Code: " + productCode;
+	//			lblCode->Location = Point(10, 30);
+	//			lblCode->AutoSize = true;
+	//			Label^ lblCategory = gcnew Label();
+	//			lblCategory->Text = "Category " + productCategory;
+	//			lblCategory->Location = Point(10, 50);
+	//			lblCategory->AutoSize = true;
+	//			Label^ lblExpired = gcnew Label();
+	//			lblExpired->Text = "Production Date: " + productExpired;
+	//			lblExpired->Location = Point(10, 70);
+	//			lblExpired->AutoSize = true;
+	//			Label^ lblProdiction = gcnew Label();
+	//			lblProdiction->Text = "Expired Date" + productProdiction;
+	//			lblProdiction->Location = Point(10, 90);
+	//			lblProdiction->AutoSize = true;
+	//			Label^ lblPrice = gcnew Label();
+	//			lblPrice->Text = "Price " + productPrice + " L.E";
+	//			lblPrice->Location = Point(10, 110);
+	//			lblPrice->AutoSize = true;
+	//			//addthe numetricupdown
+	//			NumericUpDown^ num = gcnew NumericUpDown();
+	//			num->Location = Point(90, 140);
+	//			num->Width = 90;
+	//			num->Height = 60;
+	//			num->Minimum = 0;
+	//			num->Maximum = 100;
+	//			num->Value = 0;
+	//			num->Increment = 1;
+	//			num->DecimalPlaces = 2;
+	//			//add the label to the panel
+	//			Label^ lblQuantity = gcnew Label();
+	//			lblQuantity->Text = "Quantity";
+	//			lblQuantity->Location = Point(20, 140);
+	//			lblQuantity->AutoSize = true;
+	//			lblQuantity->ForeColor = Color::Black;
+	//			lblQuantity->Font = gcnew System::Drawing::Font("Arial", 10, FontStyle::Bold);
+	//			lblQuantity->BackColor = Color::Transparent;
+	//			//add the button to the panel
+	//			Button^ btnAddToCart = gcnew Button();
+	//			btnAddToCart->Text = "Add to Cart";
+	//			btnAddToCart->Location = Point(45, 170);
+	//			btnAddToCart->Width = 150;
+	//			btnAddToCart->Height = 30;
+	//			btnAddToCart->BackColor = Color::FromArgb(0xE6, 0x34, 0x62);
+	//			btnAddToCart->ForeColor = Color::White;
+	//			//add to panel
+	//			productPanel->Controls->Add(lblCode);
+	//			productPanel->Controls->Add(lblName);
+	//			productPanel->Controls->Add(lblCategory);
+	//			productPanel->Controls->Add(lblExpired);
+	//			productPanel->Controls->Add(lblProdiction);
+	//			productPanel->Controls->Add(lblPrice);
+	//			productPanel->Controls->Add(lblQuantity);
+	//			productPanel->Controls->Add(num);
+	//			productPanel->Controls->Add(btnAddToCart);
+	//			flowLayoutPanel3->Controls->Add(productPanel);
+	//			flowLayoutPanel3->ScrollControlIntoView(productPanel);
+	//		}
+	//		else if (parts[0] == "2")
+	//		{
+	//			String^ productId = parts[0];
+	//			String^ productCode = parts[1];
+	//			String^ productName = parts[2];
+	//			String^ productCategory = parts[3];
+	//			String^ productExpired = parts[4];
+	//			String^ productProdiction = parts[5];
+	//			String^ productPrice = parts[6];
+	//			//create a panel for each product
+	//			Panel^ productPanel = gcnew Panel();
+	//			productPanel->Width = 250;
+	//			productPanel->Height = 200;
+	//			productPanel->BackColor = Color::LightGray;
+	//			productPanel->Margin = System::Windows::Forms::Padding(10);
+	//			//create a label for each product
+	//			Label^ lblName = gcnew Label();
+	//			lblName->Text = "Name: " + productName;
+	//			lblName->Location = Point(10, 10);
+	//			lblName->AutoSize = true;
+	//			Label^ lblCode = gcnew Label();
+	//			lblCode->Text = "Code: " + productCode;
+	//			lblCode->Location = Point(10, 30);
+	//			lblCode->AutoSize = true;
+	//			Label^ lblCategory = gcnew Label();
+	//			lblCategory->Text = "Category " + productCategory;
+	//			lblCategory->Location = Point(10, 50);
+	//			lblCategory->AutoSize = true;
+	//			Label^ lblExpired = gcnew Label();
+	//			lblExpired->Text = "Production Date: " + productExpired;
+	//			lblExpired->Location = Point(10, 70);
+	//			lblExpired->AutoSize = true;
+	//			Label^ lblProdiction = gcnew Label();
+	//			lblProdiction->Text = "Expired Date" + productProdiction;
+	//			lblProdiction->Location = Point(10, 90);
+	//			lblProdiction->AutoSize = true;
+	//			Label^ lblPrice = gcnew Label();
+	//			lblPrice->Text = "Price " + productPrice + " L.E";
+	//			lblPrice->Location = Point(10, 110);
+	//			lblPrice->AutoSize = true;
+	//			//addthe numetricupdown
+	//			NumericUpDown^ num = gcnew NumericUpDown();
+	//			num->Location = Point(90, 140);
+	//			num->Width = 90;
+	//			num->Height = 60;
+	//			num->Minimum = 0;
+	//			num->Maximum = 100;
+	//			num->Value = 0;
+	//			num->Increment = 1;
+	//			num->DecimalPlaces = 2;
+	//			//add the label to the panel
+	//			Label^ lblQuantity = gcnew Label();
+	//			lblQuantity->Text = "Quantity";
+	//			lblQuantity->Location = Point(20, 140);
+	//			lblQuantity->AutoSize = true;
+	//			lblQuantity->ForeColor = Color::Black;
+	//			lblQuantity->Font = gcnew System::Drawing::Font("Arial", 10, FontStyle::Bold);
+	//			lblQuantity->BackColor = Color::Transparent;
+	//			//add the button to the panel
+	//			Button^ btnAddToCart = gcnew Button();
+	//			btnAddToCart->Text = "Add to Cart";
+	//			btnAddToCart->Location = Point(45, 170);
+	//			btnAddToCart->Width = 150;
+	//			btnAddToCart->Height = 30;
+	//			btnAddToCart->BackColor = Color::FromArgb(0xE6, 0x34, 0x62);
+	//			btnAddToCart->ForeColor = Color::White;
+	//			//add to panel
+	//			productPanel->Controls->Add(lblCode);
+	//			productPanel->Controls->Add(lblName);
+	//			productPanel->Controls->Add(lblCategory);
+	//			productPanel->Controls->Add(lblExpired);
+	//			productPanel->Controls->Add(lblProdiction);
+	//			productPanel->Controls->Add(lblPrice);
+	//			productPanel->Controls->Add(lblQuantity);
+	//			productPanel->Controls->Add(num);
+	//			productPanel->Controls->Add(btnAddToCart);
+	//			flowLayoutPanel4->Controls->Add(productPanel);
+	//			flowLayoutPanel4->ScrollControlIntoView(productPanel);
+	//		}
+	//		else if (parts[0] == "3")
+	//		{
+	//			String^ productId = parts[0];
+	//			String^ productCode = parts[1];
+	//			String^ productName = parts[2];
+	//			String^ productCategory = parts[3];
+	//			String^ productExpired = parts[4];
+	//			String^ productProdiction = parts[5];
+	//			String^ productPrice = parts[6];
+	//			//create a panel for each product
+	//			Panel^ productPanel = gcnew Panel();
+	//			productPanel->Width = 250;
+	//			productPanel->Height = 200;
+	//			productPanel->BackColor = Color::LightGray;
+	//			productPanel->Margin = System::Windows::Forms::Padding(10);
+	//			//create a label for each product
+	//			Label^ lblName = gcnew Label();
+	//			lblName->Text = "Name: " + productName;
+	//			lblName->Location = Point(10, 10);
+	//			lblName->AutoSize = true;
+	//			Label^ lblCode = gcnew Label();
+	//			lblCode->Text = "Code: " + productCode;
+	//			lblCode->Location = Point(10, 30);
+	//			lblCode->AutoSize = true;
+	//			Label^ lblCategory = gcnew Label();
+	//			lblCategory->Text = "Category " + productCategory;
+	//			lblCategory->Location = Point(10, 50);
+	//			lblCategory->AutoSize = true;
+	//			Label^ lblExpired = gcnew Label();
+	//			lblExpired->Text = "Production Date: " + productExpired;
+	//			lblExpired->Location = Point(10, 70);
+	//			lblExpired->AutoSize = true;
+	//			Label^ lblProdiction = gcnew Label();
+	//			lblProdiction->Text = "Expired Date" + productProdiction;
+	//			lblProdiction->Location = Point(10, 90);
+	//			lblProdiction->AutoSize = true;
+	//			Label^ lblPrice = gcnew Label();
+	//			lblPrice->Text = "Price " + productPrice + " L.E";
+	//			lblPrice->Location = Point(10, 110);
+	//			lblPrice->AutoSize = true;
+	//			//addthe numetricupdown
+	//			NumericUpDown^ num = gcnew NumericUpDown();
+	//			num->Location = Point(90, 140);
+	//			num->Width = 90;
+	//			num->Height = 60;
+	//			num->Minimum = 0;
+	//			num->Maximum = 100;
+	//			num->Value = 0;
+	//			num->Increment = 1;
+	//			num->DecimalPlaces = 2;
+	//			//add the label to the panel
+	//			Label^ lblQuantity = gcnew Label();
+	//			lblQuantity->Text = "Quantity";
+	//			lblQuantity->Location = Point(20, 140);
+	//			lblQuantity->AutoSize = true;
+	//			lblQuantity->ForeColor = Color::Black;
+	//			lblQuantity->Font = gcnew System::Drawing::Font("Arial", 10, FontStyle::Bold);
+	//			lblQuantity->BackColor = Color::Transparent;
+	//			//add the button to the panel
+	//			Button^ btnAddToCart = gcnew Button();
+	//			btnAddToCart->Text = "Add to Cart";
+	//			btnAddToCart->Location = Point(45, 170);
+	//			btnAddToCart->Width = 150;
+	//			btnAddToCart->Height = 30;
+	//			btnAddToCart->BackColor = Color::FromArgb(0xE6, 0x34, 0x62);
+	//			btnAddToCart->ForeColor = Color::White;
+	//			//add to panel
+	//			productPanel->Controls->Add(lblCode);
+	//			productPanel->Controls->Add(lblName);
+	//			productPanel->Controls->Add(lblCategory);
+	//			productPanel->Controls->Add(lblExpired);
+	//			productPanel->Controls->Add(lblProdiction);
+	//			productPanel->Controls->Add(lblPrice);
+	//			productPanel->Controls->Add(lblQuantity);
+	//			productPanel->Controls->Add(num);
+	//			productPanel->Controls->Add(btnAddToCart);
+	//			flowLayoutPanel5->Controls->Add(productPanel);
+	//			flowLayoutPanel5->ScrollControlIntoView(productPanel);
+	//			}
+	//		else if (parts[0] == "4")
+	//		{
+	//			String^ productId = parts[0];
+	//			String^ productCode = parts[1];
+	//			String^ productName = parts[2];
+	//			String^ productCategory = parts[3];
+	//			String^ productExpired = parts[4];
+	//			String^ productProdiction = parts[5];
+	//			String^ productPrice = parts[6];
+	//			//create a panel for each product
+	//			Panel^ productPanel = gcnew Panel();
+	//			productPanel->Width = 250;
+	//			productPanel->Height = 200;
+	//			productPanel->BackColor = Color::LightGray;
+	//			productPanel->Margin = System::Windows::Forms::Padding(10);
+	//			//create a label for each product
+	//			Label^ lblName = gcnew Label();
+	//			lblName->Text = "Name: " + productName;
+	//			lblName->Location = Point(10, 10);
+	//			lblName->AutoSize = true;
+	//			Label^ lblCode = gcnew Label();
+	//			lblCode->Text = "Code: " + productCode;
+	//			lblCode->Location = Point(10, 30);
+	//			lblCode->AutoSize = true;
+	//			Label^ lblCategory = gcnew Label();
+	//			lblCategory->Text = "Category " + productCategory;
+	//			lblCategory->Location = Point(10, 50);
+	//			lblCategory->AutoSize = true;
+	//			Label^ lblExpired = gcnew Label();
+	//			lblExpired->Text = "Production Date: " + productExpired;
+	//			lblExpired->Location = Point(10, 70);
+	//			lblExpired->AutoSize = true;
+	//			Label^ lblProdiction = gcnew Label();
+	//			lblProdiction->Text = "Expired Date" + productProdiction;
+	//			lblProdiction->Location = Point(10, 90);
+	//			lblProdiction->AutoSize = true;
+	//			Label^ lblPrice = gcnew Label();
+	//			lblPrice->Text = "Price " + productPrice + " L.E";
+	//			lblPrice->Location = Point(10, 110);
+	//			lblPrice->AutoSize = true;
+	//			//addthe numetricupdown
+	//			NumericUpDown^ num = gcnew NumericUpDown();
+	//			num->Location = Point(90, 140);
+	//			num->Width = 90;
+	//			num->Height = 60;
+	//			num->Minimum = 0;
+	//			num->Maximum = 100;
+	//			num->Value = 0;
+	//			num->Increment = 1;
+	//			num->DecimalPlaces = 2;
+	//			//add the label to the panel
+	//			Label^ lblQuantity = gcnew Label();
+	//			lblQuantity->Text = "Quantity";
+	//			lblQuantity->Location = Point(20, 140);
+	//			lblQuantity->AutoSize = true;
+	//			lblQuantity->ForeColor = Color::Black;
+	//			lblQuantity->Font = gcnew System::Drawing::Font("Arial", 10, FontStyle::Bold);
+	//			lblQuantity->BackColor = Color::Transparent;
+	//			//add the button to the panel
+	//			Button^ btnAddToCart = gcnew Button();
+	//			btnAddToCart->Text = "Add to Cart";
+	//			btnAddToCart->Location = Point(45, 170);
+	//			btnAddToCart->Width = 150;
+	//			btnAddToCart->Height = 30;
+	//			btnAddToCart->BackColor = Color::FromArgb(0xE6, 0x34, 0x62);
+	//			btnAddToCart->ForeColor = Color::White;
+	//			//add to panel
+	//			productPanel->Controls->Add(lblCode);
+	//			productPanel->Controls->Add(lblName);
+	//			productPanel->Controls->Add(lblCategory);
+	//			productPanel->Controls->Add(lblExpired);
+	//			productPanel->Controls->Add(lblProdiction);
+	//			productPanel->Controls->Add(lblPrice);
+	//			productPanel->Controls->Add(lblQuantity);
+	//			productPanel->Controls->Add(num);
+	//			productPanel->Controls->Add(btnAddToCart);
+	//			flowLayoutPanel6->Controls->Add(productPanel);
+	//			flowLayoutPanel6->ScrollControlIntoView(productPanel);
+	//			}
+	//		else if (parts[0] == "5")
+	//		{
+	//			String^ productId = parts[0];
+	//			String^ productCode = parts[1];
+	//			String^ productName = parts[2];
+	//			String^ productCategory = parts[3];
+	//			String^ productExpired = parts[4];
+	//			String^ productProdiction = parts[5];
+	//			String^ productPrice = parts[6];
+	//			//create a panel for each product
+	//			Panel^ productPanel = gcnew Panel();
+	//			productPanel->Width = 250;
+	//			productPanel->Height = 200;
+	//			productPanel->BackColor = Color::LightGray;
+	//			productPanel->Margin = System::Windows::Forms::Padding(10);
+	//			//create a label for each product
+	//			Label^ lblName = gcnew Label();
+	//			lblName->Text = "Name: " + productName;
+	//			lblName->Location = Point(10, 10);
+	//			lblName->AutoSize = true;
+	//			Label^ lblCode = gcnew Label();
+	//			lblCode->Text = "Code: " + productCode;
+	//			lblCode->Location = Point(10, 30);
+	//			lblCode->AutoSize = true;
+	//			Label^ lblCategory = gcnew Label();
+	//			lblCategory->Text = "Category " + productCategory;
+	//			lblCategory->Location = Point(10, 50);
+	//			lblCategory->AutoSize = true;
+	//			Label^ lblExpired = gcnew Label();
+	//			lblExpired->Text = "Production Date: " + productExpired;
+	//			lblExpired->Location = Point(10, 70);
+	//			lblExpired->AutoSize = true;
+	//			Label^ lblProdiction = gcnew Label();
+	//			lblProdiction->Text = "Expired Date" + productProdiction;
+	//			lblProdiction->Location = Point(10, 90);
+	//			lblProdiction->AutoSize = true;
+	//			Label^ lblPrice = gcnew Label();
+	//			lblPrice->Text = "Price " + productPrice + " L.E";
+	//			lblPrice->Location = Point(10, 110);
+	//			lblPrice->AutoSize = true;
+	//			//addthe numetricupdown
+	//			NumericUpDown^ num = gcnew NumericUpDown();
+	//			num->Location = Point(90, 140);
+	//			num->Width = 90;
+	//			num->Height = 60;
+	//			num->Minimum = 0;
+	//			num->Maximum = 100;
+	//			num->Value = 0;
+	//			num->Increment = 1;
+	//			num->DecimalPlaces = 2;
+	//			//add the label to the panel
+	//			Label^ lblQuantity = gcnew Label();
+	//			lblQuantity->Text = "Quantity";
+	//			lblQuantity->Location = Point(20, 140);
+	//			lblQuantity->AutoSize = true;
+	//			lblQuantity->ForeColor = Color::Black;
+	//			lblQuantity->Font = gcnew System::Drawing::Font("Arial", 10, FontStyle::Bold);
+	//			lblQuantity->BackColor = Color::Transparent;
+	//			//add the button to the panel
+	//			Button^ btnAddToCart = gcnew Button();
+	//			btnAddToCart->Text = "Add to Cart";
+	//			btnAddToCart->Location = Point(45, 170);
+	//			btnAddToCart->Width = 150;
+	//			btnAddToCart->Height = 30;
+	//			btnAddToCart->BackColor = Color::FromArgb(0xE6, 0x34, 0x62);
+	//			btnAddToCart->ForeColor = Color::White;
+	//			//add to panel
+	//			productPanel->Controls->Add(lblCode);
+	//			productPanel->Controls->Add(lblName);
+	//			productPanel->Controls->Add(lblCategory);
+	//			productPanel->Controls->Add(lblExpired);
+	//			productPanel->Controls->Add(lblProdiction);
+	//			productPanel->Controls->Add(lblPrice);
+	//			productPanel->Controls->Add(lblQuantity);
+	//			productPanel->Controls->Add(num);
+	//			productPanel->Controls->Add(btnAddToCart);
+	//			flowLayoutPanel7->Controls->Add(productPanel);
+	//			flowLayoutPanel7->ScrollControlIntoView(productPanel);
+	//			}
+	//		else if (parts[0] == "6")
+	//		{
+	//			String^ productId = parts[0];
+	//			String^ productCode = parts[1];
+	//			String^ productName = parts[2];
+	//			String^ productCategory = parts[3];
+	//			String^ productExpired = parts[4];
+	//			String^ productProdiction = parts[5];
+	//			String^ productPrice = parts[6];
+	//			//create a panel for each product
+	//			Panel^ productPanel = gcnew Panel();
+	//			productPanel->Width = 250;
+	//			productPanel->Height = 200;
+	//			productPanel->BackColor = Color::LightGray;
+	//			productPanel->Margin = System::Windows::Forms::Padding(10);
+	//			//create a label for each product
+	//			Label^ lblName = gcnew Label();
+	//			lblName->Text = "Name: " + productName;
+	//			lblName->Location = Point(10, 10);
+	//			lblName->AutoSize = true;
+	//			Label^ lblCode = gcnew Label();
+	//			lblCode->Text = "Code: " + productCode;
+	//			lblCode->Location = Point(10, 30);
+	//			lblCode->AutoSize = true;
+	//			Label^ lblCategory = gcnew Label();
+	//			lblCategory->Text = "Category " + productCategory;
+	//			lblCategory->Location = Point(10, 50);
+	//			lblCategory->AutoSize = true;
+	//			Label^ lblExpired = gcnew Label();
+	//			lblExpired->Text = "Production Date: " + productExpired;
+	//			lblExpired->Location = Point(10, 70);
+	//			lblExpired->AutoSize = true;
+	//			Label^ lblProdiction = gcnew Label();
+	//			lblProdiction->Text = "Expired Date" + productProdiction;
+	//			lblProdiction->Location = Point(10, 90);
+	//			lblProdiction->AutoSize = true;
+	//			Label^ lblPrice = gcnew Label();
+	//			lblPrice->Text = "Price " + productPrice + " L.E";
+	//			lblPrice->Location = Point(10, 110);
+	//			lblPrice->AutoSize = true;
+	//			//addthe numetricupdown
+	//			NumericUpDown^ num = gcnew NumericUpDown();
+	//			num->Location = Point(90, 140);
+	//			num->Width = 90;
+	//			num->Height = 60;
+	//			num->Minimum = 0;
+	//			num->Maximum = 100;
+	//			num->Value = 0;
+	//			num->Increment = 1;
+	//			num->DecimalPlaces = 2;
+	//			//add the label to the panel
+	//			Label^ lblQuantity = gcnew Label();
+	//			lblQuantity->Text = "Quantity";
+	//			lblQuantity->Location = Point(20, 140);
+	//			lblQuantity->AutoSize = true;
+	//			lblQuantity->ForeColor = Color::Black;
+	//			lblQuantity->Font = gcnew System::Drawing::Font("Arial", 10, FontStyle::Bold);
+	//			lblQuantity->BackColor = Color::Transparent;
+	//			//add the button to the panel
+	//			Button^ btnAddToCart = gcnew Button();
+	//			btnAddToCart->Text = "Add to Cart";
+	//			btnAddToCart->Location = Point(45, 170);
+	//			btnAddToCart->Width = 150;
+	//			btnAddToCart->Height = 30;
+	//			btnAddToCart->BackColor = Color::FromArgb(0xE6, 0x34, 0x62);
+	//			btnAddToCart->ForeColor = Color::White;
+	//			//add to panel
+	//			productPanel->Controls->Add(lblCode);
+	//			productPanel->Controls->Add(lblName);
+	//			productPanel->Controls->Add(lblCategory);
+	//			productPanel->Controls->Add(lblExpired);
+	//			productPanel->Controls->Add(lblProdiction);
+	//			productPanel->Controls->Add(lblPrice);
+	//			productPanel->Controls->Add(lblQuantity);
+	//			productPanel->Controls->Add(num);
+	//			productPanel->Controls->Add(btnAddToCart);
+	//			flowLayoutPanel8->Controls->Add(productPanel);
+	//			flowLayoutPanel8->ScrollControlIntoView(productPanel);
+	//			}
+	//		else if (parts[0] == "7")
+	//		{
+	//			String^ productId = parts[0];
+	//			String^ productCode = parts[1];
+	//			String^ productName = parts[2];
+	//			String^ productCategory = parts[3];
+	//			String^ productExpired = parts[4];
+	//			String^ productProdiction = parts[5];
+	//			String^ productPrice = parts[6];
+	//			//create a panel for each product
+	//			Panel^ productPanel = gcnew Panel();
+	//			productPanel->Width = 250;
+	//			productPanel->Height = 200;
+	//			productPanel->BackColor = Color::LightGray;
+	//			productPanel->Margin = System::Windows::Forms::Padding(10);
+	//			//create a label for each product
+	//			Label^ lblName = gcnew Label();
+	//			lblName->Text = "Name: " + productName;
+	//			lblName->Location = Point(10, 10);
+	//			lblName->AutoSize = true;
+	//			Label^ lblCode = gcnew Label();
+	//			lblCode->Text = "Code: " + productCode;
+	//			lblCode->Location = Point(10, 30);
+	//			lblCode->AutoSize = true;
+	//			Label^ lblCategory = gcnew Label();
+	//			lblCategory->Text = "Category " + productCategory;
+	//			lblCategory->Location = Point(10, 50);
+	//			lblCategory->AutoSize = true;
+	//			Label^ lblExpired = gcnew Label();
+	//			lblExpired->Text = "Production Date: " + productExpired;
+	//			lblExpired->Location = Point(10, 70);
+	//			lblExpired->AutoSize = true;
+	//			Label^ lblProdiction = gcnew Label();
+	//			lblProdiction->Text = "Expired Date" + productProdiction;
+	//			lblProdiction->Location = Point(10, 90);
+	//			lblProdiction->AutoSize = true;
+	//			Label^ lblPrice = gcnew Label();
+	//			lblPrice->Text = "Price " + productPrice + " L.E";
+	//			lblPrice->Location = Point(10, 110);
+	//			lblPrice->AutoSize = true;
+	//			//addthe numetricupdown
+	//			NumericUpDown^ num = gcnew NumericUpDown();
+	//			num->Location = Point(90, 140);
+	//			num->Width = 90;
+	//			num->Height = 60;
+	//			num->Minimum = 0;
+	//			num->Maximum = 100;
+	//			num->Value = 0;
+	//			num->Increment = 1;
+	//			num->DecimalPlaces = 2;
+	//			//add the label to the panel
+	//			Label^ lblQuantity = gcnew Label();
+	//			lblQuantity->Text = "Quantity";
+	//			lblQuantity->Location = Point(20, 140);
+	//			lblQuantity->AutoSize = true;
+	//			lblQuantity->ForeColor = Color::Black;
+	//			lblQuantity->Font = gcnew System::Drawing::Font("Arial", 10, FontStyle::Bold);
+	//			lblQuantity->BackColor = Color::Transparent;
+	//			//add the button to the panel
+	//			Button^ btnAddToCart = gcnew Button();
+	//			btnAddToCart->Text = "Add to Cart";
+	//			btnAddToCart->Location = Point(45, 170);
+	//			btnAddToCart->Width = 150;
+	//			btnAddToCart->Height = 30;
+	//			btnAddToCart->BackColor = Color::FromArgb(0xE6, 0x34, 0x62);
+	//			btnAddToCart->ForeColor = Color::White;
+	//			//add to panel
+	//			productPanel->Controls->Add(lblCode);
+	//			productPanel->Controls->Add(lblName);
+	//			productPanel->Controls->Add(lblCategory);
+	//			productPanel->Controls->Add(lblExpired);
+	//			productPanel->Controls->Add(lblProdiction);
+	//			productPanel->Controls->Add(lblPrice);
+	//			productPanel->Controls->Add(lblQuantity);
+	//			productPanel->Controls->Add(num);
+	//			productPanel->Controls->Add(btnAddToCart);
+	//			flowLayoutPanel9->Controls->Add(productPanel);
+	//			flowLayoutPanel9->ScrollControlIntoView(productPanel);
+	//			}
+	//		else if (parts[0] == "8")
+	//		{
+	//			String^ productId = parts[0];
+	//			String^ productCode = parts[1];
+	//			String^ productName = parts[2];
+	//			String^ productCategory = parts[3];
+	//			String^ productExpired = parts[4];
+	//			String^ productProdiction = parts[5];
+	//			String^ productPrice = parts[6];
+	//			//create a panel for each product
+	//			Panel^ productPanel = gcnew Panel();
+	//			productPanel->Width = 250;
+	//			productPanel->Height = 200;
+	//			productPanel->BackColor = Color::LightGray;
+	//			productPanel->Margin = System::Windows::Forms::Padding(10);
+	//			//create a label for each product
+	//			Label^ lblName = gcnew Label();
+	//			lblName->Text = "Name: " + productName;
+	//			lblName->Location = Point(10, 10);
+	//			lblName->AutoSize = true;
+	//			Label^ lblCode = gcnew Label();
+	//			lblCode->Text = "Code: " + productCode;
+	//			lblCode->Location = Point(10, 30);
+	//			lblCode->AutoSize = true;
+	//			Label^ lblCategory = gcnew Label();
+	//			lblCategory->Text = "Category " + productCategory;
+	//			lblCategory->Location = Point(10, 50);
+	//			lblCategory->AutoSize = true;
+	//			Label^ lblExpired = gcnew Label();
+	//			lblExpired->Text = "Production Date: " + productExpired;
+	//			lblExpired->Location = Point(10, 70);
+	//			lblExpired->AutoSize = true;
+	//			Label^ lblProdiction = gcnew Label();
+	//			lblProdiction->Text = "Expired Date" + productProdiction;
+	//			lblProdiction->Location = Point(10, 90);
+	//			lblProdiction->AutoSize = true;
+	//			Label^ lblPrice = gcnew Label();
+	//			lblPrice->Text = "Price " + productPrice + " L.E";
+	//			lblPrice->Location = Point(10, 110);
+	//			lblPrice->AutoSize = true;
+	//			//addthe numetricupdown
+	//			NumericUpDown^ num = gcnew NumericUpDown();
+	//			num->Location = Point(90, 140);
+	//			num->Width = 90;
+	//			num->Height = 60;
+	//			num->Minimum = 0;
+	//			num->Maximum = 100;
+	//			num->Value = 0;
+	//			num->Increment = 1;
+	//			num->DecimalPlaces = 2;
+	//			//add the label to the panel
+	//			Label^ lblQuantity = gcnew Label();
+	//			lblQuantity->Text = "Quantity";
+	//			lblQuantity->Location = Point(20, 140);
+	//			lblQuantity->AutoSize = true;
+	//			lblQuantity->ForeColor = Color::Black;
+	//			lblQuantity->Font = gcnew System::Drawing::Font("Arial", 10, FontStyle::Bold);
+	//			lblQuantity->BackColor = Color::Transparent;
+	//			//add the button to the panel
+	//			Button^ btnAddToCart = gcnew Button();
+	//			btnAddToCart->Text = "Add to Cart";
+	//			btnAddToCart->Location = Point(45, 170);
+	//			btnAddToCart->Width = 150;
+	//			btnAddToCart->Height = 30;
+	//			btnAddToCart->BackColor = Color::FromArgb(0xE6, 0x34, 0x62);
+	//			btnAddToCart->ForeColor = Color::White;
+	//			//add to panel
+	//			productPanel->Controls->Add(lblCode);
+	//			productPanel->Controls->Add(lblName);
+	//			productPanel->Controls->Add(lblCategory);
+	//			productPanel->Controls->Add(lblExpired);
+	//			productPanel->Controls->Add(lblProdiction);
+	//			productPanel->Controls->Add(lblPrice);
+	//			productPanel->Controls->Add(lblQuantity);
+	//			productPanel->Controls->Add(num);
+	//			productPanel->Controls->Add(btnAddToCart);
+	//			flowLayoutPanel10->Controls->Add(productPanel);
+	//			flowLayoutPanel10->ScrollControlIntoView(productPanel);
+	//			}
+	//		else if (parts[0] == "9")
+	//		{
+	//			String^ productId = parts[0];
+	//			String^ productCode = parts[1];
+	//			String^ productName = parts[2];
+	//			String^ productCategory = parts[3];
+	//			String^ productExpired = parts[4];
+	//			String^ productProdiction = parts[5];
+	//			String^ productPrice = parts[6];
+	//			//create a panel for each product
+	//			Panel^ productPanel = gcnew Panel();
+	//			productPanel->Width = 250;
+	//			productPanel->Height = 200;
+	//			productPanel->BackColor = Color::LightGray;
+	//			productPanel->Margin = System::Windows::Forms::Padding(10);
+	//			//create a label for each product
+	//			Label^ lblName = gcnew Label();
+	//			lblName->Text = "Name: " + productName;
+	//			lblName->Location = Point(10, 10);
+	//			lblName->AutoSize = true;
+	//			Label^ lblCode = gcnew Label();
+	//			lblCode->Text = "Code: " + productCode;
+	//			lblCode->Location = Point(10, 30);
+	//			lblCode->AutoSize = true;
+	//			Label^ lblCategory = gcnew Label();
+	//			lblCategory->Text = "Category " + productCategory;
+	//			lblCategory->Location = Point(10, 50);
+	//			lblCategory->AutoSize = true;
+	//			Label^ lblExpired = gcnew Label();
+	//			lblExpired->Text = "Production Date: " + productExpired;
+	//			lblExpired->Location = Point(10, 70);
+	//			lblExpired->AutoSize = true;
+	//			Label^ lblProdiction = gcnew Label();
+	//			lblProdiction->Text = "Expired Date" + productProdiction;
+	//			lblProdiction->Location = Point(10, 90);
+	//			lblProdiction->AutoSize = true;
+	//			Label^ lblPrice = gcnew Label();
+	//			lblPrice->Text = "Price " + productPrice + " L.E";
+	//			lblPrice->Location = Point(10, 110);
+	//			lblPrice->AutoSize = true;
+	//			//addthe numetricupdown
+	//			NumericUpDown^ num = gcnew NumericUpDown();
+	//			num->Location = Point(90, 140);
+	//			num->Width = 90;
+	//			num->Height = 60;
+	//			num->Minimum = 0;
+	//			num->Maximum = 100;
+	//			num->Value = 0;
+	//			num->Increment = 1;
+	//			num->DecimalPlaces = 2;
+	//			//add the label to the panel
+	//			Label^ lblQuantity = gcnew Label();
+	//			lblQuantity->Text = "Quantity";
+	//			lblQuantity->Location = Point(20, 140);
+	//			lblQuantity->AutoSize = true;
+	//			lblQuantity->ForeColor = Color::Black;
+	//			lblQuantity->Font = gcnew System::Drawing::Font("Arial", 10, FontStyle::Bold);
+	//			lblQuantity->BackColor = Color::Transparent;
+	//			//add the button to the panel
+	//			Button^ btnAddToCart = gcnew Button();
+	//			btnAddToCart->Text = "Add to Cart";
+	//			btnAddToCart->Location = Point(45, 170);
+	//			btnAddToCart->Width = 150;
+	//			btnAddToCart->Height = 30;
+	//			btnAddToCart->BackColor = Color::FromArgb(0xE6, 0x34, 0x62);
+	//			btnAddToCart->ForeColor = Color::White;
+	//			//add to panel
+	//			productPanel->Controls->Add(lblCode);
+	//			productPanel->Controls->Add(lblName);
+	//			productPanel->Controls->Add(lblCategory);
+	//			productPanel->Controls->Add(lblExpired);
+	//			productPanel->Controls->Add(lblProdiction);
+	//			productPanel->Controls->Add(lblPrice);
+	//			productPanel->Controls->Add(lblQuantity);
+	//			productPanel->Controls->Add(num);
+	//			productPanel->Controls->Add(btnAddToCart);
+	//			flowLayoutPanel11->Controls->Add(productPanel);
+	//			flowLayoutPanel11->ScrollControlIntoView(productPanel);
+	//			}
+	//		else if (parts[0] == "10")
+	//		{
+	//			String^ productId = parts[0];
+	//			String^ productCode = parts[1];
+	//			String^ productName = parts[2];
+	//			String^ productCategory = parts[3];
+	//			String^ productExpired = parts[4];
+	//			String^ productProdiction = parts[5];
+	//			String^ productPrice = parts[6];
+	//			//create a panel for each product
+	//			Panel^ productPanel = gcnew Panel();
+	//			productPanel->Width = 250;
+	//			productPanel->Height = 200;
+	//			productPanel->BackColor = Color::LightGray;
+	//			productPanel->Margin = System::Windows::Forms::Padding(10);
+	//			//create a label for each product
+	//			Label^ lblName = gcnew Label();
+	//			lblName->Text = "Name: " + productName;
+	//			lblName->Location = Point(10, 10);
+	//			lblName->AutoSize = true;
+	//			Label^ lblCode = gcnew Label();
+	//			lblCode->Text = "Code: " + productCode;
+	//			lblCode->Location = Point(10, 30);
+	//			lblCode->AutoSize = true;
+	//			Label^ lblCategory = gcnew Label();
+	//			lblCategory->Text = "Category " + productCategory;
+	//			lblCategory->Location = Point(10, 50);
+	//			lblCategory->AutoSize = true;
+	//			Label^ lblExpired = gcnew Label();
+	//			lblExpired->Text = "Production Date: " + productExpired;
+	//			lblExpired->Location = Point(10, 70);
+	//			lblExpired->AutoSize = true;
+	//			Label^ lblProdiction = gcnew Label();
+	//			lblProdiction->Text = "Expired Date" + productProdiction;
+	//			lblProdiction->Location = Point(10, 90);
+	//			lblProdiction->AutoSize = true;
+	//			Label^ lblPrice = gcnew Label();
+	//			lblPrice->Text = "Price " + productPrice + " L.E";
+	//			lblPrice->Location = Point(10, 110);
+	//			lblPrice->AutoSize = true;
+	//			//addthe numetricupdown
+	//			NumericUpDown^ num = gcnew NumericUpDown();
+	//			num->Location = Point(90, 140);
+	//			num->Width = 90;
+	//			num->Height = 60;
+	//			num->Minimum = 0;
+	//			num->Maximum = 100;
+	//			num->Value = 0;
+	//			num->Increment = 1;
+	//			num->DecimalPlaces = 2;
+	//			//add the label to the panel
+	//			Label^ lblQuantity = gcnew Label();
+	//			lblQuantity->Text = "Quantity";
+	//			lblQuantity->Location = Point(20, 140);
+	//			lblQuantity->AutoSize = true;
+	//			lblQuantity->ForeColor = Color::Black;
+	//			lblQuantity->Font = gcnew System::Drawing::Font("Arial", 10, FontStyle::Bold);
+	//			lblQuantity->BackColor = Color::Transparent;
+	//			//add the button to the panel
+	//			Button^ btnAddToCart = gcnew Button();
+	//			btnAddToCart->Text = "Add to Cart";
+	//			btnAddToCart->Location = Point(45, 170);
+	//			btnAddToCart->Width = 150;
+	//			btnAddToCart->Height = 30;
+	//			btnAddToCart->BackColor = Color::FromArgb(0xE6, 0x34, 0x62);
+	//			btnAddToCart->ForeColor = Color::White;
+	//			//add to panel
+	//			productPanel->Controls->Add(lblCode);
+	//			productPanel->Controls->Add(lblName);
+	//			productPanel->Controls->Add(lblCategory);
+	//			productPanel->Controls->Add(lblExpired);
+	//			productPanel->Controls->Add(lblProdiction);
+	//			productPanel->Controls->Add(lblPrice);
+	//			productPanel->Controls->Add(lblQuantity);
+	//			productPanel->Controls->Add(num);
+	//			productPanel->Controls->Add(btnAddToCart);
+	//			flowLayoutPanel12->Controls->Add(productPanel);
+	//			flowLayoutPanel12->ScrollControlIntoView(productPanel);
+	//			}
 
-		}
-		sr->Close();
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show("Error reading product file: " + ex->Message);
-	}
+	//	}
+	//	sr->Close();
+	//}
+	//catch (Exception^ ex) {
+	//	MessageBox::Show("Error reading product file: " + ex->Message);
+	//}
 	pn_products->BringToFront();
 	pn_main_category->BringToFront();
 }
