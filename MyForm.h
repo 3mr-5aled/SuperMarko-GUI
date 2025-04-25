@@ -68,6 +68,16 @@ namespace SuperMarkoGUI {
 			tb_currentLocation->Text = user->Location;
 			tb_currentPassword->Text = user->Password;
 		}
+		void hideAllMainPanels() {
+			pn_orders->Visible = false;
+			pn_products->Visible = false;
+			pn_edit_information->Visible = false;
+			pn_blank->Visible = false;
+		}
+		void showPanel(Panel^ panelToShow) {
+			hideAllMainPanels();
+			panelToShow->Visible = true;
+		}
 
 		int getCategoryIndex(String^ categoryName) {
 			if (categoryName == "Fruit") return 0;
@@ -2593,6 +2603,7 @@ namespace SuperMarkoGUI {
 			this->btn_products->Click += gcnew System::EventHandler(this, &MyForm::btn_products_Click);
 			this->btn_orders->Click += gcnew System::EventHandler(this, &MyForm::btn_orders_Click);
 
+
 		}
 		//the code start here
 #pragma endregion
@@ -2618,12 +2629,12 @@ namespace SuperMarkoGUI {
 		populateCurrentUserInfo(sender, e);
 	}
 	private: System::Void btn_products_Click(System::Object^ sender, System::EventArgs^ e) {
-		pn_products->BringToFront();
-		pn_main_category->BringToFront();
+		showPanel(pn_products);
 	}
-	private: System::Void btn_orders_Click(System::Object^ sender, System::EventArgs^ e) {
+
+private: System::Void btn_orders_Click(System::Object^ sender, System::EventArgs^ e) {
 	showPanel(pn_orders);
-	}
+}
 	private: System::Void btn_login_Click(System::Object^ sender, System::EventArgs^ e) {
 		showPanel(pn_login);
 	}
@@ -2723,140 +2734,117 @@ namespace SuperMarkoGUI {
 	private: System::Void btn_minimize_MouseHover(System::Object^ sender, System::EventArgs^ e) {
 	}
 
-	private: System::Void btn_register_registerpanel_Click(System::Object^ sender, System::EventArgs^ e) {
-		bool hasError = false;
+private: System::Void btn_register_registerpanel_Click(System::Object^ sender, System::EventArgs^ e) {
+	bool hasError = false;
 
-		// Extract input values
-		String^ username = tb_username_register->Text->Trim();
-		String^ password = tb_password_register->Text->Trim();
-		String^ phone = tb_phonenumber_register->Text->Trim();
-		String^ location = tb_location_register->Text->Trim();
+	// Extract input values
+	String^ username = tb_username_register->Text->Trim();
+	String^ password = tb_password_register->Text->Trim();
+	String^ phone = tb_phonenumber_register->Text->Trim();
+	String^ location = tb_location_register->Text->Trim();
 
-		// === Password Validation ===
-		if (password->Length != 8 || !System::Text::RegularExpressions::Regex::IsMatch(password, "^[0-9]{8}$")) {
-			lb_password_message->Text = "Password must be exactly 8 digits.";
-			tb_password_register->Focus();
-			tb_password_register->SelectAll();
-			hasError = true;
-		}
-		else {
-			lb_password_message->Text = "";
-		}
+	// === Password Validation ===
+	if (password->Length != 8 || !System::Text::RegularExpressions::Regex::IsMatch(password, "^[0-9]{8}$")) {
+		lb_password_message->Text = "Password must be exactly 8 digits.";
+		tb_password_register->Focus();
+		tb_password_register->SelectAll();
+		hasError = true;
+	}
+	else {
+		lb_password_message->Text = "";
+	}
 
-		// === Phone Number Validation ===
-		if (phone->Length != 11 || !System::Text::RegularExpressions::Regex::IsMatch(phone, "^[0-9]{11}$")) {
-			lb_phonenumber_message->Text = "Phone number must be exactly 11 digits.";
-			tb_phonenumber_register->Focus();
-			tb_phonenumber_register->SelectAll();
-			hasError = true;
-		}
-		else {
-			lb_phonenumber_message->Text = "";
-		}
+	// === Phone Number Validation ===
+	if (phone->Length != 11 || !System::Text::RegularExpressions::Regex::IsMatch(phone, "^[0-9]{11}$")) {
+		lb_phonenumber_message->Text = "Phone number must be exactly 11 digits.";
+		tb_phonenumber_register->Focus();
+		tb_phonenumber_register->SelectAll();
+		hasError = true;
+	}
+	else {
+		lb_phonenumber_message->Text = "";
+	}
 
-		// === Username Validation ===
-		bool usernameExists = false;
-		if (File::Exists("customers.txt")) {
-			for each (String ^ line in File::ReadAllLines("customers.txt")) {
+	// === Username Validation ===
+	bool usernameExists = false;
+	if (File::Exists("customers.txt")) {
+		for each (String ^ line in File::ReadAllLines("customers.txt")) {
 			array<String^>^ parts = line->Split(',');
 			if (parts->Length >= 2 && parts[1]->Trim() == username) {
-					usernameExists = true;
-					break;
-				}
+				usernameExists = true;
+				break;
 			}
 		}
+	}
 
-		if (username == "") {
-			lb_username_message->Text = "Username is required.";
-			hasError = true;
-		}
-		else if (usernameExists) {
-			lb_username_message->Text = "Username already exists.";
-			hasError = true;
-		}
-		else {
-			lb_username_message->Text = "";
-		}
+	if (username == "") {
+		lb_username_message->Text = "Username is required.";
+		hasError = true;
+	}
+	else if (usernameExists) {
+		lb_username_message->Text = "Username already exists.";
+		hasError = true;
+	}
+	else {
+		lb_username_message->Text = "";
+	}
 
-		// === Location Validation ===
-		if (location == "") {
-			lb_location_message->Text = "Location is required.";
-			hasError = true;
-		}
-		else {
-			lb_location_message->Text = "";
-		}
+	// === Location Validation ===
+	if (location == "") {
+		lb_location_message->Text = "Location is required.";
+		hasError = true;
+	}
+	else {
+		lb_location_message->Text = "";
+	}
 
-		// === Stop if any validation failed ===
-		if (hasError) return;
+	// === Stop if any validation failed ===
+	if (hasError) return;
 
 	// === Generate Customer ID ===
 	int newCustomerID = 1; // Default ID
 	if (File::Exists("customers.txt")) {
 		array<String^>^ allCustomers = File::ReadAllLines("customers.txt");
 		newCustomerID = allCustomers->Length + 1;
-		}
+	}
 
 	// === Save to Struct ===
-		CUSTOMER^ newCustomer = gcnew CUSTOMER();
+	CUSTOMER^ newCustomer = gcnew CUSTOMER();
 	newCustomer->ID = newCustomerID;
-		newCustomer->Name = username;
-		newCustomer->Password = password;
-		newCustomer->PhoneNumber = phone;
-		newCustomer->Location = location;
+	newCustomer->Name = username;
+	newCustomer->PhoneNumber = phone;
+	newCustomer->Location = location;
 	newCustomer->Password = password;
 
 	if (newCustomerID <= numOfCustomers) {
 		customers[newCustomerID - 1] = newCustomer;
 	}
 
-		// === Save to File ===
-		try {
-			StreamWriter^ sw = gcnew StreamWriter("customers.txt", true);
+	// === Save to File ===
+	try {
+		StreamWriter^ sw = gcnew StreamWriter("customers.txt", true);
 		String^ line = newCustomerID.ToString() + "," + username + "," + phone + "," + location + "," + password;
-			sw->WriteLine(line);
-			sw->Close();
+		sw->WriteLine(line);
+		sw->Close();
 
-			MessageBox::Show("Registration successful!");
+		MessageBox::Show("Registration successful!");
 
-			// Bring login panel to front
+		// Bring login panel to front
 		showPanel(pn_login);
 
-			// Clear all TextBoxes inside pn_register
-			for each (Control ^ c in pn_register->Controls) {
-				if (TextBox^ tb = dynamic_cast<TextBox^>(c)) {
-					tb->Clear();
-				}
+		// Clear all TextBoxes inside pn_register
+		for each (Control ^ c in pn_register->Controls) {
+			if (TextBox^ tb = dynamic_cast<TextBox^>(c)) {
+				tb->Clear();
 			}
-			array<String^>^ lines = File::ReadAllLines("users.txt");
-
-			for (int i = 0; i + 4 < lines->Length; i += 5) {
-				String^ fileUser = lines[i + 1]->Trim();
-				String^ filePass = lines[i + 4]->Trim();
-
-				if (username == fileUser && password == filePass) {
-					currentCustomerIndex = i / 5;
-
-					MessageBox::Show("Login successful!", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
-
-					// Save current user index
-					currentCustomerIndex = i / 5;
-
-					// Hide login panel, show main dashboard
-					pn_login->Visible = false;
-					pn_defualt->Visible = true;
-					MessageBox::Show("Login successful!", "Welcome", MessageBoxButtons::OK, MessageBoxIcon::Information);
-
-					this->Hide();
-					return;
-				}
-			}
-
-		}
-		catch (Exception^ ex) {
-			MessageBox::Show("Error: " + ex->Message);
 		}
 	}
+	catch (Exception^ ex) {
+		MessageBox::Show("Error: " + ex->Message);
+	}
+}
+
+
 
 
 	private: System::Void tb_username_username_TextChanged(System::Object^ sender, System::EventArgs^ e) {
@@ -2911,15 +2899,8 @@ namespace SuperMarkoGUI {
 			tb_password_login->UseSystemPasswordChar = false;
 		}
 	}
+	
 
-			while ((line = sr->ReadLine()) != nullptr) {
-				array<String^>^ parts = line->Split(',');
-				if (parts->Length < 4) continue;
-
-				String^ fileUser = parts[0]->Trim();
-				String^ filePass = parts[1]->Trim();
-				String^ filePhone = parts[2]->Trim();
-				String^ fileLocation = parts[3]->Trim();
 
 	private: System::Void pn_register_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
