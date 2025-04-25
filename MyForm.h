@@ -352,7 +352,7 @@ private: System::Windows::Forms::Button^ btn_household;
 private: System::Windows::Forms::Button^ btn_pet;
 
 private: System::Windows::Forms::Label^ label4;
-private: System::Windows::Forms::ImageList^ imageList1;
+
 private: System::Windows::Forms::PictureBox^ pictureBox1;
 private: System::Windows::Forms::PictureBox^ pictureBox2;
 private: System::Windows::Forms::Label^ label3;
@@ -386,7 +386,7 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel4;
 
 
 
-private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip1;
+
 private: System::Windows::Forms::Panel^ pn_currentInfo;
 
 private: System::Windows::Forms::Panel^ pn_resetPassword;
@@ -465,7 +465,6 @@ private: System::ComponentModel::IContainer^ components;
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->pn_upper_bar = (gcnew System::Windows::Forms::Panel());
 			this->lb_brand_name = (gcnew System::Windows::Forms::Label());
@@ -596,8 +595,6 @@ private: System::ComponentModel::IContainer^ components;
 			this->welcomeScreen = (gcnew System::Windows::Forms::PictureBox());
 			this->pn_thankyou = (gcnew System::Windows::Forms::Panel());
 			this->thankyou = (gcnew System::Windows::Forms::PictureBox());
-			this->imageList1 = (gcnew System::Windows::Forms::ImageList(this->components));
-			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
 			this->pn_upper_bar->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_icon))->BeginInit();
 			this->pn_main_dashboard->SuspendLayout();
@@ -2452,18 +2449,6 @@ private: System::ComponentModel::IContainer^ components;
 			this->thankyou->TabIndex = 0;
 			this->thankyou->TabStop = false;
 			this->thankyou->Click += gcnew System::EventHandler(this, &MyForm::thankyou_Click);
-			// 
-			// imageList1
-			// 
-			this->imageList1->ColorDepth = System::Windows::Forms::ColorDepth::Depth8Bit;
-			this->imageList1->ImageSize = System::Drawing::Size(16, 16);
-			this->imageList1->TransparentColor = System::Drawing::Color::Transparent;
-			// 
-			// contextMenuStrip1
-			// 
-			this->contextMenuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
-			this->contextMenuStrip1->Name = L"contextMenuStrip1";
-			this->contextMenuStrip1->Size = System::Drawing::Size(61, 4);
 			// 
 			// MyForm
 			// 
