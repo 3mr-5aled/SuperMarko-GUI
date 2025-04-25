@@ -2,5 +2,6 @@
 Orange,Fruit,15.00,2.00,30.00
 Banana,Fruit,20.00,2.00,40.00
 Blueberry,Fruit,76.50,2.00,153.00
-Apple,Fruit,50.00,3.00,150.00
 Loose_Milk,Dairy&Eggs,29.71,7.00,207.97
+Apple,Fruit,50.00,1.00,50.00
+Sardine,Fish,140.00,1.00,140.00

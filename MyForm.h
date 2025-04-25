@@ -1,9 +1,50 @@
-#pragma once
+﻿#pragma once
+
+#include <string>
+using namespace System;
+
+const int numOfCustomers = 100;
+const int numOfCategories = 10;
+const int numOfProducts = 100;
+
+
+
+ref struct CUSTOMER {
+	int ID;
+	String^ Name;
+	String^ PhoneNumber;
+	String^ Location;
+	String^ Password;
+};
+
+ref struct PRODUCT {
+	String^ Code;
+	String^ Name;
+	String^ Category;
+	String^ ProductionDate; // use "DD/MM/YYYY"
+	String^ ExpiredDate;
+	double Price;
+	double BasePrice;
+};
+
+
+ref struct ORDER {
+	int CustomerID;
+	array<PRODUCT^>^ Products = gcnew array<PRODUCT^>(numOfProducts);
+	array<double>^ Amount = gcnew array<double>(numOfProducts);
+	double TotalPrice = 0.0;
+	int productcount = 0;
+};
+
+
+
+
 namespace SuperMarkoGUI {
 
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
+	using namespace System::Windows::Forms;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
@@ -18,6 +59,18 @@ namespace SuperMarkoGUI {
 	public:
 		MyForm(void)
 		{
+			currentCustomerIndex = -1;
+			// Initialize arrays
+			customers = gcnew array<CUSTOMER^>(numOfCustomers);
+			orders = gcnew array<ORDER^>(numOfCustomers);
+			products = gcnew array<array<PRODUCT^>^>(numOfCategories);
+			productCounts = gcnew array<int>(numOfCategories);
+
+			for (int i = 0; i < numOfCategories; ++i) {
+				products[i] = gcnew array<PRODUCT^>(numOfProducts);
+				productCounts[i] = 0;
+			}
+
 			InitializeComponent();
 			
 			// Load by category into their dedicated panels
@@ -36,9 +89,61 @@ namespace SuperMarkoGUI {
 			//TODO: Add the constructor code here
 			//
 		}
+		void populateCurrentUserInfo(Object^ sender, EventArgs^ e) {
+			if (currentCustomerIndex < 0 || customers[currentCustomerIndex] == nullptr) {
+				MessageBox::Show("User not logged in or data missing.");
+				return;
+			}
+
+			CUSTOMER^ user = customers[currentCustomerIndex];
+			tb_currentUsername->Text = user->Name;
+			tb_currentPhoneNumber->Text = user->PhoneNumber;
+			tb_currentLocation->Text = user->Location;
+			tb_currentPassword->Text = user->Password;
+		}
+
+		int getCategoryIndex(String^ categoryName) {
+			if (categoryName == "Fruit") return 0;
+			if (categoryName == "Vegetables") return 1;
+			if (categoryName == "Dairy&Eggs") return 2;
+			if (categoryName == "Meats") return 3;
+			if (categoryName == "Fish") return 4;
+			if (categoryName == "Poultry") return 5;
+			if (categoryName == "Bakery&Bread") return 6;
+			if (categoryName == "Snacks&Sweets") return 7;
+			if (categoryName == "Household&Cleaning_Supplies") return 8;
+			if (categoryName == "Pet_Supplies") return 9;
+			return -1;
+		}
+		void handleBackToCategories(Object^ sender, EventArgs^ e) {
+			pn_fruits_category->Visible = false;
+			pn_vegetable_category->Visible = false;
+			pn_dairy_category->Visible = false;
+			pn_butchershop_category->Visible = false;
+			pn_seafood_category->Visible = false;
+			pn_poultry_category->Visible = false;
+			pn_bakery_category->Visible = false;
+			pn_snacks_category->Visible = false;
+			pn_household_category->Visible = false;
+			pn_pet_supplies_category->Visible = false;
+
+			pn_main_category->Visible = true;
+		}
 		
 		void loadCategory(String^ categoryFilter, FlowLayoutPanel^ panelToFill) {
 			try {
+				panelToFill->Controls->Clear();
+				// === Add Back Button at the top ===
+				Button^ btnBack = gcnew Button();
+				btnBack->Text = "Back";
+				btnBack->Width = 100;
+				btnBack->Height = 40;
+				btnBack->BackColor = Color::FromArgb(230, 52, 98);
+				btnBack->ForeColor = Color::White;
+				btnBack->FlatStyle = FlatStyle::Flat;
+				btnBack->Click += gcnew EventHandler(this, &MyForm::handleBackToCategories);
+				panelToFill->Controls->Add(btnBack);
+
 				StreamReader^ reader = gcnew StreamReader("productmenu.txt");
 				String^ line;
 
@@ -53,7 +158,29 @@ namespace SuperMarkoGUI {
 					String^ prodDate = parts[4];
 					String^ expDate = parts[5];
 					String^ price = parts[6];
-					String^ categoryName = parts[3];  // actual category
+					String^ categoryName = parts[3];
+
+					// === Save to products struct ===
+					int catIndex = getCategoryIndex(categoryName);
+					if (catIndex == -1 || productCounts[catIndex] >= numOfProducts) continue;
+
+					PRODUCT^ p = gcnew PRODUCT();
+					p->Code = code;
+					p->Name = name;
+					p->Category = categoryName;
+					p->Price = Convert::ToDouble(price);
+					p->BasePrice = p->Price * 0.8;
+
+					// Parse production date
+					array<String^>^ pdParts = prodDate->Split('/');
+					p->ProductionDate = prodDate;
+					
+
+					// Parse expiration date
+					array<String^>^ edParts = expDate->Split('/');
+					p->ExpiredDate = expDate;
+					
+					products[catIndex][productCounts[catIndex]++] = p;
 
 					// === Product Panel ===
 					Panel^ productPanel = gcnew Panel();
@@ -63,18 +190,17 @@ namespace SuperMarkoGUI {
 					productPanel->AutoSize = true;
 					productPanel->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 
-					// === Inner Stack Panel ===
+
+
 					FlowLayoutPanel^ innerPanel = gcnew FlowLayoutPanel();
 					innerPanel->FlowDirection = FlowDirection::TopDown;
 					innerPanel->WrapContents = false;
 					innerPanel->AutoSize = true;
-					innerPanel->AutoScroll = false;
 					innerPanel->Dock = DockStyle::Fill;
 					innerPanel->Padding = System::Windows::Forms::Padding(0, 0, 0, 10);
 
-					// === Image ===
 					PictureBox^ productImage = gcnew PictureBox();
-					productImage->Size = System::Drawing::Size(230, 100);
+					productImage->Size = Drawing::Size(230, 100);
 					productImage->SizeMode = PictureBoxSizeMode::Zoom;
 
 					String^ imageName = name->Replace(" ", "_")->Replace("(", "")->Replace(")", "")->Replace("\"", "") + ".jpg";
@@ -89,85 +215,58 @@ namespace SuperMarkoGUI {
 					innerPanel->Controls->Add(productImage);
 
 					// === Labels ===
-					Label^ lblName = gcnew Label();
-					lblName->Text = "Name: " + name;
-					lblName->AutoSize = false;
-					lblName->Width = 230;
-					lblName->TextAlign = ContentAlignment::MiddleCenter;
+					array<String^>^ labels = {
+						"Name: " + name,
+						"Code: " + code,
+						"Category: " + categoryName,
+						"Production Date: " + prodDate,
+						"Expiration Date: " + expDate,
+						"Price: " + price + " EGP"
+					};
 
-					Label^ lblCode = gcnew Label();
-					lblCode->Text = "Code: " + code;
-					lblCode->AutoSize = false;
-					lblCode->Width = 230;
-					lblCode->TextAlign = ContentAlignment::MiddleCenter;
+					for each (String ^ text in labels) {
+						Label^ lbl = gcnew Label();
+						lbl->Text = text;
+						lbl->AutoSize = false;
+						lbl->Width = 230;
+						lbl->TextAlign = ContentAlignment::MiddleCenter;
+						innerPanel->Controls->Add(lbl);
+					}
 
-					Label^ lblCategory = gcnew Label();
-					lblCategory->Text = "Category: " + categoryName;
-					lblCategory->AutoSize = false;
-					lblCategory->Width = 230;
-					lblCategory->TextAlign = ContentAlignment::MiddleCenter;
-
-					Label^ lblProd = gcnew Label();
-					lblProd->Text = "Production Date: " + prodDate;
-					lblProd->AutoSize = false;
-					lblProd->Width = 230;
-					lblProd->TextAlign = ContentAlignment::MiddleCenter;
-
-					Label^ lblExp = gcnew Label();
-					lblExp->Text = "Expiration Date: " + expDate;
-					lblExp->AutoSize = false;
-					lblExp->Width = 230;
-					lblExp->TextAlign = ContentAlignment::MiddleCenter;
-
-					Label^ lblPrice = gcnew Label();
-					lblPrice->Text = "Price: " + price + " EGP";
-					lblPrice->AutoSize = false;
-					lblPrice->Width = 230;
-					lblPrice->TextAlign = ContentAlignment::MiddleCenter;
-
-					// === Add labels to innerPanel ===
-					innerPanel->Controls->Add(lblName);
-					innerPanel->Controls->Add(lblCode);
-					innerPanel->Controls->Add(lblCategory);
-					innerPanel->Controls->Add(lblProd);
-					innerPanel->Controls->Add(lblExp);
-					innerPanel->Controls->Add(lblPrice);
-
-					// === Quantity Row (aligned horizontally) ===
+					// === Quantity Panel ===
 					Panel^ quantityRow = gcnew Panel();
 					quantityRow->Width = 230;
 					quantityRow->Height = 30;
 
 					Label^ lblQty = gcnew Label();
 					lblQty->Text = "Quantity:";
-					lblQty->AutoSize = false;
 					lblQty->Width = 70;
 					lblQty->Height = 22;
-					lblQty->Location = Point(0, 4); // slight vertical alignment
+					lblQty->Location = Point(0, 4);
 					lblQty->TextAlign = ContentAlignment::MiddleRight;
 
 					NumericUpDown^ quantityBox = gcnew NumericUpDown();
 					quantityBox->Minimum = 0;
 					quantityBox->Maximum = 10;
 					quantityBox->DecimalPlaces = 2;
-					quantityBox->Size = System::Drawing::Size(140, 22);
+					quantityBox->Size = Drawing::Size(140, 22);
 					quantityBox->Location = Point(80, 4);
 
 					quantityRow->Controls->Add(lblQty);
 					quantityRow->Controls->Add(quantityBox);
 					innerPanel->Controls->Add(quantityRow);
 
-					// === Button ===
+					// === Add Button ===
 					Button^ btnAdd = gcnew Button();
 					btnAdd->Text = "Add to Cart";
 					btnAdd->Width = 230;
 					btnAdd->Height = 35;
 					btnAdd->BackColor = Color::FromArgb(230, 52, 98);
 					btnAdd->ForeColor = Color::White;
-					btnAdd->Click += gcnew System::EventHandler(this, &MyForm::handleAddToCart);
+					btnAdd->Click += gcnew EventHandler(this, &MyForm::handleAddToCart);
+
 					innerPanel->Controls->Add(btnAdd);
 
-					// === Final Assembly ===
 					productPanel->Controls->Add(innerPanel);
 					panelToFill->Controls->Add(productPanel);
 				}
@@ -178,6 +277,7 @@ namespace SuperMarkoGUI {
 				MessageBox::Show("Error loading category: " + categoryFilter + "\n" + ex->Message);
 			}
 		}
+
 
 
 
@@ -466,6 +566,8 @@ private: System::ComponentModel::IContainer^ components;
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
+			
+
 			this->pn_upper_bar = (gcnew System::Windows::Forms::Panel());
 			this->lb_brand_name = (gcnew System::Windows::Forms::Label());
 			this->pb_icon = (gcnew System::Windows::Forms::PictureBox());
@@ -1717,7 +1819,8 @@ private: System::ComponentModel::IContainer^ components;
 			this->btn_edit_information->Text = L"Edit Intormation";
 			this->btn_edit_information->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
 			this->btn_edit_information->UseVisualStyleBackColor = true;
-			this->btn_edit_information->Click += gcnew System::EventHandler(this, &MyForm::btn_edit_information_Click);
+			this->btn_edit_information->Click += gcnew System::EventHandler(this, &MyForm::populateCurrentUserInfo);
+
 			// 
 			// btn_products
 			// 
@@ -2505,10 +2608,27 @@ private: System::ComponentModel::IContainer^ components;
 			this->pn_thankyou->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->thankyou))->EndInit();
 			this->ResumeLayout(false);
+			this->btn_fruits->Click += gcnew System::EventHandler(this, &MyForm::btn_fruits_Click);
+			this->btn_vegetabe->Click += gcnew System::EventHandler(this, &MyForm::btn_vegetabe_Click);
+			this->btn_dairy->Click += gcnew System::EventHandler(this, &MyForm::btn_dairy_Click);
+			this->btn_butcher->Click += gcnew System::EventHandler(this, &MyForm::btn_butcher_Click);
+			this->btn_seafood->Click += gcnew System::EventHandler(this, &MyForm::btn_seafood_Click);
+			this->btn_poultry->Click += gcnew System::EventHandler(this, &MyForm::btn_poultry_Click);
+			this->btn_bakery->Click += gcnew System::EventHandler(this, &MyForm::btn_bakery_Click);
+			this->btn_snacks->Click += gcnew System::EventHandler(this, &MyForm::btn_snacks_Click);
+			this->btn_household->Click += gcnew System::EventHandler(this, &MyForm::btn_household_Click);
+			this->btn_pet->Click += gcnew System::EventHandler(this, &MyForm::btn_pet_Click);
 
 		}
 		//the code start here
 #pragma endregion
+	private:
+		int currentCustomerIndex = -1;
+		array<CUSTOMER^>^ customers;
+		array<ORDER^>^ orders;
+		array<array<PRODUCT^>^>^ products;
+		array<int>^ productCounts;
+
 	private: System::Void btn_close_Click(System::Object^ sender, System::EventArgs^ e) {
 		Application::Exit();	
 	}
@@ -2574,35 +2694,38 @@ private: System::Void btn_minimize_MouseHover(System::Object^ sender, System::Ev
 }
 
 private: System::Void btn_register_registerpanel_Click(System::Object^ sender, System::EventArgs^ e) {
-	
 	bool hasError = false;
 
-	// Check password
-	String^ password = tb_password_register->Text;
+	// Extract input values
+	String^ username = tb_username_register->Text->Trim();
+	String^ password = tb_password_register->Text->Trim();
+	String^ phone = tb_phonenumber_register->Text->Trim();
+	String^ location = tb_location_register->Text->Trim();
+
+	// === Password Validation ===
 	if (password->Length != 8 || !System::Text::RegularExpressions::Regex::IsMatch(password, "^[0-9]{8}$")) {
 		lb_password_message->Text = "Password must be exactly 8 digits.";
 		tb_password_register->Focus();
 		tb_password_register->SelectAll();
 		hasError = true;
-	} else {
+	}
+	else {
 		lb_password_message->Text = "";
 	}
 
-	// Check phone number
-	String^ phone = tb_phonenumber_register->Text;
+	// === Phone Number Validation ===
 	if (phone->Length != 11 || !System::Text::RegularExpressions::Regex::IsMatch(phone, "^[0-9]{11}$")) {
 		lb_phonenumber_message->Text = "Phone number must be exactly 11 digits.";
-		tb_phonenumber_register->Focus();	
-		tb_phonenumber_register->SelectAll();	
+		tb_phonenumber_register->Focus();
+		tb_phonenumber_register->SelectAll();
 		hasError = true;
-	} else {
+	}
+	else {
 		lb_phonenumber_message->Text = "";
 	}
 
-	// Check username
-	String^ username = tb_username_register->Text;
+	// === Username Validation ===
 	bool usernameExists = false;
-
 	if (File::Exists("customers.txt")) {
 		for each (String ^ line in File::ReadAllLines("customers.txt")) {
 			if (line->StartsWith(username + ",")) {
@@ -2612,49 +2735,94 @@ private: System::Void btn_register_registerpanel_Click(System::Object^ sender, S
 		}
 	}
 
-	if (username->Trim() == "") {
+	if (username == "") {
 		lb_username_message->Text = "Username is required.";
 		hasError = true;
 	}
 	else if (usernameExists) {
 		lb_username_message->Text = "Username already exists.";
 		hasError = true;
-	} else {
+	}
+	else {
 		lb_username_message->Text = "";
 	}
 
-	// Check location
-	String^ location = tb_location_register->Text;
-	if (location->Trim() == "") {
+	// === Location Validation ===
+	if (location == "") {
 		lb_location_message->Text = "Location is required.";
 		hasError = true;
-	} else {
+	}
+	else {
 		lb_location_message->Text = "";
 	}
 
-	// Stop if any errors
+	// === Stop if any validation failed ===
 	if (hasError) return;
 
-	// Save to file
+	// === Save to Struct ===
+	static int currentCustomerIndex = 0;
+	if (currentCustomerIndex >= numOfCustomers) {
+		MessageBox::Show("Max customer limit reached.");
+		return;
+	}
+
+	CUSTOMER^ newCustomer = gcnew CUSTOMER();
+	newCustomer->ID = currentCustomerIndex + 1;
+	newCustomer->Name = username;
+	newCustomer->Password = password;
+	newCustomer->PhoneNumber = phone;
+	newCustomer->Location = location;
+	customers[currentCustomerIndex] = newCustomer;
+	currentCustomerIndex++;
+
+	// === Save to File ===
 	try {
 		StreamWriter^ sw = gcnew StreamWriter("customers.txt", true);
-		String^ customer = username + "," + password + "," + phone + "," + location;
-		sw->WriteLine(customer);
+		String^ line = username + "," + password + "," + phone + "," + location;
+		sw->WriteLine(line);
 		sw->Close();
+
 		MessageBox::Show("Registration successful!");
+
+		// Bring login panel to front
 		pn_login->BringToFront();
 
-		// Clear textboxes
-		for each (Control ^ c in this->Controls) {
-			if (dynamic_cast<TextBox^>(c)) {
-				c->Text = "";
+		// Clear all TextBoxes inside pn_register
+		for each (Control ^ c in pn_register->Controls) {
+			if (TextBox^ tb = dynamic_cast<TextBox^>(c)) {
+				tb->Clear();
 			}
 		}
+		array<String^>^ lines = File::ReadAllLines("users.txt");
+
+		for (int i = 0; i + 4 < lines->Length; i += 5) {
+			String^ fileUser = lines[i + 1]->Trim();
+			String^ filePass = lines[i + 4]->Trim();
+
+			if (username == fileUser && password == filePass) {
+				currentCustomerIndex = i / 5;
+
+				MessageBox::Show("Login successful!", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+				// Save current user index
+				currentCustomerIndex = i / 5;
+
+				// Hide login panel, show main dashboard
+				pn_login->Visible = false;
+				pn_defualt->Visible = true;
+				MessageBox::Show("Login successful!", "Welcome", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+				this->Hide();
+				return;
+			}
+		}
+
 	}
 	catch (Exception^ ex) {
 		MessageBox::Show("Error: " + ex->Message);
 	}
 }
+
 
 private: System::Void tb_username_username_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
@@ -2708,55 +2876,56 @@ private: System::Void btn_seepasword_login_Click(System::Object^ sender, System:
 		tb_password_login->UseSystemPasswordChar = false;
 	}
 }
-
 private: System::Void btn_login_loginpanel_Click(System::Object^ sender, System::EventArgs^ e) {
-	if(tb_username_login->Text->Trim()!="")
-	{
+	if (tb_username_login->Text->Trim() != "" && tb_password_login->Text->Trim() != "") {
 		StreamReader^ sr = gcnew StreamReader("customers.txt");
 		String^ line = "";
+		int index = 0;
 		bool found = false;
-		do
-		{
-			line = sr->ReadLine();
-			if (line != nullptr)
-			{
-				array<String^>^ parts = line->Split(',');
-				if (parts[0]->Trim() == tb_username_login->Text->Trim() && parts[1]->Trim() == tb_password_login->Text->Trim())
-				{
-					found = true;
-					lb_profile->Text = parts[0];
-					pn_defualt->BringToFront();
-					tb_username_login->Text = "";
-					tb_password_login->Text = "";
-					break;
-				}
-				if (!found)
-				{
-					if (parts[0]->Trim() != tb_username_login->Text->Trim());
-					{
-						lb_username_message_login->Text = "Username is incorrect.";
-					}
-					if (parts[1]->Trim() != tb_password_login->Text->Trim());
-					{
-						lb_password_message_login->Text = "Password is incorrect.";
-					}
-				}
-			}
-			
-			
 
-		} while (line !=nullptr);
-		sr->Close();	
-		
-		
+		while ((line = sr->ReadLine()) != nullptr) {
+			array<String^>^ parts = line->Split(',');
+			if (parts->Length < 4) continue;
+
+			String^ fileUser = parts[0]->Trim();
+			String^ filePass = parts[1]->Trim();
+			String^ filePhone = parts[2]->Trim();
+			String^ fileLocation = parts[3]->Trim();
+
+			if (tb_username_login->Text->Trim() == fileUser && tb_password_login->Text->Trim() == filePass) {
+				// ✅ Save to CUSTOMER array
+				CUSTOMER^ c = gcnew CUSTOMER();
+				c->ID = index + 1;
+				c->Name = fileUser;
+				c->Password = filePass;
+				c->PhoneNumber = filePhone;
+				c->Location = fileLocation;
+				customers[index] = c;
+
+				currentCustomerIndex = index; // ✅ Save index
+
+				lb_profile->Text = fileUser;
+				pn_defualt->BringToFront();
+				tb_username_login->Text = "";
+				tb_password_login->Text = "";
+				found = true;
+				break;
+			}
+			index++;
+		}
+		sr->Close();
+
+		if (!found) {
+			lb_username_message_login->Text = "Username is incorrect.";
+			lb_password_message_login->Text = "Password is incorrect.";
+		}
 	}
-	else
-	{
+	else {
 		MessageBox::Show("Login failed. Please check your username and password.");
 		tb_username_login->Focus();
-		
 	}
 }
+
 private: System::Void pn_register_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 }
 private: System::Void pn_upper_bar_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
@@ -2807,33 +2976,53 @@ private: System::Void flowLayoutPanel2_Paint(System::Object^ sender, System::Win
 }
 private: System::Void btn_fruits_Click(System::Object^ sender, System::EventArgs^ e) {
 	pn_fruits_category->BringToFront();
+	pn_main_category->Visible = false;
+	pn_fruits_category->Visible = true;
 }
 private: System::Void btn_vegetabe_Click(System::Object^ sender, System::EventArgs^ e) {
 	pn_vegetable_category->BringToFront();
+	pn_main_category->Visible = false;
+	pn_vegetable_category->Visible = true;
 }
 private: System::Void btn_dairy_Click(System::Object^ sender, System::EventArgs^ e) {
 	pn_dairy_category->BringToFront();
+	pn_main_category->Visible = false;
+	pn_dairy_category->Visible = true;
 }
 private: System::Void btn_butcher_Click(System::Object^ sender, System::EventArgs^ e) {
 	pn_butchershop_category->BringToFront();
+	pn_main_category->Visible = false;
+	pn_butchershop_category->Visible = true;
 }
 private: System::Void btn_seafood_Click(System::Object^ sender, System::EventArgs^ e) {
 	pn_seafood_category->BringToFront();
+	pn_main_category->Visible = false;
+	pn_seafood_category->Visible = true;
 }
 private: System::Void btn_poultry_Click(System::Object^ sender, System::EventArgs^ e) {
 	pn_poultry_category->BringToFront();
+	pn_main_category->Visible = false;
+	pn_poultry_category->Visible = true;
 }
 private: System::Void btn_bakery_Click(System::Object^ sender, System::EventArgs^ e) {
 	pn_bakery_category->BringToFront();
+	pn_main_category->Visible = false;
+	pn_bakery_category->Visible = true;
 }
 private: System::Void btn_snacks_Click(System::Object^ sender, System::EventArgs^ e) {
 	pn_snacks_category->BringToFront();
+	pn_main_category->Visible = false;
+	pn_snacks_category->Visible = true;
 }
 private: System::Void btn_household_Click(System::Object^ sender, System::EventArgs^ e) {
 	pn_household_category->BringToFront();
+	pn_main_category->Visible = false;
+	pn_household_category->Visible = true;
 }
 private: System::Void btn_pet_Click(System::Object^ sender, System::EventArgs^ e) {
 	pn_pet_supplies_category->BringToFront();
+	pn_main_category->Visible = false;
+	pn_pet_supplies_category->Visible = true;
 }
 private: System::Void pn_fruits_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 }
@@ -2908,7 +3097,7 @@ private: System::Void handleAddToCart(System::Object^ sender, System::EventArgs^
 	String^ priceText = "";
 	double quantity = 0;
 
-	// === Get data from panel ===
+	// === Extract product info from the panel ===
 	for each (Control ^ ctrl in parentPanel->Controls) {
 		if (ctrl->GetType() == Label::typeid) {
 			Label^ lbl = (Label^)ctrl;
@@ -2935,33 +3124,54 @@ private: System::Void handleAddToCart(System::Object^ sender, System::EventArgs^
 	double unitPrice = Convert::ToDouble(priceText);
 	double total = unitPrice * quantity;
 
-	String^ newLine = productName + "," + categoryName + "," +
-		unitPrice.ToString("F2") + "," +
-		quantity.ToString("F2") + "," +
-		total.ToString("F2");
+	// === Update Global ORDER Struct ===
+	static int currentOrderIndex = 0;  // You can update this based on the logged-in user
 
-	// === Load existing and filter out duplicates ===
+	if (orders[currentOrderIndex] == nullptr)
+		orders[currentOrderIndex] = gcnew ORDER();
+
+	ORDER^ o = orders[currentOrderIndex];
+	int i = o->productcount;
+
+	PRODUCT^ p = gcnew PRODUCT();
+	p->Name = productName;
+	p->Category = categoryName;
+	p->Code = "N/A"; // You can update this if code is needed
+	p->Price = unitPrice;
+	p->BasePrice = unitPrice * 0.8;
+
+	o->Products[i] = p;
+	o->Amount[i] = quantity;
+	o->TotalPrice += unitPrice * quantity;
+	o->productcount++;
+
+	// === Write to File (overwrite old quantity of same product) ===
 	try {
 		String^ filePath = "order.txt";
 		array<String^>^ lines = File::Exists(filePath) ? File::ReadAllLines(filePath) : gcnew array<String^>(0);
-		System::Collections::Generic::List<String^>^ filtered = gcnew System::Collections::Generic::List<String^>();
+		System::Collections::Generic::List<String^>^ updated = gcnew System::Collections::Generic::List<String^>();
 
 		for each (String ^ line in lines) {
 			if (!line->StartsWith(productName + ",")) {
-				filtered->Add(line);
+				updated->Add(line); // keep other products
 			}
 		}
 
-		filtered->Add(newLine);
-		File::WriteAllLines(filePath, filtered->ToArray());
+		String^ newLine = productName + "," + categoryName + "," +
+			unitPrice.ToString("F2") + "," +
+			quantity.ToString("F2") + "," +
+			total.ToString("F2");
 
-		MessageBox::Show("Order updated:\n" + newLine);
+		updated->Add(newLine);
+		File::WriteAllLines(filePath, updated->ToArray());
+
+		MessageBox::Show("Added to cart:\n" + newLine);
 	}
 	catch (Exception^ ex) {
 		MessageBox::Show("Error writing to file:\n" + ex->Message);
 	}
-
 }
+
 
 private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
 }
@@ -2976,6 +3186,7 @@ private: System::Void textBox2_TextChanged(System::Object^ sender, System::Event
 }
 private: System::Void tb_location_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
+
 private: System::Void groupBox1_Enter(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void btn_editInfo_Click(System::Object^ sender, System::EventArgs^ e) {
