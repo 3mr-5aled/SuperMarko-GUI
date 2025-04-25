@@ -2589,6 +2589,9 @@ namespace SuperMarkoGUI {
 			this->pn_thankyou->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->thankyou))->EndInit();
 			this->ResumeLayout(false);
+			this->btn_edit_information->Click += gcnew System::EventHandler(this, &MyForm::btn_edit_information_Click);
+			this->btn_products->Click += gcnew System::EventHandler(this, &MyForm::btn_products_Click);
+			this->btn_orders->Click += gcnew System::EventHandler(this, &MyForm::btn_orders_Click);
 
 		}
 		//the code start here
@@ -2611,17 +2614,18 @@ namespace SuperMarkoGUI {
 		this->WindowState = FormWindowState::Minimized;
 	}
 	private: System::Void btn_edit_information_Click(System::Object^ sender, System::EventArgs^ e) {
-		pn_edit_information->BringToFront();
+		showPanel(pn_edit_information);
+		populateCurrentUserInfo(sender, e);
 	}
 	private: System::Void btn_products_Click(System::Object^ sender, System::EventArgs^ e) {
 		pn_products->BringToFront();
 		pn_main_category->BringToFront();
 	}
 	private: System::Void btn_orders_Click(System::Object^ sender, System::EventArgs^ e) {
-		pn_orders->BringToFront();
+	showPanel(pn_orders);
 	}
 	private: System::Void btn_login_Click(System::Object^ sender, System::EventArgs^ e) {
-		pn_login->BringToFront();
+		showPanel(pn_login);
 	}
 	private: System::Void btn_exit_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
 		btn_exit->ForeColor = Color::FromArgb(0xE6, 0x34, 0x62);
@@ -2646,10 +2650,61 @@ namespace SuperMarkoGUI {
 		btn_start->ForeColor = Color::Wheat;
 	}
 	private: System::Void btn_start_Click(System::Object^ sender, System::EventArgs^ e) {
-		pn_login->BringToFront();
+		showPanel(pn_login);
+
 	}
+	private: System::Void btn_login_loginpanel_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (tb_username_login->Text->Trim() != "" && tb_password_login->Text->Trim() != "") {
+			StreamReader^ sr = gcnew StreamReader("customers.txt");
+			String^ line = "";
+			int index = 0;
+			bool found = false;
+
+			while ((line = sr->ReadLine()) != nullptr) {
+				array<String^>^ parts = line->Split(',');
+				if (parts->Length < 5) continue;
+
+				String^ fileID = parts[0]->Trim();
+				String^ fileUser = parts[1]->Trim();
+				String^ filePhone = parts[2]->Trim();
+				String^ fileLocation = parts[3]->Trim();
+				String^ filePass = parts[4]->Trim();
+
+				if (tb_username_login->Text->Trim() == fileUser && tb_password_login->Text->Trim() == filePass) {
+					CUSTOMER^ c = gcnew CUSTOMER();
+					c->ID = Convert::ToInt32(fileID);
+					c->Name = fileUser;
+					c->Password = filePass;
+					c->PhoneNumber = filePhone;
+					c->Location = fileLocation;
+					customers[index] = c;
+
+					currentCustomerIndex = index;
+					lb_profile->Text = fileUser;
+
+					pn_defualt->BringToFront();
+					tb_username_login->Text = "";
+					tb_password_login->Text = "";
+					found = true;
+					break;
+				}
+				index++;
+			}
+			sr->Close();
+
+			if (!found) {
+				lb_username_message_login->Text = "Username is incorrect.";
+				lb_password_message_login->Text = "Password is incorrect.";
+			}
+		}
+		else {
+			MessageBox::Show("Login failed. Please check your username and password.");
+			tb_username_login->Focus();
+		}
+	}
+
 	private: System::Void btn_back_loginpanal_Click(System::Object^ sender, System::EventArgs^ e) {
-		pn_start->BringToFront();
+		showPanel(pn_start);
 	}
 	private: System::Void btn_register_loginpanel_Click(System::Object^ sender, System::EventArgs^ e) {
 		lb_password_message_login->Text = ("Enter the password");
@@ -2703,7 +2758,8 @@ namespace SuperMarkoGUI {
 		bool usernameExists = false;
 		if (File::Exists("customers.txt")) {
 			for each (String ^ line in File::ReadAllLines("customers.txt")) {
-				if (line->StartsWith(username + ",")) {
+			array<String^>^ parts = line->Split(',');
+			if (parts->Length >= 2 && parts[1]->Trim() == username) {
 					usernameExists = true;
 					break;
 				}
@@ -2734,33 +2790,37 @@ namespace SuperMarkoGUI {
 		// === Stop if any validation failed ===
 		if (hasError) return;
 
-		// === Save to Struct ===
-		static int currentCustomerIndex = 0;
-		if (currentCustomerIndex >= numOfCustomers) {
-			MessageBox::Show("Max customer limit reached.");
-			return;
+	// === Generate Customer ID ===
+	int newCustomerID = 1; // Default ID
+	if (File::Exists("customers.txt")) {
+		array<String^>^ allCustomers = File::ReadAllLines("customers.txt");
+		newCustomerID = allCustomers->Length + 1;
 		}
 
+	// === Save to Struct ===
 		CUSTOMER^ newCustomer = gcnew CUSTOMER();
-		newCustomer->ID = currentCustomerIndex + 1;
+	newCustomer->ID = newCustomerID;
 		newCustomer->Name = username;
 		newCustomer->Password = password;
 		newCustomer->PhoneNumber = phone;
 		newCustomer->Location = location;
-		customers[currentCustomerIndex] = newCustomer;
-		currentCustomerIndex++;
+	newCustomer->Password = password;
+
+	if (newCustomerID <= numOfCustomers) {
+		customers[newCustomerID - 1] = newCustomer;
+	}
 
 		// === Save to File ===
 		try {
 			StreamWriter^ sw = gcnew StreamWriter("customers.txt", true);
-			String^ line = username + "," + password + "," + phone + "," + location;
+		String^ line = newCustomerID.ToString() + "," + username + "," + phone + "," + location + "," + password;
 			sw->WriteLine(line);
 			sw->Close();
 
 			MessageBox::Show("Registration successful!");
 
 			// Bring login panel to front
-			pn_login->BringToFront();
+		showPanel(pn_login);
 
 			// Clear all TextBoxes inside pn_register
 			for each (Control ^ c in pn_register->Controls) {
@@ -2851,12 +2911,6 @@ namespace SuperMarkoGUI {
 			tb_password_login->UseSystemPasswordChar = false;
 		}
 	}
-	private: System::Void btn_login_loginpanel_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (tb_username_login->Text->Trim() != "" && tb_password_login->Text->Trim() != "") {
-			StreamReader^ sr = gcnew StreamReader("customers.txt");
-			String^ line = "";
-			int index = 0;
-			bool found = false;
 
 			while ((line = sr->ReadLine()) != nullptr) {
 				array<String^>^ parts = line->Split(',');
@@ -2866,40 +2920,6 @@ namespace SuperMarkoGUI {
 				String^ filePass = parts[1]->Trim();
 				String^ filePhone = parts[2]->Trim();
 				String^ fileLocation = parts[3]->Trim();
-
-				if (tb_username_login->Text->Trim() == fileUser && tb_password_login->Text->Trim() == filePass) {
-					// ✅ Save to CUSTOMER array
-					CUSTOMER^ c = gcnew CUSTOMER();
-					c->ID = index + 1;
-					c->Name = fileUser;
-					c->Password = filePass;
-					c->PhoneNumber = filePhone;
-					c->Location = fileLocation;
-					customers[index] = c;
-
-					currentCustomerIndex = index; // ✅ Save index
-
-					lb_profile->Text = fileUser;
-					pn_defualt->BringToFront();
-					tb_username_login->Text = "";
-					tb_password_login->Text = "";
-					found = true;
-					break;
-				}
-				index++;
-			}
-			sr->Close();
-
-			if (!found) {
-				lb_username_message_login->Text = "Username is incorrect.";
-				lb_password_message_login->Text = "Password is incorrect.";
-			}
-		}
-		else {
-			MessageBox::Show("Login failed. Please check your username and password.");
-			tb_username_login->Focus();
-		}
-	}
 
 	private: System::Void pn_register_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
@@ -3171,11 +3191,84 @@ namespace SuperMarkoGUI {
 		pn_resetPassword->BringToFront();
 	}
 	private: System::Void btn_saveEdit_Click(System::Object^ sender, System::EventArgs^ e) {
-		//save edits to array struct
-		//go to current info and show a message of data is saved
-		pn_currentInfo->BringToFront();
+		try {
+			// Extract input values
+			String^ newName = textBox7->Text->Trim();
+			String^ newPhone = textBox5->Text->Trim();
+			String^ newLocation = textBox6->Text->Trim();
+			String^ newPassword = tb_currentPassword->Text->Trim(); // optional to validate
 
+			bool hasError = false;
+			String^ currentID = customers[currentCustomerIndex]->ID.ToString();
+
+			// === Phone Validation ===
+			if (newPhone == "" || newPhone->Length != 11 || !System::Text::RegularExpressions::Regex::IsMatch(newPhone, "^[0-9]{11}$")) {
+				MessageBox::Show("Phone number must be exactly 11 digits.");
+				textBox5->Focus();
+				textBox5->SelectAll();
+				hasError = true;
+			}
+
+			// === Name Validation ===
+			if (newName == "") {
+				MessageBox::Show("Name cannot be empty.");
+				textBox7->Focus();
+				hasError = true;
+			}
+			else {
+				// Check if name already exists (excluding current user)
+				array<String^>^ lines = File::ReadAllLines("customers.txt");
+				for each (String ^ line in lines) {
+					array<String^>^ parts = line->Split(',');
+					if (parts->Length < 5) continue;
+
+					if (parts[1]->Trim()->ToLower() == newName->ToLower() && parts[0]->Trim() != currentID) {
+						MessageBox::Show("This name is already taken by another user.");
+						textBox7->Focus();
+						hasError = true;
+						break;
+					}
+				}
+			}
+
+			// === Location Validation ===
+			if (newLocation == "") {
+				MessageBox::Show("Location cannot be empty.");
+				textBox6->Focus();
+				hasError = true;
+			}
+
+			if (hasError) return;
+
+			// === Update Customer in File ===
+			array<String^>^ linesToUpdate = File::ReadAllLines("customers.txt");
+
+			for (int i = 0; i < linesToUpdate->Length; i++) {
+				array<String^>^ parts = linesToUpdate[i]->Split(',');
+				if (parts->Length < 5) continue;
+
+				if (parts[0]->Trim() == currentID) {
+					String^ updatedLine = currentID + "," +
+						newName + "," +
+						newPhone + "," +
+						newLocation + "," +
+						newPassword;
+
+					linesToUpdate[i] = updatedLine;
+					break;
+				}
+			}
+
+			File::WriteAllLines("customers.txt", linesToUpdate);
+			MessageBox::Show("Customer info updated successfully!");
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Error while saving: " + ex->Message);
+		}
 	}
+
+
+
 	private: System::Void btn_cancelEdit_Click(System::Object^ sender, System::EventArgs^ e) {
 		pn_currentInfo->BringToFront();
 	}
