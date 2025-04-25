@@ -319,7 +319,7 @@ namespace SuperMarkoGUI {
 	private: System::Windows::Forms::Label^ label1;
 
 
-	private: System::Windows::Forms::Label^ label2;
+
 	private: System::Windows::Forms::Button^ btn_exit;
 	private: System::Windows::Forms::Button^ btn_start;
 	private: System::Windows::Forms::Button^ btn_login_loginpanel;
@@ -528,6 +528,13 @@ private: System::Windows::Forms::TextBox^ tb_confirmPassword;
 
 
 private: System::Windows::Forms::Label^ label17;
+private: System::Windows::Forms::Button^ btn_TotalBill;
+private: System::Windows::Forms::Panel^ pn_viewBill;
+private: System::Windows::Forms::Label^ label18;
+
+private: System::Windows::Forms::Label^ label19;
+private: System::Windows::Forms::Label^ label2;
+
 
 
 
@@ -574,6 +581,8 @@ private: System::Windows::Forms::Label^ label17;
 			this->btn_close = (gcnew System::Windows::Forms::Button());
 			this->pn_main_dashboard = (gcnew System::Windows::Forms::Panel());
 			this->pn_defualt = (gcnew System::Windows::Forms::Panel());
+			this->pn_viewBill = (gcnew System::Windows::Forms::Panel());
+			this->label18 = (gcnew System::Windows::Forms::Label());
 			this->pn_edit_information = (gcnew System::Windows::Forms::Panel());
 			this->pn_currentInfo = (gcnew System::Windows::Forms::Panel());
 			this->btn_seepassword_editinfo = (gcnew System::Windows::Forms::Button());
@@ -645,12 +654,12 @@ private: System::Windows::Forms::Label^ label17;
 			this->pn_fruits_category = (gcnew System::Windows::Forms::Panel());
 			this->flowLayoutPanel3 = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->pn_orders = (gcnew System::Windows::Forms::Panel());
-			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->pn_left_bar = (gcnew System::Windows::Forms::Panel());
 			this->flowLayoutPanel1 = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->btn_edit_information = (gcnew System::Windows::Forms::Button());
 			this->btn_products = (gcnew System::Windows::Forms::Button());
 			this->btn_orders = (gcnew System::Windows::Forms::Button());
+			this->btn_TotalBill = (gcnew System::Windows::Forms::Button());
 			this->btn_login = (gcnew System::Windows::Forms::Button());
 			this->pn_picture = (gcnew System::Windows::Forms::Panel());
 			this->lb_profile = (gcnew System::Windows::Forms::Label());
@@ -698,10 +707,13 @@ private: System::Windows::Forms::Label^ label17;
 			this->lb_username_register = (gcnew System::Windows::Forms::Label());
 			this->pn_thankyou = (gcnew System::Windows::Forms::Panel());
 			this->thankyou = (gcnew System::Windows::Forms::PictureBox());
+			this->label19 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->pn_upper_bar->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_icon))->BeginInit();
 			this->pn_main_dashboard->SuspendLayout();
 			this->pn_defualt->SuspendLayout();
+			this->pn_viewBill->SuspendLayout();
 			this->pn_edit_information->SuspendLayout();
 			this->pn_currentInfo->SuspendLayout();
 			this->pn_resetPassword->SuspendLayout();
@@ -835,10 +847,11 @@ private: System::Windows::Forms::Label^ label17;
 			// 
 			// pn_defualt
 			// 
-			this->pn_defualt->Controls->Add(this->pn_edit_information);
-			this->pn_defualt->Controls->Add(this->pn_blank);
 			this->pn_defualt->Controls->Add(this->pn_products);
 			this->pn_defualt->Controls->Add(this->pn_orders);
+			this->pn_defualt->Controls->Add(this->pn_viewBill);
+			this->pn_defualt->Controls->Add(this->pn_edit_information);
+			this->pn_defualt->Controls->Add(this->pn_blank);
 			this->pn_defualt->Controls->Add(this->pn_left_bar);
 			this->pn_defualt->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_defualt->Location = System::Drawing::Point(0, 0);
@@ -847,6 +860,31 @@ private: System::Windows::Forms::Label^ label17;
 			this->pn_defualt->Size = System::Drawing::Size(1114, 605);
 			this->pn_defualt->TabIndex = 4;
 			this->pn_defualt->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_defualt_Paint);
+			// 
+			// pn_viewBill
+			// 
+			this->pn_viewBill->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
+				static_cast<System::Int32>(static_cast<System::Byte>(230)));
+			this->pn_viewBill->Controls->Add(this->label18);
+			this->pn_viewBill->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->pn_viewBill->Location = System::Drawing::Point(222, 0);
+			this->pn_viewBill->Margin = System::Windows::Forms::Padding(2);
+			this->pn_viewBill->Name = L"pn_viewBill";
+			this->pn_viewBill->Size = System::Drawing::Size(892, 605);
+			this->pn_viewBill->TabIndex = 5;
+			// 
+			// label18
+			// 
+			this->label18->Dock = System::Windows::Forms::DockStyle::Top;
+			this->label18->Font = (gcnew System::Drawing::Font(L"Segoe UI", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label18->Location = System::Drawing::Point(0, 0);
+			this->label18->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label18->Name = L"label18";
+			this->label18->Size = System::Drawing::Size(892, 120);
+			this->label18->TabIndex = 1;
+			this->label18->Text = L"Total Bill";
+			this->label18->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// pn_edit_information
 			// 
@@ -1340,6 +1378,7 @@ private: System::Windows::Forms::Label^ label17;
 			// 
 			// pn_main_category
 			// 
+			this->pn_main_category->Controls->Add(this->label2);
 			this->pn_main_category->Controls->Add(this->flowLayoutPanel2);
 			this->pn_main_category->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_main_category->Location = System::Drawing::Point(0, 0);
@@ -1351,6 +1390,7 @@ private: System::Windows::Forms::Label^ label17;
 			// 
 			// flowLayoutPanel2
 			// 
+			this->flowLayoutPanel2->AutoScroll = true;
 			this->flowLayoutPanel2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)),
 				static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(230)));
 			this->flowLayoutPanel2->Controls->Add(this->btn_fruits);
@@ -1363,11 +1403,10 @@ private: System::Windows::Forms::Label^ label17;
 			this->flowLayoutPanel2->Controls->Add(this->btn_snacks);
 			this->flowLayoutPanel2->Controls->Add(this->btn_household);
 			this->flowLayoutPanel2->Controls->Add(this->btn_pet);
-			this->flowLayoutPanel2->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->flowLayoutPanel2->Location = System::Drawing::Point(0, 0);
+			this->flowLayoutPanel2->Location = System::Drawing::Point(-5, 120);
 			this->flowLayoutPanel2->Margin = System::Windows::Forms::Padding(2);
 			this->flowLayoutPanel2->Name = L"flowLayoutPanel2";
-			this->flowLayoutPanel2->Size = System::Drawing::Size(892, 605);
+			this->flowLayoutPanel2->Size = System::Drawing::Size(895, 485);
 			this->flowLayoutPanel2->TabIndex = 0;
 			this->flowLayoutPanel2->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::flowLayoutPanel2_Paint);
 			// 
@@ -1384,7 +1423,7 @@ private: System::Windows::Forms::Label^ label17;
 			this->btn_fruits->Location = System::Drawing::Point(5, 6);
 			this->btn_fruits->Margin = System::Windows::Forms::Padding(5, 6, 4, 4);
 			this->btn_fruits->Name = L"btn_fruits";
-			this->btn_fruits->Size = System::Drawing::Size(436, 110);
+			this->btn_fruits->Size = System::Drawing::Size(430, 110);
 			this->btn_fruits->TabIndex = 0;
 			this->btn_fruits->Text = L"Fresh Produce(fruits)";
 			this->btn_fruits->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -1401,10 +1440,10 @@ private: System::Windows::Forms::Label^ label17;
 				static_cast<System::Byte>(0)));
 			this->btn_vegetabe->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_vegetabe.Image")));
 			this->btn_vegetabe->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			this->btn_vegetabe->Location = System::Drawing::Point(450, 6);
+			this->btn_vegetabe->Location = System::Drawing::Point(444, 6);
 			this->btn_vegetabe->Margin = System::Windows::Forms::Padding(5, 6, 4, 4);
 			this->btn_vegetabe->Name = L"btn_vegetabe";
-			this->btn_vegetabe->Size = System::Drawing::Size(436, 110);
+			this->btn_vegetabe->Size = System::Drawing::Size(430, 110);
 			this->btn_vegetabe->TabIndex = 1;
 			this->btn_vegetabe->Text = L"Fresh Produce(vegetables) ";
 			this->btn_vegetabe->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -1424,7 +1463,7 @@ private: System::Windows::Forms::Label^ label17;
 			this->btn_dairy->Location = System::Drawing::Point(5, 126);
 			this->btn_dairy->Margin = System::Windows::Forms::Padding(5, 6, 4, 4);
 			this->btn_dairy->Name = L"btn_dairy";
-			this->btn_dairy->Size = System::Drawing::Size(436, 110);
+			this->btn_dairy->Size = System::Drawing::Size(430, 110);
 			this->btn_dairy->TabIndex = 2;
 			this->btn_dairy->Text = L"Dairy and Eggs";
 			this->btn_dairy->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -1441,10 +1480,10 @@ private: System::Windows::Forms::Label^ label17;
 				static_cast<System::Byte>(0)));
 			this->btn_butcher->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_butcher.Image")));
 			this->btn_butcher->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			this->btn_butcher->Location = System::Drawing::Point(450, 126);
+			this->btn_butcher->Location = System::Drawing::Point(444, 126);
 			this->btn_butcher->Margin = System::Windows::Forms::Padding(5, 6, 4, 4);
 			this->btn_butcher->Name = L"btn_butcher";
-			this->btn_butcher->Size = System::Drawing::Size(436, 110);
+			this->btn_butcher->Size = System::Drawing::Size(430, 110);
 			this->btn_butcher->TabIndex = 3;
 			this->btn_butcher->Text = L"Bucher shop";
 			this->btn_butcher->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -1464,7 +1503,7 @@ private: System::Windows::Forms::Label^ label17;
 			this->btn_seafood->Location = System::Drawing::Point(5, 246);
 			this->btn_seafood->Margin = System::Windows::Forms::Padding(5, 6, 4, 4);
 			this->btn_seafood->Name = L"btn_seafood";
-			this->btn_seafood->Size = System::Drawing::Size(436, 110);
+			this->btn_seafood->Size = System::Drawing::Size(430, 110);
 			this->btn_seafood->TabIndex = 4;
 			this->btn_seafood->Text = L"Seafood";
 			this->btn_seafood->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -1481,10 +1520,10 @@ private: System::Windows::Forms::Label^ label17;
 				static_cast<System::Byte>(0)));
 			this->btn_poultry->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_poultry.Image")));
 			this->btn_poultry->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			this->btn_poultry->Location = System::Drawing::Point(450, 246);
+			this->btn_poultry->Location = System::Drawing::Point(444, 246);
 			this->btn_poultry->Margin = System::Windows::Forms::Padding(5, 6, 4, 4);
 			this->btn_poultry->Name = L"btn_poultry";
-			this->btn_poultry->Size = System::Drawing::Size(436, 110);
+			this->btn_poultry->Size = System::Drawing::Size(430, 110);
 			this->btn_poultry->TabIndex = 5;
 			this->btn_poultry->Text = L"Poultry";
 			this->btn_poultry->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -1504,7 +1543,7 @@ private: System::Windows::Forms::Label^ label17;
 			this->btn_bakery->Location = System::Drawing::Point(5, 366);
 			this->btn_bakery->Margin = System::Windows::Forms::Padding(5, 6, 4, 4);
 			this->btn_bakery->Name = L"btn_bakery";
-			this->btn_bakery->Size = System::Drawing::Size(436, 110);
+			this->btn_bakery->Size = System::Drawing::Size(430, 110);
 			this->btn_bakery->TabIndex = 6;
 			this->btn_bakery->Text = L"Bakery and Bread";
 			this->btn_bakery->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -1521,10 +1560,10 @@ private: System::Windows::Forms::Label^ label17;
 				static_cast<System::Byte>(0)));
 			this->btn_snacks->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_snacks.Image")));
 			this->btn_snacks->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			this->btn_snacks->Location = System::Drawing::Point(450, 366);
+			this->btn_snacks->Location = System::Drawing::Point(444, 366);
 			this->btn_snacks->Margin = System::Windows::Forms::Padding(5, 6, 4, 4);
 			this->btn_snacks->Name = L"btn_snacks";
-			this->btn_snacks->Size = System::Drawing::Size(436, 110);
+			this->btn_snacks->Size = System::Drawing::Size(430, 110);
 			this->btn_snacks->TabIndex = 7;
 			this->btn_snacks->Text = L"Snacks and Sweets";
 			this->btn_snacks->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -1544,7 +1583,7 @@ private: System::Windows::Forms::Label^ label17;
 			this->btn_household->Location = System::Drawing::Point(5, 486);
 			this->btn_household->Margin = System::Windows::Forms::Padding(5, 6, 4, 4);
 			this->btn_household->Name = L"btn_household";
-			this->btn_household->Size = System::Drawing::Size(436, 110);
+			this->btn_household->Size = System::Drawing::Size(430, 110);
 			this->btn_household->TabIndex = 8;
 			this->btn_household->Text = L"Household and Cleaning supplies";
 			this->btn_household->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -1561,10 +1600,10 @@ private: System::Windows::Forms::Label^ label17;
 				static_cast<System::Byte>(0)));
 			this->btn_pet->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_pet.Image")));
 			this->btn_pet->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			this->btn_pet->Location = System::Drawing::Point(450, 486);
+			this->btn_pet->Location = System::Drawing::Point(444, 486);
 			this->btn_pet->Margin = System::Windows::Forms::Padding(5, 6, 4, 4);
 			this->btn_pet->Name = L"btn_pet";
-			this->btn_pet->Size = System::Drawing::Size(436, 110);
+			this->btn_pet->Size = System::Drawing::Size(430, 110);
 			this->btn_pet->TabIndex = 9;
 			this->btn_pet->Text = L"Pet Supplies";
 			this->btn_pet->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -1783,7 +1822,7 @@ private: System::Windows::Forms::Label^ label17;
 			// 
 			// pn_orders
 			// 
-			this->pn_orders->Controls->Add(this->label2);
+			this->pn_orders->Controls->Add(this->label19);
 			this->pn_orders->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_orders->Location = System::Drawing::Point(222, 0);
 			this->pn_orders->Margin = System::Windows::Forms::Padding(2);
@@ -1791,18 +1830,6 @@ private: System::Windows::Forms::Label^ label17;
 			this->pn_orders->Size = System::Drawing::Size(892, 605);
 			this->pn_orders->TabIndex = 3;
 			this->pn_orders->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_orders_Paint);
-			// 
-			// label2
-			// 
-			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(203, 241);
-			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(497, 123);
-			this->label2->TabIndex = 1;
-			this->label2->Text = L"Order";
-			this->label2->Click += gcnew System::EventHandler(this, &MyForm::label2_Click);
 			// 
 			// pn_left_bar
 			// 
@@ -1823,6 +1850,7 @@ private: System::Windows::Forms::Label^ label17;
 			this->flowLayoutPanel1->Controls->Add(this->btn_edit_information);
 			this->flowLayoutPanel1->Controls->Add(this->btn_products);
 			this->flowLayoutPanel1->Controls->Add(this->btn_orders);
+			this->flowLayoutPanel1->Controls->Add(this->btn_TotalBill);
 			this->flowLayoutPanel1->Controls->Add(this->btn_login);
 			this->flowLayoutPanel1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->flowLayoutPanel1->Location = System::Drawing::Point(0, 163);
@@ -1844,7 +1872,7 @@ private: System::Windows::Forms::Label^ label17;
 			this->btn_edit_information->Location = System::Drawing::Point(2, 16);
 			this->btn_edit_information->Margin = System::Windows::Forms::Padding(2, 16, 2, 2);
 			this->btn_edit_information->Name = L"btn_edit_information";
-			this->btn_edit_information->Size = System::Drawing::Size(220, 80);
+			this->btn_edit_information->Size = System::Drawing::Size(220, 50);
 			this->btn_edit_information->TabIndex = 0;
 			this->btn_edit_information->Text = L"Edit Intormation";
 			this->btn_edit_information->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
@@ -1860,10 +1888,10 @@ private: System::Windows::Forms::Label^ label17;
 			this->btn_products->ForeColor = System::Drawing::Color::White;
 			this->btn_products->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_products.Image")));
 			this->btn_products->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->btn_products->Location = System::Drawing::Point(2, 114);
+			this->btn_products->Location = System::Drawing::Point(2, 84);
 			this->btn_products->Margin = System::Windows::Forms::Padding(2, 16, 2, 2);
 			this->btn_products->Name = L"btn_products";
-			this->btn_products->Size = System::Drawing::Size(220, 80);
+			this->btn_products->Size = System::Drawing::Size(220, 54);
 			this->btn_products->TabIndex = 1;
 			this->btn_products->Text = L"Products";
 			this->btn_products->UseVisualStyleBackColor = true;
@@ -1878,14 +1906,32 @@ private: System::Windows::Forms::Label^ label17;
 			this->btn_orders->ForeColor = System::Drawing::Color::White;
 			this->btn_orders->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_orders.Image")));
 			this->btn_orders->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->btn_orders->Location = System::Drawing::Point(2, 212);
+			this->btn_orders->Location = System::Drawing::Point(2, 156);
 			this->btn_orders->Margin = System::Windows::Forms::Padding(2, 16, 2, 2);
 			this->btn_orders->Name = L"btn_orders";
-			this->btn_orders->Size = System::Drawing::Size(220, 80);
+			this->btn_orders->Size = System::Drawing::Size(220, 53);
 			this->btn_orders->TabIndex = 2;
 			this->btn_orders->Text = L"Orders";
 			this->btn_orders->UseVisualStyleBackColor = true;
 			this->btn_orders->Click += gcnew System::EventHandler(this, &MyForm::btn_orders_Click);
+			// 
+			// btn_TotalBill
+			// 
+			this->btn_TotalBill->FlatAppearance->BorderSize = 0;
+			this->btn_TotalBill->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btn_TotalBill->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btn_TotalBill->ForeColor = System::Drawing::Color::White;
+			this->btn_TotalBill->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_TotalBill.Image")));
+			this->btn_TotalBill->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->btn_TotalBill->Location = System::Drawing::Point(2, 227);
+			this->btn_TotalBill->Margin = System::Windows::Forms::Padding(2, 16, 2, 2);
+			this->btn_TotalBill->Name = L"btn_TotalBill";
+			this->btn_TotalBill->Size = System::Drawing::Size(220, 52);
+			this->btn_TotalBill->TabIndex = 4;
+			this->btn_TotalBill->Text = L"Total Bill";
+			this->btn_TotalBill->UseVisualStyleBackColor = true;
+			this->btn_TotalBill->Click += gcnew System::EventHandler(this, &MyForm::btn_TotalBill_Click);
 			// 
 			// btn_login
 			// 
@@ -1896,7 +1942,7 @@ private: System::Windows::Forms::Label^ label17;
 			this->btn_login->ForeColor = System::Drawing::Color::White;
 			this->btn_login->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_login.Image")));
 			this->btn_login->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->btn_login->Location = System::Drawing::Point(2, 363);
+			this->btn_login->Location = System::Drawing::Point(2, 350);
 			this->btn_login->Margin = System::Windows::Forms::Padding(2, 69, 2, 2);
 			this->btn_login->Name = L"btn_login";
 			this->btn_login->Size = System::Drawing::Size(220, 80);
@@ -2582,6 +2628,32 @@ private: System::Windows::Forms::Label^ label17;
 			this->thankyou->TabStop = false;
 			this->thankyou->Click += gcnew System::EventHandler(this, &MyForm::thankyou_Click);
 			// 
+			// label19
+			// 
+			this->label19->Dock = System::Windows::Forms::DockStyle::Top;
+			this->label19->Font = (gcnew System::Drawing::Font(L"Segoe UI", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label19->Location = System::Drawing::Point(0, 0);
+			this->label19->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label19->Name = L"label19";
+			this->label19->Size = System::Drawing::Size(892, 120);
+			this->label19->TabIndex = 2;
+			this->label19->Text = L"Order";
+			this->label19->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// label2
+			// 
+			this->label2->Dock = System::Windows::Forms::DockStyle::Top;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Segoe UI", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->Location = System::Drawing::Point(0, 0);
+			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(892, 120);
+			this->label2->TabIndex = 1;
+			this->label2->Text = L"Products";
+			this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -2600,6 +2672,7 @@ private: System::Windows::Forms::Label^ label17;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_icon))->EndInit();
 			this->pn_main_dashboard->ResumeLayout(false);
 			this->pn_defualt->ResumeLayout(false);
+			this->pn_viewBill->ResumeLayout(false);
 			this->pn_edit_information->ResumeLayout(false);
 			this->pn_currentInfo->ResumeLayout(false);
 			this->pn_currentInfo->PerformLayout();
@@ -3345,6 +3418,9 @@ private: System::Void tb_edit_location_TextChanged(System::Object^ sender, Syste
 private: System::Void label17_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void tb_confirmPassword_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void btn_TotalBill_Click(System::Object^ sender, System::EventArgs^ e) {
+	showPanel(pn_viewBill);
 }
 };
 }
