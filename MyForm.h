@@ -3323,18 +3323,7 @@ private: System::Windows::Forms::Label^ label20;
 
 			  
 		   }
-	private: System::Void deleteButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		Button^ btnDelete = safe_cast<Button^>(sender);
-		if (btnDelete == nullptr) return;
-
-		String^ productName = safe_cast<String^>(btnDelete->Tag);
-
-		if (productName != nullptr) {
-			if (MessageBox::Show("Are you sure you want to delete " + productName + "?", "Confirm Delete", MessageBoxButtons::YesNo) == System::Windows::Forms::DialogResult::Yes) {
-				
-			}
-		}
-	}
+	
     private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 		   }
 	private: System::Void tb_location_TextChanged(System::Object^ sender, System::EventArgs^ e) {
