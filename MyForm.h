@@ -1849,7 +1849,7 @@ private: System::Windows::Forms::Button^ link_login;
 			this->btn_edit_information->Name = L"btn_edit_information";
 			this->btn_edit_information->Size = System::Drawing::Size(293, 74);
 			this->btn_edit_information->TabIndex = 0;
-			this->btn_edit_information->Text = L"Edit Intormation";
+			this->btn_edit_information->Text = L"Edit Information";
 			this->btn_edit_information->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
 			this->btn_edit_information->UseVisualStyleBackColor = false;
 			this->btn_edit_information->Click += gcnew System::EventHandler(this, &MyForm::btn_edit_information_Click);
@@ -3581,25 +3581,23 @@ private: System::Windows::Forms::Button^ link_login;
 			MessageBox::Show("Error saving order: " + ex->Message);
 		}
 	}
+	
 	private: System::Void loadCurrentUserOrder() {
-		if (currentCustomerIndex < 0 || customers[currentCustomerIndex] == nullptr) return;
+		if (currentCustomerIndex < 0 || customers[currentCustomerIndex] == nullptr)
+			return;
 
 		try {
-			orderList->Controls->Clear();  // <-- clears old orders and header
-
-			// === Re-add the Title Header ===
-			//Label^ lblHeader = gcnew Label();
-			//lblHeader->Text = "Current Order";
-			//lblHeader->Font = gcnew Drawing::Font("Segoe UI", 20, FontStyle::Bold);
-			//lblHeader->ForeColor = Color::Navy;
-			//lblHeader->Dock = DockStyle::Top;
-			//lblHeader->Height = 50;
-			//lblHeader->TextAlign = ContentAlignment::MiddleCenter;
-			//pn_orders->Controls->Add(lblHeader);
+			pn_orders->Controls->Clear(); // Always start clean!
 
 			array<String^>^ lines = File::ReadAllLines("order.txt");
 
 			bool foundOrder = false;
+
+			// Always create the FlowLayoutPanel first
+			FlowLayoutPanel^ orderList = gcnew FlowLayoutPanel();
+			orderList->Dock = DockStyle::Fill;
+			orderList->AutoScroll = true;
+			pn_orders->Controls->Add(orderList);
 
 			for each (String ^ line in lines) {
 				array<String^>^ parts = line->Split('|');
@@ -3614,17 +3612,11 @@ private: System::Windows::Forms::Button^ link_login;
 					String^ productsPart = parts[1];
 					double totalPrice = Convert::ToDouble(parts[2]);
 
-					// === Rebuild the ORDER struct properly ===
+					// === Fill order memory ===
 					orders[currentCustomerIndex] = gcnew ORDER();
 					orders[currentCustomerIndex]->CustomerID = fileCustomerID;
 					orders[currentCustomerIndex]->TotalPrice = totalPrice;
 					orders[currentCustomerIndex]->productcount = 0;
-
-					//FlowLayoutPanel^ orderList = gcnew FlowLayoutPanel();
-					//orderList->Dock = DockStyle::None;
-					//orderList->Width = 860;
-					//orderList->AutoScroll = true;
-					//pn_orders->Controls->Add(orderList);
 
 					array<String^>^ productEntries = productsPart->Split(';');
 
@@ -3637,7 +3629,6 @@ private: System::Windows::Forms::Button^ link_login;
 						double qty = Convert::ToDouble(prodParts[1]);
 						double unitPrice = Convert::ToDouble(prodParts[2]);
 
-						// === Add into orders[currentCustomerIndex] memory ===
 						PRODUCT^ product = gcnew PRODUCT();
 						product->Name = productName;
 						product->Price = unitPrice;
@@ -3647,7 +3638,7 @@ private: System::Windows::Forms::Button^ link_login;
 						orders[currentCustomerIndex]->Amount[idx] = qty;
 						orders[currentCustomerIndex]->productcount++;
 
-						// === Create UI ===
+						// === Create UI for product ===
 						Panel^ itemPanel = gcnew Panel();
 						itemPanel->Height = 120;
 						itemPanel->Width = 800;
@@ -3677,7 +3668,9 @@ private: System::Windows::Forms::Button^ link_login;
 						itemPanel->Controls->Add(productImage);
 
 						Label^ lblInfo = gcnew Label();
-						lblInfo->Text = "Product: " + productName + "\nQuantity: " + qty.ToString("F2") + "\nUnit Price: " + unitPrice.ToString("F2") + " EGP\nTotal: " + (qty * unitPrice).ToString("F2") + " EGP";
+						lblInfo->Text = "Product: " + productName + "\nQuantity: " + qty.ToString("F2") +
+							"\nUnit Price: " + unitPrice.ToString("F2") + " EGP\nTotal: " +
+							(qty * unitPrice).ToString("F2") + " EGP";
 						lblInfo->Location = Point(130, 20);
 						lblInfo->Width = 450;
 						lblInfo->Height = 80;
@@ -3698,7 +3691,7 @@ private: System::Windows::Forms::Button^ link_login;
 						orderList->Controls->Add(itemPanel);
 					}
 
-					// === Total Price Label ===
+					// === Add Total Price Label ===
 					Label^ lblTotal = gcnew Label();
 					lblTotal->Text = "TOTAL ORDER: " + totalPrice.ToString("F2") + " EGP";
 					lblTotal->Font = gcnew Drawing::Font("Segoe UI", 16, FontStyle::Bold);
@@ -3706,26 +3699,32 @@ private: System::Windows::Forms::Button^ link_login;
 					lblTotal->Width = 800;
 					lblTotal->Height = 40;
 					lblTotal->TextAlign = ContentAlignment::MiddleCenter;
-
 					orderList->Controls->Add(lblTotal);
 
-					break;
+					break; // 🛑 Important! Exit after finding the first matching order
 				}
 			}
 
 			if (!foundOrder) {
+				// If no order found, show only one "No orders" label
 				Label^ lblNoOrder = gcnew Label();
 				lblNoOrder->Text = "No orders found.";
-				lblNoOrder->Font = gcnew Drawing::Font("Segoe UI", 16, FontStyle::Bold);
+				lblNoOrder->Font = gcnew Drawing::Font("Segoe UI", 18, FontStyle::Bold);
 				lblNoOrder->ForeColor = Color::Gray;
 				lblNoOrder->Dock = DockStyle::Top;
-				pn_orders->Controls->Add(lblNoOrder);
+				lblNoOrder->Width = 800;
+				lblNoOrder->Height = 50;
+				lblNoOrder->TextAlign = ContentAlignment::MiddleCenter;
+				orderList->Controls->Add(lblNoOrder);
 			}
 		}
 		catch (Exception^ ex) {
 			MessageBox::Show("Error loading order: " + ex->Message);
 		}
 	}
+
+		
+	
 		
 	
 
