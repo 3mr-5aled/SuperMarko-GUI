@@ -23,7 +23,7 @@
     <ClInclude Include="MyForm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="QuantityForm.h">
+    <ClInclude Include="DataModels.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,6 +1,5 @@
 ﻿#pragma once
 #include "DataModels.h"
-#include "QuantityForm.h" // Add this at top of MyForm.h
 #include <string>
 using namespace System;
 
@@ -3804,9 +3803,42 @@ private: System::Void handleModifyQuantityClick(System::Object^ sender, System::
 		return;
 	}
 
-	QuantityForm^ qForm = gcnew QuantityForm(productName);
-	if (qForm->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-		int newQuantity = (int)qForm->numericQuantity->Value;
+	Form^ quantityForm = gcnew Form();
+	quantityForm->Text = "Modify Quantity - " + productName;
+	quantityForm->Width = 300;
+	quantityForm->Height = 180;
+	quantityForm->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+	quantityForm->StartPosition = FormStartPosition::CenterScreen;
+
+	Label^ lbl = gcnew Label();
+	lbl->Text = "Enter new quantity:";
+	lbl->Location = Point(30, 20);
+	lbl->Width = 200;
+	quantityForm->Controls->Add(lbl);
+
+	NumericUpDown^ numericQuantity = gcnew NumericUpDown();
+	numericQuantity->Location = Point(30, 50);
+	numericQuantity->Width = 200;
+	numericQuantity->Minimum = 1;
+	numericQuantity->Maximum = 10000;
+	numericQuantity->Value = 1;
+	numericQuantity->DecimalPlaces = 0;
+	quantityForm->Controls->Add(numericQuantity);
+
+	Button^ btnOk = gcnew Button();
+	btnOk->Text = "OK";
+	btnOk->Location = Point(30, 90);
+	btnOk->DialogResult = System::Windows::Forms::DialogResult::OK;
+	quantityForm->Controls->Add(btnOk);
+
+	Button^ btnCancel = gcnew Button();
+	btnCancel->Text = "Cancel";
+	btnCancel->Location = Point(160, 90);
+	btnCancel->DialogResult = System::Windows::Forms::DialogResult::Cancel;
+	quantityForm->Controls->Add(btnCancel);
+
+	if (quantityForm->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+		int newQuantity = (int)numericQuantity->Value;
 
 		if (newQuantity <= 0) {
 			MessageBox::Show("Quantity must be greater than 0.");
@@ -3857,15 +3889,57 @@ private: System::Void handleModifyQuantityClick(System::Object^ sender, System::
 			}
 
 			File::WriteAllLines("order.txt", allLines);
-
 		}
 		catch (Exception^ ex) {
 			MessageBox::Show("Error saving updated order: " + ex->Message);
 		}
 
 		MessageBox::Show("Quantity updated successfully!");
-
 		loadCurrentUserOrder(); // Reload updated order
+	}
+}
+
+private: void CreateQuantityForm(String^ productName)
+{
+	Form^ quantityForm = gcnew Form();
+	quantityForm->Text = "Modify Quantity - " + productName;
+	quantityForm->Width = 300;
+	quantityForm->Height = 180;
+	quantityForm->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+	quantityForm->StartPosition = FormStartPosition::CenterScreen;
+
+	Label^ lbl = gcnew Label();
+	lbl->Text = "Enter new quantity:";
+	lbl->Location = Point(30, 20);
+	lbl->Width = 200;
+	quantityForm->Controls->Add(lbl);
+
+	NumericUpDown^ numericQuantity = gcnew NumericUpDown();
+	numericQuantity->Location = Point(30, 50);
+	numericQuantity->Width = 200;
+	numericQuantity->Minimum = 1;
+	numericQuantity->Maximum = 10000;
+	numericQuantity->Value = 1;
+	numericQuantity->DecimalPlaces = 0;
+	quantityForm->Controls->Add(numericQuantity);
+
+	Button^ btnOk = gcnew Button();
+	btnOk->Text = "OK";
+	btnOk->Location = Point(30, 90);
+	btnOk->DialogResult = System::Windows::Forms::DialogResult::OK;
+	quantityForm->Controls->Add(btnOk);
+
+	Button^ btnCancel = gcnew Button();
+	btnCancel->Text = "Cancel";
+	btnCancel->Location = Point(160, 90);
+	btnCancel->DialogResult = System::Windows::Forms::DialogResult::Cancel;
+	quantityForm->Controls->Add(btnCancel);
+
+	// Show the form as a dialog
+	if (quantityForm->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+	{
+		int selectedQuantity = (int)numericQuantity->Value;
+		// هنا تقدر تعمل اللي انت عايزه بالعدد اللي اختاره المستخدم
 	}
 }
 
