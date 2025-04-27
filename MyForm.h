@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "DataModels.h"
+#include "QuantityForm.h" // Add this at top of MyForm.h
 #include <string>
 using namespace System;
 
@@ -56,6 +57,60 @@ namespace SuperMarkoGUI {
 			//TODO: Add the constructor code here
 			//
 		}
+
+
+		
+
+		void refreshOrderList() {
+			orderList->Controls->Clear();
+
+			for (int i = 0; i < orders[currentCustomerIndex]->productcount; i++) {
+				if (orders[currentCustomerIndex]->Products[i] == nullptr) continue;
+
+				Panel^ orderPanel = gcnew Panel();
+				orderPanel->Width = 700;
+				orderPanel->Height = 50;
+				orderPanel->BackColor = Color::White;
+				orderPanel->Margin = System::Windows::Forms::Padding(10);
+
+				Label^ lblName = gcnew Label();
+				lblName->Text = "Product: " + orders[currentCustomerIndex]->Products[i]->Name;
+				lblName->AutoSize = false;
+				lblName->Width = 300;
+				lblName->Height = 30;
+				lblName->Location = Point(10, 10);
+
+				Label^ lblQuantity = gcnew Label();
+				lblQuantity->Text = "Quantity: " + (orders[currentCustomerIndex]->Amount[i] / orders[currentCustomerIndex]->Products[i]->Price).ToString();
+				lblQuantity->AutoSize = false;
+				lblQuantity->Width = 100;
+				lblQuantity->Height = 30;
+				lblQuantity->Location = Point(320, 10);
+
+				Button^ btnDelete = gcnew Button();
+				btnDelete->Text = "Delete";
+				btnDelete->Width = 80;
+				btnDelete->Height = 30;
+				btnDelete->Location = Point(430, 10);
+				// btnDelete->Click += ... your delete code here
+
+				Button^ btnModify = gcnew Button();
+				btnModify->Text = "Modify";
+				btnModify->Width = 80;
+				btnModify->Height = 30;
+				btnModify->Location = Point(520, 10);
+				btnModify->Click += gcnew EventHandler(this, &MyForm::handleModifyQuantityClick);
+
+				orderPanel->Controls->Add(lblName);
+				orderPanel->Controls->Add(lblQuantity);
+				orderPanel->Controls->Add(btnDelete);
+				orderPanel->Controls->Add(btnModify);
+
+				orderList->Controls->Add(orderPanel);
+			}
+		}
+
+
 		void populateCurrentUserInfo(Object^ sender, EventArgs^ e) {
 			if (currentCustomerIndex < 0 || customers[currentCustomerIndex] == nullptr) {
 				MessageBox::Show("User not logged in or data missing.");
@@ -3593,8 +3648,8 @@ private: System::Windows::Forms::Button^ link_login;
 
 			bool foundOrder = false;
 
-			// Always create the FlowLayoutPanel first
-			FlowLayoutPanel^ orderList = gcnew FlowLayoutPanel();
+			// Create FlowLayoutPanel
+			orderList = gcnew FlowLayoutPanel();
 			orderList->Dock = DockStyle::Fill;
 			orderList->AutoScroll = true;
 			pn_orders->Controls->Add(orderList);
@@ -3612,7 +3667,7 @@ private: System::Windows::Forms::Button^ link_login;
 					String^ productsPart = parts[1];
 					double totalPrice = Convert::ToDouble(parts[2]);
 
-					// === Fill order memory ===
+					// Fill order memory
 					orders[currentCustomerIndex] = gcnew ORDER();
 					orders[currentCustomerIndex]->CustomerID = fileCustomerID;
 					orders[currentCustomerIndex]->TotalPrice = totalPrice;
@@ -3644,6 +3699,9 @@ private: System::Windows::Forms::Button^ link_login;
 						itemPanel->Width = 800;
 						itemPanel->BackColor = Color::White;
 						itemPanel->Margin = System::Windows::Forms::Padding(10);
+
+						// ✨ Save product name inside Tag
+						itemPanel->Tag = productName;
 
 						PictureBox^ productImage = gcnew PictureBox();
 						productImage->Size = Drawing::Size(100, 100);
@@ -3679,14 +3737,24 @@ private: System::Windows::Forms::Button^ link_login;
 
 						Button^ btnDelete = gcnew Button();
 						btnDelete->Text = "Delete";
-						btnDelete->Width = 100;
+						btnDelete->Width = 80;
 						btnDelete->Height = 30;
 						btnDelete->BackColor = Color::FromArgb(220, 20, 60);
 						btnDelete->ForeColor = Color::White;
-						btnDelete->Location = Point(600, 40);
+						btnDelete->Location = Point(600, 30);
 						btnDelete->Tag = productName;
 						btnDelete->Click += gcnew EventHandler(this, &MyForm::deleteButton_Click);
 						itemPanel->Controls->Add(btnDelete);
+
+						Button^ btnModify = gcnew Button();
+						btnModify->Text = "Modify";
+						btnModify->Width = 80;
+						btnModify->Height = 30;
+						btnModify->BackColor = Color::FromArgb(30, 144, 255);
+						btnModify->ForeColor = Color::White;
+						btnModify->Location = Point(690, 30);
+						btnModify->Click += gcnew EventHandler(this, &MyForm::handleModifyQuantityClick);
+						itemPanel->Controls->Add(btnModify);
 
 						orderList->Controls->Add(itemPanel);
 					}
@@ -3701,12 +3769,12 @@ private: System::Windows::Forms::Button^ link_login;
 					lblTotal->TextAlign = ContentAlignment::MiddleCenter;
 					orderList->Controls->Add(lblTotal);
 
-					break; // 🛑 Important! Exit after finding the first matching order
+					break; // 🛑 Exit after finding order
 				}
 			}
 
 			if (!foundOrder) {
-				// If no order found, show only one "No orders" label
+				// No order found
 				Label^ lblNoOrder = gcnew Label();
 				lblNoOrder->Text = "No orders found.";
 				lblNoOrder->Font = gcnew Drawing::Font("Segoe UI", 18, FontStyle::Bold);
@@ -3722,6 +3790,86 @@ private: System::Windows::Forms::Button^ link_login;
 			MessageBox::Show("Error loading order: " + ex->Message);
 		}
 	}
+
+
+
+private: System::Void handleModifyQuantityClick(System::Object^ sender, System::EventArgs^ e) {
+	Button^ modifyButton = safe_cast<Button^>(sender);
+	Panel^ parentPanel = safe_cast<Panel^>(modifyButton->Parent);
+
+	String^ productName = safe_cast<String^>(parentPanel->Tag);
+
+	if (String::IsNullOrEmpty(productName)) {
+		MessageBox::Show("Product not found.");
+		return;
+	}
+
+	QuantityForm^ qForm = gcnew QuantityForm(productName);
+	if (qForm->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+		int newQuantity = (int)qForm->numericQuantity->Value;
+
+		if (newQuantity <= 0) {
+			MessageBox::Show("Quantity must be greater than 0.");
+			return;
+		}
+
+		bool found = false;
+		for (int i = 0; i < orders[currentCustomerIndex]->productcount; i++) {
+			if (orders[currentCustomerIndex]->Products[i]->Name == productName) {
+				orders[currentCustomerIndex]->Amount[i] = newQuantity;
+				found = true;
+				break;
+			}
+		}
+
+		if (!found) {
+			MessageBox::Show("Product not found in memory.");
+			return;
+		}
+
+		// Save updated order back to file
+		try {
+			array<String^>^ allLines = File::ReadAllLines("order.txt");
+
+			for (int i = 0; i < allLines->Length; i++) {
+				array<String^>^ parts = allLines[i]->Split('|');
+				if (parts->Length < 3) continue;
+
+				int fileCustomerID = Convert::ToInt32(parts[0]->Trim());
+
+				if (fileCustomerID == customers[currentCustomerIndex]->ID) {
+					String^ newProductPart = "";
+					for (int j = 0; j < orders[currentCustomerIndex]->productcount; j++) {
+						String^ name = orders[currentCustomerIndex]->Products[j]->Name;
+						double qty = orders[currentCustomerIndex]->Amount[j];
+						double unitPrice = orders[currentCustomerIndex]->Products[j]->Price;
+						newProductPart += name + "," + qty.ToString("F2") + "," + unitPrice.ToString("F2") + ";";
+					}
+
+					double newTotal = 0;
+					for (int j = 0; j < orders[currentCustomerIndex]->productcount; j++) {
+						newTotal += orders[currentCustomerIndex]->Amount[j] * orders[currentCustomerIndex]->Products[j]->Price;
+					}
+
+					allLines[i] = fileCustomerID.ToString() + "|" + newProductPart + "|" + newTotal.ToString("F2");
+					break;
+				}
+			}
+
+			File::WriteAllLines("order.txt", allLines);
+
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Error saving updated order: " + ex->Message);
+		}
+
+		MessageBox::Show("Quantity updated successfully!");
+
+		loadCurrentUserOrder(); // Reload updated order
+	}
+}
+
+
 
 		
 	
