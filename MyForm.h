@@ -3321,8 +3321,7 @@ private: System::Windows::Forms::Label^ label20;
 
 			   MessageBox::Show(productName + (productUpdated ? " updated!" : " added!") + " to your cart!");
 
-			   // Save the updated order
-			   saveCurrentOrderToFile();
+			  
 		   }
 	private: System::Void deleteButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		Button^ btnDelete = safe_cast<Button^>(sender);
@@ -3543,40 +3542,7 @@ private: System::Windows::Forms::Label^ label20;
 	}
 	private: System::Void label6_Click(System::Object^ sender, System::EventArgs^ e) {
 		}
-	private: System::Void saveCurrentOrderToFile() {
-		if (currentCustomerIndex < 0 || customers[currentCustomerIndex] == nullptr) return;
-
-		try {
-			ORDER^ order = orders[currentCustomerIndex];
-			if (order == nullptr || order->productcount == 0) {
-				// If no products left, clear the file
-				File::WriteAllText("order.txt", "");
-				return;
-			}
-
-			String^ line = order->CustomerID.ToString() + "|";
-
-			for (int i = 0; i < order->productcount; i++) {
-				String^ productName = order->Products[i]->Name;
-				double qty = order->Amount[i];
-				double unitPrice = order->Products[i]->Price;
-
-				line += productName + "," + qty.ToString("F2") + "," + unitPrice.ToString("F2");
-
-				if (i < order->productcount - 1)
-					line += ";"; // add separator if not last
-			}
-
-			line += "|" + order->TotalPrice.ToString("F2");
-
-			// Save only the current user's order
-			array<String^>^ newLine = { line };
-			File::WriteAllLines("order.txt", newLine); // overwrite the file
-		}
-		catch (Exception^ ex) {
-			MessageBox::Show("Error saving order: " + ex->Message);
-		}
-	}
+	
 	
 
 
