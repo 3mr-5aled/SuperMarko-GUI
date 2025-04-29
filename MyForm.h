@@ -512,14 +512,20 @@ private: System::Windows::Forms::TextBox^ tb_customername_theincoive;
 
 private: System::Windows::Forms::Label^ lb_customername_theinvoice;
 private: System::Windows::Forms::Label^ label18;
-
+private: System::Windows::Forms::DataGridView^ dataGridView1;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ colproduct;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ colquantity;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ colunitprice;
-private: System::Windows::Forms::DataGridViewTextBoxColumn^ coltotal;
-private: System::Windows::Forms::DataGridView^ dataGridView1;
-private: System::Windows::Forms::Label^ lp_totalprice2_theinvoice;
-private: System::Windows::Forms::Label^ lb_totalprice_theinvoice;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ colsubtotal;
+private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel13;
+
+
+
+
+
+
+
+
 
 
 
@@ -543,40 +549,16 @@ private: System::Windows::Forms::Label^ lb_totalprice_theinvoice;
 		{
 			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->pn_upper_bar = (gcnew System::Windows::Forms::Panel());
 			this->lb_brand_name = (gcnew System::Windows::Forms::Label());
 			this->pb_icon = (gcnew System::Windows::Forms::PictureBox());
 			this->btn_minimize = (gcnew System::Windows::Forms::Button());
 			this->btn_close = (gcnew System::Windows::Forms::Button());
 			this->pn_main_dashboard = (gcnew System::Windows::Forms::Panel());
-			this->pn_login = (gcnew System::Windows::Forms::Panel());
-			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->lb_password_message_login = (gcnew System::Windows::Forms::Label());
-			this->lb_username_message_login = (gcnew System::Windows::Forms::Label());
-			this->btn_refresh_password_login = (gcnew System::Windows::Forms::Button());
-			this->btn_refresh_username_login = (gcnew System::Windows::Forms::Button());
-			this->btn_seepasword_login = (gcnew System::Windows::Forms::Button());
-			this->tb_password_login = (gcnew System::Windows::Forms::TextBox());
-			this->tb_username_login = (gcnew System::Windows::Forms::TextBox());
-			this->lb_password = (gcnew System::Windows::Forms::Label());
-			this->lb_username = (gcnew System::Windows::Forms::Label());
-			this->btn_register_loginpanel = (gcnew System::Windows::Forms::Button());
-			this->btn_back_loginpanal = (gcnew System::Windows::Forms::Button());
-			this->btn_login_loginpanel = (gcnew System::Windows::Forms::Button());
 			this->pn_defualt = (gcnew System::Windows::Forms::Panel());
 			this->pn_viewBill = (gcnew System::Windows::Forms::Panel());
 			this->pb_theinvoice = (gcnew System::Windows::Forms::PictureBox());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
-			this->lp_totalprice2_theinvoice = (gcnew System::Windows::Forms::Label());
-			this->lb_totalprice_theinvoice = (gcnew System::Windows::Forms::Label());
-			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->colproduct = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->colquantity = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->colunitprice = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->coltotal = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->label18 = (gcnew System::Windows::Forms::Label());
 			this->tb_customername_theincoive = (gcnew System::Windows::Forms::TextBox());
 			this->lb_customername_theinvoice = (gcnew System::Windows::Forms::Label());
@@ -669,6 +651,21 @@ private: System::Windows::Forms::Label^ lb_totalprice_theinvoice;
 			this->pn_picture = (gcnew System::Windows::Forms::Panel());
 			this->lb_profile = (gcnew System::Windows::Forms::Label());
 			this->pb_profile = (gcnew System::Windows::Forms::PictureBox());
+			this->pn_login = (gcnew System::Windows::Forms::Panel());
+			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->lb_password_message_login = (gcnew System::Windows::Forms::Label());
+			this->lb_username_message_login = (gcnew System::Windows::Forms::Label());
+			this->btn_refresh_password_login = (gcnew System::Windows::Forms::Button());
+			this->btn_refresh_username_login = (gcnew System::Windows::Forms::Button());
+			this->btn_seepasword_login = (gcnew System::Windows::Forms::Button());
+			this->tb_password_login = (gcnew System::Windows::Forms::TextBox());
+			this->tb_username_login = (gcnew System::Windows::Forms::TextBox());
+			this->lb_password = (gcnew System::Windows::Forms::Label());
+			this->lb_username = (gcnew System::Windows::Forms::Label());
+			this->btn_register_loginpanel = (gcnew System::Windows::Forms::Button());
+			this->btn_back_loginpanal = (gcnew System::Windows::Forms::Button());
+			this->btn_login_loginpanel = (gcnew System::Windows::Forms::Button());
 			this->pn_register = (gcnew System::Windows::Forms::Panel());
 			this->link_login = (gcnew System::Windows::Forms::Button());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
@@ -698,16 +695,19 @@ private: System::Windows::Forms::Label^ lb_totalprice_theinvoice;
 			this->pn_thankyou = (gcnew System::Windows::Forms::Panel());
 			this->thankyou = (gcnew System::Windows::Forms::PictureBox());
 			this->timerforexit = (gcnew System::Windows::Forms::Timer(this->components));
+			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->colproduct = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->colquantity = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->colunitprice = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->colsubtotal = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->flowLayoutPanel13 = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->pn_upper_bar->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_icon))->BeginInit();
 			this->pn_main_dashboard->SuspendLayout();
-			this->pn_login->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			this->pn_defualt->SuspendLayout();
 			this->pn_viewBill->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_theinvoice))->BeginInit();
 			this->panel1->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->pn_products->SuspendLayout();
 			this->pn_main_category->SuspendLayout();
 			this->flowLayoutPanel2->SuspendLayout();
@@ -732,12 +732,16 @@ private: System::Windows::Forms::Label^ lb_totalprice_theinvoice;
 			this->flowLayoutPanel1->SuspendLayout();
 			this->pn_picture->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_profile))->BeginInit();
+			this->pn_login->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			this->pn_register->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->pn_start->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->welcomeScreen))->BeginInit();
 			this->pn_thankyou->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->thankyou))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
+			this->flowLayoutPanel13->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// pn_upper_bar
@@ -836,235 +840,6 @@ private: System::Windows::Forms::Label^ lb_totalprice_theinvoice;
 			this->pn_main_dashboard->TabIndex = 1;
 			this->pn_main_dashboard->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_main_dashboard_Paint);
 			// 
-			// pn_login
-			// 
-			this->pn_login->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pn_login.BackgroundImage")));
-			this->pn_login->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->pn_login->Controls->Add(this->pictureBox2);
-			this->pn_login->Controls->Add(this->label3);
-			this->pn_login->Controls->Add(this->lb_password_message_login);
-			this->pn_login->Controls->Add(this->lb_username_message_login);
-			this->pn_login->Controls->Add(this->btn_refresh_password_login);
-			this->pn_login->Controls->Add(this->btn_refresh_username_login);
-			this->pn_login->Controls->Add(this->btn_seepasword_login);
-			this->pn_login->Controls->Add(this->tb_password_login);
-			this->pn_login->Controls->Add(this->tb_username_login);
-			this->pn_login->Controls->Add(this->lb_password);
-			this->pn_login->Controls->Add(this->lb_username);
-			this->pn_login->Controls->Add(this->btn_register_loginpanel);
-			this->pn_login->Controls->Add(this->btn_back_loginpanal);
-			this->pn_login->Controls->Add(this->btn_login_loginpanel);
-			this->pn_login->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn_login->Location = System::Drawing::Point(0, 0);
-			this->pn_login->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->pn_login->Name = L"pn_login";
-			this->pn_login->Size = System::Drawing::Size(1485, 745);
-			this->pn_login->TabIndex = 2;
-			this->pn_login->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_login_Paint);
-			// 
-			// pictureBox2
-			// 
-			this->pictureBox2->BackColor = System::Drawing::Color::Transparent;
-			this->pictureBox2->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.BackgroundImage")));
-			this->pictureBox2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox2->Location = System::Drawing::Point(509, 54);
-			this->pictureBox2->Margin = System::Windows::Forms::Padding(4);
-			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(87, 62);
-			this->pictureBox2->TabIndex = 23;
-			this->pictureBox2->TabStop = false;
-			// 
-			// label3
-			// 
-			this->label3->BackColor = System::Drawing::Color::Transparent;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Segoe UI", 26.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label3->ForeColor = System::Drawing::Color::White;
-			this->label3->Location = System::Drawing::Point(605, 48);
-			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(213, 68);
-			this->label3->TabIndex = 22;
-			this->label3->Text = L"Login";
-			this->label3->Click += gcnew System::EventHandler(this, &MyForm::label3_Click);
-			// 
-			// lb_password_message_login
-			// 
-			this->lb_password_message_login->BackColor = System::Drawing::Color::Transparent;
-			this->lb_password_message_login->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->lb_password_message_login->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(254)),
-				static_cast<System::Int32>(static_cast<System::Byte>(95)), static_cast<System::Int32>(static_cast<System::Byte>(85)));
-			this->lb_password_message_login->Location = System::Drawing::Point(601, 359);
-			this->lb_password_message_login->Name = L"lb_password_message_login";
-			this->lb_password_message_login->Size = System::Drawing::Size(325, 23);
-			this->lb_password_message_login->TabIndex = 21;
-			this->lb_password_message_login->Text = L"Please enter the password";
-			this->lb_password_message_login->Click += gcnew System::EventHandler(this, &MyForm::lb_password_message_login_Click);
-			// 
-			// lb_username_message_login
-			// 
-			this->lb_username_message_login->BackColor = System::Drawing::Color::Transparent;
-			this->lb_username_message_login->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->lb_username_message_login->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(254)),
-				static_cast<System::Int32>(static_cast<System::Byte>(95)), static_cast<System::Int32>(static_cast<System::Byte>(85)));
-			this->lb_username_message_login->Location = System::Drawing::Point(592, 247);
-			this->lb_username_message_login->Name = L"lb_username_message_login";
-			this->lb_username_message_login->Size = System::Drawing::Size(325, 23);
-			this->lb_username_message_login->TabIndex = 20;
-			this->lb_username_message_login->Text = L" Please enter the username";
-			this->lb_username_message_login->Click += gcnew System::EventHandler(this, &MyForm::lb_username_message_login_Click);
-			// 
-			// btn_refresh_password_login
-			// 
-			this->btn_refresh_password_login->BackColor = System::Drawing::Color::White;
-			this->btn_refresh_password_login->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_refresh_password_login.BackgroundImage")));
-			this->btn_refresh_password_login->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->btn_refresh_password_login->FlatAppearance->BorderSize = 0;
-			this->btn_refresh_password_login->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btn_refresh_password_login->Location = System::Drawing::Point(936, 331);
-			this->btn_refresh_password_login->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->btn_refresh_password_login->Name = L"btn_refresh_password_login";
-			this->btn_refresh_password_login->Size = System::Drawing::Size(39, 23);
-			this->btn_refresh_password_login->TabIndex = 19;
-			this->btn_refresh_password_login->UseVisualStyleBackColor = false;
-			this->btn_refresh_password_login->Click += gcnew System::EventHandler(this, &MyForm::btn_refresh_password_login_Click);
-			// 
-			// btn_refresh_username_login
-			// 
-			this->btn_refresh_username_login->BackColor = System::Drawing::Color::White;
-			this->btn_refresh_username_login->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_refresh_username_login.BackgroundImage")));
-			this->btn_refresh_username_login->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->btn_refresh_username_login->FlatAppearance->BorderSize = 0;
-			this->btn_refresh_username_login->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btn_refresh_username_login->ForeColor = System::Drawing::Color::White;
-			this->btn_refresh_username_login->Location = System::Drawing::Point(940, 215);
-			this->btn_refresh_username_login->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->btn_refresh_username_login->Name = L"btn_refresh_username_login";
-			this->btn_refresh_username_login->Size = System::Drawing::Size(39, 23);
-			this->btn_refresh_username_login->TabIndex = 18;
-			this->btn_refresh_username_login->UseVisualStyleBackColor = false;
-			this->btn_refresh_username_login->Click += gcnew System::EventHandler(this, &MyForm::btn_refresh_username_login_Click);
-			// 
-			// btn_seepasword_login
-			// 
-			this->btn_seepasword_login->BackColor = System::Drawing::Color::White;
-			this->btn_seepasword_login->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_seepasword_login.BackgroundImage")));
-			this->btn_seepasword_login->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->btn_seepasword_login->FlatAppearance->BorderSize = 0;
-			this->btn_seepasword_login->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btn_seepasword_login->Location = System::Drawing::Point(881, 324);
-			this->btn_seepasword_login->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->btn_seepasword_login->Name = L"btn_seepasword_login";
-			this->btn_seepasword_login->Size = System::Drawing::Size(33, 34);
-			this->btn_seepasword_login->TabIndex = 15;
-			this->btn_seepasword_login->UseVisualStyleBackColor = false;
-			this->btn_seepasword_login->Click += gcnew System::EventHandler(this, &MyForm::btn_seepasword_login_Click);
-			// 
-			// tb_password_login
-			// 
-			this->tb_password_login->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->tb_password_login->Location = System::Drawing::Point(587, 322);
-			this->tb_password_login->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->tb_password_login->Name = L"tb_password_login";
-			this->tb_password_login->Size = System::Drawing::Size(329, 37);
-			this->tb_password_login->TabIndex = 1;
-			this->tb_password_login->UseSystemPasswordChar = true;
-			this->tb_password_login->TextChanged += gcnew System::EventHandler(this, &MyForm::tb_password_login_TextChanged);
-			// 
-			// tb_username_login
-			// 
-			this->tb_username_login->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->tb_username_login->Location = System::Drawing::Point(587, 210);
-			this->tb_username_login->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->tb_username_login->Name = L"tb_username_login";
-			this->tb_username_login->Size = System::Drawing::Size(329, 37);
-			this->tb_username_login->TabIndex = 0;
-			this->tb_username_login->TextChanged += gcnew System::EventHandler(this, &MyForm::tb_username_login_TextChanged);
-			// 
-			// lb_password
-			// 
-			this->lb_password->BackColor = System::Drawing::Color::Transparent;
-			this->lb_password->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lb_password->ForeColor = System::Drawing::Color::White;
-			this->lb_password->Location = System::Drawing::Point(393, 319);
-			this->lb_password->Name = L"lb_password";
-			this->lb_password->Size = System::Drawing::Size(177, 34);
-			this->lb_password->TabIndex = 4;
-			this->lb_password->Text = L"Password";
-			this->lb_password->Click += gcnew System::EventHandler(this, &MyForm::lb_password_Click);
-			// 
-			// lb_username
-			// 
-			this->lb_username->BackColor = System::Drawing::Color::Transparent;
-			this->lb_username->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lb_username->ForeColor = System::Drawing::Color::White;
-			this->lb_username->Location = System::Drawing::Point(393, 206);
-			this->lb_username->Name = L"lb_username";
-			this->lb_username->Size = System::Drawing::Size(177, 34);
-			this->lb_username->TabIndex = 3;
-			this->lb_username->Text = L"Username";
-			this->lb_username->Click += gcnew System::EventHandler(this, &MyForm::lb_username_Click);
-			// 
-			// btn_register_loginpanel
-			// 
-			this->btn_register_loginpanel->BackColor = System::Drawing::Color::LightCoral;
-			this->btn_register_loginpanel->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
-			this->btn_register_loginpanel->FlatAppearance->BorderSize = 0;
-			this->btn_register_loginpanel->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btn_register_loginpanel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->btn_register_loginpanel->ForeColor = System::Drawing::Color::White;
-			this->btn_register_loginpanel->Location = System::Drawing::Point(400, 564);
-			this->btn_register_loginpanel->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->btn_register_loginpanel->Name = L"btn_register_loginpanel";
-			this->btn_register_loginpanel->Size = System::Drawing::Size(229, 58);
-			this->btn_register_loginpanel->TabIndex = 3;
-			this->btn_register_loginpanel->Text = L"Register";
-			this->btn_register_loginpanel->UseVisualStyleBackColor = false;
-			this->btn_register_loginpanel->Click += gcnew System::EventHandler(this, &MyForm::btn_register_loginpanel_Click);
-			// 
-			// btn_back_loginpanal
-			// 
-			this->btn_back_loginpanal->BackColor = System::Drawing::Color::DarkGray;
-			this->btn_back_loginpanal->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
-			this->btn_back_loginpanal->FlatAppearance->BorderSize = 0;
-			this->btn_back_loginpanal->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btn_back_loginpanal->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->btn_back_loginpanal->ForeColor = System::Drawing::Color::White;
-			this->btn_back_loginpanal->Location = System::Drawing::Point(685, 564);
-			this->btn_back_loginpanal->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->btn_back_loginpanal->Name = L"btn_back_loginpanal";
-			this->btn_back_loginpanal->Size = System::Drawing::Size(229, 58);
-			this->btn_back_loginpanal->TabIndex = 4;
-			this->btn_back_loginpanal->Text = L"Back";
-			this->btn_back_loginpanal->UseVisualStyleBackColor = false;
-			this->btn_back_loginpanal->Click += gcnew System::EventHandler(this, &MyForm::btn_back_loginpanal_Click);
-			// 
-			// btn_login_loginpanel
-			// 
-			this->btn_login_loginpanel->BackColor = System::Drawing::Color::Turquoise;
-			this->btn_login_loginpanel->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
-			this->btn_login_loginpanel->FlatAppearance->BorderSize = 0;
-			this->btn_login_loginpanel->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btn_login_loginpanel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->btn_login_loginpanel->ForeColor = System::Drawing::Color::White;
-			this->btn_login_loginpanel->Location = System::Drawing::Point(552, 471);
-			this->btn_login_loginpanel->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->btn_login_loginpanel->Name = L"btn_login_loginpanel";
-			this->btn_login_loginpanel->Size = System::Drawing::Size(229, 58);
-			this->btn_login_loginpanel->TabIndex = 2;
-			this->btn_login_loginpanel->Text = L"Log in";
-			this->btn_login_loginpanel->UseVisualStyleBackColor = false;
-			this->btn_login_loginpanel->Click += gcnew System::EventHandler(this, &MyForm::btn_login_loginpanel_Click);
-			// 
 			// pn_defualt
 			// 
 			this->pn_defualt->Controls->Add(this->pn_viewBill);
@@ -1107,9 +882,8 @@ private: System::Windows::Forms::Label^ lb_totalprice_theinvoice;
 			// 
 			// panel1
 			// 
-			this->panel1->Controls->Add(this->lp_totalprice2_theinvoice);
-			this->panel1->Controls->Add(this->lb_totalprice_theinvoice);
-			this->panel1->Controls->Add(this->dataGridView1);
+			this->panel1->AutoScroll = true;
+			this->panel1->Controls->Add(this->flowLayoutPanel13);
 			this->panel1->Controls->Add(this->label18);
 			this->panel1->Controls->Add(this->tb_customername_theincoive);
 			this->panel1->Controls->Add(this->lb_customername_theinvoice);
@@ -1123,90 +897,6 @@ private: System::Windows::Forms::Label^ lb_totalprice_theinvoice;
 			this->panel1->Size = System::Drawing::Size(1189, 597);
 			this->panel1->TabIndex = 2;
 			// 
-			// lp_totalprice2_theinvoice
-			// 
-			this->lp_totalprice2_theinvoice->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->lp_totalprice2_theinvoice->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)),
-				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->lp_totalprice2_theinvoice->Location = System::Drawing::Point(549, 551);
-			this->lp_totalprice2_theinvoice->Name = L"lp_totalprice2_theinvoice";
-			this->lp_totalprice2_theinvoice->Size = System::Drawing::Size(264, 41);
-			this->lp_totalprice2_theinvoice->TabIndex = 9;
-			// 
-			// lb_totalprice_theinvoice
-			// 
-			this->lb_totalprice_theinvoice->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->lb_totalprice_theinvoice->ForeColor = System::Drawing::Color::Blue;
-			this->lb_totalprice_theinvoice->Location = System::Drawing::Point(376, 551);
-			this->lb_totalprice_theinvoice->Name = L"lb_totalprice_theinvoice";
-			this->lb_totalprice_theinvoice->Size = System::Drawing::Size(210, 41);
-			this->lb_totalprice_theinvoice->TabIndex = 8;
-			this->lb_totalprice_theinvoice->Text = L"Total price :";
-			// 
-			// dataGridView1
-			// 
-			dataGridViewCellStyle1->BackColor = System::Drawing::Color::White;
-			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 22.2F, System::Drawing::FontStyle::Regular,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			dataGridViewCellStyle1->ForeColor = System::Drawing::Color::Black;
-			this->dataGridView1->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
-			this->dataGridView1->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::AllCells;
-			this->dataGridView1->BackgroundColor = System::Drawing::Color::Gray;
-			this->dataGridView1->ColumnHeadersHeight = 35;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
-				this->colproduct,
-					this->colquantity, this->colunitprice, this->coltotal
-			});
-			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle2->BackColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::ControlText;
-			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
-			this->dataGridView1->DefaultCellStyle = dataGridViewCellStyle2;
-			this->dataGridView1->EnableHeadersVisualStyles = false;
-			this->dataGridView1->GridColor = System::Drawing::SystemColors::ActiveBorder;
-			this->dataGridView1->Location = System::Drawing::Point(2, 158);
-			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->ReadOnly = true;
-			this->dataGridView1->RowHeadersWidth = 60;
-			this->dataGridView1->RowTemplate->Height = 24;
-			this->dataGridView1->Size = System::Drawing::Size(1183, 390);
-			this->dataGridView1->TabIndex = 7;
-			// 
-			// colproduct
-			// 
-			this->colproduct->HeaderText = L"Product";
-			this->colproduct->MinimumWidth = 6;
-			this->colproduct->Name = L"colproduct";
-			this->colproduct->ReadOnly = true;
-			// 
-			// colquantity
-			// 
-			this->colquantity->HeaderText = L"Quantity";
-			this->colquantity->MinimumWidth = 6;
-			this->colquantity->Name = L"colquantity";
-			this->colquantity->ReadOnly = true;
-			// 
-			// colunitprice
-			// 
-			this->colunitprice->HeaderText = L"Unit price";
-			this->colunitprice->MinimumWidth = 6;
-			this->colunitprice->Name = L"colunitprice";
-			this->colunitprice->ReadOnly = true;
-			// 
-			// coltotal
-			// 
-			this->coltotal->HeaderText = L"Subtotal";
-			this->coltotal->MinimumWidth = 6;
-			this->coltotal->Name = L"coltotal";
-			this->coltotal->ReadOnly = true;
-			// 
 			// label18
 			// 
 			this->label18->Location = System::Drawing::Point(0, 138);
@@ -1214,7 +904,8 @@ private: System::Windows::Forms::Label^ lb_totalprice_theinvoice;
 			this->label18->Size = System::Drawing::Size(1186, 47);
 			this->label18->TabIndex = 6;
 			this->label18->Text = L"   ______________________________________________________________________________"
-				L"________________________________________________________________";
+				L"________________________________________________________________________________"
+				L"______";
 			// 
 			// tb_customername_theincoive
 			// 
@@ -2503,6 +2194,235 @@ private: System::Windows::Forms::Label^ lb_totalprice_theinvoice;
 			this->pb_profile->TabStop = false;
 			this->pb_profile->Click += gcnew System::EventHandler(this, &MyForm::pb_profile_Click);
 			// 
+			// pn_login
+			// 
+			this->pn_login->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pn_login.BackgroundImage")));
+			this->pn_login->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->pn_login->Controls->Add(this->pictureBox2);
+			this->pn_login->Controls->Add(this->label3);
+			this->pn_login->Controls->Add(this->lb_password_message_login);
+			this->pn_login->Controls->Add(this->lb_username_message_login);
+			this->pn_login->Controls->Add(this->btn_refresh_password_login);
+			this->pn_login->Controls->Add(this->btn_refresh_username_login);
+			this->pn_login->Controls->Add(this->btn_seepasword_login);
+			this->pn_login->Controls->Add(this->tb_password_login);
+			this->pn_login->Controls->Add(this->tb_username_login);
+			this->pn_login->Controls->Add(this->lb_password);
+			this->pn_login->Controls->Add(this->lb_username);
+			this->pn_login->Controls->Add(this->btn_register_loginpanel);
+			this->pn_login->Controls->Add(this->btn_back_loginpanal);
+			this->pn_login->Controls->Add(this->btn_login_loginpanel);
+			this->pn_login->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->pn_login->Location = System::Drawing::Point(0, 0);
+			this->pn_login->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->pn_login->Name = L"pn_login";
+			this->pn_login->Size = System::Drawing::Size(1485, 745);
+			this->pn_login->TabIndex = 2;
+			this->pn_login->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_login_Paint);
+			// 
+			// pictureBox2
+			// 
+			this->pictureBox2->BackColor = System::Drawing::Color::Transparent;
+			this->pictureBox2->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.BackgroundImage")));
+			this->pictureBox2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pictureBox2->Location = System::Drawing::Point(509, 54);
+			this->pictureBox2->Margin = System::Windows::Forms::Padding(4);
+			this->pictureBox2->Name = L"pictureBox2";
+			this->pictureBox2->Size = System::Drawing::Size(87, 62);
+			this->pictureBox2->TabIndex = 23;
+			this->pictureBox2->TabStop = false;
+			// 
+			// label3
+			// 
+			this->label3->BackColor = System::Drawing::Color::Transparent;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Segoe UI", 26.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label3->ForeColor = System::Drawing::Color::White;
+			this->label3->Location = System::Drawing::Point(605, 48);
+			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(213, 68);
+			this->label3->TabIndex = 22;
+			this->label3->Text = L"Login";
+			this->label3->Click += gcnew System::EventHandler(this, &MyForm::label3_Click);
+			// 
+			// lb_password_message_login
+			// 
+			this->lb_password_message_login->BackColor = System::Drawing::Color::Transparent;
+			this->lb_password_message_login->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->lb_password_message_login->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(254)),
+				static_cast<System::Int32>(static_cast<System::Byte>(95)), static_cast<System::Int32>(static_cast<System::Byte>(85)));
+			this->lb_password_message_login->Location = System::Drawing::Point(601, 359);
+			this->lb_password_message_login->Name = L"lb_password_message_login";
+			this->lb_password_message_login->Size = System::Drawing::Size(325, 23);
+			this->lb_password_message_login->TabIndex = 21;
+			this->lb_password_message_login->Text = L"Please enter the password";
+			this->lb_password_message_login->Click += gcnew System::EventHandler(this, &MyForm::lb_password_message_login_Click);
+			// 
+			// lb_username_message_login
+			// 
+			this->lb_username_message_login->BackColor = System::Drawing::Color::Transparent;
+			this->lb_username_message_login->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->lb_username_message_login->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(254)),
+				static_cast<System::Int32>(static_cast<System::Byte>(95)), static_cast<System::Int32>(static_cast<System::Byte>(85)));
+			this->lb_username_message_login->Location = System::Drawing::Point(592, 247);
+			this->lb_username_message_login->Name = L"lb_username_message_login";
+			this->lb_username_message_login->Size = System::Drawing::Size(325, 23);
+			this->lb_username_message_login->TabIndex = 20;
+			this->lb_username_message_login->Text = L" Please enter the username";
+			this->lb_username_message_login->Click += gcnew System::EventHandler(this, &MyForm::lb_username_message_login_Click);
+			// 
+			// btn_refresh_password_login
+			// 
+			this->btn_refresh_password_login->BackColor = System::Drawing::Color::White;
+			this->btn_refresh_password_login->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_refresh_password_login.BackgroundImage")));
+			this->btn_refresh_password_login->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->btn_refresh_password_login->FlatAppearance->BorderSize = 0;
+			this->btn_refresh_password_login->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btn_refresh_password_login->Location = System::Drawing::Point(936, 331);
+			this->btn_refresh_password_login->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->btn_refresh_password_login->Name = L"btn_refresh_password_login";
+			this->btn_refresh_password_login->Size = System::Drawing::Size(39, 23);
+			this->btn_refresh_password_login->TabIndex = 19;
+			this->btn_refresh_password_login->UseVisualStyleBackColor = false;
+			this->btn_refresh_password_login->Click += gcnew System::EventHandler(this, &MyForm::btn_refresh_password_login_Click);
+			// 
+			// btn_refresh_username_login
+			// 
+			this->btn_refresh_username_login->BackColor = System::Drawing::Color::White;
+			this->btn_refresh_username_login->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_refresh_username_login.BackgroundImage")));
+			this->btn_refresh_username_login->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->btn_refresh_username_login->FlatAppearance->BorderSize = 0;
+			this->btn_refresh_username_login->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btn_refresh_username_login->ForeColor = System::Drawing::Color::White;
+			this->btn_refresh_username_login->Location = System::Drawing::Point(940, 215);
+			this->btn_refresh_username_login->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->btn_refresh_username_login->Name = L"btn_refresh_username_login";
+			this->btn_refresh_username_login->Size = System::Drawing::Size(39, 23);
+			this->btn_refresh_username_login->TabIndex = 18;
+			this->btn_refresh_username_login->UseVisualStyleBackColor = false;
+			this->btn_refresh_username_login->Click += gcnew System::EventHandler(this, &MyForm::btn_refresh_username_login_Click);
+			// 
+			// btn_seepasword_login
+			// 
+			this->btn_seepasword_login->BackColor = System::Drawing::Color::White;
+			this->btn_seepasword_login->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_seepasword_login.BackgroundImage")));
+			this->btn_seepasword_login->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->btn_seepasword_login->FlatAppearance->BorderSize = 0;
+			this->btn_seepasword_login->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btn_seepasword_login->Location = System::Drawing::Point(881, 324);
+			this->btn_seepasword_login->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->btn_seepasword_login->Name = L"btn_seepasword_login";
+			this->btn_seepasword_login->Size = System::Drawing::Size(33, 34);
+			this->btn_seepasword_login->TabIndex = 15;
+			this->btn_seepasword_login->UseVisualStyleBackColor = false;
+			this->btn_seepasword_login->Click += gcnew System::EventHandler(this, &MyForm::btn_seepasword_login_Click);
+			// 
+			// tb_password_login
+			// 
+			this->tb_password_login->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->tb_password_login->Location = System::Drawing::Point(587, 322);
+			this->tb_password_login->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->tb_password_login->Name = L"tb_password_login";
+			this->tb_password_login->Size = System::Drawing::Size(329, 37);
+			this->tb_password_login->TabIndex = 1;
+			this->tb_password_login->UseSystemPasswordChar = true;
+			this->tb_password_login->TextChanged += gcnew System::EventHandler(this, &MyForm::tb_password_login_TextChanged);
+			// 
+			// tb_username_login
+			// 
+			this->tb_username_login->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->tb_username_login->Location = System::Drawing::Point(587, 210);
+			this->tb_username_login->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->tb_username_login->Name = L"tb_username_login";
+			this->tb_username_login->Size = System::Drawing::Size(329, 37);
+			this->tb_username_login->TabIndex = 0;
+			this->tb_username_login->TextChanged += gcnew System::EventHandler(this, &MyForm::tb_username_login_TextChanged);
+			// 
+			// lb_password
+			// 
+			this->lb_password->BackColor = System::Drawing::Color::Transparent;
+			this->lb_password->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lb_password->ForeColor = System::Drawing::Color::White;
+			this->lb_password->Location = System::Drawing::Point(393, 319);
+			this->lb_password->Name = L"lb_password";
+			this->lb_password->Size = System::Drawing::Size(177, 34);
+			this->lb_password->TabIndex = 4;
+			this->lb_password->Text = L"Password";
+			this->lb_password->Click += gcnew System::EventHandler(this, &MyForm::lb_password_Click);
+			// 
+			// lb_username
+			// 
+			this->lb_username->BackColor = System::Drawing::Color::Transparent;
+			this->lb_username->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lb_username->ForeColor = System::Drawing::Color::White;
+			this->lb_username->Location = System::Drawing::Point(393, 206);
+			this->lb_username->Name = L"lb_username";
+			this->lb_username->Size = System::Drawing::Size(177, 34);
+			this->lb_username->TabIndex = 3;
+			this->lb_username->Text = L"Username";
+			this->lb_username->Click += gcnew System::EventHandler(this, &MyForm::lb_username_Click);
+			// 
+			// btn_register_loginpanel
+			// 
+			this->btn_register_loginpanel->BackColor = System::Drawing::Color::LightCoral;
+			this->btn_register_loginpanel->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
+			this->btn_register_loginpanel->FlatAppearance->BorderSize = 0;
+			this->btn_register_loginpanel->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btn_register_loginpanel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->btn_register_loginpanel->ForeColor = System::Drawing::Color::White;
+			this->btn_register_loginpanel->Location = System::Drawing::Point(400, 564);
+			this->btn_register_loginpanel->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->btn_register_loginpanel->Name = L"btn_register_loginpanel";
+			this->btn_register_loginpanel->Size = System::Drawing::Size(229, 58);
+			this->btn_register_loginpanel->TabIndex = 3;
+			this->btn_register_loginpanel->Text = L"Register";
+			this->btn_register_loginpanel->UseVisualStyleBackColor = false;
+			this->btn_register_loginpanel->Click += gcnew System::EventHandler(this, &MyForm::btn_register_loginpanel_Click);
+			// 
+			// btn_back_loginpanal
+			// 
+			this->btn_back_loginpanal->BackColor = System::Drawing::Color::DarkGray;
+			this->btn_back_loginpanal->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
+			this->btn_back_loginpanal->FlatAppearance->BorderSize = 0;
+			this->btn_back_loginpanal->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btn_back_loginpanal->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->btn_back_loginpanal->ForeColor = System::Drawing::Color::White;
+			this->btn_back_loginpanal->Location = System::Drawing::Point(685, 564);
+			this->btn_back_loginpanal->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->btn_back_loginpanal->Name = L"btn_back_loginpanal";
+			this->btn_back_loginpanal->Size = System::Drawing::Size(229, 58);
+			this->btn_back_loginpanal->TabIndex = 4;
+			this->btn_back_loginpanal->Text = L"Back";
+			this->btn_back_loginpanal->UseVisualStyleBackColor = false;
+			this->btn_back_loginpanal->Click += gcnew System::EventHandler(this, &MyForm::btn_back_loginpanal_Click);
+			// 
+			// btn_login_loginpanel
+			// 
+			this->btn_login_loginpanel->BackColor = System::Drawing::Color::Turquoise;
+			this->btn_login_loginpanel->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
+			this->btn_login_loginpanel->FlatAppearance->BorderSize = 0;
+			this->btn_login_loginpanel->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btn_login_loginpanel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->btn_login_loginpanel->ForeColor = System::Drawing::Color::White;
+			this->btn_login_loginpanel->Location = System::Drawing::Point(552, 471);
+			this->btn_login_loginpanel->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->btn_login_loginpanel->Name = L"btn_login_loginpanel";
+			this->btn_login_loginpanel->Size = System::Drawing::Size(229, 58);
+			this->btn_login_loginpanel->TabIndex = 2;
+			this->btn_login_loginpanel->Text = L"Log in";
+			this->btn_login_loginpanel->UseVisualStyleBackColor = false;
+			this->btn_login_loginpanel->Click += gcnew System::EventHandler(this, &MyForm::btn_login_loginpanel_Click);
+			// 
 			// pn_register
 			// 
 			this->pn_register->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pn_register.BackgroundImage")));
@@ -2930,6 +2850,54 @@ private: System::Windows::Forms::Label^ lb_totalprice_theinvoice;
 			this->timerforexit->Interval = 3000;
 			this->timerforexit->Tick += gcnew System::EventHandler(this, &MyForm::timer1_Tick);
 			// 
+			// dataGridView1
+			// 
+			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
+			this->dataGridView1->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::AllCells;
+			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
+				this->colproduct,
+					this->colquantity, this->colunitprice, this->colsubtotal
+			});
+			this->dataGridView1->Location = System::Drawing::Point(3, 3);
+			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->RowHeadersWidth = 51;
+			this->dataGridView1->RowTemplate->Height = 24;
+			this->dataGridView1->Size = System::Drawing::Size(1165, 339);
+			this->dataGridView1->TabIndex = 7;
+			// 
+			// colproduct
+			// 
+			this->colproduct->HeaderText = L"Product";
+			this->colproduct->MinimumWidth = 6;
+			this->colproduct->Name = L"colproduct";
+			// 
+			// colquantity
+			// 
+			this->colquantity->HeaderText = L"Quantity";
+			this->colquantity->MinimumWidth = 6;
+			this->colquantity->Name = L"colquantity";
+			// 
+			// colunitprice
+			// 
+			this->colunitprice->HeaderText = L"Unit price";
+			this->colunitprice->MinimumWidth = 6;
+			this->colunitprice->Name = L"colunitprice";
+			// 
+			// colsubtotal
+			// 
+			this->colsubtotal->HeaderText = L"Subtotal";
+			this->colsubtotal->MinimumWidth = 6;
+			this->colsubtotal->Name = L"colsubtotal";
+			// 
+			// flowLayoutPanel13
+			// 
+			this->flowLayoutPanel13->Controls->Add(this->dataGridView1);
+			this->flowLayoutPanel13->Location = System::Drawing::Point(9, 166);
+			this->flowLayoutPanel13->Name = L"flowLayoutPanel13";
+			this->flowLayoutPanel13->Size = System::Drawing::Size(1168, 428);
+			this->flowLayoutPanel13->TabIndex = 8;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -2947,15 +2915,11 @@ private: System::Windows::Forms::Label^ lb_totalprice_theinvoice;
 			this->pn_upper_bar->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_icon))->EndInit();
 			this->pn_main_dashboard->ResumeLayout(false);
-			this->pn_login->ResumeLayout(false);
-			this->pn_login->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			this->pn_defualt->ResumeLayout(false);
 			this->pn_viewBill->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_theinvoice))->EndInit();
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->pn_products->ResumeLayout(false);
 			this->pn_main_category->ResumeLayout(false);
 			this->flowLayoutPanel2->ResumeLayout(false);
@@ -2983,6 +2947,9 @@ private: System::Windows::Forms::Label^ lb_totalprice_theinvoice;
 			this->flowLayoutPanel1->ResumeLayout(false);
 			this->pn_picture->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_profile))->EndInit();
+			this->pn_login->ResumeLayout(false);
+			this->pn_login->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			this->pn_register->ResumeLayout(false);
 			this->pn_register->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
@@ -2990,6 +2957,8 @@ private: System::Windows::Forms::Label^ lb_totalprice_theinvoice;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->welcomeScreen))->EndInit();
 			this->pn_thankyou->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->thankyou))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
+			this->flowLayoutPanel13->ResumeLayout(false);
 			this->ResumeLayout(false);
 
 		}
@@ -3010,7 +2979,7 @@ private: System::Windows::Forms::Label^ lb_totalprice_theinvoice;
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		showPanel(pn_start);
 		tb_date_theinvoice->Text = DateTime::Now.ToString("hh:mm tt"+"            "+ "dd/MM/yyyy" );
-		dataGridView1->EnableHeadersVisualStyles = false;
+		
 
 		dataGridView1->ColumnHeadersDefaultCellStyle->Font = gcnew System::Drawing::Font("sign ui", 14, FontStyle::Bold);
 		dataGridView1->ColumnHeadersDefaultCellStyle->ForeColor = System::Drawing::Color::DarkRed;
@@ -4268,78 +4237,69 @@ private: System::Void tb_invoicenumber_theinvoice_KeyPress(System::Object^ sende
 private: System::Void tb_customername_theincoive_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
 	e->Handled = true; // Prevent any input
 }
-//private: System::Void confirm_Click(System::Object^ sender, System::EventArgs^ e) {
-//	MessageBox::Show("Order confirmed!");
-//	StreamReader^ read = gcnew StreamReader("order.txt");
-//	String^ line;
-//
-//	if (currentCustomerIndex < 0 || customers[currentCustomerIndex] == nullptr)
-//		return;
-//
-//	while ((line = read->ReadLine()) != nullptr) {
-//		array<String^>^ parts = line->Split('|');
-//
-//		if (parts->Length < 3)
-//			continue;
-//
-//		if (currentCustomerIndex == Convert::ToInt32(parts[0]))
-//		{
-//			array<String^>^ productEntries = parts[1]->Split(';');
-//			array<String^>^ partofproduct = productEntries[0]->Split(',');
-//			dataGridView1->Rows->Add(partofproduct[0],partofproduct[1], partofproduct[2]);
-//			
-//
-//			
-//			
-//		}
-//	}
-//}
+
 private: System::Void confirm_Click(System::Object^ sender, System::EventArgs^ e) {
 	MessageBox::Show("Order confirmed!");
+	pn_viewBill->BringToFront();
+	pn_viewBill->Visible = true;
+	dataGridView1->Rows->Clear(); // Clear previous rows
+
 	StreamReader^ read = gcnew StreamReader("order.txt");
 	String^ line;
 
 	if (currentCustomerIndex < 0 || customers[currentCustomerIndex] == nullptr)
 		return;
 
+	bool foundOrder = false; 
+
+	 
 	while ((line = read->ReadLine()) != nullptr) {
 		array<String^>^ parts = line->Split('|');
 
 		if (parts->Length < 3)
 			continue;
 
-		// التأكد إن السطر خاص بالعميل الحالي
-		if (currentCustomerIndex == Convert::ToInt32(parts[0])) {
+		if (Convert::ToInt32(customers[currentCustomerIndex]->ID) == Convert::ToInt32(parts[0])) {
 			array<String^>^ productEntries = parts[1]->Split(';');
-
-			double subtotal = 0.0;
+			double totalPrice = 0.0;
 			int productCount = 0;
 
-			for each(String ^ entry in productEntries) {
+			for each (String ^ entry in productEntries) {
 				if (String::IsNullOrWhiteSpace(entry))
 					continue;
 
+				
 				array<String^>^ productDetails = entry->Split(',');
 
 				if (productDetails->Length >= 3) {
 					String^ name = productDetails[0];
-					String^ quantity = productDetails[1];
-					String^ unitPrice = productDetails[2];
+					double quantity = Convert::ToDouble(productDetails[1]);
+					double unitPrice = Convert::ToDouble(productDetails[2]);
+					double subtotal = quantity * unitPrice;
 
-					double q = Convert::ToDouble(quantity);
-					double p = Convert::ToDouble(unitPrice);
-					subtotal += q * p;
-					dataGridView1->Rows->Add(name, quantity, unitPrice, subtotal.ToString("F2"));
+					dataGridView1->Rows->Add(name, quantity.ToString("F2"), unitPrice.ToString("F2"), subtotal.ToString("F2"));
+
+					totalPrice += subtotal;
 					productCount++;
 				}
 			}
 
-			lb_totalprice_theinvoice->Text = "Total Price: " + parts[2]+ " EGP";
+			if (productCount > 0) {
+				MessageBox::Show("Total Price: " + totalPrice.ToString("F2"));
+				foundOrder = true;
+			}
 			break; 
 		}
 	}
+
+
+	if (!foundOrder) {
+		MessageBox::Show("No products found in the order for the selected customer.");
+	}
+
 	read->Close();
 }
+
 
 };
 }
