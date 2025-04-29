@@ -511,13 +511,17 @@ private: System::Windows::Forms::TextBox^ tb_invoicenumber_theinvoice;
 private: System::Windows::Forms::TextBox^ tb_customername_theincoive;
 
 private: System::Windows::Forms::Label^ lb_customername_theinvoice;
-private: System::Windows::Forms::Label^ label18;
+
 private: System::Windows::Forms::DataGridView^ dataGridView1;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ colproduct;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ colquantity;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ colunitprice;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ colsubtotal;
 private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel13;
+private: System::Windows::Forms::Panel^ panel2;
+private: System::Windows::Forms::Label^ label20;
+private: System::Windows::Forms::Label^ label21;
+private: System::Windows::Forms::Label^ label22;
 
 
 
@@ -559,7 +563,16 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel13;
 			this->pn_viewBill = (gcnew System::Windows::Forms::Panel());
 			this->pb_theinvoice = (gcnew System::Windows::Forms::PictureBox());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
-			this->label18 = (gcnew System::Windows::Forms::Label());
+			this->flowLayoutPanel13 = (gcnew System::Windows::Forms::FlowLayoutPanel());
+			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->colproduct = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->colquantity = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->colunitprice = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->colsubtotal = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->panel2 = (gcnew System::Windows::Forms::Panel());
+			this->label22 = (gcnew System::Windows::Forms::Label());
+			this->label21 = (gcnew System::Windows::Forms::Label());
+			this->label20 = (gcnew System::Windows::Forms::Label());
 			this->tb_customername_theincoive = (gcnew System::Windows::Forms::TextBox());
 			this->lb_customername_theinvoice = (gcnew System::Windows::Forms::Label());
 			this->tb_date_theinvoice = (gcnew System::Windows::Forms::TextBox());
@@ -695,12 +708,6 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel13;
 			this->pn_thankyou = (gcnew System::Windows::Forms::Panel());
 			this->thankyou = (gcnew System::Windows::Forms::PictureBox());
 			this->timerforexit = (gcnew System::Windows::Forms::Timer(this->components));
-			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->colproduct = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->colquantity = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->colunitprice = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->colsubtotal = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->flowLayoutPanel13 = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->pn_upper_bar->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_icon))->BeginInit();
 			this->pn_main_dashboard->SuspendLayout();
@@ -708,6 +715,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel13;
 			this->pn_viewBill->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_theinvoice))->BeginInit();
 			this->panel1->SuspendLayout();
+			this->flowLayoutPanel13->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
+			this->panel2->SuspendLayout();
 			this->pn_products->SuspendLayout();
 			this->pn_main_category->SuspendLayout();
 			this->flowLayoutPanel2->SuspendLayout();
@@ -740,8 +750,6 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel13;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->welcomeScreen))->BeginInit();
 			this->pn_thankyou->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->thankyou))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
-			this->flowLayoutPanel13->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// pn_upper_bar
@@ -882,9 +890,7 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel13;
 			// 
 			// panel1
 			// 
-			this->panel1->AutoScroll = true;
 			this->panel1->Controls->Add(this->flowLayoutPanel13);
-			this->panel1->Controls->Add(this->label18);
 			this->panel1->Controls->Add(this->tb_customername_theincoive);
 			this->panel1->Controls->Add(this->lb_customername_theinvoice);
 			this->panel1->Controls->Add(this->tb_date_theinvoice);
@@ -892,20 +898,105 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel13;
 			this->panel1->Controls->Add(this->lb_date_theinvice);
 			this->panel1->Controls->Add(this->lb_invoicenumber_theinvoice);
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->panel1->Location = System::Drawing::Point(0, 148);
+			this->panel1->Location = System::Drawing::Point(0, 127);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(1189, 597);
+			this->panel1->Size = System::Drawing::Size(1189, 618);
 			this->panel1->TabIndex = 2;
 			// 
-			// label18
+			// flowLayoutPanel13
 			// 
-			this->label18->Location = System::Drawing::Point(0, 138);
-			this->label18->Name = L"label18";
-			this->label18->Size = System::Drawing::Size(1186, 47);
-			this->label18->TabIndex = 6;
-			this->label18->Text = L"   ______________________________________________________________________________"
-				L"________________________________________________________________________________"
-				L"______";
+			this->flowLayoutPanel13->AutoScroll = true;
+			this->flowLayoutPanel13->Controls->Add(this->dataGridView1);
+			this->flowLayoutPanel13->Controls->Add(this->panel2);
+			this->flowLayoutPanel13->Location = System::Drawing::Point(9, 155);
+			this->flowLayoutPanel13->Name = L"flowLayoutPanel13";
+			this->flowLayoutPanel13->Size = System::Drawing::Size(1176, 428);
+			this->flowLayoutPanel13->TabIndex = 8;
+			// 
+			// dataGridView1
+			// 
+			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
+			this->dataGridView1->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::AllCells;
+			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
+				this->colproduct,
+					this->colquantity, this->colunitprice, this->colsubtotal
+			});
+			this->dataGridView1->Location = System::Drawing::Point(3, 3);
+			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->RowHeadersWidth = 51;
+			this->dataGridView1->RowTemplate->Height = 24;
+			this->dataGridView1->Size = System::Drawing::Size(1149, 256);
+			this->dataGridView1->TabIndex = 7;
+			// 
+			// colproduct
+			// 
+			this->colproduct->HeaderText = L"Product";
+			this->colproduct->MinimumWidth = 6;
+			this->colproduct->Name = L"colproduct";
+			// 
+			// colquantity
+			// 
+			this->colquantity->HeaderText = L"Quantity";
+			this->colquantity->MinimumWidth = 6;
+			this->colquantity->Name = L"colquantity";
+			// 
+			// colunitprice
+			// 
+			this->colunitprice->HeaderText = L"Unit price";
+			this->colunitprice->MinimumWidth = 6;
+			this->colunitprice->Name = L"colunitprice";
+			// 
+			// colsubtotal
+			// 
+			this->colsubtotal->HeaderText = L"Subtotal";
+			this->colsubtotal->MinimumWidth = 6;
+			this->colsubtotal->Name = L"colsubtotal";
+			// 
+			// panel2
+			// 
+			this->panel2->Controls->Add(this->label22);
+			this->panel2->Controls->Add(this->label21);
+			this->panel2->Controls->Add(this->label20);
+			this->panel2->Location = System::Drawing::Point(3, 265);
+			this->panel2->Name = L"panel2";
+			this->panel2->Size = System::Drawing::Size(1137, 164);
+			this->panel2->TabIndex = 8;
+			// 
+			// label22
+			// 
+			this->label22->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label22->ForeColor = System::Drawing::Color::Purple;
+			this->label22->Location = System::Drawing::Point(3, 84);
+			this->label22->Name = L"label22";
+			this->label22->Size = System::Drawing::Size(747, 44);
+			this->label22->TabIndex = 2;
+			// 
+			// label21
+			// 
+			this->label21->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label21->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->label21->Location = System::Drawing::Point(3, 42);
+			this->label21->Name = L"label21";
+			this->label21->Size = System::Drawing::Size(747, 34);
+			this->label21->TabIndex = 1;
+			this->label21->Text = L"10% discount if the goods exceed 1000 pounds";
+			this->label21->Click += gcnew System::EventHandler(this, &MyForm::label21_Click);
+			// 
+			// label20
+			// 
+			this->label20->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label20->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->label20->Location = System::Drawing::Point(3, 6);
+			this->label20->Name = L"label20";
+			this->label20->Size = System::Drawing::Size(273, 34);
+			this->label20->TabIndex = 0;
+			this->label20->Text = L"Tax     14%";
 			// 
 			// tb_customername_theincoive
 			// 
@@ -983,7 +1074,7 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel13;
 				static_cast<System::Byte>(0)));
 			this->lb_theinvoice->Location = System::Drawing::Point(0, 0);
 			this->lb_theinvoice->Name = L"lb_theinvoice";
-			this->lb_theinvoice->Size = System::Drawing::Size(1189, 148);
+			this->lb_theinvoice->Size = System::Drawing::Size(1189, 127);
 			this->lb_theinvoice->TabIndex = 1;
 			this->lb_theinvoice->Text = L"The invoice";
 			this->lb_theinvoice->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -2850,54 +2941,6 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel13;
 			this->timerforexit->Interval = 3000;
 			this->timerforexit->Tick += gcnew System::EventHandler(this, &MyForm::timer1_Tick);
 			// 
-			// dataGridView1
-			// 
-			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
-			this->dataGridView1->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::AllCells;
-			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
-				this->colproduct,
-					this->colquantity, this->colunitprice, this->colsubtotal
-			});
-			this->dataGridView1->Location = System::Drawing::Point(3, 3);
-			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->RowHeadersWidth = 51;
-			this->dataGridView1->RowTemplate->Height = 24;
-			this->dataGridView1->Size = System::Drawing::Size(1165, 339);
-			this->dataGridView1->TabIndex = 7;
-			// 
-			// colproduct
-			// 
-			this->colproduct->HeaderText = L"Product";
-			this->colproduct->MinimumWidth = 6;
-			this->colproduct->Name = L"colproduct";
-			// 
-			// colquantity
-			// 
-			this->colquantity->HeaderText = L"Quantity";
-			this->colquantity->MinimumWidth = 6;
-			this->colquantity->Name = L"colquantity";
-			// 
-			// colunitprice
-			// 
-			this->colunitprice->HeaderText = L"Unit price";
-			this->colunitprice->MinimumWidth = 6;
-			this->colunitprice->Name = L"colunitprice";
-			// 
-			// colsubtotal
-			// 
-			this->colsubtotal->HeaderText = L"Subtotal";
-			this->colsubtotal->MinimumWidth = 6;
-			this->colsubtotal->Name = L"colsubtotal";
-			// 
-			// flowLayoutPanel13
-			// 
-			this->flowLayoutPanel13->Controls->Add(this->dataGridView1);
-			this->flowLayoutPanel13->Location = System::Drawing::Point(9, 166);
-			this->flowLayoutPanel13->Name = L"flowLayoutPanel13";
-			this->flowLayoutPanel13->Size = System::Drawing::Size(1168, 428);
-			this->flowLayoutPanel13->TabIndex = 8;
-			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -2920,6 +2963,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel13;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_theinvoice))->EndInit();
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
+			this->flowLayoutPanel13->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
+			this->panel2->ResumeLayout(false);
 			this->pn_products->ResumeLayout(false);
 			this->pn_main_category->ResumeLayout(false);
 			this->flowLayoutPanel2->ResumeLayout(false);
@@ -2957,8 +3003,6 @@ private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel13;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->welcomeScreen))->EndInit();
 			this->pn_thankyou->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->thankyou))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
-			this->flowLayoutPanel13->ResumeLayout(false);
 			this->ResumeLayout(false);
 
 		}
@@ -4283,10 +4327,20 @@ private: System::Void confirm_Click(System::Object^ sender, System::EventArgs^ e
 					productCount++;
 				}
 			}
-
+			
 			if (productCount > 0) {
-				MessageBox::Show("Total Price: " + totalPrice.ToString("F2"));
+				if (totalPrice > 1000) {
+					label22->Text = ("Total price: " +(totalPrice)*1.1);
+				}
+				else {
+
+					label22->Text = ("Total price: " + (totalPrice) * 1.14);
+				}
 				foundOrder = true;
+				btn_TotalBill->BackColor = Color::FromArgb(230, 52, 98); // Red
+				btn_TotalBill->ForeColor = Color::Black;
+				btn_orders->ForeColor = Color::White;
+				btn_orders->BackColor = Color::Transparent;
 			}
 			break; 
 		}
@@ -4300,6 +4354,9 @@ private: System::Void confirm_Click(System::Object^ sender, System::EventArgs^ e
 	read->Close();
 }
 
+
+private: System::Void label21_Click(System::Object^ sender, System::EventArgs^ e) {
+}
 
 };
 }
