@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include "DataModels.h"
 #include <string>
+
+
 using namespace System;
 
 namespace SuperMarkoGUI {
@@ -12,6 +14,7 @@ namespace SuperMarkoGUI {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Drawing::Printing;
 	using namespace IO;
 
 	/// <summary>
@@ -522,6 +525,10 @@ private: System::Windows::Forms::Panel^ panel2;
 private: System::Windows::Forms::Label^ label20;
 private: System::Windows::Forms::Label^ label21;
 private: System::Windows::Forms::Label^ label22;
+private: System::Windows::Forms::Button^ btn_print;
+private: System::Windows::Forms::PrintPreviewDialog^ printPreviewDialog1;
+private: System::Drawing::Printing::PrintDocument^ printDocument1;
+private: System::Windows::Forms::Label^ label18;
 
 
 
@@ -563,6 +570,7 @@ private: System::Windows::Forms::Label^ label22;
 			this->pn_viewBill = (gcnew System::Windows::Forms::Panel());
 			this->pb_theinvoice = (gcnew System::Windows::Forms::PictureBox());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->btn_print = (gcnew System::Windows::Forms::Button());
 			this->flowLayoutPanel13 = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->colproduct = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -570,6 +578,7 @@ private: System::Windows::Forms::Label^ label22;
 			this->colunitprice = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->colsubtotal = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
+			this->label18 = (gcnew System::Windows::Forms::Label());
 			this->label22 = (gcnew System::Windows::Forms::Label());
 			this->label21 = (gcnew System::Windows::Forms::Label());
 			this->label20 = (gcnew System::Windows::Forms::Label());
@@ -620,6 +629,7 @@ private: System::Windows::Forms::Label^ label22;
 			this->pn_blank = (gcnew System::Windows::Forms::Panel());
 			this->pb_blankpicutre = (gcnew System::Windows::Forms::PictureBox());
 			this->pn_edit_information = (gcnew System::Windows::Forms::Panel());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->pn_currentInfo = (gcnew System::Windows::Forms::Panel());
 			this->btn_seepassword_editinfo = (gcnew System::Windows::Forms::Button());
 			this->btn_reset = (gcnew System::Windows::Forms::Button());
@@ -653,7 +663,6 @@ private: System::Windows::Forms::Label^ label22;
 			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->tb_edit_username = (gcnew System::Windows::Forms::TextBox());
 			this->label11 = (gcnew System::Windows::Forms::Label());
-			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->pn_left_bar = (gcnew System::Windows::Forms::Panel());
 			this->flowLayoutPanel1 = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->btn_edit_information = (gcnew System::Windows::Forms::Button());
@@ -708,6 +717,8 @@ private: System::Windows::Forms::Label^ label22;
 			this->pn_thankyou = (gcnew System::Windows::Forms::Panel());
 			this->thankyou = (gcnew System::Windows::Forms::PictureBox());
 			this->timerforexit = (gcnew System::Windows::Forms::Timer(this->components));
+			this->printPreviewDialog1 = (gcnew System::Windows::Forms::PrintPreviewDialog());
+			this->printDocument1 = (gcnew System::Drawing::Printing::PrintDocument());
 			this->pn_upper_bar->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_icon))->BeginInit();
 			this->pn_main_dashboard->SuspendLayout();
@@ -850,11 +861,11 @@ private: System::Windows::Forms::Label^ label22;
 			// 
 			// pn_defualt
 			// 
+			this->pn_defualt->Controls->Add(this->pn_edit_information);
 			this->pn_defualt->Controls->Add(this->pn_viewBill);
 			this->pn_defualt->Controls->Add(this->pn_products);
 			this->pn_defualt->Controls->Add(this->pn_orders);
 			this->pn_defualt->Controls->Add(this->pn_blank);
-			this->pn_defualt->Controls->Add(this->pn_edit_information);
 			this->pn_defualt->Controls->Add(this->pn_left_bar);
 			this->pn_defualt->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_defualt->Location = System::Drawing::Point(0, 0);
@@ -882,14 +893,15 @@ private: System::Windows::Forms::Label^ label22;
 			// 
 			this->pb_theinvoice->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pb_theinvoice.BackgroundImage")));
 			this->pb_theinvoice->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pb_theinvoice->Location = System::Drawing::Point(927, 25);
+			this->pb_theinvoice->Location = System::Drawing::Point(958, 15);
 			this->pb_theinvoice->Name = L"pb_theinvoice";
-			this->pb_theinvoice->Size = System::Drawing::Size(218, 101);
+			this->pb_theinvoice->Size = System::Drawing::Size(203, 101);
 			this->pb_theinvoice->TabIndex = 3;
 			this->pb_theinvoice->TabStop = false;
 			// 
 			// panel1
 			// 
+			this->panel1->Controls->Add(this->btn_print);
 			this->panel1->Controls->Add(this->flowLayoutPanel13);
 			this->panel1->Controls->Add(this->tb_customername_theincoive);
 			this->panel1->Controls->Add(this->lb_customername_theinvoice);
@@ -902,6 +914,20 @@ private: System::Windows::Forms::Label^ label22;
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(1189, 618);
 			this->panel1->TabIndex = 2;
+			// 
+			// btn_print
+			// 
+			this->btn_print->BackColor = System::Drawing::Color::Purple;
+			this->btn_print->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btn_print->ForeColor = System::Drawing::Color::Yellow;
+			this->btn_print->Location = System::Drawing::Point(927, 50);
+			this->btn_print->Name = L"btn_print";
+			this->btn_print->Size = System::Drawing::Size(234, 61);
+			this->btn_print->TabIndex = 9;
+			this->btn_print->Text = L"Print";
+			this->btn_print->UseVisualStyleBackColor = false;
+			this->btn_print->Click += gcnew System::EventHandler(this, &MyForm::btn_print_Click);
 			// 
 			// flowLayoutPanel13
 			// 
@@ -955,6 +981,7 @@ private: System::Windows::Forms::Label^ label22;
 			// 
 			// panel2
 			// 
+			this->panel2->Controls->Add(this->label18);
 			this->panel2->Controls->Add(this->label22);
 			this->panel2->Controls->Add(this->label21);
 			this->panel2->Controls->Add(this->label20);
@@ -963,14 +990,25 @@ private: System::Windows::Forms::Label^ label22;
 			this->panel2->Size = System::Drawing::Size(1137, 164);
 			this->panel2->TabIndex = 8;
 			// 
+			// label18
+			// 
+			this->label18->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label18->ForeColor = System::Drawing::Color::Purple;
+			this->label18->Location = System::Drawing::Point(3, 81);
+			this->label18->Name = L"label18";
+			this->label18->Size = System::Drawing::Size(191, 44);
+			this->label18->TabIndex = 3;
+			this->label18->Text = L"Total price:";
+			// 
 			// label22
 			// 
 			this->label22->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label22->ForeColor = System::Drawing::Color::Purple;
-			this->label22->Location = System::Drawing::Point(3, 84);
+			this->label22->Location = System::Drawing::Point(203, 81);
 			this->label22->Name = L"label22";
-			this->label22->Size = System::Drawing::Size(747, 44);
+			this->label22->Size = System::Drawing::Size(273, 44);
 			this->label22->TabIndex = 2;
 			// 
 			// label21
@@ -979,11 +1017,11 @@ private: System::Windows::Forms::Label^ label22;
 				static_cast<System::Byte>(0)));
 			this->label21->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->label21->Location = System::Drawing::Point(3, 42);
+			this->label21->Location = System::Drawing::Point(5, 42);
 			this->label21->Name = L"label21";
 			this->label21->Size = System::Drawing::Size(747, 34);
 			this->label21->TabIndex = 1;
-			this->label21->Text = L"10% discount if the goods exceed 1000 pounds";
+			this->label21->Text = L"10% discount if the goods exceed 1000 pounds.";
 			this->label21->Click += gcnew System::EventHandler(this, &MyForm::label21_Click);
 			// 
 			// label20
@@ -996,7 +1034,7 @@ private: System::Windows::Forms::Label^ label22;
 			this->label20->Name = L"label20";
 			this->label20->Size = System::Drawing::Size(273, 34);
 			this->label20->TabIndex = 0;
-			this->label20->Text = L"Tax     14%";
+			this->label20->Text = L"Tax   :  14%";
 			// 
 			// tb_customername_theincoive
 			// 
@@ -1076,7 +1114,7 @@ private: System::Windows::Forms::Label^ label22;
 			this->lb_theinvoice->Name = L"lb_theinvoice";
 			this->lb_theinvoice->Size = System::Drawing::Size(1189, 127);
 			this->lb_theinvoice->TabIndex = 1;
-			this->lb_theinvoice->Text = L"The invoice";
+			this->lb_theinvoice->Text = L"Total Bill";
 			this->lb_theinvoice->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// pn_products
@@ -1641,16 +1679,29 @@ private: System::Windows::Forms::Label^ label22;
 			// pn_edit_information
 			// 
 			this->pn_edit_information->Anchor = System::Windows::Forms::AnchorStyles::Top;
-			this->pn_edit_information->Controls->Add(this->pn_currentInfo);
-			this->pn_edit_information->Controls->Add(this->pn_resetPassword);
 			this->pn_edit_information->Controls->Add(this->pn_editInfo);
 			this->pn_edit_information->Controls->Add(this->label1);
+			this->pn_edit_information->Controls->Add(this->pn_currentInfo);
+			this->pn_edit_information->Controls->Add(this->pn_resetPassword);
 			this->pn_edit_information->Location = System::Drawing::Point(289, 0);
 			this->pn_edit_information->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pn_edit_information->Name = L"pn_edit_information";
 			this->pn_edit_information->Size = System::Drawing::Size(1204, 745);
 			this->pn_edit_information->TabIndex = 1;
 			this->pn_edit_information->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_edit_information_Paint);
+			// 
+			// label1
+			// 
+			this->label1->Dock = System::Windows::Forms::DockStyle::Top;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->Location = System::Drawing::Point(0, 0);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(1204, 148);
+			this->label1->TabIndex = 0;
+			this->label1->Text = L"Edit Your Information";
+			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->label1->Click += gcnew System::EventHandler(this, &MyForm::label1_Click);
 			// 
 			// pn_currentInfo
 			// 
@@ -1667,10 +1718,10 @@ private: System::Windows::Forms::Label^ label22;
 			this->pn_currentInfo->Controls->Add(this->tb_currentUsername);
 			this->pn_currentInfo->Controls->Add(this->label5);
 			this->pn_currentInfo->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn_currentInfo->Location = System::Drawing::Point(0, 148);
+			this->pn_currentInfo->Location = System::Drawing::Point(0, 0);
 			this->pn_currentInfo->Margin = System::Windows::Forms::Padding(4);
 			this->pn_currentInfo->Name = L"pn_currentInfo";
-			this->pn_currentInfo->Size = System::Drawing::Size(1204, 597);
+			this->pn_currentInfo->Size = System::Drawing::Size(1204, 745);
 			this->pn_currentInfo->TabIndex = 1;
 			// 
 			// btn_seepassword_editinfo
@@ -1838,10 +1889,10 @@ private: System::Windows::Forms::Label^ label22;
 			this->pn_resetPassword->Controls->Add(this->tb_newPassword);
 			this->pn_resetPassword->Controls->Add(this->label13);
 			this->pn_resetPassword->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn_resetPassword->Location = System::Drawing::Point(0, 148);
+			this->pn_resetPassword->Location = System::Drawing::Point(0, 0);
 			this->pn_resetPassword->Margin = System::Windows::Forms::Padding(4);
 			this->pn_resetPassword->Name = L"pn_resetPassword";
-			this->pn_resetPassword->Size = System::Drawing::Size(1204, 597);
+			this->pn_resetPassword->Size = System::Drawing::Size(1204, 745);
 			this->pn_resetPassword->TabIndex = 2;
 			// 
 			// tb_confirmPassword
@@ -1950,7 +2001,7 @@ private: System::Windows::Forms::Label^ label22;
 			this->tb_newPassword->PasswordChar = '*';
 			this->tb_newPassword->Size = System::Drawing::Size(333, 42);
 			this->tb_newPassword->TabIndex = 15;
-			this->tb_newPassword->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox9_TextChanged);
+		
 			// 
 			// label13
 			// 
@@ -2098,19 +2149,6 @@ private: System::Windows::Forms::Label^ label22;
 			this->label11->TabIndex = 6;
 			this->label11->Text = L"UserName";
 			// 
-			// label1
-			// 
-			this->label1->Dock = System::Windows::Forms::DockStyle::Top;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(0, 0);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(1204, 148);
-			this->label1->TabIndex = 0;
-			this->label1->Text = L"Edit Your Information";
-			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->label1->Click += gcnew System::EventHandler(this, &MyForm::label1_Click);
-			// 
 			// pn_left_bar
 			// 
 			this->pn_left_bar->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(51)), static_cast<System::Int32>(static_cast<System::Byte>(55)),
@@ -2243,7 +2281,7 @@ private: System::Windows::Forms::Label^ label22;
 			this->btn_login->TabIndex = 3;
 			this->btn_login->Text = L"Log out";
 			this->btn_login->UseVisualStyleBackColor = true;
-			this->btn_login->Click += gcnew System::EventHandler(this, &MyForm::btn_login_Click);
+			this->btn_login->Click += gcnew System::EventHandler(this, &MyForm::btn_logout_Click);
 			// 
 			// pn_picture
 			// 
@@ -2941,6 +2979,21 @@ private: System::Windows::Forms::Label^ label22;
 			this->timerforexit->Interval = 3000;
 			this->timerforexit->Tick += gcnew System::EventHandler(this, &MyForm::timer1_Tick);
 			// 
+			// printPreviewDialog1
+			// 
+			this->printPreviewDialog1->AutoScrollMargin = System::Drawing::Size(0, 0);
+			this->printPreviewDialog1->AutoScrollMinSize = System::Drawing::Size(0, 0);
+			this->printPreviewDialog1->ClientSize = System::Drawing::Size(400, 300);
+			this->printPreviewDialog1->Document = this->printDocument1;
+			this->printPreviewDialog1->Enabled = true;
+			this->printPreviewDialog1->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"printPreviewDialog1.Icon")));
+			this->printPreviewDialog1->Name = L"printPreviewDialog1";
+			this->printPreviewDialog1->Visible = false;
+			// 
+			// printDocument1
+			// 
+			this->printDocument1->PrintPage += gcnew System::Drawing::Printing::PrintPageEventHandler(this, &MyForm::printDocument1_PrintPage);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -3152,6 +3205,8 @@ private: System::Windows::Forms::Label^ label22;
 	}
 	private: System::Void pn_login_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
+	private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
 
 		
 
@@ -3330,7 +3385,8 @@ private: System::Windows::Forms::Label^ label22;
 	}
 	private: System::Void lb_location_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-
+	private: System::Void label4_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
 		   //pn_start
     private: System::Void btn_exit_Click(System::Object^ sender, System::EventArgs^ e) {
 	showPanel(pn_thankyou);
@@ -3374,304 +3430,25 @@ private: System::Windows::Forms::Label^ label22;
 			 this->Close();
 
 		 }
-		   //pn_default
+//----------------------------------------pn_default--------------------------------------------------
+
+		   //Edit Information
     private: System::Void btn_edit_information_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
-		   if (btn_edit_information != selectedButton) {
-			   btn_edit_information->BackColor = Color::DimGray;
+			   if (btn_edit_information != selectedButton) {
+				   btn_edit_information->BackColor = Color::DimGray;
+			   }
 		   }
-	}
 	private: System::Void btn_edit_information_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
 		if (btn_edit_information != selectedButton) {
 			btn_edit_information->BackColor = Color::Transparent;
 		}
 	}
-    private: System::Void btn_products_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
-	  if (btn_products != selectedButton) {
-		btn_products->BackColor = Color::DimGray;
-	  }
-    }
-    private: System::Void btn_products_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
-	if (btn_products != selectedButton) {
-		btn_products->BackColor = Color::Transparent;
-	}
-}
-	private: System::Void btn_orders_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
-		if (btn_orders != selectedButton) {
-			btn_orders->BackColor = Color::DimGray;
-		}
-	}
-	private: System::Void btn_orders_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
-		if (btn_orders != selectedButton) {
-			btn_orders->BackColor = Color::Transparent;
-		}
-	}
-	private: System::Void btn_TotalBill_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
-		if (btn_TotalBill != selectedButton) {
-			btn_TotalBill->BackColor = Color::DimGray;
-		}
-	}
-	private: System::Void btn_TotalBill_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
-		if (btn_TotalBill != selectedButton) {
-			btn_TotalBill->BackColor = Color::Transparent;
-		}
-	}
-    private: System::Void btn_edit_information_Click(System::Object^ sender, System::EventArgs^ e) {
-	selectedButton = btn_edit_information;
-	showPanel(pn_edit_information);
-	showCategoryPanel(pn_currentInfo);
-	populateCurrentUserInfo(sender, e);
-	MenuBGColor(btn_edit_information);
-    }
-    private: System::Void btn_products_Click(System::Object^ sender, System::EventArgs^ e) {
-	selectedButton = btn_products;
-	showPanel(pn_products);
-	pn_main_category->BringToFront();
-	MenuBGColor(btn_products);
-    }
-	private: System::Void btn_orders_Click(System::Object^ sender, System::EventArgs^ e) {
-		selectedButton = btn_orders;
-		showPanel(pn_orders);
-		loadCurrentUserOrder();
-		MenuBGColor(btn_orders);
-	}
-    private: System::Void btn_login_Click(System::Object^ sender, System::EventArgs^ e) {
-		showPanel(pn_login);
-	}
-    private: System::Void lb_profile_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-	private: System::Void btn_edit_information_MouseHover(System::Object^ sender, System::EventArgs^ e) {
-
-		}
-    private: System::Void btn_products_MouseHover(System::Object^ sender, System::EventArgs^ e) {
-
-}
-    private: System::Void btn_orders_MouseHover(System::Object^ sender, System::EventArgs^ e) {
-
-
-}
-    private: System::Void btn_TotalBill_MouseHover(System::Object^ sender, System::EventArgs^ e) {
-
-}
-	private: System::Void btn_snacks_Click(System::Object^ sender, System::EventArgs^ e) {
-		showCategoryPanel(pn_snacks_category);
-	}
-	private: System::Void btn_household_Click(System::Object^ sender, System::EventArgs^ e) {
-		showCategoryPanel(pn_household_category);
-
-	}
-	private: System::Void btn_pet_Click(System::Object^ sender, System::EventArgs^ e) {
-		showCategoryPanel(pn_pet_supplies_category);
-
-	}
-	private: System::Void pn_fruits_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void pn_vegetable_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void pn_bakery_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void pn_household_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void pn_snacks_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void pn_poultry_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void pn_butchershop_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void pn_seafood_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void pn_pet_supplies_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void pn_dairy_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void btn_vegetabe_Click(System::Object^ sender, System::EventArgs^ e) {
-		showCategoryPanel(pn_vegetable_category);
-	}
-	private: System::Void btn_dairy_Click(System::Object^ sender, System::EventArgs^ e) {
-		showCategoryPanel(pn_dairy_category);
-	}
-	private: System::Void btn_butcher_Click(System::Object^ sender, System::EventArgs^ e) {
-		showCategoryPanel(pn_butchershop_category);
-	}
-	private: System::Void btn_seafood_Click(System::Object^ sender, System::EventArgs^ e) {
-		showCategoryPanel(pn_seafood_category);
-	}
-	private: System::Void btn_poultry_Click(System::Object^ sender, System::EventArgs^ e) {
-		showCategoryPanel(pn_poultry_category);
-	}
-	private: System::Void btn_bakery_Click(System::Object^ sender, System::EventArgs^ e) {
-		showCategoryPanel(pn_bakery_category);
-	}
-    private: System::Void handleAddToCart(System::Object^ sender, System::EventArgs^ e) {
-			   if (currentCustomerIndex < 0 || customers[currentCustomerIndex] == nullptr) {
-				   MessageBox::Show("You must be logged in to add items to the cart.");
-				   return;
-			   }
-
-			   Button^ clickedButton = safe_cast<Button^>(sender);
-			   if (clickedButton == nullptr || clickedButton->Parent == nullptr) return;
-
-			   FlowLayoutPanel^ productPanel = safe_cast<FlowLayoutPanel^>(clickedButton->Parent);
-			   if (productPanel == nullptr) return;
-
-			   // Find product info
-			   String^ productName = "";
-			   double quantity = 0;
-			   double price = 0;
-
-			   for each (Control ^ control in productPanel->Controls) {
-				   Label^ lbl = dynamic_cast<Label^>(control);
-				   if (lbl != nullptr) {
-					   if (lbl->Text->StartsWith("Name: ")) {
-						   productName = lbl->Text->Substring(6)->Trim();
-					   }
-					   else if (lbl->Text->StartsWith("Price: ")) {
-						   String^ priceText = lbl->Text->Substring(7)->Replace("EGP", "")->Trim();
-						   price = Convert::ToDouble(priceText);
-					   }
-				   }
-
-				   NumericUpDown^ quantityBox = dynamic_cast<NumericUpDown^>(control);
-				   if (quantityBox != nullptr) {
-					   quantity = (double)quantityBox->Value;
-				   }
-
-				   Panel^ panel = dynamic_cast<Panel^>(control);
-				   if (panel != nullptr) {
-					   for each (Control ^ insideCtrl in panel->Controls) {
-						   NumericUpDown^ qtyInside = dynamic_cast<NumericUpDown^>(insideCtrl);
-						   if (qtyInside != nullptr) {
-							   quantity = (double)qtyInside->Value;
-						   }
-					   }
-				   }
-			   }
-
-			   if (productName == "" || quantity <= 0) {
-				   MessageBox::Show("Please select a quantity greater than 0.");
-				   return;
-			   }
-
-			   // Find the product in products array
-			   PRODUCT^ selectedProduct = nullptr;
-			   for (int cat = 0; cat < numOfCategories; cat++) {
-				   for (int i = 0; i < productCounts[cat]; i++) {
-					   if (products[cat][i]->Name == productName) {
-						   selectedProduct = products[cat][i];
-						   break;
-					   }
-				   }
-				   if (selectedProduct != nullptr) break;
-			   }
-
-			   if (selectedProduct == nullptr) {
-				   MessageBox::Show("Product not found.");
-				   return;
-			   }
-
-			   // Initialize user's order if needed
-			   if (orders[currentCustomerIndex] == nullptr) {
-				   orders[currentCustomerIndex] = gcnew ORDER();
-				   orders[currentCustomerIndex]->CustomerID = customers[currentCustomerIndex]->ID;
-				   orders[currentCustomerIndex]->productcount = 0;
-			   }
-
-			   ORDER^ order = orders[currentCustomerIndex];
-
-			   if (order->productcount >= numOfProducts) {
-				   MessageBox::Show("Cart is full.");
-				   return;
-			   }
-
-			   // === NEW SMART LOGIC ===
-			   bool productUpdated = false;
-			   double oldProductTotal = 0.0;
-
-			   for (int i = 0; i < order->productcount; i++) {
-				   if (order->Products[i]->Name == productName) {
-					   // Product exists -> update quantity and price
-					   oldProductTotal = order->Products[i]->Price * order->Amount[i];
-					   order->Amount[i] = quantity; // Update quantity
-					   order->Products[i]->Price = selectedProduct->Price; // Update price (if changed)
-					   productUpdated = true;
-					   break;
-				   }
-			   }
-
-			   if (!productUpdated) {
-				   // Product does not exist -> add new
-				   int idx = order->productcount;
-				   order->Products[idx] = selectedProduct;
-				   order->Amount[idx] = quantity;
-				   order->productcount++;
-			   }
-
-			   // Update total price
-			   order->TotalPrice = 0.0;
-			   for (int i = 0; i < order->productcount; i++) {
-				   order->TotalPrice += order->Products[i]->Price * order->Amount[i];
-			   }
-
-			   MessageBox::Show(productName + (productUpdated ? " updated!" : " added!") + " to your cart!");
-
-			   // Save the updated order
-			   saveCurrentOrderToFile();
-		   }
-	private: System::Void deleteButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		Button^ btnDelete = safe_cast<Button^>(sender);
-		if (btnDelete == nullptr) return;
-
-		String^ productName = safe_cast<String^>(btnDelete->Tag);
-
-		if (productName != nullptr) {
-			if (MessageBox::Show("Are you sure you want to delete " + productName + "?", "Confirm Delete", MessageBoxButtons::YesNo) == System::Windows::Forms::DialogResult::Yes) {
-				deleteProductFromOrder(productName); // ✅ delete from memory and file
-			}
-		}
-	}
-	private: System::Void deleteProductFromOrder(String^ productName) {
-		if (orders[currentCustomerIndex] == nullptr) return;
-
-		ORDER^ order = orders[currentCustomerIndex];
-
-		int indexToRemove = -1;
-
-		for (int i = 0; i < order->productcount; i++) {
-			if (order->Products[i]->Name == productName) {
-				indexToRemove = i;
-				break;
-			}
-		}
-
-		if (indexToRemove != -1) {
-			// Update total price correctly
-			order->TotalPrice -= order->Products[indexToRemove]->Price * order->Amount[indexToRemove];
-
-			// Shift items left
-			for (int i = indexToRemove; i < order->productcount - 1; i++) {
-				order->Products[i] = order->Products[i + 1];
-				order->Amount[i] = order->Amount[i + 1];
-			}
-
-			order->Products[order->productcount - 1] = nullptr; // Clear last product
-			order->Amount[order->productcount - 1] = 0;
-
-			order->productcount--;
-
-			saveCurrentOrderToFile(); // Save updated cart
-			loadCurrentUserOrder();   // Refresh display
-		}
-	}
-    private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-		   }
-	private: System::Void tb_location_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void groupBox1_Enter(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void btn_editInfo_Click(System::Object^ sender, System::EventArgs^ e) {
-		pn_editInfo->BringToFront();
-	}
-	private: System::Void button1_Click_2(System::Object^ sender, System::EventArgs^ e) {
-		pn_resetPassword->BringToFront();
+	private: System::Void btn_edit_information_Click(System::Object^ sender, System::EventArgs^ e) {
+		selectedButton = btn_edit_information;
+		showPanel(pn_edit_information);
+		showCategoryPanel(pn_currentInfo);
+		populateCurrentUserInfo(sender, e);
+		MenuBGColor(btn_edit_information);
 	}
 	private: System::Void btn_saveEdit_Click(System::Object^ sender, System::EventArgs^ e) {
 		try {
@@ -3754,22 +3531,47 @@ private: System::Windows::Forms::Label^ label22;
 
 		showCategoryPanel(pn_currentInfo);
 	}
-    private: System::Void tb_edit_username_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-    }
-    private: System::Void tb_edit_phonenumber_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-    private: System::Void tb_edit_location_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-    private: System::Void tb_confirmPassword_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-		   }
-    private: System::Void btn_TotalBill_Click(System::Object^ sender, System::EventArgs^ e) {
-	selectedButton = btn_TotalBill;
-	showPanel(pn_viewBill);
-	MenuBGColor(btn_TotalBill);
-}
-    private: System::Void btn_cancelEdit_Click(System::Object^ sender, System::EventArgs^ e) {
-			   pn_currentInfo->BringToFront();
-		   }
+	private: System::Void btn_cancelEdit_Click(System::Object^ sender, System::EventArgs^ e) {
+		pn_currentInfo->BringToFront();
+	}
+	private: System::Void tb_edit_username_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void tb_edit_phonenumber_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void tb_edit_location_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void tb_confirmPassword_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void btn_editInfo_Click(System::Object^ sender, System::EventArgs^ e) {
+		pn_editInfo->BringToFront();
+	}
+	private: System::Void btn_edit_information_MouseHover(System::Object^ sender, System::EventArgs^ e) {
+
+	}
+	private: System::Void btn_reset_Click(System::Object^ sender, System::EventArgs^ e) {
+		pn_resetPassword->BringToFront();
+	}
+	private: System::Void pn_edit_information_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+	}
+	private: System::Void label6_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void label17_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void btn_edit_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void label13_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void label12_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		pn_currentInfo->BringToFront();
+	}
+	private: System::Void textBox8_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 		//save new password
 		String^ newPassword = tb_newPassword->Text->Trim();
@@ -3805,41 +3607,83 @@ private: System::Windows::Forms::Label^ label22;
 		//go to current info and show a message of data is saved
 		showCategoryPanel(pn_currentInfo);
 	}
-	private: System::Void textBox8_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-		pn_currentInfo->BringToFront();
-	}
-	private: System::Void textBox9_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void label13_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void label12_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void btn_reset_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void button1_Click_2(System::Object^ sender, System::EventArgs^ e) {
 		pn_resetPassword->BringToFront();
 	}
-    private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
+	}
+
+		   //Products
+    private: System::Void btn_products_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
+		if (btn_products != selectedButton) {
+			btn_products->BackColor = Color::DimGray;
+		}
+	}
+	private: System::Void btn_products_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
+		if (btn_products != selectedButton) {
+			btn_products->BackColor = Color::Transparent;
+		}
+	}
+	private: System::Void btn_products_Click(System::Object^ sender, System::EventArgs^ e) {
+		selectedButton = btn_products;
+		showPanel(pn_products);
+		pn_main_category->BringToFront();
+		MenuBGColor(btn_products);
+	}
+    private: System::Void btn_snacks_Click(System::Object^ sender, System::EventArgs^ e) {
+			   showCategoryPanel(pn_snacks_category);
 		   }
-	private: System::Void label4_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void btn_household_Click(System::Object^ sender, System::EventArgs^ e) {
+		showCategoryPanel(pn_household_category);
+
 	}
-	private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void btn_pet_Click(System::Object^ sender, System::EventArgs^ e) {
+		showCategoryPanel(pn_pet_supplies_category);
+
 	}
-	private: System::Void btn_edit_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void pn_fruits_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
-	private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void pn_vegetable_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
-	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void pn_bakery_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
-    private: System::Void label17_Click(System::Object^ sender, System::EventArgs^ e) {
-    }
-    private: System::Void pn_main_dashboard_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-    }
-	private: System::Void pn_defualt_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+	private: System::Void pn_household_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
-	private: System::Void pn_blank_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+	private: System::Void pn_snacks_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
-	private: System::Void pb_blankpicutre_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void pn_poultry_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+	}
+	private: System::Void pn_butchershop_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+	}
+	private: System::Void pn_seafood_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+	}
+	private: System::Void pn_pet_supplies_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+	}
+	private: System::Void pn_dairy_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+	}
+	private: System::Void btn_vegetabe_Click(System::Object^ sender, System::EventArgs^ e) {
+		showCategoryPanel(pn_vegetable_category);
+	}
+	private: System::Void btn_dairy_Click(System::Object^ sender, System::EventArgs^ e) {
+		showCategoryPanel(pn_dairy_category);
+	}
+	private: System::Void btn_butcher_Click(System::Object^ sender, System::EventArgs^ e) {
+		showCategoryPanel(pn_butchershop_category);
+	}
+	private: System::Void btn_seafood_Click(System::Object^ sender, System::EventArgs^ e) {
+		showCategoryPanel(pn_seafood_category);
+	}
+	private: System::Void btn_poultry_Click(System::Object^ sender, System::EventArgs^ e) {
+		showCategoryPanel(pn_poultry_category);
+	}
+	private: System::Void btn_bakery_Click(System::Object^ sender, System::EventArgs^ e) {
+		showCategoryPanel(pn_bakery_category);
+	}
+	private: System::Void btn_products_MouseHover(System::Object^ sender, System::EventArgs^ e) {
+
+	}
+	private: System::Void btn_fruits_Click(System::Object^ sender, System::EventArgs^ e) {
+		showCategoryPanel(pn_fruits_category);
 	}
 	private: System::Void pn_products_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
@@ -3847,89 +3691,364 @@ private: System::Windows::Forms::Label^ label22;
 	}
 	private: System::Void flowLayoutPanel2_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
-	private: System::Void btn_fruits_Click(System::Object^ sender, System::EventArgs^ e) {
-		showCategoryPanel(pn_fruits_category);
+	private: System::Void pn_main_dashboard_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
-	private: System::Void pn_edit_information_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void pn_left_bar_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void flowLayoutPanel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void pn_picture_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void pb_profile_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void pn_orders_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+	private: System::Void pn_defualt_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
 	private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-	private: System::Void label6_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		   //Orders
+	private: System::Void btn_orders_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
+		if (btn_orders != selectedButton) {
+			btn_orders->BackColor = Color::DimGray;
 		}
-private: System::Void saveCurrentOrderToFile() {
-	if (currentCustomerIndex < 0 || customers[currentCustomerIndex] == nullptr) return;
-
-	try {
-		ORDER^ order = orders[currentCustomerIndex];
-		if (order == nullptr || order->productcount == 0) {
-			// If no products left, clear the file (optional: or just remove that user's data)
-			File::WriteAllText("order.txt", "");
-			return;
-		}
-
-		String^ newLine = order->CustomerID.ToString() + "|";
-
-		for (int i = 0; i < order->productcount; i++) {
-			String^ productName = order->Products[i]->Name;
-			double qty = order->Amount[i];
-			double unitPrice = order->Products[i]->Price;
-
-			newLine += productName + "," + qty.ToString("F2") + "," + unitPrice.ToString("F2");
-
-			if (i < order->productcount - 1)
-				newLine += ";"; // add separator if not last
-		}
-
-		newLine += "|" + order->TotalPrice.ToString("F2");
-
-		// Read the current file content
-		array<String^>^ lines = File::ReadAllLines("order.txt");
-		bool customerFound = false;
-		String^ updatedContent = "";
-
-		// Iterate through the existing lines to check if this customer exists
-		for each (String ^ line in lines) {
-			array<String^>^ parts = line->Split('|');
-			if (parts->Length < 3) continue;
-
-			int fileCustomerID = Convert::ToInt32(parts[0]->Trim());
-
-			if (fileCustomerID == order->CustomerID) {
-				// Update the existing customer's order
-				updatedContent += newLine + Environment::NewLine;
-				customerFound = true;
-			}
-			else {
-				// Keep the other customers' data
-				updatedContent += line + Environment::NewLine;
-			}
-		}
-
-		// If the customer wasn't found, add new order data for this customer
-		if (!customerFound) {
-			updatedContent += newLine + Environment::NewLine;
-		}
-
-		// Write the updated content to the file
-		File::WriteAllText("order.txt", updatedContent);
 	}
-	catch (Exception^ ex) {
-		MessageBox::Show("Error saving order: " + ex->Message);
+	private: System::Void btn_orders_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
+		if (btn_orders != selectedButton) {
+			btn_orders->BackColor = Color::Transparent;
+		}
+	}
+	private: System::Void btn_orders_Click(System::Object^ sender, System::EventArgs^ e) {
+		selectedButton = btn_orders;
+		showPanel(pn_orders);
+		loadCurrentUserOrder();
+		MenuBGColor(btn_orders);
+	}
+	private: System::Void pn_orders_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+	}
+	private: System::Void btn_orders_MouseHover(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void deleteProductFromOrder(String^ productName) {
+			if (orders[currentCustomerIndex] == nullptr) return;
+
+			ORDER^ order = orders[currentCustomerIndex];
+
+			int indexToRemove = -1;
+
+			for (int i = 0; i < order->productcount; i++) {
+				if (order->Products[i]->Name == productName) {
+					indexToRemove = i;
+					break;
+				}
+			}
+
+			if (indexToRemove != -1) {
+				// Update total price correctly
+				order->TotalPrice -= order->Products[indexToRemove]->Price * order->Amount[indexToRemove];
+
+				// Shift items left
+				for (int i = indexToRemove; i < order->productcount - 1; i++) {
+					order->Products[i] = order->Products[i + 1];
+					order->Amount[i] = order->Amount[i + 1];
+				}
+
+				order->Products[order->productcount - 1] = nullptr; // Clear last product
+				order->Amount[order->productcount - 1] = 0;
+
+				order->productcount--;
+
+				saveCurrentOrderToFile(); // Save updated cart
+				loadCurrentUserOrder();   // Refresh display
+			}
+		}
+	private: System::Void deleteButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		Button^ btnDelete = safe_cast<Button^>(sender);
+		if (btnDelete == nullptr) return;
+
+		String^ productName = safe_cast<String^>(btnDelete->Tag);
+
+		if (productName != nullptr) {
+			if (MessageBox::Show("Are you sure you want to delete " + productName + "?", "Confirm Delete", MessageBoxButtons::YesNo) == System::Windows::Forms::DialogResult::Yes) {
+				deleteProductFromOrder(productName); // ✅ delete from memory and file
+			}
+		}
+	}
+	private: System::Void confirm_Click(System::Object^ sender, System::EventArgs^ e) {
+		MessageBox::Show("Order confirmed!");
+		pn_viewBill->BringToFront();
+		pn_viewBill->Visible = true;
+		dataGridView1->Rows->Clear(); // Clear previous rows
+
+		StreamReader^ read = gcnew StreamReader("order.txt");
+		String^ line;
+
+		if (currentCustomerIndex < 0 || customers[currentCustomerIndex] == nullptr)
+			return;
+
+		bool foundOrder = false;
+
+
+		while ((line = read->ReadLine()) != nullptr) {
+			array<String^>^ parts = line->Split('|');
+
+			if (parts->Length < 3)
+				continue;
+
+			if (Convert::ToInt32(customers[currentCustomerIndex]->ID) == Convert::ToInt32(parts[0])) {
+				array<String^>^ productEntries = parts[1]->Split(';');
+				double totalPrice = 0.0;
+				int productCount = 0;
+
+				for each (String ^ entry in productEntries) {
+					if (String::IsNullOrWhiteSpace(entry))
+						continue;
+
+
+					array<String^>^ productDetails = entry->Split(',');
+
+					if (productDetails->Length >= 3) {
+						String^ name = productDetails[0];
+						double quantity = Convert::ToDouble(productDetails[1]);
+						double unitPrice = Convert::ToDouble(productDetails[2]);
+						double subtotal = quantity * unitPrice;
+
+						dataGridView1->Rows->Add(name, quantity.ToString("F2"), unitPrice.ToString("F2"), subtotal.ToString("F2"));
+
+						totalPrice += subtotal;
+						productCount++;
+					}
+				}
+
+				if (productCount > 0) {
+					if (totalPrice > 1000) {
+						label22->Text = (" " + (totalPrice) * 1.1);
+					}
+					else {
+
+						label22->Text = (" " + (totalPrice) * 1.14);
+					}
+					foundOrder = true;
+					//btn_TotalBill->BackColor = Color::FromArgb(230, 52, 98); // Red
+					//btn_TotalBill->ForeColor = Color::Black;
+					//btn_orders->ForeColor = Color::White;
+					//btn_orders->BackColor = Color::Transparent;
+					MenuBGColor(btn_TotalBill);
+				}
+				break;
+			}
+		}
+
+
+		if (!foundOrder) {
+			MessageBox::Show("No products found in the order for the selected customer.");
+		}
+
+		read->Close();
+	}
+		  
+		   //Total Bill
+    private: System::Void tb_date_theinvoice_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
+	e->Handled = true; // Prevent any input
+}
+    private: System::Void tb_invoicenumber_theinvoice_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
+	e->Handled = true; // Prevent any input
+}
+    private: System::Void tb_customername_theincoive_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
+	e->Handled = true; // Prevent any input
+}
+    private: System::Void label21_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+    private: System::Void btn_print_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	printPreviewDialog1->WindowState = FormWindowState::Maximized;
+	if (printPreviewDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+	{
+		printDocument1->Print();
 	}
 }
+    private: System::Void printDocument1_PrintPage(System::Object^ sender, System::Drawing::Printing::PrintPageEventArgs^ e) {
+	System::Drawing::Font^ f = gcnew System::Drawing::Font("Arial", 20, FontStyle::Bold);
+	Image^ img = Image::FromFile("Logo\\Logo.jpg");
 
+	String^ no = "#No " + tb_invoicenumber_theinvoice->Text;
+	String^ date = "Date:  " + tb_date_theinvoice->Text;
+	String^ customerName = "Customer Name:  " + tb_customername_theincoive->Text;
+
+	SizeF sizeno = e->Graphics->MeasureString(no, f);
+	SizeF sizedate = e->Graphics->MeasureString(date, f);
+	SizeF sizecustomerName = e->Graphics->MeasureString(customerName, f);
+
+	e->Graphics->DrawImage(img, 600, 0, 250, 250);
+	e->Graphics->DrawString(no, f, Brushes::Red, (e->PageBounds.Width - sizeno.Width) / 2, 50);
+	e->Graphics->DrawString(date, f, Brushes::Black, 20, 100);
+	e->Graphics->DrawString(customerName, f, Brushes::Navy, 20, 150);
+
+	float y = 200;
+	e->Graphics->DrawRectangle(Pens::Black, 20, (int)y, (int)(e->PageBounds.Width - 40), 800);
+
+	float colHeight = 60;
+
+	float col1Width = 300;
+	float col2Width = 150 + col1Width;
+	float col3Width = 150 + col2Width;
+	float col4Width = 140 + col3Width;
+	//drawing the row line
+	e->Graphics->DrawLine(Pens::Black, 20, (int)(y + colHeight), (int)(e->PageBounds.Width - 20), (int)(y + colHeight));
+
+	// drawing the columns line
+	e->Graphics->DrawLine(Pens::Black, col1Width + 20, y, col1Width + 20, y + 800);
+	e->Graphics->DrawLine(Pens::Black, col2Width + 20, y, col2Width + 20, y + 800);
+	e->Graphics->DrawLine(Pens::Black, col3Width + 20, y, col3Width + 20, y + 800);
+
+
+	e->Graphics->DrawString("Product", f, Brushes::Black, 100, y + 20);
+	e->Graphics->DrawString("Quantity", f, Brushes::Black, col1Width + 25, y + 20);
+	e->Graphics->DrawString("Unit price", f, Brushes::Black, col2Width + 25, y + 20);
+	e->Graphics->DrawString("Subtotal", f, Brushes::Black, col3Width + 25, y + 20);
+
+	//invoice details		
+
+	int rowHeight = 50;
+	int startY = 260;
+	int validRowCount = 0;
+	float x;
+	for (int i = 0; i < dataGridView1->Rows->Count; i++)
+	{
+		if (dataGridView1->Rows[i]->IsNewRow)
+			continue;
+
+		String^ product = dataGridView1->Rows[i]->Cells[0]->Value->ToString();
+		String^ quantity = dataGridView1->Rows[i]->Cells[1]->Value->ToString();
+		String^ unitprice = dataGridView1->Rows[i]->Cells[2]->Value->ToString();
+		String^ subtotal = dataGridView1->Rows[i]->Cells[3]->Value->ToString();
+
+		int y = startY + (validRowCount * rowHeight);
+
+		System::Drawing::Font^ font = gcnew System::Drawing::Font("Arial", 14, FontStyle::Regular);
+
+		e->Graphics->DrawString(product, font, Brushes::Navy, 25, y + 15);
+		e->Graphics->DrawString(quantity, font, Brushes::Black, 375, y + 15);
+		e->Graphics->DrawString(unitprice, font, Brushes::Black, 500, y + 15);
+		e->Graphics->DrawString(subtotal, font, Brushes::Black, 625, y + 15);
+
+		e->Graphics->DrawLine(Pens::Black, 20, y + rowHeight, e->PageBounds.Width - 20, y + rowHeight);
+
+		validRowCount++;
+		x = y;
+	}
+
+	e->Graphics->DrawString("Total Price ", f, Brushes::Red, 470, x + rowHeight + 10);
+	e->Graphics->DrawString(label22->Text, f, Brushes::Navy, 630, x + rowHeight + 10);
+	e->Graphics->DrawLine(Pens::Black, 20, (int)(x + rowHeight + 50), (int)(e->PageBounds.Width - 20), (int)(x + rowHeight + 50));
+	//invoice details
+}
+	private: System::Void btn_TotalBill_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
+		if (btn_TotalBill != selectedButton) {
+			btn_TotalBill->BackColor = Color::DimGray;
+		}
+	}
+	private: System::Void btn_TotalBill_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
+		if (btn_TotalBill != selectedButton) {
+			btn_TotalBill->BackColor = Color::Transparent;
+		}
+	}
+    private: System::Void btn_TotalBill_MouseHover(System::Object^ sender, System::EventArgs^ e) {
+
+    }
+	private: System::Void btn_TotalBill_Click(System::Object^ sender, System::EventArgs^ e) {
+		selectedButton = btn_TotalBill;
+		showPanel(pn_viewBill);
+		MenuBGColor(btn_TotalBill);
+	}
+		   
+		   //log out
+    private: System::Void btn_logout_Click(System::Object^ sender, System::EventArgs^ e) {
+		btn_orders->ForeColor = Color::White;
+		btn_orders->BackColor = Color::Transparent;
+		btn_TotalBill->ForeColor = Color::White;
+		btn_TotalBill->BackColor = Color::Transparent;
+		btn_products->ForeColor = Color::White;
+		btn_products->BackColor = Color::Transparent;
+		btn_edit_information->ForeColor = Color::White;
+		btn_edit_information->BackColor = Color::Transparent;
+		showPanel(pn_login);
+    }
+
+		 
+		   
+		   //pn_left_bar
+    private: System::Void pn_left_bar_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+    }
+    private: System::Void pn_picture_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+}
+	private: System::Void pb_profile_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void lb_profile_Click(System::Object^ sender, System::EventArgs^ e) {
+	  }
+	private: System::Void flowLayoutPanel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+	}
+
+		   
+		   //pn_blank
+	private: System::Void pn_blank_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+	}
+	private: System::Void pb_blankpicutre_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+
+//--------------------------------------------pn_default---------------------------------------------
+		   //handle functions& save and load files
+	private: System::Void saveCurrentOrderToFile() {
+		if (currentCustomerIndex < 0 || customers[currentCustomerIndex] == nullptr) return;
+
+		try {
+			ORDER^ order = orders[currentCustomerIndex];
+			if (order == nullptr || order->productcount == 0) {
+				// If no products left, clear the file (optional: or just remove that user's data)
+				File::WriteAllText("order.txt", "");
+				return;
+			}
+
+			String^ newLine = order->CustomerID.ToString() + "|";
+
+			for (int i = 0; i < order->productcount; i++) {
+				String^ productName = order->Products[i]->Name;
+				double qty = order->Amount[i];
+				double unitPrice = order->Products[i]->Price;
+
+				newLine += productName + "," + qty.ToString("F2") + "," + unitPrice.ToString("F2");
+
+				if (i < order->productcount - 1)
+					newLine += ";"; // add separator if not last
+			}
+
+			newLine += "|" + order->TotalPrice.ToString("F2");
+
+			// Read the current file content
+			array<String^>^ lines = File::ReadAllLines("order.txt");
+			bool customerFound = false;
+			String^ updatedContent = "";
+
+			// Iterate through the existing lines to check if this customer exists
+			for each (String ^ line in lines) {
+				array<String^>^ parts = line->Split('|');
+				if (parts->Length < 3) continue;
+
+				int fileCustomerID = Convert::ToInt32(parts[0]->Trim());
+
+				if (fileCustomerID == order->CustomerID) {
+					// Update the existing customer's order
+					updatedContent += newLine + Environment::NewLine;
+					customerFound = true;
+				}
+				else {
+					// Keep the other customers' data
+					updatedContent += line + Environment::NewLine;
+				}
+			}
+
+			// If the customer wasn't found, add new order data for this customer
+			if (!customerFound) {
+				updatedContent += newLine + Environment::NewLine;
+			}
+
+			// Write the updated content to the file
+			File::WriteAllText("order.txt", updatedContent);
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Error saving order: " + ex->Message);
+		}
+	}
 	private: System::Void loadCurrentUserOrder() {
 		if (currentCustomerIndex < 0 || customers[currentCustomerIndex] == nullptr)
 			return;
@@ -4066,7 +4185,7 @@ private: System::Void saveCurrentOrderToFile() {
 					Panel^ pnConfirmed = gcnew Panel();
 					pnConfirmed->Width = 800;
 					pnConfirmed->Height = 100;
-					
+
 					orderList->Controls->Add(pnConfirmed);
 
 					//add button to Click here to confirm
@@ -4082,7 +4201,7 @@ private: System::Void saveCurrentOrderToFile() {
 						(pnConfirmed->Width - confirm->Width) / 2,
 						(pnConfirmed->Height - confirm->Height) / 2
 					);
-					
+
 					pnConfirmed->Controls->Add(confirm);
 					confirm->Click += gcnew EventHandler(this, &MyForm::confirm_Click);
 
@@ -4107,256 +4226,273 @@ private: System::Void saveCurrentOrderToFile() {
 			MessageBox::Show("Error loading order: " + ex->Message);
 		}
 	}
+	private: System::Void handleModifyQuantityClick(System::Object^ sender, System::EventArgs^ e) {
+		Button^ modifyButton = safe_cast<Button^>(sender);
+		Panel^ parentPanel = safe_cast<Panel^>(modifyButton->Parent);
 
+		String^ productName = safe_cast<String^>(parentPanel->Tag);
 
-
-private: System::Void handleModifyQuantityClick(System::Object^ sender, System::EventArgs^ e) {
-	Button^ modifyButton = safe_cast<Button^>(sender);
-	Panel^ parentPanel = safe_cast<Panel^>(modifyButton->Parent);
-
-	String^ productName = safe_cast<String^>(parentPanel->Tag);
-
-	if (String::IsNullOrEmpty(productName)) {
-		MessageBox::Show("Product not found.");
-		return;
-	}
-
-	Form^ quantityForm = gcnew Form();
-	quantityForm->Text = "Modify Quantity - " + productName;
-	quantityForm->Width = 300;
-	quantityForm->Height = 180;
-	quantityForm->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
-	quantityForm->StartPosition = FormStartPosition::CenterScreen;
-
-	Label^ lbl = gcnew Label();
-	lbl->Text = "Enter new quantity:";
-	lbl->Location = Point(30, 20);
-	lbl->Width = 200;
-	quantityForm->Controls->Add(lbl);
-
-	NumericUpDown^ numericQuantity = gcnew NumericUpDown();
-	numericQuantity->Location = Point(30, 50);
-	numericQuantity->Width = 200;
-	numericQuantity->Minimum = 1;
-	numericQuantity->Maximum = 10000;
-	numericQuantity->Value = 1;
-	numericQuantity->DecimalPlaces = 0;
-	quantityForm->Controls->Add(numericQuantity);
-
-	Button^ btnOk = gcnew Button();
-	btnOk->Text = "OK";
-	btnOk->Location = Point(30, 90);
-	btnOk->DialogResult = System::Windows::Forms::DialogResult::OK;
-	quantityForm->Controls->Add(btnOk);
-
-	Button^ btnCancel = gcnew Button();
-	btnCancel->Text = "Cancel";
-	btnCancel->Location = Point(160, 90);
-	btnCancel->DialogResult = System::Windows::Forms::DialogResult::Cancel;
-	quantityForm->Controls->Add(btnCancel);
-
-	if (quantityForm->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-		int newQuantity = (int)numericQuantity->Value;
-
-		if (newQuantity <= 0) {
-			MessageBox::Show("Quantity must be greater than 0.");
+		if (String::IsNullOrEmpty(productName)) {
+			MessageBox::Show("Product not found.");
 			return;
 		}
 
-		bool found = false;
-		for (int i = 0; i < orders[currentCustomerIndex]->productcount; i++) {
-			if (orders[currentCustomerIndex]->Products[i]->Name == productName) {
-				orders[currentCustomerIndex]->Amount[i] = newQuantity;
-				found = true;
-				break;
+		Form^ quantityForm = gcnew Form();
+		quantityForm->Text = "Modify Quantity - " + productName;
+		quantityForm->Width = 300;
+		quantityForm->Height = 180;
+		quantityForm->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+		quantityForm->StartPosition = FormStartPosition::CenterScreen;
+
+		Label^ lbl = gcnew Label();
+		lbl->Text = "Enter new quantity:";
+		lbl->Location = Point(30, 20);
+		lbl->Width = 200;
+		quantityForm->Controls->Add(lbl);
+
+		NumericUpDown^ numericQuantity = gcnew NumericUpDown();
+		numericQuantity->Location = Point(30, 50);
+		numericQuantity->Width = 200;
+		numericQuantity->Minimum = 1;
+		numericQuantity->Maximum = 10000;
+		numericQuantity->Value = 1;
+		numericQuantity->DecimalPlaces = 0;
+		quantityForm->Controls->Add(numericQuantity);
+
+		Button^ btnOk = gcnew Button();
+		btnOk->Text = "OK";
+		btnOk->Location = Point(30, 90);
+		btnOk->DialogResult = System::Windows::Forms::DialogResult::OK;
+		quantityForm->Controls->Add(btnOk);
+
+		Button^ btnCancel = gcnew Button();
+		btnCancel->Text = "Cancel";
+		btnCancel->Location = Point(160, 90);
+		btnCancel->DialogResult = System::Windows::Forms::DialogResult::Cancel;
+		quantityForm->Controls->Add(btnCancel);
+
+		if (quantityForm->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+			int newQuantity = (int)numericQuantity->Value;
+
+			if (newQuantity <= 0) {
+				MessageBox::Show("Quantity must be greater than 0.");
+				return;
 			}
-		}
 
-		if (!found) {
-			MessageBox::Show("Product not found in memory.");
-			return;
-		}
-
-		// Save updated order back to file
-		try {
-			array<String^>^ allLines = File::ReadAllLines("order.txt");
-
-			for (int i = 0; i < allLines->Length; i++) {
-				array<String^>^ parts = allLines[i]->Split('|');
-				if (parts->Length < 3) continue;
-
-				int fileCustomerID = Convert::ToInt32(parts[0]->Trim());
-
-				if (fileCustomerID == customers[currentCustomerIndex]->ID) {
-					String^ newProductPart = "";
-					for (int j = 0; j < orders[currentCustomerIndex]->productcount; j++) {
-						String^ name = orders[currentCustomerIndex]->Products[j]->Name;
-						double qty = orders[currentCustomerIndex]->Amount[j];
-						double unitPrice = orders[currentCustomerIndex]->Products[j]->Price;
-						newProductPart += name + "," + qty.ToString("F2") + "," + unitPrice.ToString("F2") + ";";
-					}
-
-					double newTotal = 0;
-					for (int j = 0; j < orders[currentCustomerIndex]->productcount; j++) {
-						newTotal += orders[currentCustomerIndex]->Amount[j] * orders[currentCustomerIndex]->Products[j]->Price;
-					}
-
-					allLines[i] = fileCustomerID.ToString() + "|" + newProductPart + "|" + newTotal.ToString("F2");
+			bool found = false;
+			for (int i = 0; i < orders[currentCustomerIndex]->productcount; i++) {
+				if (orders[currentCustomerIndex]->Products[i]->Name == productName) {
+					orders[currentCustomerIndex]->Amount[i] = newQuantity;
+					found = true;
 					break;
 				}
 			}
 
-			File::WriteAllLines("order.txt", allLines);
-		}
-		catch (Exception^ ex) {
-			MessageBox::Show("Error saving updated order: " + ex->Message);
-		}
+			if (!found) {
+				MessageBox::Show("Product not found in memory.");
+				return;
+			}
 
-		MessageBox::Show("Quantity updated successfully!");
-		loadCurrentUserOrder(); // Reload updated order
+			// Save updated order back to file
+			try {
+				array<String^>^ allLines = File::ReadAllLines("order.txt");
+
+				for (int i = 0; i < allLines->Length; i++) {
+					array<String^>^ parts = allLines[i]->Split('|');
+					if (parts->Length < 3) continue;
+
+					int fileCustomerID = Convert::ToInt32(parts[0]->Trim());
+
+					if (fileCustomerID == customers[currentCustomerIndex]->ID) {
+						String^ newProductPart = "";
+						for (int j = 0; j < orders[currentCustomerIndex]->productcount; j++) {
+							String^ name = orders[currentCustomerIndex]->Products[j]->Name;
+							double qty = orders[currentCustomerIndex]->Amount[j];
+							double unitPrice = orders[currentCustomerIndex]->Products[j]->Price;
+							newProductPart += name + "," + qty.ToString("F2") + "," + unitPrice.ToString("F2") + ";";
+						}
+
+						double newTotal = 0;
+						for (int j = 0; j < orders[currentCustomerIndex]->productcount; j++) {
+							newTotal += orders[currentCustomerIndex]->Amount[j] * orders[currentCustomerIndex]->Products[j]->Price;
+						}
+
+						allLines[i] = fileCustomerID.ToString() + "|" + newProductPart + "|" + newTotal.ToString("F2");
+						break;
+					}
+				}
+
+				File::WriteAllLines("order.txt", allLines);
+			}
+			catch (Exception^ ex) {
+				MessageBox::Show("Error saving updated order: " + ex->Message);
+			}
+
+			MessageBox::Show("Quantity updated successfully!");
+			loadCurrentUserOrder(); // Reload updated order
+		}
 	}
-}
-
-private: void CreateQuantityForm(String^ productName)
-{
-	Form^ quantityForm = gcnew Form();
-	quantityForm->Text = "Modify Quantity - " + productName;
-	quantityForm->Width = 300;
-	quantityForm->Height = 180;
-	quantityForm->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
-	quantityForm->StartPosition = FormStartPosition::CenterScreen;
-
-	Label^ lbl = gcnew Label();
-	lbl->Text = "Enter new quantity:";
-	lbl->Location = Point(30, 20);
-	lbl->Width = 200;
-	quantityForm->Controls->Add(lbl);
-
-	NumericUpDown^ numericQuantity = gcnew NumericUpDown();
-	numericQuantity->Location = Point(30, 50);
-	numericQuantity->Width = 200;
-	numericQuantity->Minimum = 1;
-	numericQuantity->Maximum = 10000;
-	numericQuantity->Value = 1;
-	numericQuantity->DecimalPlaces = 0;
-	quantityForm->Controls->Add(numericQuantity);
-
-	Button^ btnOk = gcnew Button();
-	btnOk->Text = "OK";
-	btnOk->Location = Point(30, 90);
-	btnOk->DialogResult = System::Windows::Forms::DialogResult::OK;
-	quantityForm->Controls->Add(btnOk);
-
-	Button^ btnCancel = gcnew Button();
-	btnCancel->Text = "Cancel";
-	btnCancel->Location = Point(160, 90);
-	btnCancel->DialogResult = System::Windows::Forms::DialogResult::Cancel;
-	quantityForm->Controls->Add(btnCancel);
-
-	// Show the form as a dialog
-	if (quantityForm->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+	private: void CreateQuantityForm(String^ productName)
 	{
-		int selectedQuantity = (int)numericQuantity->Value;
-		// هنا تقدر تعمل اللي انت عايزه بالعدد اللي اختاره المستخدم
-	}
-}
+		Form^ quantityForm = gcnew Form();
+		quantityForm->Text = "Modify Quantity - " + productName;
+		quantityForm->Width = 300;
+		quantityForm->Height = 180;
+		quantityForm->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+		quantityForm->StartPosition = FormStartPosition::CenterScreen;
 
+		Label^ lbl = gcnew Label();
+		lbl->Text = "Enter new quantity:";
+		lbl->Location = Point(30, 20);
+		lbl->Width = 200;
+		quantityForm->Controls->Add(lbl);
 
+		NumericUpDown^ numericQuantity = gcnew NumericUpDown();
+		numericQuantity->Location = Point(30, 50);
+		numericQuantity->Width = 200;
+		numericQuantity->Minimum = 1;
+		numericQuantity->Maximum = 10000;
+		numericQuantity->Value = 1;
+		numericQuantity->DecimalPlaces = 0;
+		quantityForm->Controls->Add(numericQuantity);
 
-		
-	
-		
-	
+		Button^ btnOk = gcnew Button();
+		btnOk->Text = "OK";
+		btnOk->Location = Point(30, 90);
+		btnOk->DialogResult = System::Windows::Forms::DialogResult::OK;
+		quantityForm->Controls->Add(btnOk);
 
+		Button^ btnCancel = gcnew Button();
+		btnCancel->Text = "Cancel";
+		btnCancel->Location = Point(160, 90);
+		btnCancel->DialogResult = System::Windows::Forms::DialogResult::Cancel;
+		quantityForm->Controls->Add(btnCancel);
 
-		 
-		   //_________________________________________________
-		
-private: System::Void tb_date_theinvoice_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
-	e->Handled = true; // Prevent any input
-}
-private: System::Void tb_invoicenumber_theinvoice_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
-	e->Handled = true; // Prevent any input
-}
-private: System::Void tb_customername_theincoive_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
-	e->Handled = true; // Prevent any input
-}
-
-private: System::Void confirm_Click(System::Object^ sender, System::EventArgs^ e) {
-	MessageBox::Show("Order confirmed!");
-	pn_viewBill->BringToFront();
-	pn_viewBill->Visible = true;
-	dataGridView1->Rows->Clear(); // Clear previous rows
-
-	StreamReader^ read = gcnew StreamReader("order.txt");
-	String^ line;
-
-	if (currentCustomerIndex < 0 || customers[currentCustomerIndex] == nullptr)
-		return;
-
-	bool foundOrder = false; 
-
-	 
-	while ((line = read->ReadLine()) != nullptr) {
-		array<String^>^ parts = line->Split('|');
-
-		if (parts->Length < 3)
-			continue;
-
-		if (Convert::ToInt32(customers[currentCustomerIndex]->ID) == Convert::ToInt32(parts[0])) {
-			array<String^>^ productEntries = parts[1]->Split(';');
-			double totalPrice = 0.0;
-			int productCount = 0;
-
-			for each (String ^ entry in productEntries) {
-				if (String::IsNullOrWhiteSpace(entry))
-					continue;
-
-				
-				array<String^>^ productDetails = entry->Split(',');
-
-				if (productDetails->Length >= 3) {
-					String^ name = productDetails[0];
-					double quantity = Convert::ToDouble(productDetails[1]);
-					double unitPrice = Convert::ToDouble(productDetails[2]);
-					double subtotal = quantity * unitPrice;
-
-					dataGridView1->Rows->Add(name, quantity.ToString("F2"), unitPrice.ToString("F2"), subtotal.ToString("F2"));
-
-					totalPrice += subtotal;
-					productCount++;
-				}
-			}
-			
-			if (productCount > 0) {
-				if (totalPrice > 1000) {
-					label22->Text = ("Total price: " +(totalPrice)*1.1);
-				}
-				else {
-
-					label22->Text = ("Total price: " + (totalPrice) * 1.14);
-				}
-				foundOrder = true;
-				btn_TotalBill->BackColor = Color::FromArgb(230, 52, 98); // Red
-				btn_TotalBill->ForeColor = Color::Black;
-				btn_orders->ForeColor = Color::White;
-				btn_orders->BackColor = Color::Transparent;
-			}
-			break; 
+		// Show the form as a dialog
+		if (quantityForm->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			int selectedQuantity = (int)numericQuantity->Value;
+			// هنا تقدر تعمل اللي انت عايزه بالعدد اللي اختاره المستخدم
 		}
 	}
+    private: System::Void handleAddToCart(System::Object^ sender, System::EventArgs^ e) {
+	  if (currentCustomerIndex < 0 || customers[currentCustomerIndex] == nullptr) {
+		  MessageBox::Show("You must be logged in to add items to the cart.");
+		  return;
+	  }
 
+	  Button^ clickedButton = safe_cast<Button^>(sender);
+	  if (clickedButton == nullptr || clickedButton->Parent == nullptr) return;
 
-	if (!foundOrder) {
-		MessageBox::Show("No products found in the order for the selected customer.");
-	}
+	  FlowLayoutPanel^ productPanel = safe_cast<FlowLayoutPanel^>(clickedButton->Parent);
+	  if (productPanel == nullptr) return;
 
-	read->Close();
-}
+	  // Find product info
+	  String^ productName = "";
+	  double quantity = 0;
+	  double price = 0;
 
+	  for each (Control ^ control in productPanel->Controls) {
+		  Label^ lbl = dynamic_cast<Label^>(control);
+		  if (lbl != nullptr) {
+			  if (lbl->Text->StartsWith("Name: ")) {
+				  productName = lbl->Text->Substring(6)->Trim();
+			  }
+			  else if (lbl->Text->StartsWith("Price: ")) {
+				  String^ priceText = lbl->Text->Substring(7)->Replace("EGP", "")->Trim();
+				  price = Convert::ToDouble(priceText);
+			  }
+		  }
 
-private: System::Void label21_Click(System::Object^ sender, System::EventArgs^ e) {
-}
+		  NumericUpDown^ quantityBox = dynamic_cast<NumericUpDown^>(control);
+		  if (quantityBox != nullptr) {
+			  quantity = (double)quantityBox->Value;
+		  }
+
+		  Panel^ panel = dynamic_cast<Panel^>(control);
+		  if (panel != nullptr) {
+			  for each (Control ^ insideCtrl in panel->Controls) {
+				  NumericUpDown^ qtyInside = dynamic_cast<NumericUpDown^>(insideCtrl);
+				  if (qtyInside != nullptr) {
+					  quantity = (double)qtyInside->Value;
+				  }
+			  }
+		  }
+	  }
+
+	  if (productName == "" || quantity <= 0) {
+		  MessageBox::Show("Please select a quantity greater than 0.");
+		  return;
+	  }
+
+	  // Find the product in products array
+	  PRODUCT^ selectedProduct = nullptr;
+	  for (int cat = 0; cat < numOfCategories; cat++) {
+		  for (int i = 0; i < productCounts[cat]; i++) {
+			  if (products[cat][i]->Name == productName) {
+				  selectedProduct = products[cat][i];
+				  break;
+			  }
+		  }
+		  if (selectedProduct != nullptr) break;
+	  }
+
+	  if (selectedProduct == nullptr) {
+		  MessageBox::Show("Product not found.");
+		  return;
+	  }
+
+	  // Initialize user's order if needed
+	  if (orders[currentCustomerIndex] == nullptr) {
+		  orders[currentCustomerIndex] = gcnew ORDER();
+		  orders[currentCustomerIndex]->CustomerID = customers[currentCustomerIndex]->ID;
+		  orders[currentCustomerIndex]->productcount = 0;
+	  }
+
+	  ORDER^ order = orders[currentCustomerIndex];
+
+	  if (order->productcount >= numOfProducts) {
+		  MessageBox::Show("Cart is full.");
+		  return;
+	  }
+
+	  // === NEW SMART LOGIC ===
+	  bool productUpdated = false;
+	  double oldProductTotal = 0.0;
+
+	  for (int i = 0; i < order->productcount; i++) {
+		  if (order->Products[i]->Name == productName) {
+			  // Product exists -> update quantity and price
+			  oldProductTotal = order->Products[i]->Price * order->Amount[i];
+			  order->Amount[i] = quantity; // Update quantity
+			  order->Products[i]->Price = selectedProduct->Price; // Update price (if changed)
+			  productUpdated = true;
+			  break;
+		  }
+	  }
+
+	  if (!productUpdated) {
+		  // Product does not exist -> add new
+		  int idx = order->productcount;
+		  order->Products[idx] = selectedProduct;
+		  order->Amount[idx] = quantity;
+		  order->productcount++;
+	  }
+
+	  // Update total price
+	  order->TotalPrice = 0.0;
+	  for (int i = 0; i < order->productcount; i++) {
+		  order->TotalPrice += order->Products[i]->Price * order->Amount[i];
+	  }
+
+	  MessageBox::Show(productName + (productUpdated ? " updated!" : " added!") + " to your cart!");
+
+	  // Save the updated order
+	  saveCurrentOrderToFile();
+  }
+  
+                                  //*********************************************************
+
 
 };
 }
