@@ -4042,21 +4042,30 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 					}
 				}
 				lb_beforevat_number->Text = (" " + totalPrice+" EGP");
-				
-
+				double vat = 0.14;
+				double dis = 0.0;
+				double shipping_cost = 100.0;
 				if (productCount > 0) {
+					double vatAmount = totalPrice * vat;
+					double discountAmount = 0.0;
+
 					if (totalPrice > 1000) {
-						lb_vat_number->Text = (" "+totalPrice*0.14+" EGP");
-						lb_shipping_number->Text = (" 0.00 ");
-						lb_discount_number->Text = ( "  "+totalPrice*0.1+" EGP");
-						lb_total_number->Text = (" " + (totalPrice) * 1.1+" EGP");
+						dis = 0.1;
+						shipping_cost = 0;
+						discountAmount = totalPrice * dis;
 					}
-					else {
-						lb_vat_number->Text = (" " + totalPrice * 0.14 + " EGP");
-						lb_shipping_number->Text = (" 100 EGP ");
-						lb_discount_number->Text = (" 0% ");
-						lb_total_number->Text = (" " + (totalPrice) * 1.14+100 +" EGP");
-					}
+
+					double finalTotal = totalPrice + vatAmount - discountAmount + shipping_cost;
+
+					lb_vat_number->Text = " " + vatAmount.ToString("F2") + " EGP";
+					lb_discount_number->Text = " " + discountAmount.ToString("F2") + " EGP";
+					lb_shipping_number->Text = " " + shipping_cost.ToString("F2") + " EGP";
+					lb_total_number->Text = " " + finalTotal.ToString("F2") + " EGP";
+
+					foundOrder = true;
+					MenuBGColor(btn_TotalBill);
+					pn->Visible = true;
+				
 					foundOrder = true;
 					MenuBGColor(btn_TotalBill);
 					
@@ -4095,9 +4104,9 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 		printDocument1->Print();
 	}
 }
-    private: System::Void printDocument1_PrintPage(System::Object^ sender, System::Drawing::Printing::PrintPageEventArgs^ e) {
+private: System::Void printDocument1_PrintPage(System::Object^ sender, System::Drawing::Printing::PrintPageEventArgs^ e) {
 	System::Drawing::Font^ f = gcnew System::Drawing::Font("Arial", 20, FontStyle::Bold);
-	System::Drawing::Font^ qq = gcnew System::Drawing::Font("Stencil", 20, FontStyle::Bold );
+	System::Drawing::Font^ qq = gcnew System::Drawing::Font("Stencil", 20, FontStyle::Bold);
 	Image^ img = Image::FromFile("Logo\\Logo.jpg");
 
 	String^ no = "#No " + tb_invoicenumber_theinvoice->Text;
@@ -4109,46 +4118,40 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 	SizeF sizeno = e->Graphics->MeasureString(no, f);
 	SizeF sizedate = e->Graphics->MeasureString(date, f);
 	SizeF sizecustomerName = e->Graphics->MeasureString(customerName, f);
-	SizeF sizeinvoice = e->Graphics->MeasureString(invoice, f);	
+	SizeF sizeinvoice = e->Graphics->MeasureString(invoice, f);
 
-	e->Graphics->DrawImage(img, 600, 0, 250, 250);
-	e->Graphics->DrawString(no, f, Brushes::Red, (e->PageBounds.Width - sizeno.Width) / 2, 50);
-	e->Graphics->DrawString(date, f, Brushes::Black, 20, 100);
-	e->Graphics->DrawString(customerName, f, Brushes::Navy, 20, 150);
-	e->Graphics->DrawString(invoice, f, Brushes::Black, (e->PageBounds.Width - sizeinvoice.Width) / 2, 1030);
-	e->Graphics->DrawString(invoice2, qq, Brushes::Purple, 420, 1030);
+	e->Graphics->DrawImage(img, 600.0f, 0.0f, 250.0f, 250.0f);
+	e->Graphics->DrawString(no, f, Brushes::Red, (e->PageBounds.Width - sizeno.Width) / 2.0f, 50.0f);
+	e->Graphics->DrawString(date, f, Brushes::Black, 20.0f, 100.0f);
+	e->Graphics->DrawString(customerName, f, Brushes::Navy, 20.0f, 150.0f);
+	e->Graphics->DrawString(invoice, f, Brushes::Black, (e->PageBounds.Width - sizeinvoice.Width) / 2.0f, 1030.0f);
+	e->Graphics->DrawString(invoice2, qq, Brushes::Purple, 420.0f, 1030.0f);
 
-	float y = 200;
-	e->Graphics->DrawRectangle(Pens::Black, 20, (int)y, (int)(e->PageBounds.Width - 40), 800);
+	float y = 200.0f;
+	e->Graphics->DrawRectangle(Pens::Black, 20.0f, y, e->PageBounds.Width - 40.0f, 800.0f);
 
-	float colHeight = 60;
+	float colHeight = 60.0f;
+	float col1Width = 300.0f;
+	float col2Width = 150.0f + col1Width;
+	float col3Width = 150.0f + col2Width;
+	float col4Width = 140.0f + col3Width;
 
-	float col1Width = 300;
-	float col2Width = 150 + col1Width;
-	float col3Width = 150 + col2Width;
-	float col4Width = 140 + col3Width;
-	//drawing the row line
-	e->Graphics->DrawLine(Pens::Black, 20, (int)(y + colHeight), (int)(e->PageBounds.Width - 20), (int)(y + colHeight));
+	e->Graphics->DrawLine(Pens::Black, 20.0f, y + colHeight, e->PageBounds.Width - 20.0f, y + colHeight);
+	e->Graphics->DrawLine(Pens::Black, col1Width + 20.0f, y, col1Width + 20.0f, y + 800.0f);
+	e->Graphics->DrawLine(Pens::Black, col2Width + 20.0f, y, col2Width + 20.0f, y + 800.0f);
+	e->Graphics->DrawLine(Pens::Black, col3Width + 20.0f, y, col3Width + 20.0f, y + 800.0f);
 
-	// drawing the columns line
-	e->Graphics->DrawLine(Pens::Black, col1Width + 20, y, col1Width + 20, y + 800);
-	e->Graphics->DrawLine(Pens::Black, col2Width + 20, y, col2Width + 20, y + 800);
-	e->Graphics->DrawLine(Pens::Black, col3Width + 20, y, col3Width + 20, y + 800);
-
-
-	e->Graphics->DrawString("Product", f, Brushes::Black, 100, y + 20);
-	e->Graphics->DrawString("Quantity", f, Brushes::Black, col1Width + 25, y + 20);
-	e->Graphics->DrawString("Unit price", f, Brushes::Black, col2Width + 25, y + 20);
-	e->Graphics->DrawString("Subtotal", f, Brushes::Black, col3Width + 25, y + 20);
-
-	//invoice details		
+	e->Graphics->DrawString("Product", f, Brushes::Black, 100.0f, y + 20.0f);
+	e->Graphics->DrawString("Quantity", f, Brushes::Black, col1Width + 25.0f, y + 20.0f);
+	e->Graphics->DrawString("Unit price", f, Brushes::Black, col2Width + 25.0f, y + 20.0f);
+	e->Graphics->DrawString("Subtotal", f, Brushes::Black, col3Width + 25.0f, y + 20.0f);
 
 	int rowHeight = 50;
-	int startY = 260;
+	float startY = 260.0f;
 	int validRowCount = 0;
-	float x=0;
-	for (int i = 0; i < dataGridView1->Rows->Count; i++)
-	{
+	float x = 0.0f;
+
+	for (int i = 0; i < dataGridView1->Rows->Count; i++) {
 		if (dataGridView1->Rows[i]->IsNewRow)
 			continue;
 
@@ -4157,52 +4160,43 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 		String^ unitprice = dataGridView1->Rows[i]->Cells[2]->Value->ToString();
 		String^ subtotal = dataGridView1->Rows[i]->Cells[3]->Value->ToString();
 
-		int y = startY + (validRowCount * rowHeight);
+		float rowY = startY + (validRowCount * rowHeight);
 
 		System::Drawing::Font^ font = gcnew System::Drawing::Font("Arial", 16, FontStyle::Regular);
 		System::Drawing::Font^ ff = gcnew System::Drawing::Font("Arial", 16, FontStyle::Bold);
 
+		e->Graphics->DrawString(product, ff, Brushes::Navy, 25.0f, rowY + 15.0f);
+		e->Graphics->DrawString(quantity, font, Brushes::Black, 375.0f, rowY + 15.0f);
+		e->Graphics->DrawString(unitprice, font, Brushes::Black, 500.0f, rowY + 15.0f);
+		e->Graphics->DrawString(subtotal, font, Brushes::Black, 625.0f, rowY + 15.0f);
 
-		e->Graphics->DrawString(product, ff, Brushes::Navy, 25, y + 15);
-		e->Graphics->DrawString(quantity, font, Brushes::Black, 375, y + 15);
-		e->Graphics->DrawString(unitprice, font, Brushes::Black, 500, y + 15);
-		e->Graphics->DrawString(subtotal, font, Brushes::Black, 625, y + 15);
-
-		e->Graphics->DrawLine(Pens::Black, 20, y + rowHeight, e->PageBounds.Width - 20, y + rowHeight);
+		e->Graphics->DrawLine(Pens::Black, 20.0f, rowY + rowHeight, e->PageBounds.Width - 20.0f, rowY + rowHeight);
 
 		validRowCount++;
-		x = y;
+		x = rowY;
 	}
+
 	System::Drawing::Font^ z = gcnew System::Drawing::Font("Arial", 12, FontStyle::Bold);
 	System::Drawing::Font^ p = gcnew System::Drawing::Font("Arial", 16, FontStyle::Bold);
 	System::Drawing::Font^ m = gcnew System::Drawing::Font("Arial", 18, FontStyle::Bold);
 
-	e->Graphics->DrawLine(Pens::Black, 20, (int)(800), (int)(e->PageBounds.Width - 20), (int)( 800));
-	e->Graphics->DrawString(" Total(Before VAT):  ", z, Brushes::Red, 470, 805);
-	e->Graphics->DrawString(lb_beforevat_number->Text, p, Brushes::Navy, 630,805);
-	//e->Graphics->DrawLine(Pens::Black, 20, (int)(x + rowHeight + 650), (int)(e->PageBounds.Width - 20), (int)(x + rowHeight + 650));
-	
-	e->Graphics->DrawString(" Discount Applied:   ", z, Brushes::Red, 470,840);
-	e->Graphics->DrawString(lb_discount_number->Text, p, Brushes::Navy, 630,840);
-	//e->Graphics->DrawLine(Pens::Black, 20, (int)(x + rowHeight + 100), (int)(e->PageBounds.Width - 20), (int)(x + rowHeight +100));
+	e->Graphics->DrawLine(Pens::Black, 20.0f, 800.0f, e->PageBounds.Width - 20.0f, 800.0f);
+	e->Graphics->DrawString(" Total(Before VAT):  ", z, Brushes::Red, 470.0f, 805.0f);
+	e->Graphics->DrawString(lb_beforevat_number->Text, p, Brushes::Navy, 630.0f, 805.0f);
 
-	e->Graphics->DrawString(" VAT (14%):    ", z, Brushes::Red, 470,875);
-	e->Graphics->DrawString(lb_vat_number->Text, p, Brushes::Navy, 630, 875);
-	//e->Graphics->DrawLine(Pens::Black, 20, (int)(x + rowHeight + 150), (int)(e->PageBounds.Width - 20), (int)(x + rowHeight + 150));
+	e->Graphics->DrawString(" Discount Applied:   ", z, Brushes::Red, 470.0f, 840.0f);
+	e->Graphics->DrawString(lb_discount_number->Text, p, Brushes::Navy, 630.0f, 840.0f);
 
-	e->Graphics->DrawString(" Shipping Cost:     ", z, Brushes::Red, 470, 910);
-	e->Graphics->DrawString(lb_shipping_number->Text, p, Brushes::Navy, 630,910);
-	//e->Graphics->DrawLine(Pens::Black, 20, (int)(x + rowHeight + 200), (int)(e->PageBounds.Width - 20), (int)(x + rowHeight + 200));
+	e->Graphics->DrawString(" VAT (14%):    ", z, Brushes::Red, 470.0f, 875.0f);
+	e->Graphics->DrawString(lb_vat_number->Text, p, Brushes::Navy, 630.0f, 875.0f);
 
-	
-	e->Graphics->DrawString(" Total (After VAT):      ", z, Brushes::Red, 470,945);
-	e->Graphics->DrawString(lb_total_number->Text, m, Brushes::Purple, 630, 945);
-	//e->Graphics->DrawLine(Pens::Black, 20, (int)(x + rowHeight + 250), (int)(e->PageBounds.Width - 20), (int)(x + rowHeight + 250));
+	e->Graphics->DrawString(" Shipping Cost:     ", z, Brushes::Red, 470.0f, 910.0f);
+	e->Graphics->DrawString(lb_shipping_number->Text, p, Brushes::Navy, 630.0f, 910.0f);
 
-	
-	
-	//invoice details
+	e->Graphics->DrawString(" Total (After VAT):      ", z, Brushes::Red, 470.0f, 945.0f);
+	e->Graphics->DrawString(lb_total_number->Text, m, Brushes::Purple, 630.0f, 945.0f);
 }
+
 	private: System::Void btn_TotalBill_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
 		if (btn_TotalBill != selectedButton) {
 			btn_TotalBill->BackColor = Color::DimGray;
@@ -4257,8 +4251,6 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 	  }
 	private: System::Void flowLayoutPanel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
-
-		   
 		   //pn_blank
 	private: System::Void pn_blank_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
