@@ -560,6 +560,8 @@ private: System::Windows::Forms::Label^ label21;
 private: System::Windows::Forms::Label^ label23;
 private: System::Windows::Forms::PictureBox^ pictureBox3;
 private: System::Windows::Forms::PictureBox^ pictureBox4;
+private: System::Windows::Forms::PictureBox^ pictureBox5;
+
 
 
 
@@ -598,6 +600,15 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->btn_minimize = (gcnew System::Windows::Forms::Button());
 			this->btn_close = (gcnew System::Windows::Forms::Button());
 			this->pn_main_dashboard = (gcnew System::Windows::Forms::Panel());
+			this->pn_start = (gcnew System::Windows::Forms::Panel());
+			this->label23 = (gcnew System::Windows::Forms::Label());
+			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
+			this->label21 = (gcnew System::Windows::Forms::Label());
+			this->label18 = (gcnew System::Windows::Forms::Label());
+			this->label20 = (gcnew System::Windows::Forms::Label());
+			this->btn_start = (gcnew System::Windows::Forms::Button());
+			this->btn_exit = (gcnew System::Windows::Forms::Button());
+			this->welcomeScreen = (gcnew System::Windows::Forms::PictureBox());
 			this->pn_defualt = (gcnew System::Windows::Forms::Panel());
 			this->pn_viewBill = (gcnew System::Windows::Forms::Panel());
 			this->pb_theinvoice = (gcnew System::Windows::Forms::PictureBox());
@@ -749,24 +760,19 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->lb_phonenumber_register = (gcnew System::Windows::Forms::Label());
 			this->lb_location = (gcnew System::Windows::Forms::Label());
 			this->lb_username_register = (gcnew System::Windows::Forms::Label());
-			this->pn_start = (gcnew System::Windows::Forms::Panel());
-			this->btn_start = (gcnew System::Windows::Forms::Button());
-			this->btn_exit = (gcnew System::Windows::Forms::Button());
-			this->welcomeScreen = (gcnew System::Windows::Forms::PictureBox());
 			this->pn_thankyou = (gcnew System::Windows::Forms::Panel());
 			this->thankyou = (gcnew System::Windows::Forms::PictureBox());
 			this->timerforexit = (gcnew System::Windows::Forms::Timer(this->components));
 			this->printPreviewDialog1 = (gcnew System::Windows::Forms::PrintPreviewDialog());
 			this->printDocument1 = (gcnew System::Drawing::Printing::PrintDocument());
-			this->label18 = (gcnew System::Windows::Forms::Label());
-			this->label20 = (gcnew System::Windows::Forms::Label());
-			this->label21 = (gcnew System::Windows::Forms::Label());
-			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
-			this->label23 = (gcnew System::Windows::Forms::Label());
 			this->pictureBox4 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox5 = (gcnew System::Windows::Forms::PictureBox());
 			this->pn_upper_bar->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_icon))->BeginInit();
 			this->pn_main_dashboard->SuspendLayout();
+			this->pn_start->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->welcomeScreen))->BeginInit();
 			this->pn_defualt->SuspendLayout();
 			this->pn_viewBill->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_theinvoice))->BeginInit();
@@ -802,12 +808,10 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			this->pn_register->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
-			this->pn_start->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->welcomeScreen))->BeginInit();
 			this->pn_thankyou->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->thankyou))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// pn_upper_bar
@@ -820,7 +824,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->pn_upper_bar->Controls->Add(this->btn_close);
 			this->pn_upper_bar->Dock = System::Windows::Forms::DockStyle::Top;
 			this->pn_upper_bar->Location = System::Drawing::Point(0, 0);
-			this->pn_upper_bar->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pn_upper_bar->Margin = System::Windows::Forms::Padding(2);
 			this->pn_upper_bar->Name = L"pn_upper_bar";
 			this->pn_upper_bar->Size = System::Drawing::Size(1114, 45);
 			this->pn_upper_bar->TabIndex = 0;
@@ -845,7 +849,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->pb_icon->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pb_icon.BackgroundImage")));
 			this->pb_icon->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->pb_icon->Location = System::Drawing::Point(2, 2);
-			this->pb_icon->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pb_icon->Margin = System::Windows::Forms::Padding(2);
 			this->pb_icon->Name = L"pb_icon";
 			this->pb_icon->Size = System::Drawing::Size(70, 41);
 			this->pb_icon->TabIndex = 3;
@@ -864,7 +868,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 				static_cast<System::Int32>(static_cast<System::Byte>(131)), static_cast<System::Int32>(static_cast<System::Byte>(145)));
 			this->btn_minimize->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_minimize->Location = System::Drawing::Point(1007, 4);
-			this->btn_minimize->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btn_minimize->Margin = System::Windows::Forms::Padding(2);
 			this->btn_minimize->Name = L"btn_minimize";
 			this->btn_minimize->Size = System::Drawing::Size(49, 37);
 			this->btn_minimize->TabIndex = 2;
@@ -884,7 +888,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 				static_cast<System::Int32>(static_cast<System::Byte>(131)), static_cast<System::Int32>(static_cast<System::Byte>(145)));
 			this->btn_close->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_close->Location = System::Drawing::Point(1051, 4);
-			this->btn_close->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btn_close->Margin = System::Windows::Forms::Padding(4);
 			this->btn_close->Name = L"btn_close";
 			this->btn_close->Size = System::Drawing::Size(60, 37);
 			this->btn_close->TabIndex = 1;
@@ -901,11 +905,155 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->pn_main_dashboard->Controls->Add(this->pn_thankyou);
 			this->pn_main_dashboard->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_main_dashboard->Location = System::Drawing::Point(0, 45);
-			this->pn_main_dashboard->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pn_main_dashboard->Margin = System::Windows::Forms::Padding(2);
 			this->pn_main_dashboard->Name = L"pn_main_dashboard";
 			this->pn_main_dashboard->Size = System::Drawing::Size(1114, 605);
 			this->pn_main_dashboard->TabIndex = 1;
 			this->pn_main_dashboard->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_main_dashboard_Paint);
+			// 
+			// pn_start
+			// 
+			this->pn_start->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
+				static_cast<System::Int32>(static_cast<System::Byte>(239)));
+			this->pn_start->Controls->Add(this->pictureBox5);
+			this->pn_start->Controls->Add(this->pictureBox4);
+			this->pn_start->Controls->Add(this->label23);
+			this->pn_start->Controls->Add(this->pictureBox3);
+			this->pn_start->Controls->Add(this->label21);
+			this->pn_start->Controls->Add(this->label18);
+			this->pn_start->Controls->Add(this->label20);
+			this->pn_start->Controls->Add(this->btn_start);
+			this->pn_start->Controls->Add(this->btn_exit);
+			this->pn_start->Controls->Add(this->welcomeScreen);
+			this->pn_start->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->pn_start->Location = System::Drawing::Point(0, 0);
+			this->pn_start->Margin = System::Windows::Forms::Padding(2);
+			this->pn_start->Name = L"pn_start";
+			this->pn_start->Size = System::Drawing::Size(1114, 605);
+			this->pn_start->TabIndex = 3;
+			this->pn_start->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_start_Paint);
+			// 
+			// label23
+			// 
+			this->label23->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
+				static_cast<System::Int32>(static_cast<System::Byte>(239)));
+			this->label23->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label23->ForeColor = System::Drawing::SystemColors::ControlText;
+			this->label23->Location = System::Drawing::Point(35, 291);
+			this->label23->Name = L"label23";
+			this->label23->Size = System::Drawing::Size(553, 143);
+			this->label23->TabIndex = 7;
+			this->label23->Text = resources->GetString(L"label23.Text");
+			this->label23->Click += gcnew System::EventHandler(this, &MyForm::label23_Click);
+			// 
+			// pictureBox3
+			// 
+			this->pictureBox3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
+				static_cast<System::Int32>(static_cast<System::Byte>(239)));
+			this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.Image")));
+			this->pictureBox3->Location = System::Drawing::Point(34, 203);
+			this->pictureBox3->Name = L"pictureBox3";
+			this->pictureBox3->Size = System::Drawing::Size(84, 86);
+			this->pictureBox3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox3->TabIndex = 6;
+			this->pictureBox3->TabStop = false;
+			// 
+			// label21
+			// 
+			this->label21->AutoSize = true;
+			this->label21->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
+				static_cast<System::Int32>(static_cast<System::Byte>(239)));
+			this->label21->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 48, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label21->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(230)), static_cast<System::Int32>(static_cast<System::Byte>(52)),
+				static_cast<System::Int32>(static_cast<System::Byte>(98)));
+			this->label21->Location = System::Drawing::Point(104, 195);
+			this->label21->Name = L"label21";
+			this->label21->Size = System::Drawing::Size(409, 90);
+			this->label21->TabIndex = 5;
+			this->label21->Text = L"SuperMarko";
+			this->label21->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// label18
+			// 
+			this->label18->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
+				static_cast<System::Int32>(static_cast<System::Byte>(239)));
+			this->label18->Font = (gcnew System::Drawing::Font(L"Segoe Script", 48, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->label18->ForeColor = System::Drawing::Color::Black;
+			this->label18->Location = System::Drawing::Point(62, 54);
+			this->label18->Name = L"label18";
+			this->label18->Size = System::Drawing::Size(385, 94);
+			this->label18->TabIndex = 3;
+			this->label18->Text = L"Welcome";
+			this->label18->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// label20
+			// 
+			this->label20->BackColor = System::Drawing::Color::Transparent;
+			this->label20->Font = (gcnew System::Drawing::Font(L"Segoe UI", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label20->Location = System::Drawing::Point(39, 126);
+			this->label20->Name = L"label20";
+			this->label20->Size = System::Drawing::Size(426, 107);
+			this->label20->TabIndex = 4;
+			this->label20->Text = L"━━━━━  TO THE  ━━━━━";
+			this->label20->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->label20->Click += gcnew System::EventHandler(this, &MyForm::label20_Click);
+			// 
+			// btn_start
+			// 
+			this->btn_start->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(218)), static_cast<System::Int32>(static_cast<System::Byte>(245)),
+				static_cast<System::Int32>(static_cast<System::Byte>(242)));
+			this->btn_start->FlatAppearance->BorderColor = System::Drawing::Color::Black;
+			this->btn_start->FlatAppearance->BorderSize = 2;
+			this->btn_start->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btn_start->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btn_start->Location = System::Drawing::Point(40, 442);
+			this->btn_start->Margin = System::Windows::Forms::Padding(2);
+			this->btn_start->Name = L"btn_start";
+			this->btn_start->Size = System::Drawing::Size(169, 42);
+			this->btn_start->TabIndex = 1;
+			this->btn_start->Text = L"Start";
+			this->btn_start->UseVisualStyleBackColor = false;
+			this->btn_start->Click += gcnew System::EventHandler(this, &MyForm::btn_start_Click);
+			this->btn_start->MouseEnter += gcnew System::EventHandler(this, &MyForm::btn_start_MouseEnter);
+			this->btn_start->MouseLeave += gcnew System::EventHandler(this, &MyForm::btn_start_MouseLeave);
+			// 
+			// btn_exit
+			// 
+			this->btn_exit->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(218)), static_cast<System::Int32>(static_cast<System::Byte>(245)),
+				static_cast<System::Int32>(static_cast<System::Byte>(242)));
+			this->btn_exit->FlatAppearance->BorderColor = System::Drawing::Color::Black;
+			this->btn_exit->FlatAppearance->BorderSize = 2;
+			this->btn_exit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btn_exit->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btn_exit->Location = System::Drawing::Point(225, 442);
+			this->btn_exit->Margin = System::Windows::Forms::Padding(2);
+			this->btn_exit->Name = L"btn_exit";
+			this->btn_exit->Size = System::Drawing::Size(169, 42);
+			this->btn_exit->TabIndex = 0;
+			this->btn_exit->Text = L"Exit";
+			this->btn_exit->UseVisualStyleBackColor = false;
+			this->btn_exit->Click += gcnew System::EventHandler(this, &MyForm::btn_exit_Click);
+			this->btn_exit->MouseEnter += gcnew System::EventHandler(this, &MyForm::btn_exit_MouseEnter);
+			this->btn_exit->MouseLeave += gcnew System::EventHandler(this, &MyForm::btn_exit_MouseLeave);
+			// 
+			// welcomeScreen
+			// 
+			this->welcomeScreen->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
+				static_cast<System::Int32>(static_cast<System::Byte>(239)));
+			this->welcomeScreen->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"welcomeScreen.BackgroundImage")));
+			this->welcomeScreen->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
+			this->welcomeScreen->Location = System::Drawing::Point(0, 0);
+			this->welcomeScreen->Name = L"welcomeScreen";
+			this->welcomeScreen->Size = System::Drawing::Size(1114, 605);
+			this->welcomeScreen->TabIndex = 2;
+			this->welcomeScreen->TabStop = false;
+			this->welcomeScreen->Click += gcnew System::EventHandler(this, &MyForm::welcomeScreen_Click_1);
 			// 
 			// pn_defualt
 			// 
@@ -917,7 +1065,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->pn_defualt->Controls->Add(this->pn_left_bar);
 			this->pn_defualt->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_defualt->Location = System::Drawing::Point(0, 0);
-			this->pn_defualt->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pn_defualt->Margin = System::Windows::Forms::Padding(2);
 			this->pn_defualt->Name = L"pn_defualt";
 			this->pn_defualt->Size = System::Drawing::Size(1114, 605);
 			this->pn_defualt->TabIndex = 4;
@@ -932,7 +1080,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->pn_viewBill->Controls->Add(this->lb_theinvoice);
 			this->pn_viewBill->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_viewBill->Location = System::Drawing::Point(222, 0);
-			this->pn_viewBill->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pn_viewBill->Margin = System::Windows::Forms::Padding(2);
 			this->pn_viewBill->Name = L"pn_viewBill";
 			this->pn_viewBill->Size = System::Drawing::Size(892, 605);
 			this->pn_viewBill->TabIndex = 5;
@@ -942,7 +1090,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->pb_theinvoice->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pb_theinvoice.BackgroundImage")));
 			this->pb_theinvoice->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->pb_theinvoice->Location = System::Drawing::Point(718, 12);
-			this->pb_theinvoice->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pb_theinvoice->Margin = System::Windows::Forms::Padding(2);
 			this->pb_theinvoice->Name = L"pb_theinvoice";
 			this->pb_theinvoice->Size = System::Drawing::Size(152, 82);
 			this->pb_theinvoice->TabIndex = 3;
@@ -960,7 +1108,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->pn->Controls->Add(this->lb_invoicenumber_theinvoice);
 			this->pn->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn->Location = System::Drawing::Point(0, 103);
-			this->pn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pn->Margin = System::Windows::Forms::Padding(2);
 			this->pn->Name = L"pn";
 			this->pn->Size = System::Drawing::Size(892, 502);
 			this->pn->TabIndex = 2;
@@ -972,7 +1120,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 				static_cast<System::Byte>(0)));
 			this->btn_print->ForeColor = System::Drawing::Color::Yellow;
 			this->btn_print->Location = System::Drawing::Point(695, 41);
-			this->btn_print->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btn_print->Margin = System::Windows::Forms::Padding(2);
 			this->btn_print->Name = L"btn_print";
 			this->btn_print->Size = System::Drawing::Size(176, 50);
 			this->btn_print->TabIndex = 9;
@@ -986,7 +1134,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->flowLayoutPanel13->Controls->Add(this->dataGridView1);
 			this->flowLayoutPanel13->Controls->Add(this->panel2);
 			this->flowLayoutPanel13->Location = System::Drawing::Point(7, 126);
-			this->flowLayoutPanel13->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->flowLayoutPanel13->Margin = System::Windows::Forms::Padding(2);
 			this->flowLayoutPanel13->Name = L"flowLayoutPanel13";
 			this->flowLayoutPanel13->Size = System::Drawing::Size(882, 348);
 			this->flowLayoutPanel13->TabIndex = 8;
@@ -1001,7 +1149,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 					this->colquantity, this->colunitprice, this->colsubtotal
 			});
 			this->dataGridView1->Location = System::Drawing::Point(2, 2);
-			this->dataGridView1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(2);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
@@ -1046,7 +1194,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->panel2->Controls->Add(this->lb_beforevat_number);
 			this->panel2->Controls->Add(this->lb_beforevat);
 			this->panel2->Location = System::Drawing::Point(2, 214);
-			this->panel2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->panel2->Margin = System::Windows::Forms::Padding(2);
 			this->panel2->Name = L"panel2";
 			this->panel2->Size = System::Drawing::Size(853, 133);
 			this->panel2->TabIndex = 8;
@@ -1195,7 +1343,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->tb_customername_theincoive->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(192)));
 			this->tb_customername_theincoive->Location = System::Drawing::Point(170, 81);
-			this->tb_customername_theincoive->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->tb_customername_theincoive->Margin = System::Windows::Forms::Padding(2);
 			this->tb_customername_theincoive->Name = L"tb_customername_theincoive";
 			this->tb_customername_theincoive->Size = System::Drawing::Size(459, 26);
 			this->tb_customername_theincoive->TabIndex = 5;
@@ -1220,7 +1368,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->tb_date_theinvoice->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(192)));
 			this->tb_date_theinvoice->Location = System::Drawing::Point(170, 41);
-			this->tb_date_theinvoice->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->tb_date_theinvoice->Margin = System::Windows::Forms::Padding(2);
 			this->tb_date_theinvoice->Name = L"tb_date_theinvoice";
 			this->tb_date_theinvoice->Size = System::Drawing::Size(459, 26);
 			this->tb_date_theinvoice->TabIndex = 3;
@@ -1233,7 +1381,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->tb_invoicenumber_theinvoice->ForeColor = System::Drawing::Color::Red;
 			this->tb_invoicenumber_theinvoice->Location = System::Drawing::Point(170, 6);
-			this->tb_invoicenumber_theinvoice->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->tb_invoicenumber_theinvoice->Margin = System::Windows::Forms::Padding(2);
 			this->tb_invoicenumber_theinvoice->Name = L"tb_invoicenumber_theinvoice";
 			this->tb_invoicenumber_theinvoice->Size = System::Drawing::Size(459, 26);
 			this->tb_invoicenumber_theinvoice->TabIndex = 2;
@@ -1284,7 +1432,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->pn_edit_information->Controls->Add(this->pn_currentInfo);
 			this->pn_edit_information->Controls->Add(this->pn_resetPassword);
 			this->pn_edit_information->Location = System::Drawing::Point(222, 0);
-			this->pn_edit_information->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pn_edit_information->Margin = System::Windows::Forms::Padding(2);
 			this->pn_edit_information->Name = L"pn_edit_information";
 			this->pn_edit_information->Size = System::Drawing::Size(898, 605);
 			this->pn_edit_information->TabIndex = 1;
@@ -1455,7 +1603,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->btn_seepassword_editinfo->FlatAppearance->BorderSize = 0;
 			this->btn_seepassword_editinfo->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_seepassword_editinfo->Location = System::Drawing::Point(695, 257);
-			this->btn_seepassword_editinfo->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btn_seepassword_editinfo->Margin = System::Windows::Forms::Padding(2);
 			this->btn_seepassword_editinfo->Name = L"btn_seepassword_editinfo";
 			this->btn_seepassword_editinfo->Size = System::Drawing::Size(31, 18);
 			this->btn_seepassword_editinfo->TabIndex = 23;
@@ -1732,7 +1880,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->pn_products->Controls->Add(this->pn_fruits_category);
 			this->pn_products->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_products->Location = System::Drawing::Point(222, 0);
-			this->pn_products->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pn_products->Margin = System::Windows::Forms::Padding(2);
 			this->pn_products->Name = L"pn_products";
 			this->pn_products->Size = System::Drawing::Size(892, 605);
 			this->pn_products->TabIndex = 2;
@@ -1744,7 +1892,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->pn_main_category->Controls->Add(this->flowLayoutPanel2);
 			this->pn_main_category->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_main_category->Location = System::Drawing::Point(0, 0);
-			this->pn_main_category->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pn_main_category->Margin = System::Windows::Forms::Padding(2);
 			this->pn_main_category->Name = L"pn_main_category";
 			this->pn_main_category->Size = System::Drawing::Size(892, 605);
 			this->pn_main_category->TabIndex = 14;
@@ -1779,7 +1927,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->flowLayoutPanel2->Controls->Add(this->btn_household);
 			this->flowLayoutPanel2->Controls->Add(this->btn_pet);
 			this->flowLayoutPanel2->Location = System::Drawing::Point(-5, 120);
-			this->flowLayoutPanel2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->flowLayoutPanel2->Margin = System::Windows::Forms::Padding(2);
 			this->flowLayoutPanel2->Name = L"flowLayoutPanel2";
 			this->flowLayoutPanel2->Padding = System::Windows::Forms::Padding(10, 0, 0, 0);
 			this->flowLayoutPanel2->Size = System::Drawing::Size(895, 485);
@@ -2012,7 +2160,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->pn_pet_supplies_category->Controls->Add(this->flowLayoutPanel12);
 			this->pn_pet_supplies_category->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_pet_supplies_category->Location = System::Drawing::Point(0, 0);
-			this->pn_pet_supplies_category->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pn_pet_supplies_category->Margin = System::Windows::Forms::Padding(2);
 			this->pn_pet_supplies_category->Name = L"pn_pet_supplies_category";
 			this->pn_pet_supplies_category->Size = System::Drawing::Size(892, 605);
 			this->pn_pet_supplies_category->TabIndex = 6;
@@ -2023,7 +2171,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->flowLayoutPanel12->AutoScroll = true;
 			this->flowLayoutPanel12->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->flowLayoutPanel12->Location = System::Drawing::Point(0, 0);
-			this->flowLayoutPanel12->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->flowLayoutPanel12->Margin = System::Windows::Forms::Padding(2);
 			this->flowLayoutPanel12->Name = L"flowLayoutPanel12";
 			this->flowLayoutPanel12->Size = System::Drawing::Size(892, 605);
 			this->flowLayoutPanel12->TabIndex = 0;
@@ -2033,7 +2181,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->pn_household_category->Controls->Add(this->flowLayoutPanel11);
 			this->pn_household_category->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_household_category->Location = System::Drawing::Point(0, 0);
-			this->pn_household_category->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pn_household_category->Margin = System::Windows::Forms::Padding(2);
 			this->pn_household_category->Name = L"pn_household_category";
 			this->pn_household_category->Size = System::Drawing::Size(892, 605);
 			this->pn_household_category->TabIndex = 17;
@@ -2044,7 +2192,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->flowLayoutPanel11->AutoScroll = true;
 			this->flowLayoutPanel11->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->flowLayoutPanel11->Location = System::Drawing::Point(0, 0);
-			this->flowLayoutPanel11->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->flowLayoutPanel11->Margin = System::Windows::Forms::Padding(2);
 			this->flowLayoutPanel11->Name = L"flowLayoutPanel11";
 			this->flowLayoutPanel11->Size = System::Drawing::Size(892, 605);
 			this->flowLayoutPanel11->TabIndex = 0;
@@ -2054,7 +2202,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->pn_snacks_category->Controls->Add(this->flowLayoutPanel10);
 			this->pn_snacks_category->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_snacks_category->Location = System::Drawing::Point(0, 0);
-			this->pn_snacks_category->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pn_snacks_category->Margin = System::Windows::Forms::Padding(2);
 			this->pn_snacks_category->Name = L"pn_snacks_category";
 			this->pn_snacks_category->Size = System::Drawing::Size(892, 605);
 			this->pn_snacks_category->TabIndex = 16;
@@ -2065,7 +2213,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->flowLayoutPanel10->AutoScroll = true;
 			this->flowLayoutPanel10->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->flowLayoutPanel10->Location = System::Drawing::Point(0, 0);
-			this->flowLayoutPanel10->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->flowLayoutPanel10->Margin = System::Windows::Forms::Padding(2);
 			this->flowLayoutPanel10->Name = L"flowLayoutPanel10";
 			this->flowLayoutPanel10->Size = System::Drawing::Size(892, 605);
 			this->flowLayoutPanel10->TabIndex = 0;
@@ -2075,7 +2223,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->pn_bakery_category->Controls->Add(this->flowLayoutPanel9);
 			this->pn_bakery_category->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_bakery_category->Location = System::Drawing::Point(0, 0);
-			this->pn_bakery_category->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pn_bakery_category->Margin = System::Windows::Forms::Padding(2);
 			this->pn_bakery_category->Name = L"pn_bakery_category";
 			this->pn_bakery_category->Size = System::Drawing::Size(892, 605);
 			this->pn_bakery_category->TabIndex = 18;
@@ -2086,7 +2234,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->flowLayoutPanel9->AutoScroll = true;
 			this->flowLayoutPanel9->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->flowLayoutPanel9->Location = System::Drawing::Point(0, 0);
-			this->flowLayoutPanel9->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->flowLayoutPanel9->Margin = System::Windows::Forms::Padding(2);
 			this->flowLayoutPanel9->Name = L"flowLayoutPanel9";
 			this->flowLayoutPanel9->Size = System::Drawing::Size(892, 605);
 			this->flowLayoutPanel9->TabIndex = 0;
@@ -2096,7 +2244,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->pn_poultry_category->Controls->Add(this->flowLayoutPanel8);
 			this->pn_poultry_category->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_poultry_category->Location = System::Drawing::Point(0, 0);
-			this->pn_poultry_category->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pn_poultry_category->Margin = System::Windows::Forms::Padding(2);
 			this->pn_poultry_category->Name = L"pn_poultry_category";
 			this->pn_poultry_category->Size = System::Drawing::Size(892, 605);
 			this->pn_poultry_category->TabIndex = 15;
@@ -2107,7 +2255,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->flowLayoutPanel8->AutoScroll = true;
 			this->flowLayoutPanel8->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->flowLayoutPanel8->Location = System::Drawing::Point(0, 0);
-			this->flowLayoutPanel8->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->flowLayoutPanel8->Margin = System::Windows::Forms::Padding(2);
 			this->flowLayoutPanel8->Name = L"flowLayoutPanel8";
 			this->flowLayoutPanel8->Size = System::Drawing::Size(892, 605);
 			this->flowLayoutPanel8->TabIndex = 0;
@@ -2117,7 +2265,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->pn_seafood_category->Controls->Add(this->flowLayoutPanel7);
 			this->pn_seafood_category->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_seafood_category->Location = System::Drawing::Point(0, 0);
-			this->pn_seafood_category->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pn_seafood_category->Margin = System::Windows::Forms::Padding(2);
 			this->pn_seafood_category->Name = L"pn_seafood_category";
 			this->pn_seafood_category->Size = System::Drawing::Size(892, 605);
 			this->pn_seafood_category->TabIndex = 7;
@@ -2128,7 +2276,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->flowLayoutPanel7->AutoScroll = true;
 			this->flowLayoutPanel7->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->flowLayoutPanel7->Location = System::Drawing::Point(0, 0);
-			this->flowLayoutPanel7->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->flowLayoutPanel7->Margin = System::Windows::Forms::Padding(2);
 			this->flowLayoutPanel7->Name = L"flowLayoutPanel7";
 			this->flowLayoutPanel7->Size = System::Drawing::Size(892, 605);
 			this->flowLayoutPanel7->TabIndex = 0;
@@ -2138,7 +2286,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->pn_butchershop_category->Controls->Add(this->flowLayoutPanel6);
 			this->pn_butchershop_category->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_butchershop_category->Location = System::Drawing::Point(0, 0);
-			this->pn_butchershop_category->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pn_butchershop_category->Margin = System::Windows::Forms::Padding(2);
 			this->pn_butchershop_category->Name = L"pn_butchershop_category";
 			this->pn_butchershop_category->Size = System::Drawing::Size(892, 605);
 			this->pn_butchershop_category->TabIndex = 8;
@@ -2149,7 +2297,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->flowLayoutPanel6->AutoScroll = true;
 			this->flowLayoutPanel6->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->flowLayoutPanel6->Location = System::Drawing::Point(0, 0);
-			this->flowLayoutPanel6->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->flowLayoutPanel6->Margin = System::Windows::Forms::Padding(2);
 			this->flowLayoutPanel6->Name = L"flowLayoutPanel6";
 			this->flowLayoutPanel6->Size = System::Drawing::Size(892, 605);
 			this->flowLayoutPanel6->TabIndex = 0;
@@ -2159,7 +2307,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->pn_dairy_category->Controls->Add(this->flowLayoutPanel5);
 			this->pn_dairy_category->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_dairy_category->Location = System::Drawing::Point(0, 0);
-			this->pn_dairy_category->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pn_dairy_category->Margin = System::Windows::Forms::Padding(2);
 			this->pn_dairy_category->Name = L"pn_dairy_category";
 			this->pn_dairy_category->Size = System::Drawing::Size(892, 605);
 			this->pn_dairy_category->TabIndex = 5;
@@ -2170,7 +2318,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->flowLayoutPanel5->AutoScroll = true;
 			this->flowLayoutPanel5->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->flowLayoutPanel5->Location = System::Drawing::Point(0, 0);
-			this->flowLayoutPanel5->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->flowLayoutPanel5->Margin = System::Windows::Forms::Padding(2);
 			this->flowLayoutPanel5->Name = L"flowLayoutPanel5";
 			this->flowLayoutPanel5->Size = System::Drawing::Size(892, 605);
 			this->flowLayoutPanel5->TabIndex = 0;
@@ -2180,7 +2328,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->pn_vegetable_category->Controls->Add(this->flowLayoutPanel4);
 			this->pn_vegetable_category->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_vegetable_category->Location = System::Drawing::Point(0, 0);
-			this->pn_vegetable_category->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pn_vegetable_category->Margin = System::Windows::Forms::Padding(2);
 			this->pn_vegetable_category->Name = L"pn_vegetable_category";
 			this->pn_vegetable_category->Size = System::Drawing::Size(892, 605);
 			this->pn_vegetable_category->TabIndex = 19;
@@ -2191,7 +2339,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->flowLayoutPanel4->AutoScroll = true;
 			this->flowLayoutPanel4->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->flowLayoutPanel4->Location = System::Drawing::Point(0, 0);
-			this->flowLayoutPanel4->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->flowLayoutPanel4->Margin = System::Windows::Forms::Padding(2);
 			this->flowLayoutPanel4->Name = L"flowLayoutPanel4";
 			this->flowLayoutPanel4->Size = System::Drawing::Size(892, 605);
 			this->flowLayoutPanel4->TabIndex = 0;
@@ -2201,7 +2349,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->pn_fruits_category->Controls->Add(this->flowLayoutPanel3);
 			this->pn_fruits_category->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_fruits_category->Location = System::Drawing::Point(0, 0);
-			this->pn_fruits_category->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pn_fruits_category->Margin = System::Windows::Forms::Padding(2);
 			this->pn_fruits_category->Name = L"pn_fruits_category";
 			this->pn_fruits_category->Size = System::Drawing::Size(892, 605);
 			this->pn_fruits_category->TabIndex = 20;
@@ -2212,7 +2360,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->flowLayoutPanel3->AutoScroll = true;
 			this->flowLayoutPanel3->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->flowLayoutPanel3->Location = System::Drawing::Point(0, 0);
-			this->flowLayoutPanel3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->flowLayoutPanel3->Margin = System::Windows::Forms::Padding(2);
 			this->flowLayoutPanel3->Name = L"flowLayoutPanel3";
 			this->flowLayoutPanel3->Size = System::Drawing::Size(892, 605);
 			this->flowLayoutPanel3->TabIndex = 0;
@@ -2223,7 +2371,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->pn_orders->Controls->Add(this->label19);
 			this->pn_orders->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_orders->Location = System::Drawing::Point(222, 0);
-			this->pn_orders->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pn_orders->Margin = System::Windows::Forms::Padding(2);
 			this->pn_orders->Name = L"pn_orders";
 			this->pn_orders->Size = System::Drawing::Size(892, 605);
 			this->pn_orders->TabIndex = 3;
@@ -2257,7 +2405,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->pn_blank->Controls->Add(this->pb_blankpicutre);
 			this->pn_blank->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_blank->Location = System::Drawing::Point(222, 0);
-			this->pn_blank->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pn_blank->Margin = System::Windows::Forms::Padding(2);
 			this->pn_blank->Name = L"pn_blank";
 			this->pn_blank->Size = System::Drawing::Size(892, 605);
 			this->pn_blank->TabIndex = 4;
@@ -2269,7 +2417,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->pb_blankpicutre->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pb_blankpicutre->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pb_blankpicutre.Image")));
 			this->pb_blankpicutre->Location = System::Drawing::Point(0, 0);
-			this->pb_blankpicutre->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pb_blankpicutre->Margin = System::Windows::Forms::Padding(2);
 			this->pb_blankpicutre->Name = L"pb_blankpicutre";
 			this->pb_blankpicutre->Size = System::Drawing::Size(892, 605);
 			this->pb_blankpicutre->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -2285,7 +2433,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->pn_left_bar->Controls->Add(this->pn_picture);
 			this->pn_left_bar->Dock = System::Windows::Forms::DockStyle::Left;
 			this->pn_left_bar->Location = System::Drawing::Point(0, 0);
-			this->pn_left_bar->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pn_left_bar->Margin = System::Windows::Forms::Padding(2);
 			this->pn_left_bar->Name = L"pn_left_bar";
 			this->pn_left_bar->Size = System::Drawing::Size(222, 605);
 			this->pn_left_bar->TabIndex = 0;
@@ -2300,7 +2448,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->flowLayoutPanel1->Controls->Add(this->btn_login);
 			this->flowLayoutPanel1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->flowLayoutPanel1->Location = System::Drawing::Point(0, 163);
-			this->flowLayoutPanel1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->flowLayoutPanel1->Margin = System::Windows::Forms::Padding(2);
 			this->flowLayoutPanel1->Name = L"flowLayoutPanel1";
 			this->flowLayoutPanel1->Size = System::Drawing::Size(222, 442);
 			this->flowLayoutPanel1->TabIndex = 1;
@@ -2317,7 +2465,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->btn_edit_information->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_edit_information.Image")));
 			this->btn_edit_information->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->btn_edit_information->Location = System::Drawing::Point(2, 2);
-			this->btn_edit_information->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btn_edit_information->Margin = System::Windows::Forms::Padding(2);
 			this->btn_edit_information->Name = L"btn_edit_information";
 			this->btn_edit_information->Size = System::Drawing::Size(220, 60);
 			this->btn_edit_information->TabIndex = 0;
@@ -2339,7 +2487,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->btn_products->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_products.Image")));
 			this->btn_products->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->btn_products->Location = System::Drawing::Point(2, 66);
-			this->btn_products->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btn_products->Margin = System::Windows::Forms::Padding(2);
 			this->btn_products->Name = L"btn_products";
 			this->btn_products->Size = System::Drawing::Size(220, 60);
 			this->btn_products->TabIndex = 1;
@@ -2360,7 +2508,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->btn_orders->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_orders.Image")));
 			this->btn_orders->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->btn_orders->Location = System::Drawing::Point(2, 130);
-			this->btn_orders->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btn_orders->Margin = System::Windows::Forms::Padding(2);
 			this->btn_orders->Name = L"btn_orders";
 			this->btn_orders->Size = System::Drawing::Size(220, 60);
 			this->btn_orders->TabIndex = 2;
@@ -2381,7 +2529,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->btn_TotalBill->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_TotalBill.Image")));
 			this->btn_TotalBill->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->btn_TotalBill->Location = System::Drawing::Point(2, 194);
-			this->btn_TotalBill->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btn_TotalBill->Margin = System::Windows::Forms::Padding(2);
 			this->btn_TotalBill->Name = L"btn_TotalBill";
 			this->btn_TotalBill->Size = System::Drawing::Size(220, 60);
 			this->btn_TotalBill->TabIndex = 4;
@@ -2417,7 +2565,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->pn_picture->Controls->Add(this->pb_profile);
 			this->pn_picture->Dock = System::Windows::Forms::DockStyle::Top;
 			this->pn_picture->Location = System::Drawing::Point(0, 0);
-			this->pn_picture->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pn_picture->Margin = System::Windows::Forms::Padding(2);
 			this->pn_picture->Name = L"pn_picture";
 			this->pn_picture->Size = System::Drawing::Size(222, 163);
 			this->pn_picture->TabIndex = 0;
@@ -2444,7 +2592,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->pb_profile->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pb_profile.BackgroundImage")));
 			this->pb_profile->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
 			this->pb_profile->Location = System::Drawing::Point(34, 4);
-			this->pb_profile->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pb_profile->Margin = System::Windows::Forms::Padding(2);
 			this->pb_profile->Name = L"pb_profile";
 			this->pb_profile->Size = System::Drawing::Size(153, 131);
 			this->pb_profile->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -2472,7 +2620,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->pn_login->Controls->Add(this->btn_login_loginpanel);
 			this->pn_login->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_login->Location = System::Drawing::Point(0, 0);
-			this->pn_login->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pn_login->Margin = System::Windows::Forms::Padding(2);
 			this->pn_login->Name = L"pn_login";
 			this->pn_login->Size = System::Drawing::Size(1114, 605);
 			this->pn_login->TabIndex = 2;
@@ -2540,7 +2688,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->btn_refresh_password_login->FlatAppearance->BorderSize = 0;
 			this->btn_refresh_password_login->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_refresh_password_login->Location = System::Drawing::Point(702, 269);
-			this->btn_refresh_password_login->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btn_refresh_password_login->Margin = System::Windows::Forms::Padding(2);
 			this->btn_refresh_password_login->Name = L"btn_refresh_password_login";
 			this->btn_refresh_password_login->Size = System::Drawing::Size(29, 19);
 			this->btn_refresh_password_login->TabIndex = 19;
@@ -2556,7 +2704,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->btn_refresh_username_login->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_refresh_username_login->ForeColor = System::Drawing::Color::White;
 			this->btn_refresh_username_login->Location = System::Drawing::Point(705, 175);
-			this->btn_refresh_username_login->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btn_refresh_username_login->Margin = System::Windows::Forms::Padding(2);
 			this->btn_refresh_username_login->Name = L"btn_refresh_username_login";
 			this->btn_refresh_username_login->Size = System::Drawing::Size(29, 19);
 			this->btn_refresh_username_login->TabIndex = 18;
@@ -2571,7 +2719,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->btn_seepasword_login->FlatAppearance->BorderSize = 0;
 			this->btn_seepasword_login->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_seepasword_login->Location = System::Drawing::Point(661, 263);
-			this->btn_seepasword_login->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btn_seepasword_login->Margin = System::Windows::Forms::Padding(2);
 			this->btn_seepasword_login->Name = L"btn_seepasword_login";
 			this->btn_seepasword_login->Size = System::Drawing::Size(25, 28);
 			this->btn_seepasword_login->TabIndex = 15;
@@ -2583,7 +2731,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->tb_password_login->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->tb_password_login->Location = System::Drawing::Point(440, 262);
-			this->tb_password_login->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->tb_password_login->Margin = System::Windows::Forms::Padding(2);
 			this->tb_password_login->Name = L"tb_password_login";
 			this->tb_password_login->Size = System::Drawing::Size(248, 31);
 			this->tb_password_login->TabIndex = 1;
@@ -2595,7 +2743,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->tb_username_login->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->tb_username_login->Location = System::Drawing::Point(440, 171);
-			this->tb_username_login->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->tb_username_login->Margin = System::Windows::Forms::Padding(2);
 			this->tb_username_login->Name = L"tb_username_login";
 			this->tb_username_login->Size = System::Drawing::Size(248, 31);
 			this->tb_username_login->TabIndex = 0;
@@ -2639,7 +2787,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->btn_register_loginpanel->ForeColor = System::Drawing::Color::White;
 			this->btn_register_loginpanel->Location = System::Drawing::Point(300, 458);
-			this->btn_register_loginpanel->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btn_register_loginpanel->Margin = System::Windows::Forms::Padding(2);
 			this->btn_register_loginpanel->Name = L"btn_register_loginpanel";
 			this->btn_register_loginpanel->Size = System::Drawing::Size(172, 47);
 			this->btn_register_loginpanel->TabIndex = 3;
@@ -2657,7 +2805,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->btn_back_loginpanal->ForeColor = System::Drawing::Color::White;
 			this->btn_back_loginpanal->Location = System::Drawing::Point(514, 458);
-			this->btn_back_loginpanal->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btn_back_loginpanal->Margin = System::Windows::Forms::Padding(2);
 			this->btn_back_loginpanal->Name = L"btn_back_loginpanal";
 			this->btn_back_loginpanal->Size = System::Drawing::Size(172, 47);
 			this->btn_back_loginpanal->TabIndex = 4;
@@ -2675,7 +2823,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->btn_login_loginpanel->ForeColor = System::Drawing::Color::White;
 			this->btn_login_loginpanel->Location = System::Drawing::Point(414, 383);
-			this->btn_login_loginpanel->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btn_login_loginpanel->Margin = System::Windows::Forms::Padding(2);
 			this->btn_login_loginpanel->Name = L"btn_login_loginpanel";
 			this->btn_login_loginpanel->Size = System::Drawing::Size(172, 47);
 			this->btn_login_loginpanel->TabIndex = 2;
@@ -2710,7 +2858,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->pn_register->Controls->Add(this->lb_username_register);
 			this->pn_register->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_register->Location = System::Drawing::Point(0, 0);
-			this->pn_register->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pn_register->Margin = System::Windows::Forms::Padding(2);
 			this->pn_register->Name = L"pn_register";
 			this->pn_register->Size = System::Drawing::Size(1114, 605);
 			this->pn_register->TabIndex = 1;
@@ -2724,7 +2872,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->link_login->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->link_login->Location = System::Drawing::Point(465, 506);
-			this->link_login->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->link_login->Margin = System::Windows::Forms::Padding(2);
 			this->link_login->Name = L"link_login";
 			this->link_login->Size = System::Drawing::Size(139, 44);
 			this->link_login->TabIndex = 22;
@@ -2765,9 +2913,9 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->btn_refresh_location_register->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_refresh_location_register->ForeColor = System::Drawing::Color::Transparent;
 			this->btn_refresh_location_register->Location = System::Drawing::Point(735, 334);
-			this->btn_refresh_location_register->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btn_refresh_location_register->Margin = System::Windows::Forms::Padding(2);
 			this->btn_refresh_location_register->Name = L"btn_refresh_location_register";
-			this->btn_refresh_location_register->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btn_refresh_location_register->Padding = System::Windows::Forms::Padding(2);
 			this->btn_refresh_location_register->Size = System::Drawing::Size(29, 19);
 			this->btn_refresh_location_register->TabIndex = 18;
 			this->btn_refresh_location_register->UseVisualStyleBackColor = false;
@@ -2782,9 +2930,9 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->btn_refresh_phonenumber_register->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_refresh_phonenumber_register->ForeColor = System::Drawing::Color::Transparent;
 			this->btn_refresh_phonenumber_register->Location = System::Drawing::Point(735, 255);
-			this->btn_refresh_phonenumber_register->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btn_refresh_phonenumber_register->Margin = System::Windows::Forms::Padding(2);
 			this->btn_refresh_phonenumber_register->Name = L"btn_refresh_phonenumber_register";
-			this->btn_refresh_phonenumber_register->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btn_refresh_phonenumber_register->Padding = System::Windows::Forms::Padding(2);
 			this->btn_refresh_phonenumber_register->Size = System::Drawing::Size(29, 19);
 			this->btn_refresh_phonenumber_register->TabIndex = 17;
 			this->btn_refresh_phonenumber_register->UseVisualStyleBackColor = false;
@@ -2799,9 +2947,9 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->btn_refresh_password_register->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_refresh_password_register->ForeColor = System::Drawing::Color::Transparent;
 			this->btn_refresh_password_register->Location = System::Drawing::Point(735, 185);
-			this->btn_refresh_password_register->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btn_refresh_password_register->Margin = System::Windows::Forms::Padding(2);
 			this->btn_refresh_password_register->Name = L"btn_refresh_password_register";
-			this->btn_refresh_password_register->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btn_refresh_password_register->Padding = System::Windows::Forms::Padding(2);
 			this->btn_refresh_password_register->Size = System::Drawing::Size(29, 19);
 			this->btn_refresh_password_register->TabIndex = 16;
 			this->btn_refresh_password_register->UseVisualStyleBackColor = false;
@@ -2816,9 +2964,9 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->btn_refresh_username_register->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_refresh_username_register->ForeColor = System::Drawing::Color::Transparent;
 			this->btn_refresh_username_register->Location = System::Drawing::Point(736, 112);
-			this->btn_refresh_username_register->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btn_refresh_username_register->Margin = System::Windows::Forms::Padding(2);
 			this->btn_refresh_username_register->Name = L"btn_refresh_username_register";
-			this->btn_refresh_username_register->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btn_refresh_username_register->Padding = System::Windows::Forms::Padding(2);
 			this->btn_refresh_username_register->Size = System::Drawing::Size(29, 19);
 			this->btn_refresh_username_register->TabIndex = 15;
 			this->btn_refresh_username_register->UseVisualStyleBackColor = false;
@@ -2832,7 +2980,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->btn_seepassword->FlatAppearance->BorderSize = 0;
 			this->btn_seepassword->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_seepassword->Location = System::Drawing::Point(705, 184);
-			this->btn_seepassword->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btn_seepassword->Margin = System::Windows::Forms::Padding(2);
 			this->btn_seepassword->Name = L"btn_seepassword";
 			this->btn_seepassword->Size = System::Drawing::Size(25, 24);
 			this->btn_seepassword->TabIndex = 14;
@@ -2908,7 +3056,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->btn_register_registerpanel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->btn_register_registerpanel->Location = System::Drawing::Point(447, 436);
-			this->btn_register_registerpanel->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btn_register_registerpanel->Margin = System::Windows::Forms::Padding(2);
 			this->btn_register_registerpanel->Name = L"btn_register_registerpanel";
 			this->btn_register_registerpanel->Size = System::Drawing::Size(183, 52);
 			this->btn_register_registerpanel->TabIndex = 8;
@@ -2921,7 +3069,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->tb_location_register->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->tb_location_register->Location = System::Drawing::Point(487, 328);
-			this->tb_location_register->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->tb_location_register->Margin = System::Windows::Forms::Padding(2);
 			this->tb_location_register->Name = L"tb_location_register";
 			this->tb_location_register->Size = System::Drawing::Size(245, 33);
 			this->tb_location_register->TabIndex = 7;
@@ -2932,7 +3080,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->tb_phonenumber_register->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->tb_phonenumber_register->Location = System::Drawing::Point(487, 249);
-			this->tb_phonenumber_register->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->tb_phonenumber_register->Margin = System::Windows::Forms::Padding(2);
 			this->tb_phonenumber_register->Name = L"tb_phonenumber_register";
 			this->tb_phonenumber_register->Size = System::Drawing::Size(245, 33);
 			this->tb_phonenumber_register->TabIndex = 6;
@@ -2943,7 +3091,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->tb_password_register->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->tb_password_register->Location = System::Drawing::Point(487, 179);
-			this->tb_password_register->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->tb_password_register->Margin = System::Windows::Forms::Padding(2);
 			this->tb_password_register->Name = L"tb_password_register";
 			this->tb_password_register->Size = System::Drawing::Size(245, 33);
 			this->tb_password_register->TabIndex = 5;
@@ -2955,7 +3103,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->tb_username_register->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->tb_username_register->Location = System::Drawing::Point(487, 105);
-			this->tb_username_register->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->tb_username_register->Margin = System::Windows::Forms::Padding(2);
 			this->tb_username_register->Name = L"tb_username_register";
 			this->tb_username_register->Size = System::Drawing::Size(245, 33);
 			this->tb_username_register->TabIndex = 4;
@@ -3021,83 +3169,11 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->lb_username_register->Text = L"Username :";
 			this->lb_username_register->Click += gcnew System::EventHandler(this, &MyForm::lb_username_register_Click);
 			// 
-			// pn_start
-			// 
-			this->pn_start->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-				static_cast<System::Int32>(static_cast<System::Byte>(239)));
-			this->pn_start->Controls->Add(this->pictureBox4);
-			this->pn_start->Controls->Add(this->label23);
-			this->pn_start->Controls->Add(this->pictureBox3);
-			this->pn_start->Controls->Add(this->label21);
-			this->pn_start->Controls->Add(this->label18);
-			this->pn_start->Controls->Add(this->label20);
-			this->pn_start->Controls->Add(this->btn_start);
-			this->pn_start->Controls->Add(this->btn_exit);
-			this->pn_start->Controls->Add(this->welcomeScreen);
-			this->pn_start->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn_start->Location = System::Drawing::Point(0, 0);
-			this->pn_start->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
-			this->pn_start->Name = L"pn_start";
-			this->pn_start->Size = System::Drawing::Size(1114, 605);
-			this->pn_start->TabIndex = 3;
-			this->pn_start->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_start_Paint);
-			// 
-			// btn_start
-			// 
-			this->btn_start->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(218)), static_cast<System::Int32>(static_cast<System::Byte>(245)),
-				static_cast<System::Int32>(static_cast<System::Byte>(242)));
-			this->btn_start->FlatAppearance->BorderColor = System::Drawing::Color::White;
-			this->btn_start->FlatAppearance->BorderSize = 0;
-			this->btn_start->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btn_start->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->btn_start->Location = System::Drawing::Point(40, 442);
-			this->btn_start->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
-			this->btn_start->Name = L"btn_start";
-			this->btn_start->Size = System::Drawing::Size(169, 42);
-			this->btn_start->TabIndex = 1;
-			this->btn_start->Text = L"Start";
-			this->btn_start->UseVisualStyleBackColor = false;
-			this->btn_start->Click += gcnew System::EventHandler(this, &MyForm::btn_start_Click);
-			this->btn_start->MouseEnter += gcnew System::EventHandler(this, &MyForm::btn_start_MouseEnter);
-			this->btn_start->MouseLeave += gcnew System::EventHandler(this, &MyForm::btn_start_MouseLeave);
-			// 
-			// btn_exit
-			// 
-			this->btn_exit->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(218)), static_cast<System::Int32>(static_cast<System::Byte>(245)),
-				static_cast<System::Int32>(static_cast<System::Byte>(242)));
-			this->btn_exit->FlatAppearance->BorderSize = 0;
-			this->btn_exit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btn_exit->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->btn_exit->Location = System::Drawing::Point(225, 442);
-			this->btn_exit->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
-			this->btn_exit->Name = L"btn_exit";
-			this->btn_exit->Size = System::Drawing::Size(169, 42);
-			this->btn_exit->TabIndex = 0;
-			this->btn_exit->Text = L"Exit";
-			this->btn_exit->UseVisualStyleBackColor = false;
-			this->btn_exit->Click += gcnew System::EventHandler(this, &MyForm::btn_exit_Click);
-			this->btn_exit->MouseEnter += gcnew System::EventHandler(this, &MyForm::btn_exit_MouseEnter);
-			this->btn_exit->MouseLeave += gcnew System::EventHandler(this, &MyForm::btn_exit_MouseLeave);
-			// 
-			// welcomeScreen
-			// 
-			this->welcomeScreen->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-				static_cast<System::Int32>(static_cast<System::Byte>(239)));
-			this->welcomeScreen->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
-			this->welcomeScreen->Location = System::Drawing::Point(0, 0);
-			this->welcomeScreen->Name = L"welcomeScreen";
-			this->welcomeScreen->Size = System::Drawing::Size(1114, 605);
-			this->welcomeScreen->TabIndex = 2;
-			this->welcomeScreen->TabStop = false;
-			this->welcomeScreen->Click += gcnew System::EventHandler(this, &MyForm::welcomeScreen_Click_1);
-			// 
 			// pn_thankyou
 			// 
 			this->pn_thankyou->Controls->Add(this->thankyou);
 			this->pn_thankyou->Location = System::Drawing::Point(0, 0);
-			this->pn_thankyou->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pn_thankyou->Margin = System::Windows::Forms::Padding(2);
 			this->pn_thankyou->Name = L"pn_thankyou";
 			this->pn_thankyou->Size = System::Drawing::Size(1125, 605);
 			this->pn_thankyou->TabIndex = 0;
@@ -3136,83 +3212,25 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			// 
 			this->printDocument1->PrintPage += gcnew System::Drawing::Printing::PrintPageEventHandler(this, &MyForm::printDocument1_PrintPage);
 			// 
-			// label18
-			// 
-			this->label18->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-				static_cast<System::Int32>(static_cast<System::Byte>(239)));
-			this->label18->Font = (gcnew System::Drawing::Font(L"Segoe Script", 48, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->label18->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(51)), static_cast<System::Int32>(static_cast<System::Byte>(55)),
-				static_cast<System::Int32>(static_cast<System::Byte>(69)));
-			this->label18->Location = System::Drawing::Point(62, 54);
-			this->label18->Name = L"label18";
-			this->label18->Size = System::Drawing::Size(385, 94);
-			this->label18->TabIndex = 3;
-			this->label18->Text = L"Welcome";
-			this->label18->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// label20
-			// 
-			this->label20->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-				static_cast<System::Int32>(static_cast<System::Byte>(239)));
-			this->label20->Font = (gcnew System::Drawing::Font(L"Segoe UI", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label20->Location = System::Drawing::Point(39, 126);
-			this->label20->Name = L"label20";
-			this->label20->Size = System::Drawing::Size(426, 107);
-			this->label20->TabIndex = 4;
-			this->label20->Text = L"━━━━━  TO THE  ━━━━━";
-			this->label20->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->label20->Click += gcnew System::EventHandler(this, &MyForm::label20_Click);
-			// 
-			// label21
-			// 
-			this->label21->AutoSize = true;
-			this->label21->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-				static_cast<System::Int32>(static_cast<System::Byte>(239)));
-			this->label21->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 48, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label21->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(230)), static_cast<System::Int32>(static_cast<System::Byte>(52)),
-				static_cast<System::Int32>(static_cast<System::Byte>(98)));
-			this->label21->Location = System::Drawing::Point(104, 195);
-			this->label21->Name = L"label21";
-			this->label21->Size = System::Drawing::Size(409, 90);
-			this->label21->TabIndex = 5;
-			this->label21->Text = L"SuperMarko";
-			this->label21->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// pictureBox3
-			// 
-			this->pictureBox3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-				static_cast<System::Int32>(static_cast<System::Byte>(239)));
-			this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.Image")));
-			this->pictureBox3->Location = System::Drawing::Point(38, 218);
-			this->pictureBox3->Name = L"pictureBox3";
-			this->pictureBox3->Size = System::Drawing::Size(67, 64);
-			this->pictureBox3->TabIndex = 6;
-			this->pictureBox3->TabStop = false;
-			// 
-			// label23
-			// 
-			this->label23->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-				static_cast<System::Int32>(static_cast<System::Byte>(239)));
-			this->label23->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label23->Location = System::Drawing::Point(35, 291);
-			this->label23->Name = L"label23";
-			this->label23->Size = System::Drawing::Size(553, 143);
-			this->label23->TabIndex = 7;
-			this->label23->Text = resources->GetString(L"label23.Text");
-			this->label23->Click += gcnew System::EventHandler(this, &MyForm::label23_Click);
-			// 
 			// pictureBox4
 			// 
-			this->pictureBox4->Location = System::Drawing::Point(641, 69);
+			this->pictureBox4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox4.Image")));
+			this->pictureBox4->Location = System::Drawing::Point(310, 164);
 			this->pictureBox4->Name = L"pictureBox4";
-			this->pictureBox4->Size = System::Drawing::Size(451, 432);
+			this->pictureBox4->Size = System::Drawing::Size(77, 20);
+			this->pictureBox4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox4->TabIndex = 8;
 			this->pictureBox4->TabStop = false;
-			this->pictureBox4->Click += gcnew System::EventHandler(this, &MyForm::pictureBox4_Click);
+			// 
+			// pictureBox5
+			// 
+			this->pictureBox5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox5.Image")));
+			this->pictureBox5->Location = System::Drawing::Point(115, 165);
+			this->pictureBox5->Name = L"pictureBox5";
+			this->pictureBox5->Size = System::Drawing::Size(77, 20);
+			this->pictureBox5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox5->TabIndex = 9;
+			this->pictureBox5->TabStop = false;
 			// 
 			// MyForm
 			// 
@@ -3223,7 +3241,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->Controls->Add(this->pn_upper_bar);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"MyForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"SuperMarko";
@@ -3231,6 +3249,10 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->pn_upper_bar->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_icon))->EndInit();
 			this->pn_main_dashboard->ResumeLayout(false);
+			this->pn_start->ResumeLayout(false);
+			this->pn_start->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->welcomeScreen))->EndInit();
 			this->pn_defualt->ResumeLayout(false);
 			this->pn_viewBill->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_theinvoice))->EndInit();
@@ -3272,13 +3294,10 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 			this->pn_register->ResumeLayout(false);
 			this->pn_register->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
-			this->pn_start->ResumeLayout(false);
-			this->pn_start->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->welcomeScreen))->EndInit();
 			this->pn_thankyou->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->thankyou))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->EndInit();
 			this->ResumeLayout(false);
 
 		}
