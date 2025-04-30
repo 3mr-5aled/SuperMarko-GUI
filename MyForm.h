@@ -1038,52 +1038,52 @@ private: System::Windows::Forms::Label^ lb_total_number;
 			// 
 			// lb_total_number
 			// 
-			this->lb_total_number->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->lb_total_number->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lb_total_number->ForeColor = System::Drawing::Color::Purple;
-			this->lb_total_number->Location = System::Drawing::Point(808, 61);
+			this->lb_total_number->Location = System::Drawing::Point(780, 61);
 			this->lb_total_number->Name = L"lb_total_number";
-			this->lb_total_number->Size = System::Drawing::Size(308, 44);
+			this->lb_total_number->Size = System::Drawing::Size(353, 51);
 			this->lb_total_number->TabIndex = 10;
 			// 
 			// lb_shipping_number
 			// 
-			this->lb_shipping_number->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->lb_shipping_number->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lb_shipping_number->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->lb_shipping_number->Location = System::Drawing::Point(282, 102);
+			this->lb_shipping_number->Location = System::Drawing::Point(300, 102);
 			this->lb_shipping_number->Name = L"lb_shipping_number";
-			this->lb_shipping_number->Size = System::Drawing::Size(161, 34);
+			this->lb_shipping_number->Size = System::Drawing::Size(161, 37);
 			this->lb_shipping_number->TabIndex = 9;
 			this->lb_shipping_number->Click += gcnew System::EventHandler(this, &MyForm::lb_shipping_number_Click);
 			// 
 			// lb_vat_number
 			// 
-			this->lb_vat_number->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->lb_vat_number->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lb_vat_number->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->lb_vat_number->Location = System::Drawing::Point(291, 68);
+			this->lb_vat_number->Location = System::Drawing::Point(300, 68);
 			this->lb_vat_number->Name = L"lb_vat_number";
-			this->lb_vat_number->Size = System::Drawing::Size(161, 34);
+			this->lb_vat_number->Size = System::Drawing::Size(161, 37);
 			this->lb_vat_number->TabIndex = 8;
 			// 
 			// lb_discount_number
 			// 
-			this->lb_discount_number->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->lb_discount_number->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lb_discount_number->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->lb_discount_number->Location = System::Drawing::Point(294, 34);
+			this->lb_discount_number->Location = System::Drawing::Point(300, 34);
 			this->lb_discount_number->Name = L"lb_discount_number";
-			this->lb_discount_number->Size = System::Drawing::Size(161, 34);
+			this->lb_discount_number->Size = System::Drawing::Size(161, 37);
 			this->lb_discount_number->TabIndex = 7;
 			this->lb_discount_number->Click += gcnew System::EventHandler(this, &MyForm::label21_Click_1);
 			// 
 			// lb_shipping
 			// 
-			this->lb_shipping->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->lb_shipping->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lb_shipping->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
@@ -1095,7 +1095,7 @@ private: System::Windows::Forms::Label^ lb_total_number;
 			// 
 			// lb_vat
 			// 
-			this->lb_vat->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->lb_vat->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lb_vat->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
@@ -1103,11 +1103,11 @@ private: System::Windows::Forms::Label^ lb_total_number;
 			this->lb_vat->Name = L"lb_vat";
 			this->lb_vat->Size = System::Drawing::Size(268, 34);
 			this->lb_vat->TabIndex = 5;
-			this->lb_vat->Text = L"VAT (14%): ";
+			this->lb_vat->Text = L"VAT(14%): ";
 			// 
 			// lb_discount
 			// 
-			this->lb_discount->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->lb_discount->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lb_discount->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
@@ -1119,7 +1119,7 @@ private: System::Windows::Forms::Label^ lb_total_number;
 			// 
 			// lb_total
 			// 
-			this->lb_total->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->lb_total->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lb_total->ForeColor = System::Drawing::Color::Purple;
 			this->lb_total->Location = System::Drawing::Point(569, 61);
@@ -1140,11 +1140,11 @@ private: System::Windows::Forms::Label^ lb_total_number;
 			// 
 			// lb_beforevat_number
 			// 
-			this->lb_beforevat_number->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->lb_beforevat_number->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->lb_beforevat_number->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->lb_beforevat_number->Location = System::Drawing::Point(306, 3);
+			this->lb_beforevat_number->Location = System::Drawing::Point(300, 3);
 			this->lb_beforevat_number->Name = L"lb_beforevat_number";
 			this->lb_beforevat_number->Size = System::Drawing::Size(161, 37);
 			this->lb_beforevat_number->TabIndex = 1;
@@ -1152,7 +1152,7 @@ private: System::Windows::Forms::Label^ lb_total_number;
 			// 
 			// lb_beforevat
 			// 
-			this->lb_beforevat->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->lb_beforevat->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lb_beforevat->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
@@ -1160,7 +1160,7 @@ private: System::Windows::Forms::Label^ lb_total_number;
 			this->lb_beforevat->Name = L"lb_beforevat";
 			this->lb_beforevat->Size = System::Drawing::Size(297, 34);
 			this->lb_beforevat->TabIndex = 0;
-			this->lb_beforevat->Text = L"Subtotal (Before VAT): ";
+			this->lb_beforevat->Text = L"Total(Before VAT): ";
 			// 
 			// tb_customername_theincoive
 			// 
@@ -2719,7 +2719,7 @@ private: System::Windows::Forms::Label^ lb_total_number;
 			this->link_login->FlatAppearance->BorderSize = 0;
 			this->link_login->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->link_login->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+		    static_cast<System::Byte>(0)));
 			this->link_login->Location = System::Drawing::Point(620, 623);
 			this->link_login->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->link_login->Name = L"link_login";
@@ -3946,21 +3946,21 @@ private: System::Windows::Forms::Label^ lb_total_number;
 						productCount++;
 					}
 				}
-				lb_beforevat_number->Text = (" " + totalPrice);
+				lb_beforevat_number->Text = (" " + totalPrice+" EGP");
 				
 
 				if (productCount > 0) {
 					if (totalPrice > 1000) {
-						lb_vat_number->Text = (" "+totalPrice*0.14+"EGP");
+						lb_vat_number->Text = (" "+totalPrice*0.14+" EGP");
 						lb_shipping_number->Text = (" 0.00 ");
-						lb_discount_number->Text = ( "  "+totalPrice*0.1+"EGP");
-						lb_total_number->Text = (" " + (totalPrice) * 1.1);
+						lb_discount_number->Text = ( "  "+totalPrice*0.1+" EGP");
+						lb_total_number->Text = (" " + (totalPrice) * 1.1+" EGP");
 					}
 					else {
-						lb_vat_number->Text = (" " + totalPrice * 0.14 + "EGP");
+						lb_vat_number->Text = (" " + totalPrice * 0.14 + " EGP");
 						lb_shipping_number->Text = (" 100 EGP ");
 						lb_discount_number->Text = (" 0% ");
-						lb_total_number->Text = (" " + (totalPrice) * 1.14+100 +"EGP");
+						lb_total_number->Text = (" " + (totalPrice) * 1.14+100 +" EGP");
 					}
 					foundOrder = true;
 					MenuBGColor(btn_TotalBill);
@@ -4002,20 +4002,26 @@ private: System::Windows::Forms::Label^ lb_total_number;
 }
     private: System::Void printDocument1_PrintPage(System::Object^ sender, System::Drawing::Printing::PrintPageEventArgs^ e) {
 	System::Drawing::Font^ f = gcnew System::Drawing::Font("Arial", 20, FontStyle::Bold);
+	System::Drawing::Font^ qq = gcnew System::Drawing::Font("Stencil", 20, FontStyle::Bold );
 	Image^ img = Image::FromFile("Logo\\Logo.jpg");
 
 	String^ no = "#No " + tb_invoicenumber_theinvoice->Text;
 	String^ date = "Date:  " + tb_date_theinvoice->Text;
 	String^ customerName = "Customer Name:  " + tb_customername_theincoive->Text;
+	String^ invoice = "thank you for using                              !! ";
+	String^ invoice2 = " SUPERMARKO ";
 
 	SizeF sizeno = e->Graphics->MeasureString(no, f);
 	SizeF sizedate = e->Graphics->MeasureString(date, f);
 	SizeF sizecustomerName = e->Graphics->MeasureString(customerName, f);
+	SizeF sizeinvoice = e->Graphics->MeasureString(invoice, f);	
 
 	e->Graphics->DrawImage(img, 600, 0, 250, 250);
 	e->Graphics->DrawString(no, f, Brushes::Red, (e->PageBounds.Width - sizeno.Width) / 2, 50);
 	e->Graphics->DrawString(date, f, Brushes::Black, 20, 100);
 	e->Graphics->DrawString(customerName, f, Brushes::Navy, 20, 150);
+	e->Graphics->DrawString(invoice, f, Brushes::Black, (e->PageBounds.Width - sizeinvoice.Width) / 2, 1030);
+	e->Graphics->DrawString(invoice2, qq, Brushes::Purple, 420, 1030);
 
 	float y = 200;
 	e->Graphics->DrawRectangle(Pens::Black, 20, (int)y, (int)(e->PageBounds.Width - 40), 800);
@@ -4058,9 +4064,11 @@ private: System::Windows::Forms::Label^ lb_total_number;
 
 		int y = startY + (validRowCount * rowHeight);
 
-		System::Drawing::Font^ font = gcnew System::Drawing::Font("Arial", 14, FontStyle::Regular);
+		System::Drawing::Font^ font = gcnew System::Drawing::Font("Arial", 16, FontStyle::Regular);
+		System::Drawing::Font^ ff = gcnew System::Drawing::Font("Arial", 16, FontStyle::Bold);
 
-		e->Graphics->DrawString(product, font, Brushes::Navy, 25, y + 15);
+
+		e->Graphics->DrawString(product, ff, Brushes::Navy, 25, y + 15);
 		e->Graphics->DrawString(quantity, font, Brushes::Black, 375, y + 15);
 		e->Graphics->DrawString(unitprice, font, Brushes::Black, 500, y + 15);
 		e->Graphics->DrawString(subtotal, font, Brushes::Black, 625, y + 15);
@@ -4070,10 +4078,34 @@ private: System::Windows::Forms::Label^ lb_total_number;
 		validRowCount++;
 		x = y;
 	}
+	System::Drawing::Font^ z = gcnew System::Drawing::Font("Arial", 12, FontStyle::Bold);
+	System::Drawing::Font^ p = gcnew System::Drawing::Font("Arial", 16, FontStyle::Bold);
+	System::Drawing::Font^ m = gcnew System::Drawing::Font("Arial", 18, FontStyle::Bold);
 
-	e->Graphics->DrawString("Total Price ", f, Brushes::Red, 470, x + rowHeight + 10);
-	e->Graphics->DrawString(lb_total_number->Text, f, Brushes::Navy, 630, x + rowHeight + 10);
-	e->Graphics->DrawLine(Pens::Black, 20, (int)(x + rowHeight + 50), (int)(e->PageBounds.Width - 20), (int)(x + rowHeight + 50));
+	e->Graphics->DrawLine(Pens::Black, 20, (int)(800), (int)(e->PageBounds.Width - 20), (int)( 800));
+	e->Graphics->DrawString(" Total(Before VAT):  ", z, Brushes::Red, 470, 805);
+	e->Graphics->DrawString(lb_beforevat_number->Text, p, Brushes::Navy, 630,805);
+	//e->Graphics->DrawLine(Pens::Black, 20, (int)(x + rowHeight + 650), (int)(e->PageBounds.Width - 20), (int)(x + rowHeight + 650));
+	
+	e->Graphics->DrawString(" Discount Applied:   ", z, Brushes::Red, 470,840);
+	e->Graphics->DrawString(lb_discount_number->Text, p, Brushes::Navy, 630,840);
+	//e->Graphics->DrawLine(Pens::Black, 20, (int)(x + rowHeight + 100), (int)(e->PageBounds.Width - 20), (int)(x + rowHeight +100));
+
+	e->Graphics->DrawString(" VAT (14%):    ", z, Brushes::Red, 470,875);
+	e->Graphics->DrawString(lb_vat_number->Text, p, Brushes::Navy, 630, 875);
+	//e->Graphics->DrawLine(Pens::Black, 20, (int)(x + rowHeight + 150), (int)(e->PageBounds.Width - 20), (int)(x + rowHeight + 150));
+
+	e->Graphics->DrawString(" Shipping Cost:     ", z, Brushes::Red, 470, 910);
+	e->Graphics->DrawString(lb_shipping_number->Text, p, Brushes::Navy, 630,910);
+	//e->Graphics->DrawLine(Pens::Black, 20, (int)(x + rowHeight + 200), (int)(e->PageBounds.Width - 20), (int)(x + rowHeight + 200));
+
+	
+	e->Graphics->DrawString(" Total (After VAT):      ", z, Brushes::Red, 470,945);
+	e->Graphics->DrawString(lb_total_number->Text, m, Brushes::Purple, 630, 945);
+	//e->Graphics->DrawLine(Pens::Black, 20, (int)(x + rowHeight + 250), (int)(e->PageBounds.Width - 20), (int)(x + rowHeight + 250));
+
+	
+	
 	//invoice details
 }
 	private: System::Void btn_TotalBill_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
