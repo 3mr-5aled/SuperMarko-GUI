@@ -514,7 +514,8 @@ private: System::Windows::Forms::Label^ lb_theinvoice;
 private: System::Windows::Forms::FlowLayoutPanel^ orderList;
 private: System::Windows::Forms::Button^ link_login;
 private: System::Windows::Forms::PictureBox^ pb_theinvoice;
-private: System::Windows::Forms::Panel^ panel1;
+private: System::Windows::Forms::Panel^ pn;
+
 private: System::Windows::Forms::Label^ lb_invoicenumber_theinvoice;
 private: System::Windows::Forms::Label^ lb_date_theinvice;
 private: System::Windows::Forms::TextBox^ tb_date_theinvoice;
@@ -577,7 +578,7 @@ private: System::Windows::Forms::Label^ label18;
 			this->pn_defualt = (gcnew System::Windows::Forms::Panel());
 			this->pn_viewBill = (gcnew System::Windows::Forms::Panel());
 			this->pb_theinvoice = (gcnew System::Windows::Forms::PictureBox());
-			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->pn = (gcnew System::Windows::Forms::Panel());
 			this->btn_print = (gcnew System::Windows::Forms::Button());
 			this->flowLayoutPanel13 = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
@@ -733,7 +734,7 @@ private: System::Windows::Forms::Label^ label18;
 			this->pn_defualt->SuspendLayout();
 			this->pn_viewBill->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_theinvoice))->BeginInit();
-			this->panel1->SuspendLayout();
+			this->pn->SuspendLayout();
 			this->flowLayoutPanel13->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->panel2->SuspendLayout();
@@ -844,7 +845,7 @@ private: System::Windows::Forms::Label^ label18;
 				static_cast<System::Int32>(static_cast<System::Byte>(131)), static_cast<System::Int32>(static_cast<System::Byte>(145)));
 			this->btn_close->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_close->Location = System::Drawing::Point(1401, 5);
-			this->btn_close->Margin = System::Windows::Forms::Padding(5, 5, 5, 5);
+			this->btn_close->Margin = System::Windows::Forms::Padding(5);
 			this->btn_close->Name = L"btn_close";
 			this->btn_close->Size = System::Drawing::Size(80, 46);
 			this->btn_close->TabIndex = 1;
@@ -869,8 +870,8 @@ private: System::Windows::Forms::Label^ label18;
 			// 
 			// pn_defualt
 			// 
-			this->pn_defualt->Controls->Add(this->pn_edit_information);
 			this->pn_defualt->Controls->Add(this->pn_viewBill);
+			this->pn_defualt->Controls->Add(this->pn_edit_information);
 			this->pn_defualt->Controls->Add(this->pn_products);
 			this->pn_defualt->Controls->Add(this->pn_orders);
 			this->pn_defualt->Controls->Add(this->pn_blank);
@@ -888,7 +889,7 @@ private: System::Windows::Forms::Label^ label18;
 			this->pn_viewBill->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
 				static_cast<System::Int32>(static_cast<System::Byte>(230)));
 			this->pn_viewBill->Controls->Add(this->pb_theinvoice);
-			this->pn_viewBill->Controls->Add(this->panel1);
+			this->pn_viewBill->Controls->Add(this->pn);
 			this->pn_viewBill->Controls->Add(this->lb_theinvoice);
 			this->pn_viewBill->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_viewBill->Location = System::Drawing::Point(296, 0);
@@ -908,22 +909,22 @@ private: System::Windows::Forms::Label^ label18;
 			this->pb_theinvoice->TabIndex = 3;
 			this->pb_theinvoice->TabStop = false;
 			// 
-			// panel1
+			// pn
 			// 
-			this->panel1->Controls->Add(this->btn_print);
-			this->panel1->Controls->Add(this->flowLayoutPanel13);
-			this->panel1->Controls->Add(this->tb_customername_theincoive);
-			this->panel1->Controls->Add(this->lb_customername_theinvoice);
-			this->panel1->Controls->Add(this->tb_date_theinvoice);
-			this->panel1->Controls->Add(this->tb_invoicenumber_theinvoice);
-			this->panel1->Controls->Add(this->lb_date_theinvice);
-			this->panel1->Controls->Add(this->lb_invoicenumber_theinvoice);
-			this->panel1->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->panel1->Location = System::Drawing::Point(0, 127);
-			this->panel1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(1189, 618);
-			this->panel1->TabIndex = 2;
+			this->pn->Controls->Add(this->btn_print);
+			this->pn->Controls->Add(this->flowLayoutPanel13);
+			this->pn->Controls->Add(this->tb_customername_theincoive);
+			this->pn->Controls->Add(this->lb_customername_theinvoice);
+			this->pn->Controls->Add(this->tb_date_theinvoice);
+			this->pn->Controls->Add(this->tb_invoicenumber_theinvoice);
+			this->pn->Controls->Add(this->lb_date_theinvice);
+			this->pn->Controls->Add(this->lb_invoicenumber_theinvoice);
+			this->pn->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->pn->Location = System::Drawing::Point(0, 127);
+			this->pn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->pn->Name = L"pn";
+			this->pn->Size = System::Drawing::Size(1189, 618);
+			this->pn->TabIndex = 2;
 			// 
 			// btn_print
 			// 
@@ -1161,7 +1162,7 @@ private: System::Windows::Forms::Label^ label18;
 			this->pn_editInfo->Controls->Add(this->label11);
 			this->pn_editInfo->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_editInfo->Location = System::Drawing::Point(0, 148);
-			this->pn_editInfo->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pn_editInfo->Margin = System::Windows::Forms::Padding(4);
 			this->pn_editInfo->Name = L"pn_editInfo";
 			this->pn_editInfo->Size = System::Drawing::Size(1197, 597);
 			this->pn_editInfo->TabIndex = 2;
@@ -1188,7 +1189,7 @@ private: System::Windows::Forms::Label^ label18;
 				static_cast<System::Byte>(0)));
 			this->btn_cancelEdit->ForeColor = System::Drawing::Color::Black;
 			this->btn_cancelEdit->Location = System::Drawing::Point(616, 384);
-			this->btn_cancelEdit->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btn_cancelEdit->Margin = System::Windows::Forms::Padding(4);
 			this->btn_cancelEdit->Name = L"btn_cancelEdit";
 			this->btn_cancelEdit->Size = System::Drawing::Size(145, 66);
 			this->btn_cancelEdit->TabIndex = 13;
@@ -1204,7 +1205,7 @@ private: System::Windows::Forms::Label^ label18;
 			this->btn_saveEdit->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btn_saveEdit->Location = System::Drawing::Point(452, 384);
-			this->btn_saveEdit->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btn_saveEdit->Margin = System::Windows::Forms::Padding(4);
 			this->btn_saveEdit->Name = L"btn_saveEdit";
 			this->btn_saveEdit->Size = System::Drawing::Size(131, 66);
 			this->btn_saveEdit->TabIndex = 12;
@@ -1217,7 +1218,7 @@ private: System::Windows::Forms::Label^ label18;
 			this->tb_edit_phonenumber->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->tb_edit_phonenumber->Location = System::Drawing::Point(581, 202);
-			this->tb_edit_phonenumber->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->tb_edit_phonenumber->Margin = System::Windows::Forms::Padding(4);
 			this->tb_edit_phonenumber->Name = L"tb_edit_phonenumber";
 			this->tb_edit_phonenumber->Size = System::Drawing::Size(333, 42);
 			this->tb_edit_phonenumber->TabIndex = 11;
@@ -1240,7 +1241,7 @@ private: System::Windows::Forms::Label^ label18;
 			this->tb_edit_location->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->tb_edit_location->Location = System::Drawing::Point(581, 272);
-			this->tb_edit_location->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->tb_edit_location->Margin = System::Windows::Forms::Padding(4);
 			this->tb_edit_location->Name = L"tb_edit_location";
 			this->tb_edit_location->Size = System::Drawing::Size(333, 42);
 			this->tb_edit_location->TabIndex = 9;
@@ -1263,7 +1264,7 @@ private: System::Windows::Forms::Label^ label18;
 			this->tb_edit_username->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->tb_edit_username->Location = System::Drawing::Point(581, 138);
-			this->tb_edit_username->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->tb_edit_username->Margin = System::Windows::Forms::Padding(4);
 			this->tb_edit_username->Name = L"tb_edit_username";
 			this->tb_edit_username->Size = System::Drawing::Size(333, 42);
 			this->tb_edit_username->TabIndex = 7;
@@ -1310,7 +1311,7 @@ private: System::Windows::Forms::Label^ label18;
 			this->pn_currentInfo->Controls->Add(this->label5);
 			this->pn_currentInfo->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_currentInfo->Location = System::Drawing::Point(0, 0);
-			this->pn_currentInfo->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pn_currentInfo->Margin = System::Windows::Forms::Padding(4);
 			this->pn_currentInfo->Name = L"pn_currentInfo";
 			this->pn_currentInfo->Size = System::Drawing::Size(1197, 745);
 			this->pn_currentInfo->TabIndex = 1;
@@ -1340,7 +1341,7 @@ private: System::Windows::Forms::Label^ label18;
 				static_cast<System::Byte>(0)));
 			this->btn_reset->ForeColor = System::Drawing::Color::Black;
 			this->btn_reset->Location = System::Drawing::Point(536, 416);
-			this->btn_reset->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btn_reset->Margin = System::Windows::Forms::Padding(4);
 			this->btn_reset->Name = L"btn_reset";
 			this->btn_reset->Size = System::Drawing::Size(248, 66);
 			this->btn_reset->TabIndex = 22;
@@ -1368,7 +1369,7 @@ private: System::Windows::Forms::Label^ label18;
 			this->btn_editInfo->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btn_editInfo->Location = System::Drawing::Point(364, 416);
-			this->btn_editInfo->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btn_editInfo->Margin = System::Windows::Forms::Padding(4);
 			this->btn_editInfo->Name = L"btn_editInfo";
 			this->btn_editInfo->Size = System::Drawing::Size(131, 66);
 			this->btn_editInfo->TabIndex = 8;
@@ -1381,7 +1382,7 @@ private: System::Windows::Forms::Label^ label18;
 			this->tb_currentPassword->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->tb_currentPassword->Location = System::Drawing::Point(568, 304);
-			this->tb_currentPassword->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->tb_currentPassword->Margin = System::Windows::Forms::Padding(4);
 			this->tb_currentPassword->Name = L"tb_currentPassword";
 			this->tb_currentPassword->ReadOnly = true;
 			this->tb_currentPassword->Size = System::Drawing::Size(333, 42);
@@ -1404,7 +1405,7 @@ private: System::Windows::Forms::Label^ label18;
 			this->tb_currentPhoneNumber->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->tb_currentPhoneNumber->Location = System::Drawing::Point(568, 167);
-			this->tb_currentPhoneNumber->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->tb_currentPhoneNumber->Margin = System::Windows::Forms::Padding(4);
 			this->tb_currentPhoneNumber->Name = L"tb_currentPhoneNumber";
 			this->tb_currentPhoneNumber->ReadOnly = true;
 			this->tb_currentPhoneNumber->Size = System::Drawing::Size(333, 42);
@@ -1427,7 +1428,7 @@ private: System::Windows::Forms::Label^ label18;
 			this->tb_currentLocation->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->tb_currentLocation->Location = System::Drawing::Point(568, 238);
-			this->tb_currentLocation->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->tb_currentLocation->Margin = System::Windows::Forms::Padding(4);
 			this->tb_currentLocation->Name = L"tb_currentLocation";
 			this->tb_currentLocation->ReadOnly = true;
 			this->tb_currentLocation->Size = System::Drawing::Size(333, 42);
@@ -1450,7 +1451,7 @@ private: System::Windows::Forms::Label^ label18;
 			this->tb_currentUsername->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->tb_currentUsername->Location = System::Drawing::Point(568, 103);
-			this->tb_currentUsername->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->tb_currentUsername->Margin = System::Windows::Forms::Padding(4);
 			this->tb_currentUsername->Name = L"tb_currentUsername";
 			this->tb_currentUsername->ReadOnly = true;
 			this->tb_currentUsername->Size = System::Drawing::Size(333, 42);
@@ -1481,7 +1482,7 @@ private: System::Windows::Forms::Label^ label18;
 			this->pn_resetPassword->Controls->Add(this->label13);
 			this->pn_resetPassword->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_resetPassword->Location = System::Drawing::Point(0, 0);
-			this->pn_resetPassword->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pn_resetPassword->Margin = System::Windows::Forms::Padding(4);
 			this->pn_resetPassword->Name = L"pn_resetPassword";
 			this->pn_resetPassword->Size = System::Drawing::Size(1197, 745);
 			this->pn_resetPassword->TabIndex = 2;
@@ -1491,7 +1492,7 @@ private: System::Windows::Forms::Label^ label18;
 			this->tb_confirmPassword->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->tb_confirmPassword->Location = System::Drawing::Point(591, 241);
-			this->tb_confirmPassword->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->tb_confirmPassword->Margin = System::Windows::Forms::Padding(4);
 			this->tb_confirmPassword->Name = L"tb_confirmPassword";
 			this->tb_confirmPassword->PasswordChar = '*';
 			this->tb_confirmPassword->Size = System::Drawing::Size(333, 42);
@@ -1533,7 +1534,7 @@ private: System::Windows::Forms::Label^ label18;
 				static_cast<System::Byte>(0)));
 			this->button2->ForeColor = System::Drawing::Color::Black;
 			this->button2->Location = System::Drawing::Point(584, 348);
-			this->button2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button2->Margin = System::Windows::Forms::Padding(4);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(145, 66);
 			this->button2->TabIndex = 19;
@@ -1549,7 +1550,7 @@ private: System::Windows::Forms::Label^ label18;
 			this->btn_saveResetPassword->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btn_saveResetPassword->Location = System::Drawing::Point(420, 348);
-			this->btn_saveResetPassword->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btn_saveResetPassword->Margin = System::Windows::Forms::Padding(4);
 			this->btn_saveResetPassword->Name = L"btn_saveResetPassword";
 			this->btn_saveResetPassword->Size = System::Drawing::Size(131, 66);
 			this->btn_saveResetPassword->TabIndex = 18;
@@ -1562,7 +1563,7 @@ private: System::Windows::Forms::Label^ label18;
 			this->textBox8->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox8->Location = System::Drawing::Point(589, 107);
-			this->textBox8->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->textBox8->Margin = System::Windows::Forms::Padding(4);
 			this->textBox8->Name = L"textBox8";
 			this->textBox8->ReadOnly = true;
 			this->textBox8->Size = System::Drawing::Size(333, 42);
@@ -1587,7 +1588,7 @@ private: System::Windows::Forms::Label^ label18;
 			this->tb_newPassword->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->tb_newPassword->Location = System::Drawing::Point(589, 177);
-			this->tb_newPassword->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->tb_newPassword->Margin = System::Windows::Forms::Padding(4);
 			this->tb_newPassword->Name = L"tb_newPassword";
 			this->tb_newPassword->PasswordChar = '*';
 			this->tb_newPassword->Size = System::Drawing::Size(333, 42);
@@ -2121,7 +2122,7 @@ private: System::Windows::Forms::Label^ label18;
 			// 
 			this->orderList->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->orderList->Location = System::Drawing::Point(0, 148);
-			this->orderList->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->orderList->Margin = System::Windows::Forms::Padding(4);
 			this->orderList->Name = L"orderList";
 			this->orderList->Size = System::Drawing::Size(1189, 597);
 			this->orderList->TabIndex = 3;
@@ -2371,7 +2372,7 @@ private: System::Windows::Forms::Label^ label18;
 			this->pictureBox2->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.BackgroundImage")));
 			this->pictureBox2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->pictureBox2->Location = System::Drawing::Point(509, 54);
-			this->pictureBox2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pictureBox2->Margin = System::Windows::Forms::Padding(4);
 			this->pictureBox2->Name = L"pictureBox2";
 			this->pictureBox2->Size = System::Drawing::Size(87, 62);
 			this->pictureBox2->TabIndex = 23;
@@ -2623,7 +2624,7 @@ private: System::Windows::Forms::Label^ label18;
 			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
 			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->pictureBox1->Location = System::Drawing::Point(557, 25);
-			this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(87, 62);
 			this->pictureBox1->TabIndex = 21;
@@ -2959,7 +2960,7 @@ private: System::Windows::Forms::Label^ label18;
 			this->welcomeScreen->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->welcomeScreen->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"welcomeScreen.Image")));
 			this->welcomeScreen->Location = System::Drawing::Point(0, 0);
-			this->welcomeScreen->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->welcomeScreen->Margin = System::Windows::Forms::Padding(4);
 			this->welcomeScreen->Name = L"welcomeScreen";
 			this->welcomeScreen->Size = System::Drawing::Size(1500, 745);
 			this->welcomeScreen->TabIndex = 2;
@@ -2983,7 +2984,7 @@ private: System::Windows::Forms::Label^ label18;
 			this->thankyou->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->thankyou->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"thankyou.Image")));
 			this->thankyou->Location = System::Drawing::Point(0, 0);
-			this->thankyou->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->thankyou->Margin = System::Windows::Forms::Padding(4);
 			this->thankyou->Name = L"thankyou";
 			this->thankyou->Size = System::Drawing::Size(1500, 745);
 			this->thankyou->TabIndex = 0;
@@ -3030,8 +3031,8 @@ private: System::Windows::Forms::Label^ label18;
 			this->pn_defualt->ResumeLayout(false);
 			this->pn_viewBill->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_theinvoice))->EndInit();
-			this->panel1->ResumeLayout(false);
-			this->panel1->PerformLayout();
+			this->pn->ResumeLayout(false);
+			this->pn->PerformLayout();
 			this->flowLayoutPanel13->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->panel2->ResumeLayout(false);
@@ -3093,7 +3094,15 @@ private: System::Windows::Forms::Label^ label18;
 		showPanel(pn_start);
 		tb_date_theinvoice->Text = DateTime::Now.ToString("hh:mm tt"+"            "+ "dd/MM/yyyy" );
 		
-
+		pn->Visible = false;	
+		Label^ lb = gcnew Label();
+		lb->Text = "Please confirm your order";
+		lb->Font = gcnew System::Drawing::Font("sign ui", 14, FontStyle::Bold);
+		lb->ForeColor = System::Drawing::Color::DarkRed;
+		lb->Location = System::Drawing::Point(350,300);
+		lb->AutoSize = true;
+		
+		pn_viewBill->Controls->Add(lb);
 		dataGridView1->ColumnHeadersDefaultCellStyle->Font = gcnew System::Drawing::Font("sign ui", 14, FontStyle::Bold);
 		dataGridView1->ColumnHeadersDefaultCellStyle->ForeColor = System::Drawing::Color::DarkRed;
 		dataGridView1->ColumnHeadersDefaultCellStyle->BackColor = System::Drawing::Color::LightGray;
@@ -3781,6 +3790,7 @@ private: System::Windows::Forms::Label^ label18;
 		}
 	}
 	private: System::Void confirm_Click(System::Object^ sender, System::EventArgs^ e) {
+		
 		MessageBox::Show("Order confirmed!");
 		pn_viewBill->BringToFront();
 		pn_viewBill->Visible = true;
@@ -3835,11 +3845,10 @@ private: System::Windows::Forms::Label^ label18;
 						label22->Text = (" " + (totalPrice) * 1.14);
 					}
 					foundOrder = true;
-					//btn_TotalBill->BackColor = Color::FromArgb(230, 52, 98); // Red
-					//btn_TotalBill->ForeColor = Color::Black;
-					//btn_orders->ForeColor = Color::White;
-					//btn_orders->BackColor = Color::Transparent;
 					MenuBGColor(btn_TotalBill);
+					
+						pn->Visible = true;
+					
 				}
 				break;
 			}
@@ -3978,10 +3987,19 @@ private: System::Windows::Forms::Label^ label18;
 		btn_products->BackColor = Color::Transparent;
 		btn_edit_information->ForeColor = Color::White;
 		btn_edit_information->BackColor = Color::Transparent;
+		pn->Visible = false;
+
+		Label^ lb = gcnew Label();
+		lb->Text = "Please confirm your order";
+		lb->Font = gcnew System::Drawing::Font("sign ui", 14, FontStyle::Bold);
+		lb->ForeColor = System::Drawing::Color::DarkRed;
+		lb->Location = System::Drawing::Point(350, 300);
+		lb->AutoSize = true;
+		pn_viewBill->Controls->Add(lb);
+
 		showPanel(pn_login);
     }
-
-		 
+		  
 		   
 		   //pn_left_bar
     private: System::Void pn_left_bar_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
