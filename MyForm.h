@@ -569,6 +569,9 @@ private: System::Windows::Forms::PictureBox^ pictureBox8;
 private: System::Windows::Forms::PictureBox^ pictureBox7;
 private: System::Windows::Forms::PictureBox^ pictureBox9;
 private: System::Windows::Forms::PictureBox^ pictureBox10;
+private: System::Windows::Forms::PictureBox^ pictureBox12;
+private: System::Windows::Forms::PictureBox^ pictureBox11;
+private: System::Windows::Forms::PictureBox^ pictureBox13;
 
 
 
@@ -792,6 +795,9 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			this->pictureBox8 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox9 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox10 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox11 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox12 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox13 = (gcnew System::Windows::Forms::PictureBox());
 			this->pn_upper_bar->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_icon))->BeginInit();
 			this->pn_main_dashboard->SuspendLayout();
@@ -841,6 +847,9 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox8))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox9))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox10))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox11))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox12))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox13))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// pn_upper_bar
@@ -863,8 +872,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			// 
 			this->lb_brand_name->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lb_brand_name->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-				static_cast<System::Int32>(static_cast<System::Byte>(230)));
+			this->lb_brand_name->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(254)), static_cast<System::Int32>(static_cast<System::Byte>(134)),
+				static_cast<System::Int32>(static_cast<System::Byte>(6)));
 			this->lb_brand_name->Location = System::Drawing::Point(57, 5);
 			this->lb_brand_name->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->lb_brand_name->Name = L"lb_brand_name";
@@ -927,10 +936,10 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			// pn_main_dashboard
 			// 
 			this->pn_main_dashboard->AllowDrop = true;
+			this->pn_main_dashboard->Controls->Add(this->pn_defualt);
+			this->pn_main_dashboard->Controls->Add(this->pn_register);
 			this->pn_main_dashboard->Controls->Add(this->pn_start);
 			this->pn_main_dashboard->Controls->Add(this->pn_login);
-			this->pn_main_dashboard->Controls->Add(this->pn_register);
-			this->pn_main_dashboard->Controls->Add(this->pn_defualt);
 			this->pn_main_dashboard->Controls->Add(this->pn_thankyou);
 			this->pn_main_dashboard->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_main_dashboard->Location = System::Drawing::Point(0, 45);
@@ -942,8 +951,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			// 
 			// pn_defualt
 			// 
-			this->pn_defualt->Controls->Add(this->pn_blank);
 			this->pn_defualt->Controls->Add(this->pn_edit_information);
+			this->pn_defualt->Controls->Add(this->pn_blank);
 			this->pn_defualt->Controls->Add(this->pn_products);
 			this->pn_defualt->Controls->Add(this->pn_orders);
 			this->pn_defualt->Controls->Add(this->pn_viewBill);
@@ -1526,10 +1535,10 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			this->pn_edit_information->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)),
 				static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)));
 			this->pn_edit_information->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pn_edit_information->Controls->Add(this->pn_editInfo);
-			this->pn_edit_information->Controls->Add(this->label1);
 			this->pn_edit_information->Controls->Add(this->pn_currentInfo);
 			this->pn_edit_information->Controls->Add(this->pn_resetPassword);
+			this->pn_edit_information->Controls->Add(this->pn_editInfo);
+			this->pn_edit_information->Controls->Add(this->label1);
 			this->pn_edit_information->Location = System::Drawing::Point(222, 0);
 			this->pn_edit_information->Margin = System::Windows::Forms::Padding(2);
 			this->pn_edit_information->Name = L"pn_edit_information";
@@ -1541,6 +1550,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			// 
 			this->pn_editInfo->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
 				static_cast<System::Int32>(static_cast<System::Byte>(230)));
+			this->pn_editInfo->Controls->Add(this->pictureBox11);
 			this->pn_editInfo->Controls->Add(this->label15);
 			this->pn_editInfo->Controls->Add(this->btn_cancelEdit);
 			this->pn_editInfo->Controls->Add(this->btn_saveEdit);
@@ -1555,13 +1565,14 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			this->pn_editInfo->Name = L"pn_editInfo";
 			this->pn_editInfo->Size = System::Drawing::Size(892, 485);
 			this->pn_editInfo->TabIndex = 2;
+			this->pn_editInfo->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_editInfo_Paint);
 			// 
 			// label15
 			// 
 			this->label15->AutoSize = true;
 			this->label15->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Underline)),
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->label15->Location = System::Drawing::Point(304, 30);
+			this->label15->Location = System::Drawing::Point(292, 30);
 			this->label15->Name = L"label15";
 			this->label15->Size = System::Drawing::Size(308, 32);
 			this->label15->TabIndex = 21;
@@ -1576,7 +1587,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			this->btn_cancelEdit->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btn_cancelEdit->ForeColor = System::Drawing::Color::Black;
-			this->btn_cancelEdit->Location = System::Drawing::Point(462, 312);
+			this->btn_cancelEdit->Location = System::Drawing::Point(453, 312);
 			this->btn_cancelEdit->Name = L"btn_cancelEdit";
 			this->btn_cancelEdit->Size = System::Drawing::Size(109, 54);
 			this->btn_cancelEdit->TabIndex = 13;
@@ -1591,7 +1602,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			this->btn_saveEdit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_saveEdit->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btn_saveEdit->Location = System::Drawing::Point(339, 312);
+			this->btn_saveEdit->Location = System::Drawing::Point(330, 312);
 			this->btn_saveEdit->Name = L"btn_saveEdit";
 			this->btn_saveEdit->Size = System::Drawing::Size(98, 54);
 			this->btn_saveEdit->TabIndex = 12;
@@ -1603,7 +1614,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			// 
 			this->tb_edit_phonenumber->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->tb_edit_phonenumber->Location = System::Drawing::Point(436, 164);
+			this->tb_edit_phonenumber->Location = System::Drawing::Point(431, 164);
 			this->tb_edit_phonenumber->Name = L"tb_edit_phonenumber";
 			this->tb_edit_phonenumber->Size = System::Drawing::Size(251, 35);
 			this->tb_edit_phonenumber->TabIndex = 11;
@@ -1614,7 +1625,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			this->label9->AutoSize = true;
 			this->label9->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label9->Location = System::Drawing::Point(215, 161);
+			this->label9->Location = System::Drawing::Point(210, 161);
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(187, 32);
 			this->label9->TabIndex = 10;
@@ -1624,7 +1635,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			// 
 			this->tb_edit_location->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->tb_edit_location->Location = System::Drawing::Point(436, 221);
+			this->tb_edit_location->Location = System::Drawing::Point(431, 221);
 			this->tb_edit_location->Name = L"tb_edit_location";
 			this->tb_edit_location->Size = System::Drawing::Size(251, 35);
 			this->tb_edit_location->TabIndex = 9;
@@ -1635,7 +1646,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			this->label10->AutoSize = true;
 			this->label10->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label10->Location = System::Drawing::Point(215, 219);
+			this->label10->Location = System::Drawing::Point(210, 219);
 			this->label10->Name = L"label10";
 			this->label10->Size = System::Drawing::Size(112, 32);
 			this->label10->TabIndex = 8;
@@ -1645,7 +1656,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			// 
 			this->tb_edit_username->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->tb_edit_username->Location = System::Drawing::Point(436, 112);
+			this->tb_edit_username->Location = System::Drawing::Point(431, 112);
 			this->tb_edit_username->Name = L"tb_edit_username";
 			this->tb_edit_username->Size = System::Drawing::Size(251, 35);
 			this->tb_edit_username->TabIndex = 7;
@@ -1656,7 +1667,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			this->label11->AutoSize = true;
 			this->label11->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label11->Location = System::Drawing::Point(215, 107);
+			this->label11->Location = System::Drawing::Point(210, 107);
 			this->label11->Name = L"label11";
 			this->label11->Size = System::Drawing::Size(132, 32);
 			this->label11->TabIndex = 6;
@@ -1666,10 +1677,11 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			// 
 			this->label1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
 				static_cast<System::Int32>(static_cast<System::Byte>(230)));
-			this->label1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->label1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->label1->Dock = System::Windows::Forms::DockStyle::Top;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
+			this->label1->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->label1->Location = System::Drawing::Point(0, 0);
 			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
@@ -1684,6 +1696,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			this->pn_currentInfo->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
 				static_cast<System::Int32>(static_cast<System::Byte>(230)));
 			this->pn_currentInfo->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pn_currentInfo->Controls->Add(this->pictureBox13);
 			this->pn_currentInfo->Controls->Add(this->btn_seepassword_editinfo);
 			this->pn_currentInfo->Controls->Add(this->btn_reset);
 			this->pn_currentInfo->Controls->Add(this->label16);
@@ -1697,9 +1710,9 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			this->pn_currentInfo->Controls->Add(this->tb_currentUsername);
 			this->pn_currentInfo->Controls->Add(this->label5);
 			this->pn_currentInfo->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn_currentInfo->Location = System::Drawing::Point(0, 0);
+			this->pn_currentInfo->Location = System::Drawing::Point(0, 120);
 			this->pn_currentInfo->Name = L"pn_currentInfo";
-			this->pn_currentInfo->Size = System::Drawing::Size(892, 605);
+			this->pn_currentInfo->Size = System::Drawing::Size(892, 485);
 			this->pn_currentInfo->TabIndex = 1;
 			// 
 			// btn_seepassword_editinfo
@@ -1709,7 +1722,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			this->btn_seepassword_editinfo->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->btn_seepassword_editinfo->FlatAppearance->BorderSize = 0;
 			this->btn_seepassword_editinfo->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btn_seepassword_editinfo->Location = System::Drawing::Point(695, 257);
+			this->btn_seepassword_editinfo->Location = System::Drawing::Point(688, 257);
 			this->btn_seepassword_editinfo->Margin = System::Windows::Forms::Padding(2);
 			this->btn_seepassword_editinfo->Name = L"btn_seepassword_editinfo";
 			this->btn_seepassword_editinfo->Size = System::Drawing::Size(31, 18);
@@ -1726,7 +1739,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			this->btn_reset->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btn_reset->ForeColor = System::Drawing::Color::Black;
-			this->btn_reset->Location = System::Drawing::Point(402, 338);
+			this->btn_reset->Location = System::Drawing::Point(418, 338);
 			this->btn_reset->Name = L"btn_reset";
 			this->btn_reset->Size = System::Drawing::Size(186, 54);
 			this->btn_reset->TabIndex = 22;
@@ -1739,7 +1752,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			this->label16->AutoSize = true;
 			this->label16->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Underline)),
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->label16->Location = System::Drawing::Point(333, 11);
+			this->label16->Location = System::Drawing::Point(369, 20);
 			this->label16->Name = L"label16";
 			this->label16->Size = System::Drawing::Size(155, 32);
 			this->label16->TabIndex = 21;
@@ -1752,7 +1765,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			this->btn_editInfo->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_editInfo->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btn_editInfo->Location = System::Drawing::Point(273, 338);
+			this->btn_editInfo->Location = System::Drawing::Point(289, 338);
 			this->btn_editInfo->Name = L"btn_editInfo";
 			this->btn_editInfo->Size = System::Drawing::Size(98, 54);
 			this->btn_editInfo->TabIndex = 8;
@@ -1764,7 +1777,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			// 
 			this->tb_currentPassword->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->tb_currentPassword->Location = System::Drawing::Point(426, 247);
+			this->tb_currentPassword->Location = System::Drawing::Point(431, 247);
 			this->tb_currentPassword->Name = L"tb_currentPassword";
 			this->tb_currentPassword->ReadOnly = true;
 			this->tb_currentPassword->Size = System::Drawing::Size(251, 35);
@@ -1775,7 +1788,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			this->label8->AutoSize = true;
 			this->label8->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label8->Location = System::Drawing::Point(205, 245);
+			this->label8->Location = System::Drawing::Point(210, 245);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(122, 32);
 			this->label8->TabIndex = 6;
@@ -1785,7 +1798,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			// 
 			this->tb_currentPhoneNumber->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->tb_currentPhoneNumber->Location = System::Drawing::Point(426, 136);
+			this->tb_currentPhoneNumber->Location = System::Drawing::Point(431, 136);
 			this->tb_currentPhoneNumber->Name = L"tb_currentPhoneNumber";
 			this->tb_currentPhoneNumber->ReadOnly = true;
 			this->tb_currentPhoneNumber->Size = System::Drawing::Size(251, 35);
@@ -1796,7 +1809,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			this->label7->AutoSize = true;
 			this->label7->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label7->Location = System::Drawing::Point(205, 133);
+			this->label7->Location = System::Drawing::Point(210, 133);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(187, 32);
 			this->label7->TabIndex = 4;
@@ -1806,7 +1819,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			// 
 			this->tb_currentLocation->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->tb_currentLocation->Location = System::Drawing::Point(426, 193);
+			this->tb_currentLocation->Location = System::Drawing::Point(431, 193);
 			this->tb_currentLocation->Name = L"tb_currentLocation";
 			this->tb_currentLocation->ReadOnly = true;
 			this->tb_currentLocation->Size = System::Drawing::Size(251, 35);
@@ -1817,7 +1830,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			this->label6->AutoSize = true;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(205, 191);
+			this->label6->Location = System::Drawing::Point(210, 191);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(112, 32);
 			this->label6->TabIndex = 2;
@@ -1827,7 +1840,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			// 
 			this->tb_currentUsername->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->tb_currentUsername->Location = System::Drawing::Point(426, 84);
+			this->tb_currentUsername->Location = System::Drawing::Point(431, 84);
 			this->tb_currentUsername->Name = L"tb_currentUsername";
 			this->tb_currentUsername->ReadOnly = true;
 			this->tb_currentUsername->Size = System::Drawing::Size(251, 35);
@@ -1838,7 +1851,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			this->label5->AutoSize = true;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label5->Location = System::Drawing::Point(205, 79);
+			this->label5->Location = System::Drawing::Point(210, 79);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(132, 32);
 			this->label5->TabIndex = 0;
@@ -1848,6 +1861,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			// 
 			this->pn_resetPassword->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)),
 				static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(230)));
+			this->pn_resetPassword->Controls->Add(this->pictureBox12);
 			this->pn_resetPassword->Controls->Add(this->tb_confirmPassword);
 			this->pn_resetPassword->Controls->Add(this->label17);
 			this->pn_resetPassword->Controls->Add(this->label14);
@@ -1858,16 +1872,16 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			this->pn_resetPassword->Controls->Add(this->tb_newPassword);
 			this->pn_resetPassword->Controls->Add(this->label13);
 			this->pn_resetPassword->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn_resetPassword->Location = System::Drawing::Point(0, 0);
+			this->pn_resetPassword->Location = System::Drawing::Point(0, 120);
 			this->pn_resetPassword->Name = L"pn_resetPassword";
-			this->pn_resetPassword->Size = System::Drawing::Size(892, 605);
+			this->pn_resetPassword->Size = System::Drawing::Size(892, 485);
 			this->pn_resetPassword->TabIndex = 2;
 			// 
 			// tb_confirmPassword
 			// 
 			this->tb_confirmPassword->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->tb_confirmPassword->Location = System::Drawing::Point(443, 196);
+			this->tb_confirmPassword->Location = System::Drawing::Point(440, 196);
 			this->tb_confirmPassword->Name = L"tb_confirmPassword";
 			this->tb_confirmPassword->PasswordChar = '*';
 			this->tb_confirmPassword->Size = System::Drawing::Size(251, 35);
@@ -1879,7 +1893,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			this->label17->AutoSize = true;
 			this->label17->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label17->Location = System::Drawing::Point(205, 200);
+			this->label17->Location = System::Drawing::Point(202, 200);
 			this->label17->Name = L"label17";
 			this->label17->Size = System::Drawing::Size(222, 32);
 			this->label17->TabIndex = 21;
@@ -1891,7 +1905,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			this->label14->AutoSize = true;
 			this->label14->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Underline)),
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->label14->Location = System::Drawing::Point(352, 17);
+			this->label14->Location = System::Drawing::Point(351, 20);
 			this->label14->Name = L"label14";
 			this->label14->Size = System::Drawing::Size(190, 32);
 			this->label14->TabIndex = 20;
@@ -1906,7 +1920,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			this->button2->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button2->ForeColor = System::Drawing::Color::Black;
-			this->button2->Location = System::Drawing::Point(438, 283);
+			this->button2->Location = System::Drawing::Point(453, 283);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(109, 54);
 			this->button2->TabIndex = 19;
@@ -1921,7 +1935,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			this->btn_saveResetPassword->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_saveResetPassword->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btn_saveResetPassword->Location = System::Drawing::Point(315, 283);
+			this->btn_saveResetPassword->Location = System::Drawing::Point(330, 283);
 			this->btn_saveResetPassword->Name = L"btn_saveResetPassword";
 			this->btn_saveResetPassword->Size = System::Drawing::Size(98, 54);
 			this->btn_saveResetPassword->TabIndex = 18;
@@ -1933,7 +1947,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			// 
 			this->textBox8->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox8->Location = System::Drawing::Point(442, 87);
+			this->textBox8->Location = System::Drawing::Point(439, 87);
 			this->textBox8->Name = L"textBox8";
 			this->textBox8->ReadOnly = true;
 			this->textBox8->Size = System::Drawing::Size(251, 35);
@@ -1945,7 +1959,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			this->label12->AutoSize = true;
 			this->label12->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label12->Location = System::Drawing::Point(214, 91);
+			this->label12->Location = System::Drawing::Point(211, 91);
 			this->label12->Name = L"label12";
 			this->label12->Size = System::Drawing::Size(216, 32);
 			this->label12->TabIndex = 16;
@@ -1956,7 +1970,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			// 
 			this->tb_newPassword->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->tb_newPassword->Location = System::Drawing::Point(442, 144);
+			this->tb_newPassword->Location = System::Drawing::Point(439, 144);
 			this->tb_newPassword->Name = L"tb_newPassword";
 			this->tb_newPassword->PasswordChar = '*';
 			this->tb_newPassword->Size = System::Drawing::Size(251, 35);
@@ -1967,7 +1981,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			this->label13->AutoSize = true;
 			this->label13->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label13->Location = System::Drawing::Point(233, 147);
+			this->label13->Location = System::Drawing::Point(230, 147);
 			this->label13->Name = L"label13";
 			this->label13->Size = System::Drawing::Size(180, 32);
 			this->label13->TabIndex = 14;
@@ -2744,8 +2758,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			this->label21->BackColor = System::Drawing::Color::Transparent;
 			this->label21->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 48, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label21->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(230)), static_cast<System::Int32>(static_cast<System::Byte>(52)),
-				static_cast<System::Int32>(static_cast<System::Byte>(98)));
+			this->label21->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(254)), static_cast<System::Int32>(static_cast<System::Byte>(134)),
+				static_cast<System::Int32>(static_cast<System::Byte>(6)));
 			this->label21->Location = System::Drawing::Point(104, 195);
 			this->label21->Name = L"label21";
 			this->label21->Size = System::Drawing::Size(409, 90);
@@ -2865,11 +2879,12 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			// pictureBox2
 			// 
 			this->pictureBox2->BackColor = System::Drawing::Color::Transparent;
-			this->pictureBox2->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.BackgroundImage")));
 			this->pictureBox2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
 			this->pictureBox2->Location = System::Drawing::Point(441, 44);
 			this->pictureBox2->Name = L"pictureBox2";
 			this->pictureBox2->Size = System::Drawing::Size(65, 50);
+			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureBox2->TabIndex = 23;
 			this->pictureBox2->TabStop = false;
 			// 
@@ -3127,11 +3142,12 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			// pictureBox1
 			// 
 			this->pictureBox1->BackColor = System::Drawing::Color::Transparent;
-			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
 			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
 			this->pictureBox1->Location = System::Drawing::Point(441, 44);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(65, 50);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureBox1->TabIndex = 21;
 			this->pictureBox1->TabStop = false;
 			// 
@@ -3478,6 +3494,36 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			this->pictureBox10->TabIndex = 26;
 			this->pictureBox10->TabStop = false;
 			// 
+			// pictureBox11
+			// 
+			this->pictureBox11->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox11.Image")));
+			this->pictureBox11->Location = System::Drawing::Point(247, 32);
+			this->pictureBox11->Name = L"pictureBox11";
+			this->pictureBox11->Size = System::Drawing::Size(38, 30);
+			this->pictureBox11->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox11->TabIndex = 22;
+			this->pictureBox11->TabStop = false;
+			// 
+			// pictureBox12
+			// 
+			this->pictureBox12->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox12.Image")));
+			this->pictureBox12->Location = System::Drawing::Point(307, 24);
+			this->pictureBox12->Name = L"pictureBox12";
+			this->pictureBox12->Size = System::Drawing::Size(38, 30);
+			this->pictureBox12->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox12->TabIndex = 23;
+			this->pictureBox12->TabStop = false;
+			// 
+			// pictureBox13
+			// 
+			this->pictureBox13->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox13.Image")));
+			this->pictureBox13->Location = System::Drawing::Point(325, 24);
+			this->pictureBox13->Name = L"pictureBox13";
+			this->pictureBox13->Size = System::Drawing::Size(38, 30);
+			this->pictureBox13->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox13->TabIndex = 24;
+			this->pictureBox13->TabStop = false;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -3549,6 +3595,9 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox8))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox9))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox10))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox11))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox12))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox13))->EndInit();
 			this->ResumeLayout(false);
 
 		}
@@ -5033,6 +5082,8 @@ private: System::Void label20_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void label23_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void pictureBox4_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void pn_editInfo_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 }
 };
 }
