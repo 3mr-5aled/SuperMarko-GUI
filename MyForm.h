@@ -111,8 +111,6 @@ namespace SuperMarkoGUI {
 				orderList->Controls->Add(orderPanel);
 			}
 		}
-
-
 		void populateCurrentUserInfo(Object^ sender, EventArgs^ e) {
 			if (currentCustomerIndex < 0 || customers[currentCustomerIndex] == nullptr) {
 				MessageBox::Show("User not logged in or data missing.");
@@ -3482,9 +3480,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox5;
 	private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 
-		
-
-		   //pn_register
+		 //pn_register
 	private: System::Void btn_register_registerpanel_Click(System::Object^ sender, System::EventArgs^ e) {
 		bool hasError = false;
 
@@ -3661,6 +3657,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox5;
 	}
 	private: System::Void label4_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
+		   
 		   //pn_start
     private: System::Void btn_exit_Click(System::Object^ sender, System::EventArgs^ e) {
 	showPanel(pn_thankyou);
@@ -3691,20 +3688,20 @@ private: System::Windows::Forms::PictureBox^ pictureBox5;
 
 	}
     private: System::Void welcomeScreen_Click(System::Object^ sender, System::EventArgs^ e) {
-}
+    }
     private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
 	timerforexit->Stop();  // Stop the timer
 	Application::Exit();   // Now exit nicely
-}
+    }
     private: System::Void pn_start_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	  }
+    }
 	private: System::Void welcomeScreen_Click_1(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void timer1_Tick_1(System::Object^ sender, System::EventArgs^ e) {
 			 this->Close();
-
-		 }
-//----------------------------------------pn_default--------------------------------------------------
+    }
+     
+		   //----------------------------------------pn_default--------------------------------------------------
 
 		   //Edit Information
     private: System::Void btn_edit_information_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
@@ -3906,14 +3903,12 @@ private: System::Windows::Forms::PictureBox^ pictureBox5;
 	}
     private: System::Void btn_snacks_Click(System::Object^ sender, System::EventArgs^ e) {
 			   showCategoryPanel(pn_snacks_category);
-		   }
+    }
 	private: System::Void btn_household_Click(System::Object^ sender, System::EventArgs^ e) {
 		showCategoryPanel(pn_household_category);
-
 	}
 	private: System::Void btn_pet_Click(System::Object^ sender, System::EventArgs^ e) {
 		showCategoryPanel(pn_pet_supplies_category);
-
 	}
 	private: System::Void pn_fruits_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
@@ -3993,7 +3988,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox5;
 	}
 	private: System::Void btn_orders_MouseHover(System::Object^ sender, System::EventArgs^ e) {
 	}
-	private: System::Void deleteProductFromOrder(String^ productName) {
+    private: System::Void deleteProductFromOrder(String^ productName) {
 			if (orders[currentCustomerIndex] == nullptr) return;
 
 			ORDER^ order = orders[currentCustomerIndex];
@@ -4128,15 +4123,15 @@ private: System::Windows::Forms::PictureBox^ pictureBox5;
 		   //Total Bill
     private: System::Void tb_date_theinvoice_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
 	e->Handled = true; // Prevent any input
-}
+    }
     private: System::Void tb_invoicenumber_theinvoice_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
 	e->Handled = true; // Prevent any input
-}
+    }
     private: System::Void tb_customername_theincoive_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
 	e->Handled = true; // Prevent any input
-}
+    }
     private: System::Void label21_Click(System::Object^ sender, System::EventArgs^ e) {
-}
+    }
     private: System::Void btn_print_Click(System::Object^ sender, System::EventArgs^ e) {
 
 	printPreviewDialog1->WindowState = FormWindowState::Maximized;
@@ -4144,8 +4139,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox5;
 	{
 		printDocument1->Print();
 	}
-}
-private: System::Void printDocument1_PrintPage(System::Object^ sender, System::Drawing::Printing::PrintPageEventArgs^ e) {
+    }
+    private: System::Void printDocument1_PrintPage(System::Object^ sender, System::Drawing::Printing::PrintPageEventArgs^ e) {
 	System::Drawing::Font^ f = gcnew System::Drawing::Font("Arial", 20, FontStyle::Bold);
 	System::Drawing::Font^ qq = gcnew System::Drawing::Font("Stencil", 20, FontStyle::Bold);
 	Image^ img = Image::FromFile("Logo\\Logo.jpg");
@@ -4236,8 +4231,7 @@ private: System::Void printDocument1_PrintPage(System::Object^ sender, System::D
 
 	e->Graphics->DrawString(" Total (After VAT):      ", z, Brushes::Red, 470.0f, 945.0f);
 	e->Graphics->DrawString(lb_total_number->Text, m, Brushes::Purple, 630.0f, 945.0f);
-}
-
+    }
 	private: System::Void btn_TotalBill_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
 		if (btn_TotalBill != selectedButton) {
 			btn_TotalBill->BackColor = Color::DimGray;
@@ -4279,7 +4273,6 @@ private: System::Void printDocument1_PrintPage(System::Object^ sender, System::D
 
 		showPanel(pn_login);
     }
-		  
 		   
 		   //pn_left_bar
     private: System::Void pn_left_bar_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
@@ -4684,7 +4677,7 @@ private: System::Void printDocument1_PrintPage(System::Object^ sender, System::D
 		if (quantityForm->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 		{
 			int selectedQuantity = (int)numericQuantity->Value;
-			// هنا تقدر تعمل اللي انت عايزه بالعدد اللي اختاره المستخدم
+			
 		}
 	}
     private: System::Void handleAddToCart(System::Object^ sender, System::EventArgs^ e) {
