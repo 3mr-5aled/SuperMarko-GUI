@@ -549,7 +549,6 @@ namespace SuperMarkoGUI {
 	private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel2;
 	private: System::Windows::Forms::Button^ btn_fruits;
 	private: System::Windows::Forms::PictureBox^ welcomeScreen;
-
 	private: System::Windows::Forms::Button^ btn_category_household;
 	private: System::Windows::Forms::Button^ btn_category_pet_supplies;
 	private: System::Windows::Forms::TextBox^ tb_password_login;
@@ -644,111 +643,64 @@ namespace SuperMarkoGUI {
 	private: System::Windows::Forms::Label^ label17;
 	private: System::Windows::Forms::Button^ btn_TotalBill;
 	private: System::Windows::Forms::Panel^ pn_viewBill;
-private: System::Windows::Forms::Label^ lb_theinvoice;
-
-
+    private: System::Windows::Forms::Label^ lb_theinvoice;
 	private: System::Windows::Forms::Label^ label19;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Timer^ timerforexit;
-private: System::Windows::Forms::FlowLayoutPanel^ orderList;
-private: System::Windows::Forms::Button^ link_login;
-private: System::Windows::Forms::PictureBox^ pb_theinvoice;
-private: System::Windows::Forms::Panel^ pn;
-
-private: System::Windows::Forms::Label^ lb_invoicenumber_theinvoice;
-private: System::Windows::Forms::Label^ lb_date_theinvice;
-private: System::Windows::Forms::TextBox^ tb_date_theinvoice;
-private: System::Windows::Forms::TextBox^ tb_invoicenumber_theinvoice;
-private: System::Windows::Forms::TextBox^ tb_customername_theincoive;
-
-private: System::Windows::Forms::Label^ lb_customername_theinvoice;
-
-private: System::Windows::Forms::DataGridView^ dataGridView1;
-private: System::Windows::Forms::DataGridViewTextBoxColumn^ colproduct;
-private: System::Windows::Forms::DataGridViewTextBoxColumn^ colquantity;
-private: System::Windows::Forms::DataGridViewTextBoxColumn^ colunitprice;
-private: System::Windows::Forms::DataGridViewTextBoxColumn^ colsubtotal;
-private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel13;
-private: System::Windows::Forms::Panel^ panel2;
-private: System::Windows::Forms::Label^ lb_beforevat;
-
-private: System::Windows::Forms::Label^ lb_beforevat_number;
-
-
-private: System::Windows::Forms::Label^ label22;
-private: System::Windows::Forms::Button^ btn_print;
-private: System::Windows::Forms::PrintPreviewDialog^ printPreviewDialog1;
-private: System::Drawing::Printing::PrintDocument^ printDocument1;
-private: System::Windows::Forms::Label^ lb_total;
-
-private: System::Windows::Forms::Label^ lb_shipping;
-
-private: System::Windows::Forms::Label^ lb_vat;
-
-private: System::Windows::Forms::Label^ lb_discount;
-private: System::Windows::Forms::Label^ lb_shipping_number;
-
-
-private: System::Windows::Forms::Label^ lb_vat_number;
-
-private: System::Windows::Forms::Label^ lb_discount_number;
-private: System::Windows::Forms::Label^ lb_total_number;
-private: System::Windows::Forms::Label^ label18;
-private: System::Windows::Forms::Label^ label20;
-private: System::Windows::Forms::Label^ label21;
-private: System::Windows::Forms::Label^ label23;
-private: System::Windows::Forms::PictureBox^ pictureBox3;
-private: System::Windows::Forms::PictureBox^ pictureBox4;
-private: System::Windows::Forms::PictureBox^ pictureBox5;
-private: System::Windows::Forms::Label^ label24;
-
-private: System::Windows::Forms::Label^ label25;
-
-
-
-
-
-
-
-
-
-private: System::Windows::Forms::Label^ label28;
-private: System::Windows::Forms::PictureBox^ pictureBox8;
-private: System::Windows::Forms::PictureBox^ pictureBox7;
-private: System::Windows::Forms::PictureBox^ pictureBox9;
-private: System::Windows::Forms::PictureBox^ pictureBox10;
-private: System::Windows::Forms::PictureBox^ pictureBox12;
-private: System::Windows::Forms::PictureBox^ pictureBox11;
-private: System::Windows::Forms::PictureBox^ pictureBox13;
-private: AxWMPLib::AxWindowsMediaPlayer^ axWindowsMediaPlayer1;
-private: System::Windows::Forms::Label^ label26;
-private: System::Windows::Forms::Label^ lb_newpassword;
-private: System::Windows::Forms::Label^ lb_errorUsername;
-private: System::Windows::Forms::Label^ lb_errorLocation;
-
-private: System::Windows::Forms::Label^ lb_errorPhone;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    private: System::Windows::Forms::FlowLayoutPanel^ orderList;
+    private: System::Windows::Forms::Button^ link_login;
+    private: System::Windows::Forms::PictureBox^ pb_theinvoice;
+    private: System::Windows::Forms::Panel^ pn;
+    private: System::Windows::Forms::Label^ lb_invoicenumber_theinvoice;
+    private: System::Windows::Forms::Label^ lb_date_theinvice;
+    private: System::Windows::Forms::TextBox^ tb_date_theinvoice;
+    private: System::Windows::Forms::TextBox^ tb_invoicenumber_theinvoice;
+	private: System::Windows::Forms::TextBox^ tb_customername_theincoive;
+	private: System::Windows::Forms::Label^ lb_customername_theinvoice;
+	private: System::Windows::Forms::DataGridView^ dataGridView1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colproduct;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colquantity;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colunitprice;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colsubtotal;
+	private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel13;
+	private: System::Windows::Forms::Panel^ panel2;
+	private: System::Windows::Forms::Label^ lb_beforevat;
+	private: System::Windows::Forms::Label^ lb_beforevat_number;
+	private: System::Windows::Forms::Label^ label22;
+	private: System::Windows::Forms::Button^ btn_print;
+	private: System::Windows::Forms::PrintPreviewDialog^ printPreviewDialog1;
+	private: System::Drawing::Printing::PrintDocument^ printDocument1;
+	private: System::Windows::Forms::Label^ lb_total;
+	private: System::Windows::Forms::Label^ lb_shipping;
+	private: System::Windows::Forms::Label^ lb_vat;
+	private: System::Windows::Forms::Label^ lb_discount;
+	private: System::Windows::Forms::Label^ lb_shipping_number;
+	private: System::Windows::Forms::Label^ lb_vat_number;
+	private: System::Windows::Forms::Label^ lb_discount_number;
+	private: System::Windows::Forms::Label^ lb_total_number;
+	private: System::Windows::Forms::Label^ label18;
+	private: System::Windows::Forms::Label^ label20;
+	private: System::Windows::Forms::Label^ label21;
+	private: System::Windows::Forms::Label^ label23;
+	private: System::Windows::Forms::PictureBox^ pictureBox3;
+	private: System::Windows::Forms::PictureBox^ pictureBox4;
+	private: System::Windows::Forms::PictureBox^ pictureBox5;
+	private: System::Windows::Forms::Label^ label24;
+	private: System::Windows::Forms::Label^ label25;
+	private: System::Windows::Forms::Label^ label28;
+	private: System::Windows::Forms::PictureBox^ pictureBox8;
+	private: System::Windows::Forms::PictureBox^ pictureBox7;
+	private: System::Windows::Forms::PictureBox^ pictureBox9;
+	private: System::Windows::Forms::PictureBox^ pictureBox10;
+	private: System::Windows::Forms::PictureBox^ pictureBox12;
+	private: System::Windows::Forms::PictureBox^ pictureBox11;
+	private: System::Windows::Forms::PictureBox^ pictureBox13;
+	private: AxWMPLib::AxWindowsMediaPlayer^ axWindowsMediaPlayer1;
+	private: System::Windows::Forms::Label^ label26;
+	private: System::Windows::Forms::Label^ lb_newpassword;
+	private: System::Windows::Forms::Label^ lb_errorUsername;
+	private: System::Windows::Forms::Label^ lb_errorLocation;
+	private: System::Windows::Forms::Label^ lb_errorPhone;
 
 	private: System::ComponentModel::IContainer^ components;
 	protected:
@@ -1021,7 +973,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->pn_upper_bar->Name = L"pn_upper_bar";
 			this->pn_upper_bar->Size = System::Drawing::Size(1114, 45);
 			this->pn_upper_bar->TabIndex = 0;
-			this->pn_upper_bar->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_upper_bar_Paint);
 			// 
 			// lb_brand_name
 			// 
@@ -1035,7 +986,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->lb_brand_name->Size = System::Drawing::Size(188, 35);
 			this->lb_brand_name->TabIndex = 4;
 			this->lb_brand_name->Text = L"SUPERMARKO";
-			this->lb_brand_name->Click += gcnew System::EventHandler(this, &MyForm::lb_brand_name_Click);
 			// 
 			// pb_icon
 			// 
@@ -1047,7 +997,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->pb_icon->Size = System::Drawing::Size(70, 41);
 			this->pb_icon->TabIndex = 3;
 			this->pb_icon->TabStop = false;
-			this->pb_icon->Click += gcnew System::EventHandler(this, &MyForm::pb_icon_Click);
 			// 
 			// btn_minimize
 			// 
@@ -1067,7 +1016,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->btn_minimize->TabIndex = 2;
 			this->btn_minimize->UseVisualStyleBackColor = true;
 			this->btn_minimize->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
-			this->btn_minimize->MouseHover += gcnew System::EventHandler(this, &MyForm::btn_minimize_MouseHover);
 			// 
 			// btn_close
 			// 
@@ -1102,7 +1050,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->pn_main_dashboard->Name = L"pn_main_dashboard";
 			this->pn_main_dashboard->Size = System::Drawing::Size(1114, 605);
 			this->pn_main_dashboard->TabIndex = 1;
-			this->pn_main_dashboard->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_main_dashboard_Paint);
 			// 
 			// pn_defualt
 			// 
@@ -1118,7 +1065,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->pn_defualt->Name = L"pn_defualt";
 			this->pn_defualt->Size = System::Drawing::Size(1114, 605);
 			this->pn_defualt->TabIndex = 4;
-			this->pn_defualt->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_defualt_Paint);
 			// 
 			// pn_edit_information
 			// 
@@ -1135,7 +1081,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->pn_edit_information->Name = L"pn_edit_information";
 			this->pn_edit_information->Size = System::Drawing::Size(892, 605);
 			this->pn_edit_information->TabIndex = 1;
-			this->pn_edit_information->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_edit_information_Paint);
 			// 
 			// pn_editInfo
 			// 
@@ -1257,7 +1202,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->tb_edit_phonenumber->Name = L"tb_edit_phonenumber";
 			this->tb_edit_phonenumber->Size = System::Drawing::Size(251, 35);
 			this->tb_edit_phonenumber->TabIndex = 11;
-			this->tb_edit_phonenumber->TextChanged += gcnew System::EventHandler(this, &MyForm::tb_edit_phonenumber_TextChanged);
 			// 
 			// label9
 			// 
@@ -1278,7 +1222,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->tb_edit_location->Name = L"tb_edit_location";
 			this->tb_edit_location->Size = System::Drawing::Size(251, 35);
 			this->tb_edit_location->TabIndex = 9;
-			this->tb_edit_location->TextChanged += gcnew System::EventHandler(this, &MyForm::tb_edit_location_TextChanged);
 			// 
 			// label10
 			// 
@@ -1299,7 +1242,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->tb_edit_username->Name = L"tb_edit_username";
 			this->tb_edit_username->Size = System::Drawing::Size(251, 35);
 			this->tb_edit_username->TabIndex = 7;
-			this->tb_edit_username->TextChanged += gcnew System::EventHandler(this, &MyForm::tb_edit_username_TextChanged);
 			// 
 			// label11
 			// 
@@ -1402,7 +1344,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->btn_editInfo->TabIndex = 8;
 			this->btn_editInfo->Text = L"Edit";
 			this->btn_editInfo->UseVisualStyleBackColor = true;
-			this->btn_editInfo->Click += gcnew System::EventHandler(this, &MyForm::btn_editInfo_Click);
 			// 
 			// tb_currentPassword
 			// 
@@ -1541,7 +1482,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->tb_confirmPassword->PasswordChar = '*';
 			this->tb_confirmPassword->Size = System::Drawing::Size(251, 35);
 			this->tb_confirmPassword->TabIndex = 22;
-			this->tb_confirmPassword->TextChanged += gcnew System::EventHandler(this, &MyForm::tb_confirmPassword_TextChanged);
 			// 
 			// label17
 			// 
@@ -1553,7 +1493,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->label17->Size = System::Drawing::Size(222, 32);
 			this->label17->TabIndex = 21;
 			this->label17->Text = L"Confirm Password";
-			this->label17->Click += gcnew System::EventHandler(this, &MyForm::label17_Click);
 			// 
 			// label14
 			// 
@@ -1607,7 +1546,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->textBox8->ReadOnly = true;
 			this->textBox8->Size = System::Drawing::Size(251, 35);
 			this->textBox8->TabIndex = 17;
-			this->textBox8->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox8_TextChanged);
 			// 
 			// label12
 			// 
@@ -1619,7 +1557,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->label12->Size = System::Drawing::Size(216, 32);
 			this->label12->TabIndex = 16;
 			this->label12->Text = L"Current Password";
-			this->label12->Click += gcnew System::EventHandler(this, &MyForm::label12_Click);
 			// 
 			// tb_newPassword
 			// 
@@ -1641,7 +1578,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->label13->Size = System::Drawing::Size(180, 32);
 			this->label13->TabIndex = 14;
 			this->label13->Text = L"New Password";
-			this->label13->Click += gcnew System::EventHandler(this, &MyForm::label13_Click);
 			// 
 			// label1
 			// 
@@ -1659,7 +1595,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Edit Your Information";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->label1->Click += gcnew System::EventHandler(this, &MyForm::label1_Click);
 			// 
 			// pn_viewBill
 			// 
@@ -1909,7 +1844,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->lb_beforevat_number->Name = L"lb_beforevat_number";
 			this->lb_beforevat_number->Size = System::Drawing::Size(121, 30);
 			this->lb_beforevat_number->TabIndex = 1;
-			this->lb_beforevat_number->Click += gcnew System::EventHandler(this, &MyForm::label21_Click);
 			// 
 			// lb_beforevat
 			// 
@@ -2022,7 +1956,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->pn_blank->Name = L"pn_blank";
 			this->pn_blank->Size = System::Drawing::Size(892, 605);
 			this->pn_blank->TabIndex = 4;
-			this->pn_blank->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_blank_Paint);
 			// 
 			// pb_blankpicutre
 			// 
@@ -2036,7 +1969,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->pb_blankpicutre->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pb_blankpicutre->TabIndex = 2;
 			this->pb_blankpicutre->TabStop = false;
-			this->pb_blankpicutre->Click += gcnew System::EventHandler(this, &MyForm::pb_blankpicutre_Click);
 			// 
 			// pn_products
 			// 
@@ -2059,7 +1991,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->pn_products->Name = L"pn_products";
 			this->pn_products->Size = System::Drawing::Size(892, 605);
 			this->pn_products->TabIndex = 2;
-			this->pn_products->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_products_Paint);
 			// 
 			// pn_main_category
 			// 
@@ -2071,7 +2002,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->pn_main_category->Name = L"pn_main_category";
 			this->pn_main_category->Size = System::Drawing::Size(892, 605);
 			this->pn_main_category->TabIndex = 14;
-			this->pn_main_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_main_category_Paint);
 			// 
 			// label2
 			// 
@@ -2107,7 +2037,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->flowLayoutPanel2->Padding = System::Windows::Forms::Padding(10, 0, 0, 0);
 			this->flowLayoutPanel2->Size = System::Drawing::Size(895, 485);
 			this->flowLayoutPanel2->TabIndex = 0;
-			this->flowLayoutPanel2->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::flowLayoutPanel2_Paint);
 			// 
 			// btn_fruits
 			// 
@@ -2339,7 +2268,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->pn_pet_supplies_category->Name = L"pn_pet_supplies_category";
 			this->pn_pet_supplies_category->Size = System::Drawing::Size(892, 605);
 			this->pn_pet_supplies_category->TabIndex = 6;
-			this->pn_pet_supplies_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_pet_supplies_category_Paint);
 			// 
 			// flowLayoutPanel12
 			// 
@@ -2360,7 +2288,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->pn_household_category->Name = L"pn_household_category";
 			this->pn_household_category->Size = System::Drawing::Size(892, 605);
 			this->pn_household_category->TabIndex = 17;
-			this->pn_household_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_household_category_Paint);
 			// 
 			// flowLayoutPanel11
 			// 
@@ -2381,7 +2308,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->pn_snacks_category->Name = L"pn_snacks_category";
 			this->pn_snacks_category->Size = System::Drawing::Size(892, 605);
 			this->pn_snacks_category->TabIndex = 16;
-			this->pn_snacks_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_snacks_category_Paint);
 			// 
 			// flowLayoutPanel10
 			// 
@@ -2402,7 +2328,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->pn_bakery_category->Name = L"pn_bakery_category";
 			this->pn_bakery_category->Size = System::Drawing::Size(892, 605);
 			this->pn_bakery_category->TabIndex = 18;
-			this->pn_bakery_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_bakery_category_Paint);
 			// 
 			// flowLayoutPanel9
 			// 
@@ -2423,7 +2348,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->pn_poultry_category->Name = L"pn_poultry_category";
 			this->pn_poultry_category->Size = System::Drawing::Size(892, 605);
 			this->pn_poultry_category->TabIndex = 15;
-			this->pn_poultry_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_poultry_category_Paint);
 			// 
 			// flowLayoutPanel8
 			// 
@@ -2444,7 +2368,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->pn_seafood_category->Name = L"pn_seafood_category";
 			this->pn_seafood_category->Size = System::Drawing::Size(892, 605);
 			this->pn_seafood_category->TabIndex = 7;
-			this->pn_seafood_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_seafood_category_Paint);
 			// 
 			// flowLayoutPanel7
 			// 
@@ -2465,7 +2388,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->pn_butchershop_category->Name = L"pn_butchershop_category";
 			this->pn_butchershop_category->Size = System::Drawing::Size(892, 605);
 			this->pn_butchershop_category->TabIndex = 8;
-			this->pn_butchershop_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_butchershop_category_Paint);
 			// 
 			// flowLayoutPanel6
 			// 
@@ -2486,7 +2408,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->pn_dairy_category->Name = L"pn_dairy_category";
 			this->pn_dairy_category->Size = System::Drawing::Size(892, 605);
 			this->pn_dairy_category->TabIndex = 5;
-			this->pn_dairy_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_dairy_category_Paint);
 			// 
 			// flowLayoutPanel5
 			// 
@@ -2507,7 +2428,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->pn_vegetable_category->Name = L"pn_vegetable_category";
 			this->pn_vegetable_category->Size = System::Drawing::Size(892, 605);
 			this->pn_vegetable_category->TabIndex = 19;
-			this->pn_vegetable_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_vegetable_category_Paint);
 			// 
 			// flowLayoutPanel4
 			// 
@@ -2528,7 +2448,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->pn_fruits_category->Name = L"pn_fruits_category";
 			this->pn_fruits_category->Size = System::Drawing::Size(892, 605);
 			this->pn_fruits_category->TabIndex = 20;
-			this->pn_fruits_category->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_fruits_category_Paint);
 			// 
 			// flowLayoutPanel3
 			// 
@@ -2552,7 +2471,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->pn_orders->Name = L"pn_orders";
 			this->pn_orders->Size = System::Drawing::Size(892, 605);
 			this->pn_orders->TabIndex = 3;
-			this->pn_orders->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_orders_Paint);
 			// 
 			// label19
 			// 
@@ -2587,7 +2505,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->pn_left_bar->Name = L"pn_left_bar";
 			this->pn_left_bar->Size = System::Drawing::Size(222, 605);
 			this->pn_left_bar->TabIndex = 0;
-			this->pn_left_bar->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_left_bar_Paint);
 			// 
 			// flowLayoutPanel1
 			// 
@@ -2602,7 +2519,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->flowLayoutPanel1->Name = L"flowLayoutPanel1";
 			this->flowLayoutPanel1->Size = System::Drawing::Size(222, 442);
 			this->flowLayoutPanel1->TabIndex = 1;
-			this->flowLayoutPanel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::flowLayoutPanel1_Paint);
 			// 
 			// btn_edit_information
 			// 
@@ -2625,7 +2541,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->btn_edit_information->Click += gcnew System::EventHandler(this, &MyForm::btn_edit_information_Click);
 			this->btn_edit_information->MouseEnter += gcnew System::EventHandler(this, &MyForm::btn_edit_information_MouseEnter);
 			this->btn_edit_information->MouseLeave += gcnew System::EventHandler(this, &MyForm::btn_edit_information_MouseLeave);
-			this->btn_edit_information->MouseHover += gcnew System::EventHandler(this, &MyForm::btn_edit_information_MouseHover);
 			// 
 			// btn_products
 			// 
@@ -2646,7 +2561,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->btn_products->Click += gcnew System::EventHandler(this, &MyForm::btn_products_Click);
 			this->btn_products->MouseEnter += gcnew System::EventHandler(this, &MyForm::btn_products_MouseEnter);
 			this->btn_products->MouseLeave += gcnew System::EventHandler(this, &MyForm::btn_products_MouseLeave);
-			this->btn_products->MouseHover += gcnew System::EventHandler(this, &MyForm::btn_products_MouseHover);
 			// 
 			// btn_orders
 			// 
@@ -2667,7 +2581,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->btn_orders->Click += gcnew System::EventHandler(this, &MyForm::btn_orders_Click);
 			this->btn_orders->MouseEnter += gcnew System::EventHandler(this, &MyForm::btn_orders_MouseEnter);
 			this->btn_orders->MouseLeave += gcnew System::EventHandler(this, &MyForm::btn_orders_MouseLeave);
-			this->btn_orders->MouseHover += gcnew System::EventHandler(this, &MyForm::btn_orders_MouseHover);
 			// 
 			// btn_TotalBill
 			// 
@@ -2688,7 +2601,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->btn_TotalBill->Click += gcnew System::EventHandler(this, &MyForm::btn_TotalBill_Click);
 			this->btn_TotalBill->MouseEnter += gcnew System::EventHandler(this, &MyForm::btn_TotalBill_MouseEnter);
 			this->btn_TotalBill->MouseLeave += gcnew System::EventHandler(this, &MyForm::btn_TotalBill_MouseLeave);
-			this->btn_TotalBill->MouseHover += gcnew System::EventHandler(this, &MyForm::btn_TotalBill_MouseHover);
 			// 
 			// btn_login
 			// 
@@ -2719,7 +2631,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->pn_picture->Name = L"pn_picture";
 			this->pn_picture->Size = System::Drawing::Size(222, 163);
 			this->pn_picture->TabIndex = 0;
-			this->pn_picture->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_picture_Paint);
 			// 
 			// lb_profile
 			// 
@@ -2735,7 +2646,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->lb_profile->TabIndex = 1;
 			this->lb_profile->Text = L"USERNAME";
 			this->lb_profile->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->lb_profile->Click += gcnew System::EventHandler(this, &MyForm::lb_profile_Click);
 			// 
 			// pb_profile
 			// 
@@ -2748,7 +2658,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->pb_profile->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pb_profile->TabIndex = 0;
 			this->pb_profile->TabStop = false;
-			this->pb_profile->Click += gcnew System::EventHandler(this, &MyForm::pb_profile_Click);
 			// 
 			// pn_register
 			// 
@@ -2784,7 +2693,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->pn_register->Name = L"pn_register";
 			this->pn_register->Size = System::Drawing::Size(1114, 605);
 			this->pn_register->TabIndex = 1;
-			this->pn_register->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_register_Paint);
 			// 
 			// pictureBox9
 			// 
@@ -2846,7 +2754,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->label4->Size = System::Drawing::Size(175, 55);
 			this->label4->TabIndex = 20;
 			this->label4->Text = L"Register";
-			this->label4->Click += gcnew System::EventHandler(this, &MyForm::label4_Click);
 			// 
 			// btn_refresh_location_register
 			// 
@@ -2944,7 +2851,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->lb_location_message->Size = System::Drawing::Size(244, 54);
 			this->lb_location_message->TabIndex = 12;
 			this->lb_location_message->Text = L"Enter the location";
-			this->lb_location_message->Click += gcnew System::EventHandler(this, &MyForm::lb_location_message_Click);
 			// 
 			// lb_phonenumber_message
 			// 
@@ -2959,7 +2865,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->lb_phonenumber_message->Size = System::Drawing::Size(244, 59);
 			this->lb_phonenumber_message->TabIndex = 11;
 			this->lb_phonenumber_message->Text = L"Enter the phone number";
-			this->lb_phonenumber_message->Click += gcnew System::EventHandler(this, &MyForm::lb_phonenumber_message_Click);
 			// 
 			// lb_password_message
 			// 
@@ -2974,7 +2879,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->lb_password_message->Size = System::Drawing::Size(244, 40);
 			this->lb_password_message->TabIndex = 10;
 			this->lb_password_message->Text = L"Enter the password";
-			this->lb_password_message->Click += gcnew System::EventHandler(this, &MyForm::lb_password_message_Click);
 			// 
 			// lb_username_message
 			// 
@@ -2989,7 +2893,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->lb_username_message->Size = System::Drawing::Size(244, 50);
 			this->lb_username_message->TabIndex = 9;
 			this->lb_username_message->Text = L"Enter the username";
-			this->lb_username_message->Click += gcnew System::EventHandler(this, &MyForm::lb_username_message_Click);
 			// 
 			// btn_register_registerpanel
 			// 
@@ -3019,7 +2922,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->tb_location_register->Name = L"tb_location_register";
 			this->tb_location_register->Size = System::Drawing::Size(245, 33);
 			this->tb_location_register->TabIndex = 7;
-			this->tb_location_register->TextChanged += gcnew System::EventHandler(this, &MyForm::tb_location_register_TextChanged);
 			// 
 			// tb_phonenumber_register
 			// 
@@ -3031,7 +2933,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->tb_phonenumber_register->Name = L"tb_phonenumber_register";
 			this->tb_phonenumber_register->Size = System::Drawing::Size(245, 33);
 			this->tb_phonenumber_register->TabIndex = 6;
-			this->tb_phonenumber_register->TextChanged += gcnew System::EventHandler(this, &MyForm::tb_phonenumber_register_TextChanged);
 			// 
 			// tb_password_register
 			// 
@@ -3044,7 +2945,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->tb_password_register->Size = System::Drawing::Size(245, 33);
 			this->tb_password_register->TabIndex = 5;
 			this->tb_password_register->UseSystemPasswordChar = true;
-			this->tb_password_register->TextChanged += gcnew System::EventHandler(this, &MyForm::tb_password_register_TextChanged);
 			// 
 			// tb_username_register
 			// 
@@ -3056,7 +2956,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->tb_username_register->Name = L"tb_username_register";
 			this->tb_username_register->Size = System::Drawing::Size(245, 33);
 			this->tb_username_register->TabIndex = 4;
-			this->tb_username_register->TextChanged += gcnew System::EventHandler(this, &MyForm::tb_username_username_TextChanged);
 			// 
 			// lb_password_register
 			// 
@@ -3071,7 +2970,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->lb_password_register->Size = System::Drawing::Size(136, 32);
 			this->lb_password_register->TabIndex = 3;
 			this->lb_password_register->Text = L"Password :";
-			this->lb_password_register->Click += gcnew System::EventHandler(this, &MyForm::lb_password_register_Click);
 			// 
 			// lb_phonenumber_register
 			// 
@@ -3086,7 +2984,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->lb_phonenumber_register->Size = System::Drawing::Size(197, 32);
 			this->lb_phonenumber_register->TabIndex = 2;
 			this->lb_phonenumber_register->Text = L"Phone number :";
-			this->lb_phonenumber_register->Click += gcnew System::EventHandler(this, &MyForm::lb_phonenumber_register_Click);
 			// 
 			// lb_location
 			// 
@@ -3101,7 +2998,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->lb_location->Size = System::Drawing::Size(126, 32);
 			this->lb_location->TabIndex = 1;
 			this->lb_location->Text = L"Location :";
-			this->lb_location->Click += gcnew System::EventHandler(this, &MyForm::lb_location_Click);
 			// 
 			// lb_username_register
 			// 
@@ -3116,7 +3012,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->lb_username_register->Size = System::Drawing::Size(142, 32);
 			this->lb_username_register->TabIndex = 0;
 			this->lb_username_register->Text = L"Username :";
-			this->lb_username_register->Click += gcnew System::EventHandler(this, &MyForm::lb_username_register_Click);
 			// 
 			// pn_login
 			// 
@@ -3146,7 +3041,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->pn_login->Name = L"pn_login";
 			this->pn_login->Size = System::Drawing::Size(1114, 605);
 			this->pn_login->TabIndex = 2;
-			this->pn_login->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_login_Paint);
 			// 
 			// label26
 			// 
@@ -3202,7 +3096,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->label3->Size = System::Drawing::Size(160, 55);
 			this->label3->TabIndex = 22;
 			this->label3->Text = L"Login";
-			this->label3->Click += gcnew System::EventHandler(this, &MyForm::label3_Click);
 			// 
 			// lb_password_message_login
 			// 
@@ -3218,7 +3111,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->lb_password_message_login->TabIndex = 21;
 			this->lb_password_message_login->Text = L"Please enter the password";
 			this->lb_password_message_login->Visible = false;
-			this->lb_password_message_login->Click += gcnew System::EventHandler(this, &MyForm::lb_password_message_login_Click);
 			// 
 			// lb_username_message_login
 			// 
@@ -3234,7 +3126,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->lb_username_message_login->TabIndex = 20;
 			this->lb_username_message_login->Text = L" Please enter the username";
 			this->lb_username_message_login->Visible = false;
-			this->lb_username_message_login->Click += gcnew System::EventHandler(this, &MyForm::lb_username_message_login_Click);
 			// 
 			// btn_refresh_password_login
 			// 
@@ -3295,7 +3186,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->tb_password_login->Size = System::Drawing::Size(248, 31);
 			this->tb_password_login->TabIndex = 1;
 			this->tb_password_login->UseSystemPasswordChar = true;
-			this->tb_password_login->TextChanged += gcnew System::EventHandler(this, &MyForm::tb_password_login_TextChanged);
 			// 
 			// tb_username_login
 			// 
@@ -3307,7 +3197,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->tb_username_login->Name = L"tb_username_login";
 			this->tb_username_login->Size = System::Drawing::Size(248, 31);
 			this->tb_username_login->TabIndex = 0;
-			this->tb_username_login->TextChanged += gcnew System::EventHandler(this, &MyForm::tb_username_login_TextChanged);
 			// 
 			// lb_password
 			// 
@@ -3321,7 +3210,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->lb_password->Size = System::Drawing::Size(133, 28);
 			this->lb_password->TabIndex = 4;
 			this->lb_password->Text = L"Password";
-			this->lb_password->Click += gcnew System::EventHandler(this, &MyForm::lb_password_Click);
 			// 
 			// lb_username
 			// 
@@ -3335,7 +3223,7 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->lb_username->Size = System::Drawing::Size(133, 28);
 			this->lb_username->TabIndex = 3;
 			this->lb_username->Text = L"Username";
-			this->lb_username->Click += gcnew System::EventHandler(this, &MyForm::lb_username_Click);
+			
 			// 
 			// btn_register_loginpanel
 			// 
@@ -3402,7 +3290,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->pn_thankyou->Name = L"pn_thankyou";
 			this->pn_thankyou->Size = System::Drawing::Size(1114, 605);
 			this->pn_thankyou->TabIndex = 0;
-			this->pn_thankyou->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_thankyou_Paint);
 			// 
 			// axWindowsMediaPlayer1
 			// 
@@ -3444,7 +3331,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->pn_start->Name = L"pn_start";
 			this->pn_start->Size = System::Drawing::Size(1114, 605);
 			this->pn_start->TabIndex = 3;
-			this->pn_start->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pn_start_Paint);
 			// 
 			// label25
 			// 
@@ -3603,7 +3489,7 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 			this->welcomeScreen->Size = System::Drawing::Size(1114, 605);
 			this->welcomeScreen->TabIndex = 2;
 			this->welcomeScreen->TabStop = false;
-			this->welcomeScreen->Click += gcnew System::EventHandler(this, &MyForm::welcomeScreen_Click_1);
+			
 			// 
 			// timerforexit
 			// 
@@ -3735,10 +3621,6 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 	}
 	   
 		   //pn_thankyou
-	private: System::Void pn_thankyou_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void thankyou_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
     private: System::Void axWindowsMediaPlayer1_PlayStateChange_1(System::Object^ sender, AxWMPLib::_WMPOCXEvents_PlayStateChangeEvent^ e) {
 
 	if (e->newState == 3) {
@@ -3770,6 +3652,7 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 		}
 	}
 }
+		  
 		   //pn_upper_bar
 	private: System::Void btn_close_Click(System::Object^ sender, System::EventArgs^ e) {
 		Application::Exit();
@@ -3780,17 +3663,9 @@ private: System::Windows::Forms::Label^ lb_errorPhone;
 	private: System::Void button1_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
 		btn_exit->ForeColor = Color::FromArgb(0xE6, 0x34, 0x62);
 	}
-	private: System::Void btn_minimize_MouseHover(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void pn_upper_bar_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void lb_brand_name_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void pb_icon_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-
+	
 		   //pn_login
-private: System::Void btn_login_loginpanel_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void btn_login_loginpanel_Click(System::Object^ sender, System::EventArgs^ e) {
 	// Clear previous error messages
 	lb_username_message_login->Visible = false;
 	lb_password_message_login->Visible = false;
@@ -3900,9 +3775,6 @@ private: System::Void btn_login_loginpanel_Click(System::Object^ sender, System:
 		}
 	}
 }
-
-
-
 	private: System::Void btn_back_loginpanal_Click(System::Object^ sender, System::EventArgs^ e) {
 		showPanel(pn_start);
 	}
@@ -3930,25 +3802,7 @@ private: System::Void btn_login_loginpanel_Click(System::Object^ sender, System:
 			tb_password_login->UseSystemPasswordChar = false;
 		}
 	}
-	private: System::Void lb_password_message_login_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void lb_username_message_login_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void tb_password_login_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void tb_username_login_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void tb_username_username_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void lb_password_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void lb_username_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void pn_login_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-
+	
 		 //pn_register
 	private: System::Void btn_register_registerpanel_Click(System::Object^ sender, System::EventArgs^ e) {
 		bool hasError = false;
@@ -4093,16 +3947,6 @@ private: System::Void btn_login_loginpanel_Click(System::Object^ sender, System:
 			tb_password_register->UseSystemPasswordChar = false;
 		}
 	}
-	private: System::Void lb_password_register_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void lb_phonenumber_register_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void tb_location_register_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void tb_phonenumber_register_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void tb_password_register_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
 	private: System::Void link_login_Click(System::Object^ sender, System::EventArgs^ e) {
 		tb_username_login->Text = "";
 		tb_password_login->Text = "";
@@ -4110,23 +3954,7 @@ private: System::Void btn_login_loginpanel_Click(System::Object^ sender, System:
 		lb_password_message_login->Text = ("Enter the password");
 		showPanel(pn_login);
 	}
-	private: System::Void pn_register_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void lb_password_message_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void lb_location_message_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void lb_phonenumber_message_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void lb_username_message_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void lb_username_register_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void lb_location_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void label4_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-		   
+	   
 		   //pn_start
     private: System::Void btn_exit_Click(System::Object^ sender, System::EventArgs^ e) {
 	// In the btn_exit_Click method, after setting up the media player:
@@ -4169,18 +3997,11 @@ private: System::Void btn_login_loginpanel_Click(System::Object^ sender, System:
 	}
 	private: System::Void btn_start_Click(System::Object^ sender, System::EventArgs^ e) {
 		showPanel(pn_login);
-
 	}
-    private: System::Void welcomeScreen_Click(System::Object^ sender, System::EventArgs^ e) {
-    }
     private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
 	timerforexit->Stop();  // Stop the timer
 	Application::Exit();   // Now exit nicely
     }
-    private: System::Void pn_start_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-    }
-	private: System::Void welcomeScreen_Click_1(System::Object^ sender, System::EventArgs^ e) {
-	}
 	private: System::Void timer1_Tick_1(System::Object^ sender, System::EventArgs^ e) {
 			 this->Close();
     }
@@ -4307,46 +4128,15 @@ private: System::Void btn_login_loginpanel_Click(System::Object^ sender, System:
 	private: System::Void btn_cancelEdit_Click(System::Object^ sender, System::EventArgs^ e) {
 		pn_currentInfo->BringToFront();
 	}
-	private: System::Void tb_edit_username_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void tb_edit_phonenumber_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void tb_edit_location_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void tb_confirmPassword_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void btn_editInfo_Click(System::Object^ sender, System::EventArgs^ e) {
-		pn_editInfo->BringToFront();
-	}
-	private: System::Void btn_edit_information_MouseHover(System::Object^ sender, System::EventArgs^ e) {
-
-	}
 	private: System::Void btn_reset_Click(System::Object^ sender, System::EventArgs^ e) {
 		pn_resetPassword->BringToFront();
-	}
-	private: System::Void pn_edit_information_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void label6_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void label17_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void btn_edit_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void label13_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void label12_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 		tb_newPassword->Text = "";
 		tb_confirmPassword->Text = "";
 		pn_currentInfo->BringToFront();
 	}
-	private: System::Void textBox8_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
+	
 		   //Reset Password
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 		//save new password
@@ -4398,8 +4188,7 @@ private: System::Void btn_login_loginpanel_Click(System::Object^ sender, System:
 	private: System::Void button1_Click_2(System::Object^ sender, System::EventArgs^ e) {
 		pn_resetPassword->BringToFront();
 	}
-	private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
-	}
+	
 
 		   //Products
     private: System::Void btn_products_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
@@ -4427,26 +4216,6 @@ private: System::Void btn_login_loginpanel_Click(System::Object^ sender, System:
 	private: System::Void btn_pet_Click(System::Object^ sender, System::EventArgs^ e) {
 		showCategoryPanel(pn_pet_supplies_category);
 	}
-	private: System::Void pn_fruits_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void pn_vegetable_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void pn_bakery_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void pn_household_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void pn_snacks_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void pn_poultry_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void pn_butchershop_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void pn_seafood_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void pn_pet_supplies_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void pn_dairy_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
 	private: System::Void btn_vegetabe_Click(System::Object^ sender, System::EventArgs^ e) {
 		showCategoryPanel(pn_vegetable_category);
 	}
@@ -4465,25 +4234,10 @@ private: System::Void btn_login_loginpanel_Click(System::Object^ sender, System:
 	private: System::Void btn_bakery_Click(System::Object^ sender, System::EventArgs^ e) {
 		showCategoryPanel(pn_bakery_category);
 	}
-	private: System::Void btn_products_MouseHover(System::Object^ sender, System::EventArgs^ e) {
-
-	}
 	private: System::Void btn_fruits_Click(System::Object^ sender, System::EventArgs^ e) {
 		showCategoryPanel(pn_fruits_category);
 	}
-	private: System::Void pn_products_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void pn_main_category_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void flowLayoutPanel2_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void pn_main_dashboard_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void pn_defualt_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-
+	
 		   //Orders
 	private: System::Void btn_orders_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
 		if (btn_orders != selectedButton) {
@@ -4500,10 +4254,6 @@ private: System::Void btn_login_loginpanel_Click(System::Object^ sender, System:
 		showPanel(pn_orders);
 		loadCurrentUserOrder();
 		MenuBGColor(btn_orders);
-	}
-	private: System::Void pn_orders_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void btn_orders_MouseHover(System::Object^ sender, System::EventArgs^ e) {
 	}
     private: System::Void deleteProductFromOrder(String^ productName) {
 			if (orders[currentCustomerIndex] == nullptr) return;
@@ -4659,8 +4409,6 @@ private: System::Void btn_login_loginpanel_Click(System::Object^ sender, System:
     private: System::Void tb_customername_theincoive_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
 	e->Handled = true; // Prevent any input
     }
-    private: System::Void label21_Click(System::Object^ sender, System::EventArgs^ e) {
-    }
     private: System::Void btn_print_Click(System::Object^ sender, System::EventArgs^ e) {
 
 	printPreviewDialog1->WindowState = FormWindowState::Maximized;
@@ -4771,9 +4519,6 @@ private: System::Void btn_login_loginpanel_Click(System::Object^ sender, System:
 			btn_TotalBill->BackColor = Color::Transparent;
 		}
 	}
-    private: System::Void btn_TotalBill_MouseHover(System::Object^ sender, System::EventArgs^ e) {
-
-    }
 	private: System::Void btn_TotalBill_Click(System::Object^ sender, System::EventArgs^ e) {
 		selectedButton = btn_TotalBill;
 		showPanel(pn_viewBill);
@@ -4803,23 +4548,6 @@ private: System::Void btn_login_loginpanel_Click(System::Object^ sender, System:
 		showPanel(pn_login);
     }
 		   
-		   //pn_left_bar
-    private: System::Void pn_left_bar_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-    }
-    private: System::Void pn_picture_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-}
-	private: System::Void pb_profile_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void lb_profile_Click(System::Object^ sender, System::EventArgs^ e) {
-	  }
-	private: System::Void flowLayoutPanel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-		   //pn_blank
-	private: System::Void pn_blank_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void pb_blankpicutre_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-
 //--------------------------------------------pn_default---------------------------------------------
 		   //handle functions& save and load files
 	private: System::Void saveCurrentOrderToFile() {
@@ -5320,9 +5048,6 @@ private: System::Void btn_login_loginpanel_Click(System::Object^ sender, System:
 	  // Save the updated order
 	  saveCurrentOrderToFile();
   }
-
-
-
 
 };
 }
