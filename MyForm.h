@@ -687,7 +687,7 @@ namespace SuperMarkoGUI {
 	private: System::Windows::Forms::PictureBox^ pictureBox5;
 	private: System::Windows::Forms::Label^ label24;
 	private: System::Windows::Forms::Label^ label25;
-	private: System::Windows::Forms::Label^ label28;
+
 	private: System::Windows::Forms::PictureBox^ pictureBox8;
 	private: System::Windows::Forms::PictureBox^ pictureBox7;
 	private: System::Windows::Forms::PictureBox^ pictureBox9;
@@ -725,20 +725,6 @@ namespace SuperMarkoGUI {
 			this->pn_main_dashboard = (gcnew System::Windows::Forms::Panel());
 			this->pn_defualt = (gcnew System::Windows::Forms::Panel());
 			this->pn_edit_information = (gcnew System::Windows::Forms::Panel());
-			this->pn_editInfo = (gcnew System::Windows::Forms::Panel());
-			this->lb_errorLocation = (gcnew System::Windows::Forms::Label());
-			this->lb_errorPhone = (gcnew System::Windows::Forms::Label());
-			this->lb_errorUsername = (gcnew System::Windows::Forms::Label());
-			this->pictureBox11 = (gcnew System::Windows::Forms::PictureBox());
-			this->label15 = (gcnew System::Windows::Forms::Label());
-			this->btn_cancelEdit = (gcnew System::Windows::Forms::Button());
-			this->btn_saveEdit = (gcnew System::Windows::Forms::Button());
-			this->tb_edit_phonenumber = (gcnew System::Windows::Forms::TextBox());
-			this->label9 = (gcnew System::Windows::Forms::Label());
-			this->tb_edit_location = (gcnew System::Windows::Forms::TextBox());
-			this->label10 = (gcnew System::Windows::Forms::Label());
-			this->tb_edit_username = (gcnew System::Windows::Forms::TextBox());
-			this->label11 = (gcnew System::Windows::Forms::Label());
 			this->pn_currentInfo = (gcnew System::Windows::Forms::Panel());
 			this->pictureBox13 = (gcnew System::Windows::Forms::PictureBox());
 			this->btn_seepassword_editinfo = (gcnew System::Windows::Forms::Button());
@@ -753,6 +739,20 @@ namespace SuperMarkoGUI {
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->tb_currentUsername = (gcnew System::Windows::Forms::TextBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->pn_editInfo = (gcnew System::Windows::Forms::Panel());
+			this->lb_errorLocation = (gcnew System::Windows::Forms::Label());
+			this->lb_errorPhone = (gcnew System::Windows::Forms::Label());
+			this->lb_errorUsername = (gcnew System::Windows::Forms::Label());
+			this->pictureBox11 = (gcnew System::Windows::Forms::PictureBox());
+			this->label15 = (gcnew System::Windows::Forms::Label());
+			this->btn_cancelEdit = (gcnew System::Windows::Forms::Button());
+			this->btn_saveEdit = (gcnew System::Windows::Forms::Button());
+			this->tb_edit_phonenumber = (gcnew System::Windows::Forms::TextBox());
+			this->label9 = (gcnew System::Windows::Forms::Label());
+			this->tb_edit_location = (gcnew System::Windows::Forms::TextBox());
+			this->label10 = (gcnew System::Windows::Forms::Label());
+			this->tb_edit_username = (gcnew System::Windows::Forms::TextBox());
+			this->label11 = (gcnew System::Windows::Forms::Label());
 			this->pn_resetPassword = (gcnew System::Windows::Forms::Panel());
 			this->lb_newpassword = (gcnew System::Windows::Forms::Label());
 			this->pictureBox12 = (gcnew System::Windows::Forms::PictureBox());
@@ -888,7 +888,6 @@ namespace SuperMarkoGUI {
 			this->lb_username_register = (gcnew System::Windows::Forms::Label());
 			this->pn_thankyou = (gcnew System::Windows::Forms::Panel());
 			this->axWindowsMediaPlayer1 = (gcnew AxWMPLib::AxWindowsMediaPlayer());
-			this->label28 = (gcnew System::Windows::Forms::Label());
 			this->pn_start = (gcnew System::Windows::Forms::Panel());
 			this->label25 = (gcnew System::Windows::Forms::Label());
 			this->label24 = (gcnew System::Windows::Forms::Label());
@@ -910,10 +909,10 @@ namespace SuperMarkoGUI {
 			this->pn_main_dashboard->SuspendLayout();
 			this->pn_defualt->SuspendLayout();
 			this->pn_edit_information->SuspendLayout();
-			this->pn_editInfo->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox11))->BeginInit();
 			this->pn_currentInfo->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox13))->BeginInit();
+			this->pn_editInfo->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox11))->BeginInit();
 			this->pn_resetPassword->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox12))->BeginInit();
 			this->pn_viewBill->SuspendLayout();
@@ -963,8 +962,8 @@ namespace SuperMarkoGUI {
 			// 
 			this->pn_upper_bar->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(51)), static_cast<System::Int32>(static_cast<System::Byte>(55)),
 				static_cast<System::Int32>(static_cast<System::Byte>(69)));
-			this->pn_upper_bar->Controls->Add(this->lb_brand_name);
 			this->pn_upper_bar->Controls->Add(this->pb_icon);
+			this->pn_upper_bar->Controls->Add(this->lb_brand_name);
 			this->pn_upper_bar->Controls->Add(this->btn_minimize);
 			this->pn_upper_bar->Controls->Add(this->btn_close);
 			this->pn_upper_bar->Dock = System::Windows::Forms::DockStyle::Top;
@@ -1039,11 +1038,11 @@ namespace SuperMarkoGUI {
 			// pn_main_dashboard
 			// 
 			this->pn_main_dashboard->AllowDrop = true;
-			this->pn_main_dashboard->Controls->Add(this->pn_defualt);
+			this->pn_main_dashboard->Controls->Add(this->pn_start);
 			this->pn_main_dashboard->Controls->Add(this->pn_login);
 			this->pn_main_dashboard->Controls->Add(this->pn_register);
+			this->pn_main_dashboard->Controls->Add(this->pn_defualt);
 			this->pn_main_dashboard->Controls->Add(this->pn_thankyou);
-			this->pn_main_dashboard->Controls->Add(this->pn_start);
 			this->pn_main_dashboard->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_main_dashboard->Location = System::Drawing::Point(0, 45);
 			this->pn_main_dashboard->Margin = System::Windows::Forms::Padding(2);
@@ -1053,11 +1052,11 @@ namespace SuperMarkoGUI {
 			// 
 			// pn_defualt
 			// 
-			this->pn_defualt->Controls->Add(this->pn_edit_information);
-			this->pn_defualt->Controls->Add(this->pn_viewBill);
 			this->pn_defualt->Controls->Add(this->pn_blank);
+			this->pn_defualt->Controls->Add(this->pn_edit_information);
 			this->pn_defualt->Controls->Add(this->pn_products);
 			this->pn_defualt->Controls->Add(this->pn_orders);
+			this->pn_defualt->Controls->Add(this->pn_viewBill);
 			this->pn_defualt->Controls->Add(this->pn_left_bar);
 			this->pn_defualt->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_defualt->Location = System::Drawing::Point(0, 0);
@@ -1072,187 +1071,15 @@ namespace SuperMarkoGUI {
 			this->pn_edit_information->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)),
 				static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)));
 			this->pn_edit_information->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pn_edit_information->Controls->Add(this->label1);
 			this->pn_edit_information->Controls->Add(this->pn_currentInfo);
 			this->pn_edit_information->Controls->Add(this->pn_editInfo);
 			this->pn_edit_information->Controls->Add(this->pn_resetPassword);
-			this->pn_edit_information->Controls->Add(this->label1);
 			this->pn_edit_information->Location = System::Drawing::Point(222, 0);
 			this->pn_edit_information->Margin = System::Windows::Forms::Padding(2);
 			this->pn_edit_information->Name = L"pn_edit_information";
 			this->pn_edit_information->Size = System::Drawing::Size(892, 605);
 			this->pn_edit_information->TabIndex = 1;
-			// 
-			// pn_editInfo
-			// 
-			this->pn_editInfo->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-				static_cast<System::Int32>(static_cast<System::Byte>(230)));
-			this->pn_editInfo->Controls->Add(this->lb_errorLocation);
-			this->pn_editInfo->Controls->Add(this->lb_errorPhone);
-			this->pn_editInfo->Controls->Add(this->lb_errorUsername);
-			this->pn_editInfo->Controls->Add(this->pictureBox11);
-			this->pn_editInfo->Controls->Add(this->label15);
-			this->pn_editInfo->Controls->Add(this->btn_cancelEdit);
-			this->pn_editInfo->Controls->Add(this->btn_saveEdit);
-			this->pn_editInfo->Controls->Add(this->tb_edit_phonenumber);
-			this->pn_editInfo->Controls->Add(this->label9);
-			this->pn_editInfo->Controls->Add(this->tb_edit_location);
-			this->pn_editInfo->Controls->Add(this->label10);
-			this->pn_editInfo->Controls->Add(this->tb_edit_username);
-			this->pn_editInfo->Controls->Add(this->label11);
-			this->pn_editInfo->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn_editInfo->Location = System::Drawing::Point(0, 120);
-			this->pn_editInfo->Name = L"pn_editInfo";
-			this->pn_editInfo->Size = System::Drawing::Size(892, 485);
-			this->pn_editInfo->TabIndex = 2;
-			// 
-			// lb_errorLocation
-			// 
-			this->lb_errorLocation->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lb_errorLocation->ForeColor = System::Drawing::Color::Red;
-			this->lb_errorLocation->Location = System::Drawing::Point(428, 295);
-			this->lb_errorLocation->Name = L"lb_errorLocation";
-			this->lb_errorLocation->Size = System::Drawing::Size(363, 40);
-			this->lb_errorLocation->TabIndex = 27;
-			this->lb_errorLocation->Text = L"Error ";
-			this->lb_errorLocation->Visible = false;
-			// 
-			// lb_errorPhone
-			// 
-			this->lb_errorPhone->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lb_errorPhone->ForeColor = System::Drawing::Color::Red;
-			this->lb_errorPhone->Location = System::Drawing::Point(431, 218);
-			this->lb_errorPhone->Name = L"lb_errorPhone";
-			this->lb_errorPhone->Size = System::Drawing::Size(360, 39);
-			this->lb_errorPhone->TabIndex = 26;
-			this->lb_errorPhone->Text = L"Error ";
-			this->lb_errorPhone->Visible = false;
-			// 
-			// lb_errorUsername
-			// 
-			this->lb_errorUsername->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lb_errorUsername->ForeColor = System::Drawing::Color::Red;
-			this->lb_errorUsername->Location = System::Drawing::Point(432, 142);
-			this->lb_errorUsername->Name = L"lb_errorUsername";
-			this->lb_errorUsername->Size = System::Drawing::Size(359, 37);
-			this->lb_errorUsername->TabIndex = 25;
-			this->lb_errorUsername->Text = L"Error ";
-			this->lb_errorUsername->Visible = false;
-			// 
-			// pictureBox11
-			// 
-			this->pictureBox11->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox11.Image")));
-			this->pictureBox11->Location = System::Drawing::Point(247, 32);
-			this->pictureBox11->Name = L"pictureBox11";
-			this->pictureBox11->Size = System::Drawing::Size(38, 30);
-			this->pictureBox11->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
-			this->pictureBox11->TabIndex = 22;
-			this->pictureBox11->TabStop = false;
-			// 
-			// label15
-			// 
-			this->label15->AutoSize = true;
-			this->label15->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Underline)),
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->label15->Location = System::Drawing::Point(292, 30);
-			this->label15->Name = L"label15";
-			this->label15->Size = System::Drawing::Size(308, 32);
-			this->label15->TabIndex = 21;
-			this->label15->Text = L"Edit Personal Information";
-			// 
-			// btn_cancelEdit
-			// 
-			this->btn_cancelEdit->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(230)), static_cast<System::Int32>(static_cast<System::Byte>(52)),
-				static_cast<System::Int32>(static_cast<System::Byte>(98)));
-			this->btn_cancelEdit->FlatAppearance->BorderSize = 0;
-			this->btn_cancelEdit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btn_cancelEdit->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->btn_cancelEdit->ForeColor = System::Drawing::Color::Black;
-			this->btn_cancelEdit->Location = System::Drawing::Point(453, 347);
-			this->btn_cancelEdit->Name = L"btn_cancelEdit";
-			this->btn_cancelEdit->Size = System::Drawing::Size(109, 54);
-			this->btn_cancelEdit->TabIndex = 13;
-			this->btn_cancelEdit->Text = L"Cancel";
-			this->btn_cancelEdit->UseVisualStyleBackColor = false;
-			this->btn_cancelEdit->Click += gcnew System::EventHandler(this, &MyForm::btn_cancelEdit_Click);
-			// 
-			// btn_saveEdit
-			// 
-			this->btn_saveEdit->FlatAppearance->BorderColor = System::Drawing::Color::Black;
-			this->btn_saveEdit->FlatAppearance->BorderSize = 3;
-			this->btn_saveEdit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btn_saveEdit->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->btn_saveEdit->Location = System::Drawing::Point(330, 347);
-			this->btn_saveEdit->Name = L"btn_saveEdit";
-			this->btn_saveEdit->Size = System::Drawing::Size(98, 54);
-			this->btn_saveEdit->TabIndex = 12;
-			this->btn_saveEdit->Text = L"Save";
-			this->btn_saveEdit->UseVisualStyleBackColor = true;
-			this->btn_saveEdit->Click += gcnew System::EventHandler(this, &MyForm::btn_saveEdit_Click);
-			// 
-			// tb_edit_phonenumber
-			// 
-			this->tb_edit_phonenumber->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->tb_edit_phonenumber->Location = System::Drawing::Point(431, 178);
-			this->tb_edit_phonenumber->Name = L"tb_edit_phonenumber";
-			this->tb_edit_phonenumber->Size = System::Drawing::Size(251, 35);
-			this->tb_edit_phonenumber->TabIndex = 11;
-			// 
-			// label9
-			// 
-			this->label9->AutoSize = true;
-			this->label9->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label9->Location = System::Drawing::Point(210, 175);
-			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(187, 32);
-			this->label9->TabIndex = 10;
-			this->label9->Text = L"Phone Number";
-			// 
-			// tb_edit_location
-			// 
-			this->tb_edit_location->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->tb_edit_location->Location = System::Drawing::Point(431, 257);
-			this->tb_edit_location->Name = L"tb_edit_location";
-			this->tb_edit_location->Size = System::Drawing::Size(251, 35);
-			this->tb_edit_location->TabIndex = 9;
-			// 
-			// label10
-			// 
-			this->label10->AutoSize = true;
-			this->label10->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label10->Location = System::Drawing::Point(210, 255);
-			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(112, 32);
-			this->label10->TabIndex = 8;
-			this->label10->Text = L"Location";
-			// 
-			// tb_edit_username
-			// 
-			this->tb_edit_username->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->tb_edit_username->Location = System::Drawing::Point(431, 106);
-			this->tb_edit_username->Name = L"tb_edit_username";
-			this->tb_edit_username->Size = System::Drawing::Size(251, 35);
-			this->tb_edit_username->TabIndex = 7;
-			// 
-			// label11
-			// 
-			this->label11->AutoSize = true;
-			this->label11->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label11->Location = System::Drawing::Point(210, 101);
-			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(132, 32);
-			this->label11->TabIndex = 6;
-			this->label11->Text = L"UserName";
 			// 
 			// pn_currentInfo
 			// 
@@ -1273,9 +1100,9 @@ namespace SuperMarkoGUI {
 			this->pn_currentInfo->Controls->Add(this->tb_currentUsername);
 			this->pn_currentInfo->Controls->Add(this->label5);
 			this->pn_currentInfo->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn_currentInfo->Location = System::Drawing::Point(0, 120);
+			this->pn_currentInfo->Location = System::Drawing::Point(0, 0);
 			this->pn_currentInfo->Name = L"pn_currentInfo";
-			this->pn_currentInfo->Size = System::Drawing::Size(892, 485);
+			this->pn_currentInfo->Size = System::Drawing::Size(892, 605);
 			this->pn_currentInfo->TabIndex = 1;
 			// 
 			// pictureBox13
@@ -1430,6 +1257,178 @@ namespace SuperMarkoGUI {
 			this->label5->TabIndex = 0;
 			this->label5->Text = L"UserName";
 			// 
+			// pn_editInfo
+			// 
+			this->pn_editInfo->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
+				static_cast<System::Int32>(static_cast<System::Byte>(230)));
+			this->pn_editInfo->Controls->Add(this->lb_errorLocation);
+			this->pn_editInfo->Controls->Add(this->lb_errorPhone);
+			this->pn_editInfo->Controls->Add(this->lb_errorUsername);
+			this->pn_editInfo->Controls->Add(this->pictureBox11);
+			this->pn_editInfo->Controls->Add(this->label15);
+			this->pn_editInfo->Controls->Add(this->btn_cancelEdit);
+			this->pn_editInfo->Controls->Add(this->btn_saveEdit);
+			this->pn_editInfo->Controls->Add(this->tb_edit_phonenumber);
+			this->pn_editInfo->Controls->Add(this->label9);
+			this->pn_editInfo->Controls->Add(this->tb_edit_location);
+			this->pn_editInfo->Controls->Add(this->label10);
+			this->pn_editInfo->Controls->Add(this->tb_edit_username);
+			this->pn_editInfo->Controls->Add(this->label11);
+			this->pn_editInfo->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->pn_editInfo->Location = System::Drawing::Point(0, 0);
+			this->pn_editInfo->Name = L"pn_editInfo";
+			this->pn_editInfo->Size = System::Drawing::Size(892, 605);
+			this->pn_editInfo->TabIndex = 2;
+			// 
+			// lb_errorLocation
+			// 
+			this->lb_errorLocation->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lb_errorLocation->ForeColor = System::Drawing::Color::Red;
+			this->lb_errorLocation->Location = System::Drawing::Point(428, 295);
+			this->lb_errorLocation->Name = L"lb_errorLocation";
+			this->lb_errorLocation->Size = System::Drawing::Size(363, 40);
+			this->lb_errorLocation->TabIndex = 27;
+			this->lb_errorLocation->Text = L"Error ";
+			this->lb_errorLocation->Visible = false;
+			// 
+			// lb_errorPhone
+			// 
+			this->lb_errorPhone->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lb_errorPhone->ForeColor = System::Drawing::Color::Red;
+			this->lb_errorPhone->Location = System::Drawing::Point(431, 218);
+			this->lb_errorPhone->Name = L"lb_errorPhone";
+			this->lb_errorPhone->Size = System::Drawing::Size(360, 39);
+			this->lb_errorPhone->TabIndex = 26;
+			this->lb_errorPhone->Text = L"Error ";
+			this->lb_errorPhone->Visible = false;
+			// 
+			// lb_errorUsername
+			// 
+			this->lb_errorUsername->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lb_errorUsername->ForeColor = System::Drawing::Color::Red;
+			this->lb_errorUsername->Location = System::Drawing::Point(432, 142);
+			this->lb_errorUsername->Name = L"lb_errorUsername";
+			this->lb_errorUsername->Size = System::Drawing::Size(359, 37);
+			this->lb_errorUsername->TabIndex = 25;
+			this->lb_errorUsername->Text = L"Error ";
+			this->lb_errorUsername->Visible = false;
+			// 
+			// pictureBox11
+			// 
+			this->pictureBox11->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox11.Image")));
+			this->pictureBox11->Location = System::Drawing::Point(247, 32);
+			this->pictureBox11->Name = L"pictureBox11";
+			this->pictureBox11->Size = System::Drawing::Size(38, 30);
+			this->pictureBox11->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox11->TabIndex = 22;
+			this->pictureBox11->TabStop = false;
+			// 
+			// label15
+			// 
+			this->label15->AutoSize = true;
+			this->label15->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Underline)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->label15->Location = System::Drawing::Point(292, 30);
+			this->label15->Name = L"label15";
+			this->label15->Size = System::Drawing::Size(308, 32);
+			this->label15->TabIndex = 21;
+			this->label15->Text = L"Edit Personal Information";
+			// 
+			// btn_cancelEdit
+			// 
+			this->btn_cancelEdit->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(230)), static_cast<System::Int32>(static_cast<System::Byte>(52)),
+				static_cast<System::Int32>(static_cast<System::Byte>(98)));
+			this->btn_cancelEdit->FlatAppearance->BorderSize = 0;
+			this->btn_cancelEdit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btn_cancelEdit->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btn_cancelEdit->ForeColor = System::Drawing::Color::Black;
+			this->btn_cancelEdit->Location = System::Drawing::Point(453, 347);
+			this->btn_cancelEdit->Name = L"btn_cancelEdit";
+			this->btn_cancelEdit->Size = System::Drawing::Size(109, 54);
+			this->btn_cancelEdit->TabIndex = 13;
+			this->btn_cancelEdit->Text = L"Cancel";
+			this->btn_cancelEdit->UseVisualStyleBackColor = false;
+			this->btn_cancelEdit->Click += gcnew System::EventHandler(this, &MyForm::btn_cancelEdit_Click);
+			// 
+			// btn_saveEdit
+			// 
+			this->btn_saveEdit->FlatAppearance->BorderColor = System::Drawing::Color::Black;
+			this->btn_saveEdit->FlatAppearance->BorderSize = 3;
+			this->btn_saveEdit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btn_saveEdit->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btn_saveEdit->Location = System::Drawing::Point(330, 347);
+			this->btn_saveEdit->Name = L"btn_saveEdit";
+			this->btn_saveEdit->Size = System::Drawing::Size(98, 54);
+			this->btn_saveEdit->TabIndex = 12;
+			this->btn_saveEdit->Text = L"Save";
+			this->btn_saveEdit->UseVisualStyleBackColor = true;
+			this->btn_saveEdit->Click += gcnew System::EventHandler(this, &MyForm::btn_saveEdit_Click);
+			// 
+			// tb_edit_phonenumber
+			// 
+			this->tb_edit_phonenumber->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->tb_edit_phonenumber->Location = System::Drawing::Point(431, 178);
+			this->tb_edit_phonenumber->Name = L"tb_edit_phonenumber";
+			this->tb_edit_phonenumber->Size = System::Drawing::Size(251, 35);
+			this->tb_edit_phonenumber->TabIndex = 11;
+			// 
+			// label9
+			// 
+			this->label9->AutoSize = true;
+			this->label9->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label9->Location = System::Drawing::Point(210, 175);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(187, 32);
+			this->label9->TabIndex = 10;
+			this->label9->Text = L"Phone Number";
+			// 
+			// tb_edit_location
+			// 
+			this->tb_edit_location->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->tb_edit_location->Location = System::Drawing::Point(431, 257);
+			this->tb_edit_location->Name = L"tb_edit_location";
+			this->tb_edit_location->Size = System::Drawing::Size(251, 35);
+			this->tb_edit_location->TabIndex = 9;
+			// 
+			// label10
+			// 
+			this->label10->AutoSize = true;
+			this->label10->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label10->Location = System::Drawing::Point(210, 255);
+			this->label10->Name = L"label10";
+			this->label10->Size = System::Drawing::Size(112, 32);
+			this->label10->TabIndex = 8;
+			this->label10->Text = L"Location";
+			// 
+			// tb_edit_username
+			// 
+			this->tb_edit_username->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->tb_edit_username->Location = System::Drawing::Point(431, 106);
+			this->tb_edit_username->Name = L"tb_edit_username";
+			this->tb_edit_username->Size = System::Drawing::Size(251, 35);
+			this->tb_edit_username->TabIndex = 7;
+			// 
+			// label11
+			// 
+			this->label11->AutoSize = true;
+			this->label11->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label11->Location = System::Drawing::Point(210, 101);
+			this->label11->Name = L"label11";
+			this->label11->Size = System::Drawing::Size(132, 32);
+			this->label11->TabIndex = 6;
+			this->label11->Text = L"UserName";
+			// 
 			// pn_resetPassword
 			// 
 			this->pn_resetPassword->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)),
@@ -1446,9 +1445,9 @@ namespace SuperMarkoGUI {
 			this->pn_resetPassword->Controls->Add(this->tb_newPassword);
 			this->pn_resetPassword->Controls->Add(this->label13);
 			this->pn_resetPassword->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn_resetPassword->Location = System::Drawing::Point(0, 120);
+			this->pn_resetPassword->Location = System::Drawing::Point(0, 0);
 			this->pn_resetPassword->Name = L"pn_resetPassword";
-			this->pn_resetPassword->Size = System::Drawing::Size(892, 485);
+			this->pn_resetPassword->Size = System::Drawing::Size(892, 605);
 			this->pn_resetPassword->TabIndex = 2;
 			// 
 			// lb_newpassword
@@ -3284,7 +3283,6 @@ namespace SuperMarkoGUI {
 			this->pn_thankyou->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(51)), static_cast<System::Int32>(static_cast<System::Byte>(55)),
 				static_cast<System::Int32>(static_cast<System::Byte>(69)));
 			this->pn_thankyou->Controls->Add(this->axWindowsMediaPlayer1);
-			this->pn_thankyou->Controls->Add(this->label28);
 			this->pn_thankyou->Location = System::Drawing::Point(0, 0);
 			this->pn_thankyou->Margin = System::Windows::Forms::Padding(2);
 			this->pn_thankyou->Name = L"pn_thankyou";
@@ -3300,14 +3298,6 @@ namespace SuperMarkoGUI {
 			this->axWindowsMediaPlayer1->Size = System::Drawing::Size(1110, 602);
 			this->axWindowsMediaPlayer1->TabIndex = 12;
 			this->axWindowsMediaPlayer1->PlayStateChange += gcnew AxWMPLib::_WMPOCXEvents_PlayStateChangeEventHandler(this, &MyForm::axWindowsMediaPlayer1_PlayStateChange_1);
-			// 
-			// label28
-			// 
-			this->label28->AutoSize = true;
-			this->label28->Location = System::Drawing::Point(227, 338);
-			this->label28->Name = L"label28";
-			this->label28->Size = System::Drawing::Size(0, 13);
-			this->label28->TabIndex = 6;
 			// 
 			// pn_start
 			// 
@@ -3529,12 +3519,12 @@ namespace SuperMarkoGUI {
 			this->pn_main_dashboard->ResumeLayout(false);
 			this->pn_defualt->ResumeLayout(false);
 			this->pn_edit_information->ResumeLayout(false);
-			this->pn_editInfo->ResumeLayout(false);
-			this->pn_editInfo->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox11))->EndInit();
 			this->pn_currentInfo->ResumeLayout(false);
 			this->pn_currentInfo->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox13))->EndInit();
+			this->pn_editInfo->ResumeLayout(false);
+			this->pn_editInfo->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox11))->EndInit();
 			this->pn_resetPassword->ResumeLayout(false);
 			this->pn_resetPassword->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox12))->EndInit();
@@ -3576,7 +3566,6 @@ namespace SuperMarkoGUI {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox10))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->pn_thankyou->ResumeLayout(false);
-			this->pn_thankyou->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->axWindowsMediaPlayer1))->EndInit();
 			this->pn_start->ResumeLayout(false);
 			this->pn_start->PerformLayout();
