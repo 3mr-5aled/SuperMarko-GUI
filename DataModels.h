@@ -3,7 +3,7 @@
 
 using namespace System;
 
-
+const int MAX_BILLS = 1000;
 const int numOfCustomers = 100;
 const int numOfCategories = 10;
 const int numOfProducts = 100;
@@ -30,4 +30,22 @@ ref struct ORDER {
     array<double>^ Amount = gcnew array<double>(numOfProducts);
     double TotalPrice = 0.0;
     int productcount = 0;
+};
+ public ref struct ADMIN {
+	String^ Name;
+	String^ Password;
+};
+ public ref struct PRODUCTBILL {
+    String^ name;
+    double quantity;
+    double unitPrice;
+    double subtotal;
+};
+
+ public ref struct BILL {
+    String^ invoiceNumber;
+    String^ dateTime;
+    String^ customerID;
+    array<PRODUCTBILL^>^ products;
+    double total;
 };
