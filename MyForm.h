@@ -1038,10 +1038,10 @@ namespace SuperMarkoGUI {
 			// pn_main_dashboard
 			// 
 			this->pn_main_dashboard->AllowDrop = true;
+			this->pn_main_dashboard->Controls->Add(this->pn_defualt);
 			this->pn_main_dashboard->Controls->Add(this->pn_start);
 			this->pn_main_dashboard->Controls->Add(this->pn_login);
 			this->pn_main_dashboard->Controls->Add(this->pn_register);
-			this->pn_main_dashboard->Controls->Add(this->pn_defualt);
 			this->pn_main_dashboard->Controls->Add(this->pn_thankyou);
 			this->pn_main_dashboard->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_main_dashboard->Location = System::Drawing::Point(0, 45);
@@ -4762,7 +4762,7 @@ namespace SuperMarkoGUI {
 				lblNoOrder->Font = gcnew Drawing::Font("Segoe UI", 18, FontStyle::Bold);
 				lblNoOrder->ForeColor = Color::Gray;
 				lblNoOrder->Dock = DockStyle::Top;
-				lblNoOrder->Width = 800;
+				lblNoOrder->Width = 892;
 				lblNoOrder->Height = 50;
 				lblNoOrder->TextAlign = ContentAlignment::MiddleCenter;
 				orderList->Controls->Add(lblNoOrder);
