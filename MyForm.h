@@ -962,8 +962,8 @@ namespace SuperMarkoGUI {
 			// 
 			this->pn_upper_bar->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(51)), static_cast<System::Int32>(static_cast<System::Byte>(55)),
 				static_cast<System::Int32>(static_cast<System::Byte>(69)));
-			this->pn_upper_bar->Controls->Add(this->pb_icon);
 			this->pn_upper_bar->Controls->Add(this->lb_brand_name);
+			this->pn_upper_bar->Controls->Add(this->pb_icon);
 			this->pn_upper_bar->Controls->Add(this->btn_minimize);
 			this->pn_upper_bar->Controls->Add(this->btn_close);
 			this->pn_upper_bar->Dock = System::Windows::Forms::DockStyle::Top;
