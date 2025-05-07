@@ -72,64 +72,61 @@ Explore the sleek and user-friendly interface of **Supermarko GUI**, crafted wit
 
 ---
 
-### 🟢 Start Screen
-![Start Screen](screenshots/start.png)
+### 🟢 Start Screen  
+<img src="screenshots/start.png" width="600"/>
 
 ---
 
-### 🔐 Login Screen
-![Login Screen](screenshots/login.png)
+### 🔐 Login Screen  
+<img src="screenshots/login.png" width="600"/>
 
 ---
 
-### 📝 Register Screen
-![Register Screen](screenshots/register.png)
+### 📝 Register Screen  
+<img src="screenshots/register.png" width="600"/>
 
 ---
 
-### 🏠 Default Home Screen
-![Default Screen](screenshots/default.png)
+### 🏠 Default Home Screen  
+<img src="screenshots/default.png" width="600"/>
 
 ---
 
-### ✏️ Edit User Information
-![Edit Info](screenshots/editinfo.png)
+### ✏️ Edit User Information  
+<img src="screenshots/editinfo.png" width="600"/>
 
 ---
 
-### 🗂 Product Categories
-![Categories](screenshots/categories.png)
+### 🗂 Product Categories  
+<img src="screenshots/categories.png" width="600"/>
 
 ---
 
-### 📦 Product List
-![Products](screenshots/products.png)
+### 📦 Product List  
+<img src="screenshots/products.png" width="600"/>
 
 ---
 
-### 🛒 Current Order View
-![Order](screenshots/orders.png)
+### 🛒 Current Order View  
+<img src="screenshots/orders.png" width="600"/>
 
 ---
 
-### 💰 Total Bill Summary
-![Total Bill](screenshots/total%20bill.png)
+### 💰 Total Bill Summary  
+<img src="screenshots/total%20bill.png" width="600"/>
 
 ---
 
-### 🎉 Thank You / End Screen
-![Thank You](screenshots/endscreen.png)
+### 🎉 Thank You / End Screen  
+<img src="screenshots/endscreen.png" width="600"/>
 
 ---
 
-### 🧾 Printable Bill View
-![Printable Bill](screenshots/bill.jpg)
-
+### 🧾 Printable Bill View  
+<img src="screenshots/bill.jpg" width="500"/>
 
 ---
 
 ## 📄 License
 
 This project is licensed under the MIT License.
-
----
