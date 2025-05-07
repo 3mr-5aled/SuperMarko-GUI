@@ -4427,8 +4427,8 @@ namespace SuperMarkoGUI {
 	String^ no = "#No " + tb_invoicenumber_theinvoice->Text;
 	String^ date = "Date:  " + tb_date_theinvoice->Text;
 	String^ customerName = "Customer Name:  " + tb_customername_theincoive->Text;
-	String^ invoice = "thank you for using                              !! ";
-	String^ invoice2 = " SUPERMARKO ";
+	String^ invoice = "Thank you for using                              !! ";
+	String^ invoice2 = "  SUPERMARKO ";
 
 	SizeF sizeno = e->Graphics->MeasureString(no, f);
 	SizeF sizedate = e->Graphics->MeasureString(date, f);
@@ -4440,7 +4440,7 @@ namespace SuperMarkoGUI {
 	e->Graphics->DrawString(date, f, Brushes::Black, 20.0f, 100.0f);
 	e->Graphics->DrawString(customerName, f, Brushes::Navy, 20.0f, 150.0f);
 	e->Graphics->DrawString(invoice, f, Brushes::Black, (e->PageBounds.Width - sizeinvoice.Width) / 2.0f, 1030.0f);
-	e->Graphics->DrawString(invoice2, qq, Brushes::Purple, 420.0f, 1030.0f);
+	e->Graphics->DrawString(invoice2, qq, Brushes::Orange, 420.0f, 1030.0f);
 
 	float y = 200.0f;
 	e->Graphics->DrawRectangle(Pens::Black, 20.0f, y, e->PageBounds.Width - 40.0f, 800.0f);
