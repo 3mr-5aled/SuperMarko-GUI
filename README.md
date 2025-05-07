@@ -108,7 +108,7 @@ Explore the sleek and user-friendly interface of **Supermarko GUI**, crafted wit
 ---
 
 ### 🛒 Current Order View
-![Order](screenshots/order.png)
+![Order](screenshots/orders.png)
 
 ---
 
@@ -118,12 +118,12 @@ Explore the sleek and user-friendly interface of **Supermarko GUI**, crafted wit
 ---
 
 ### 🎉 Thank You / End Screen
-![Thank You](screenshots/thank%20you.png)
+![Thank You](screenshots/endscreen.png)
 
 ---
 
 ### 🧾 Printable Bill View
-![Printable Bill](screenshots/printable%20bill.png)
+![Printable Bill](screenshots/bill.jpg)
 
 
 ---
