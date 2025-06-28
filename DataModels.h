@@ -3,7 +3,6 @@
 
 using namespace System;
 
-
 const int numOfCustomers = 100;
 const int numOfCategories = 10;
 const int numOfProducts = 100;
