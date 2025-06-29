@@ -55,6 +55,10 @@ public
 			loadCategory("Snacks&Sweets", flowLayoutPanel10);				// Snacks
 			loadCategory("Household&Cleaning_Supplies", flowLayoutPanel11); // Household
 			loadCategory("Pet_Supplies", flowLayoutPanel12);				// Pet supplies
+			LoadOrdersFromFile("order.txt");
+			LoadCustomersFromFile("customers.txt");
+			LoadProductSalesToChart("sales.txt");
+			UpdateUserChart();
 		}
 
 		void openSearchPanel(Object ^ sender, EventArgs ^ e)
@@ -5655,18 +5659,12 @@ public
 					if (tb_username_login->Text->Trim() == "admin" && tb_password_login->Text->Trim() == "admin")
 					{
 
+						showPanel(blank_admin);
 						showPanel(pn_admin);
 
 						tb_username_login->Text = "";
 						tb_password_login->Text = "";
 						sr->Close();
-						LoadOrdersFromFile("order.txt");
-						LoadProductSalesToChart("sales.txt");
-						LoadCustomersFromFile("customers.txt");
-						DisplayCustomers();
-						UpdateUserChart();
-						DisplayOrders();
-						showPanel(blank_admin);
 
 						return;
 					}
@@ -7584,8 +7582,8 @@ public
 			this->userChart->BackColor = System::Drawing::Color::White;
 			this->userChart->Visible = true;
 
-			parent->Controls->Add(this->productChart);
 			parent->Controls->Add(this->userChart);
+			parent->Controls->Add(this->productChart);
 		}
 
 		void CreateCustomerInsights(Panel ^ parent)
