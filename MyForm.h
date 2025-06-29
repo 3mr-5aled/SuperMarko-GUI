@@ -75,14 +75,14 @@ namespace SuperMarkoGUI {
 
 
 			searchInput = gcnew TextBox();
-			searchInput->Size = Drawing::Size(500, 30);
-			searchInput->Location = Point(20, 20);
+			searchInput->Size = Drawing::Size(750, 450);
+			searchInput->Location = Point(40, 30);
 			searchInput->TextChanged += gcnew EventHandler(this, &MyForm::performSearch);
 			pn_search->Controls->Add(searchInput);
 
 			Button^ closeBtn = gcnew Button();
 			closeBtn->Text = "X";
-			closeBtn->Location = Point(630, 20);
+			closeBtn->Location = Point(830, 20);
 			closeBtn->Size = Drawing::Size(40, 30);
 			closeBtn->Click += gcnew EventHandler(this, &MyForm::closeSearchPanel);
 			pn_search->Controls->Add(closeBtn);
@@ -103,26 +103,27 @@ namespace SuperMarkoGUI {
 					PRODUCT^ p = products[i][j];
 					if (p != nullptr && p->Name->ToLower()->Contains(query)) {
 
-						// Outer panel
+						// Outer Panel
 						Panel^ productPanel = gcnew Panel();
 						productPanel->BackColor = Color::White;
-						productPanel->Size = Drawing::Size(250, 370);
-						productPanel->Margin = System::Windows::Forms::Padding(15, 10, 15, 20);
+						productPanel->Size = Drawing::Size(230, 360);
+						productPanel->Margin = System::Windows::Forms::Padding(10);
+						productPanel->Padding = System::Windows::Forms::Padding(10);
+						productPanel->BorderStyle = BorderStyle::FixedSingle;
 
-
+						// Inner Panel
 						FlowLayoutPanel^ innerPanel = gcnew FlowLayoutPanel();
 						innerPanel->FlowDirection = FlowDirection::TopDown;
 						innerPanel->WrapContents = false;
-						innerPanel->BackColor = Color::White;
 						innerPanel->AutoSize = true;
 						innerPanel->Dock = DockStyle::Fill;
+						innerPanel->BackColor = Color::White;
 
 						// Image
 						PictureBox^ img = gcnew PictureBox();
-						img->Size = Drawing::Size(230, 100);
+						img->Size = Drawing::Size(200, 100);
 						img->SizeMode = PictureBoxSizeMode::Zoom;
-						String^ imageName = p->Name->Replace(" ", "_") + ".jpg";
-						String^ imagePath = "images\\" + imageName;
+						String^ imagePath = "images\\" + p->Name->Replace(" ", "_") + ".jpg";
 						try {
 							img->Image = Image::FromFile(imagePath);
 						}
@@ -131,15 +132,17 @@ namespace SuperMarkoGUI {
 						}
 						innerPanel->Controls->Add(img);
 
-						// Bold Name
+						// Product Name
 						Label^ lblName = gcnew Label();
 						lblName->Text = "Name: " + p->Name;
 						lblName->Font = gcnew Drawing::Font("Arial", 10, FontStyle::Bold);
-						lblName->AutoSize = true;
+						lblName->AutoSize = false;
+						lblName->Width = 210;
+						lblName->TextAlign = ContentAlignment::MiddleCenter;
 						innerPanel->Controls->Add(lblName);
 
-						// Other Labels
-						array<String^>^ labels = {
+						// Other Details
+						array<String^>^ details = {
 							"Code: " + p->Code,
 							"Category: " + p->Category,
 							"Production Date: " + p->ProductionDate,
@@ -147,35 +150,39 @@ namespace SuperMarkoGUI {
 							"Price: " + p->Price.ToString("0.00") + " EGP"
 						};
 
-						for each (String ^ text in labels) {
+						for each (String ^ line in details) {
 							Label^ lbl = gcnew Label();
-							lbl->Text = text;
-							lbl->AutoSize = true;
+							lbl->Text = line;
+							lbl->AutoSize = false;
+							lbl->Width = 210;
+							lbl->TextAlign = ContentAlignment::MiddleCenter;
 							innerPanel->Controls->Add(lbl);
 						}
 
-						// Quantity label
+						// Quantity Label
 						Label^ qtyLabel = gcnew Label();
 						qtyLabel->Text = "Quantity:";
-						qtyLabel->AutoSize = true;
+						qtyLabel->AutoSize = false;
+						qtyLabel->Width = 210;
+						qtyLabel->TextAlign = ContentAlignment::MiddleCenter;
 						innerPanel->Controls->Add(qtyLabel);
 
-						// Quantity input (with 2 decimal places)
-						// Quantity input (with 2 decimal places)
+						// Quantity Selector
 						NumericUpDown^ quantitySelector = gcnew NumericUpDown();
-						quantitySelector->Minimum = Decimal(0.25);
-						quantitySelector->Maximum = Decimal(100);
-						quantitySelector->DecimalPlaces = 2;
-						quantitySelector->Increment = Decimal(0.25);
-						quantitySelector->Value = Decimal(1.00);
-						quantitySelector->Width = 100;
+						quantitySelector->Minimum = 0;
+						quantitySelector->Maximum = 10;
+						quantitySelector->DecimalPlaces = 0;
+						quantitySelector->Increment = 1;
+						quantitySelector->Value = 0;
+						quantitySelector->Width = 80;
+						quantitySelector->TextAlign = HorizontalAlignment::Center;
+						quantitySelector->Margin = System::Windows::Forms::Padding(75, 5, 75, 10);
 						innerPanel->Controls->Add(quantitySelector);
 
-
-						// Add to cart button
+						// Add to Cart Button
 						Button^ addBtn = gcnew Button();
 						addBtn->Text = "Add to Cart";
-						addBtn->Width = 230;
+						addBtn->Width = 210;
 						addBtn->Height = 35;
 						addBtn->BackColor = Color::FromArgb(230, 52, 98);
 						addBtn->ForeColor = Color::White;
@@ -184,12 +191,15 @@ namespace SuperMarkoGUI {
 						addBtn->Click += gcnew EventHandler(this, &MyForm::handleAddToCart);
 						innerPanel->Controls->Add(addBtn);
 
+						// Add to UI
 						productPanel->Controls->Add(innerPanel);
 						searchResults->Controls->Add(productPanel);
 					}
 				}
 			}
 		}
+
+		
 
 
 
@@ -1428,77 +1438,22 @@ private: System::Windows::Forms::Button^ btn_search;
 		{
 			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea3 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea4 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend4 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series4 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->pn_upper_bar = (gcnew System::Windows::Forms::Panel());
 			this->lb_brand_name = (gcnew System::Windows::Forms::Label());
 			this->pb_icon = (gcnew System::Windows::Forms::PictureBox());
 			this->btn_minimize = (gcnew System::Windows::Forms::Button());
 			this->btn_close = (gcnew System::Windows::Forms::Button());
 			this->pn_main_dashboard = (gcnew System::Windows::Forms::Panel());
-			this->pn_admin = (gcnew System::Windows::Forms::Panel());
-			this->analytics = (gcnew System::Windows::Forms::Panel());
-			this->pictureBox17 = (gcnew System::Windows::Forms::PictureBox());
-			this->panel22 = (gcnew System::Windows::Forms::Panel());
-			this->flowLayoutPanel26 = (gcnew System::Windows::Forms::FlowLayoutPanel());
-			this->productChart = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
-			this->userChart = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
-			this->TotalSales = (gcnew System::Windows::Forms::Label());
-			this->label61 = (gcnew System::Windows::Forms::Label());
-			this->pn_users = (gcnew System::Windows::Forms::Panel());
-			this->panel6 = (gcnew System::Windows::Forms::Panel());
-			this->UsersList = (gcnew System::Windows::Forms::FlowLayoutPanel());
-			this->label44 = (gcnew System::Windows::Forms::Label());
-			this->order_history = (gcnew System::Windows::Forms::Panel());
-			this->label46 = (gcnew System::Windows::Forms::Label());
-			this->orderspn = (gcnew System::Windows::Forms::FlowLayoutPanel());
-			this->dashboard = (gcnew System::Windows::Forms::Panel());
-			this->flowLayoutPanel27 = (gcnew System::Windows::Forms::FlowLayoutPanel());
-			this->button20 = (gcnew System::Windows::Forms::Button());
-			this->button22 = (gcnew System::Windows::Forms::Button());
-			this->button23 = (gcnew System::Windows::Forms::Button());
-			this->button24 = (gcnew System::Windows::Forms::Button());
-			this->panel25 = (gcnew System::Windows::Forms::Panel());
-			this->label62 = (gcnew System::Windows::Forms::Label());
-			this->pictureBox18 = (gcnew System::Windows::Forms::PictureBox());
-			this->background = (gcnew System::Windows::Forms::Panel());
-			this->pictureBox16 = (gcnew System::Windows::Forms::PictureBox());
 			this->pn_defualt = (gcnew System::Windows::Forms::Panel());
-			this->pn_viewBill = (gcnew System::Windows::Forms::Panel());
-			this->pb_theinvoice = (gcnew System::Windows::Forms::PictureBox());
-			this->pn = (gcnew System::Windows::Forms::Panel());
-			this->btn_print = (gcnew System::Windows::Forms::Button());
-			this->flowLayoutPanel13 = (gcnew System::Windows::Forms::FlowLayoutPanel());
-			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->colproduct = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->colquantity = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->colunitprice = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->colsubtotal = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->panel2 = (gcnew System::Windows::Forms::Panel());
-			this->lb_total_number = (gcnew System::Windows::Forms::Label());
-			this->lb_shipping_number = (gcnew System::Windows::Forms::Label());
-			this->lb_vat_number = (gcnew System::Windows::Forms::Label());
-			this->lb_discount_number = (gcnew System::Windows::Forms::Label());
-			this->lb_shipping = (gcnew System::Windows::Forms::Label());
-			this->lb_vat = (gcnew System::Windows::Forms::Label());
-			this->lb_discount = (gcnew System::Windows::Forms::Label());
-			this->lb_total = (gcnew System::Windows::Forms::Label());
-			this->label22 = (gcnew System::Windows::Forms::Label());
-			this->lb_beforevat_number = (gcnew System::Windows::Forms::Label());
-			this->lb_beforevat = (gcnew System::Windows::Forms::Label());
-			this->tb_customername_theincoive = (gcnew System::Windows::Forms::TextBox());
-			this->lb_customername_theinvoice = (gcnew System::Windows::Forms::Label());
-			this->tb_date_theinvoice = (gcnew System::Windows::Forms::TextBox());
-			this->tb_invoicenumber_theinvoice = (gcnew System::Windows::Forms::TextBox());
-			this->lb_date_theinvice = (gcnew System::Windows::Forms::Label());
-			this->lb_invoicenumber_theinvoice = (gcnew System::Windows::Forms::Label());
-			this->lb_theinvoice = (gcnew System::Windows::Forms::Label());
 			this->pn_products = (gcnew System::Windows::Forms::Panel());
 			this->pn_main_category = (gcnew System::Windows::Forms::Panel());
+			this->btn_search = (gcnew System::Windows::Forms::Button());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->flowLayoutPanel2 = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->btn_fruits = (gcnew System::Windows::Forms::Button());
@@ -1531,6 +1486,35 @@ private: System::Windows::Forms::Button^ btn_search;
 			this->flowLayoutPanel4 = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->pn_fruits_category = (gcnew System::Windows::Forms::Panel());
 			this->flowLayoutPanel3 = (gcnew System::Windows::Forms::FlowLayoutPanel());
+			this->pn_viewBill = (gcnew System::Windows::Forms::Panel());
+			this->pb_theinvoice = (gcnew System::Windows::Forms::PictureBox());
+			this->pn = (gcnew System::Windows::Forms::Panel());
+			this->btn_print = (gcnew System::Windows::Forms::Button());
+			this->flowLayoutPanel13 = (gcnew System::Windows::Forms::FlowLayoutPanel());
+			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->colproduct = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->colquantity = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->colunitprice = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->colsubtotal = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->panel2 = (gcnew System::Windows::Forms::Panel());
+			this->lb_total_number = (gcnew System::Windows::Forms::Label());
+			this->lb_shipping_number = (gcnew System::Windows::Forms::Label());
+			this->lb_vat_number = (gcnew System::Windows::Forms::Label());
+			this->lb_discount_number = (gcnew System::Windows::Forms::Label());
+			this->lb_shipping = (gcnew System::Windows::Forms::Label());
+			this->lb_vat = (gcnew System::Windows::Forms::Label());
+			this->lb_discount = (gcnew System::Windows::Forms::Label());
+			this->lb_total = (gcnew System::Windows::Forms::Label());
+			this->label22 = (gcnew System::Windows::Forms::Label());
+			this->lb_beforevat_number = (gcnew System::Windows::Forms::Label());
+			this->lb_beforevat = (gcnew System::Windows::Forms::Label());
+			this->tb_customername_theincoive = (gcnew System::Windows::Forms::TextBox());
+			this->lb_customername_theinvoice = (gcnew System::Windows::Forms::Label());
+			this->tb_date_theinvoice = (gcnew System::Windows::Forms::TextBox());
+			this->tb_invoicenumber_theinvoice = (gcnew System::Windows::Forms::TextBox());
+			this->lb_date_theinvice = (gcnew System::Windows::Forms::Label());
+			this->lb_invoicenumber_theinvoice = (gcnew System::Windows::Forms::Label());
+			this->lb_theinvoice = (gcnew System::Windows::Forms::Label());
 			this->pn_edit_information = (gcnew System::Windows::Forms::Panel());
 			this->pn_currentInfo = (gcnew System::Windows::Forms::Panel());
 			this->pictureBox13 = (gcnew System::Windows::Forms::PictureBox());
@@ -1588,6 +1572,33 @@ private: System::Windows::Forms::Button^ btn_search;
 			this->pn_picture = (gcnew System::Windows::Forms::Panel());
 			this->lb_profile = (gcnew System::Windows::Forms::Label());
 			this->pb_profile = (gcnew System::Windows::Forms::PictureBox());
+			this->pn_admin = (gcnew System::Windows::Forms::Panel());
+			this->analytics = (gcnew System::Windows::Forms::Panel());
+			this->pictureBox17 = (gcnew System::Windows::Forms::PictureBox());
+			this->panel22 = (gcnew System::Windows::Forms::Panel());
+			this->flowLayoutPanel26 = (gcnew System::Windows::Forms::FlowLayoutPanel());
+			this->productChart = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
+			this->userChart = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
+			this->TotalSales = (gcnew System::Windows::Forms::Label());
+			this->label61 = (gcnew System::Windows::Forms::Label());
+			this->pn_users = (gcnew System::Windows::Forms::Panel());
+			this->panel6 = (gcnew System::Windows::Forms::Panel());
+			this->UsersList = (gcnew System::Windows::Forms::FlowLayoutPanel());
+			this->label44 = (gcnew System::Windows::Forms::Label());
+			this->order_history = (gcnew System::Windows::Forms::Panel());
+			this->label46 = (gcnew System::Windows::Forms::Label());
+			this->orderspn = (gcnew System::Windows::Forms::FlowLayoutPanel());
+			this->dashboard = (gcnew System::Windows::Forms::Panel());
+			this->flowLayoutPanel27 = (gcnew System::Windows::Forms::FlowLayoutPanel());
+			this->button20 = (gcnew System::Windows::Forms::Button());
+			this->button22 = (gcnew System::Windows::Forms::Button());
+			this->button23 = (gcnew System::Windows::Forms::Button());
+			this->button24 = (gcnew System::Windows::Forms::Button());
+			this->panel25 = (gcnew System::Windows::Forms::Panel());
+			this->label62 = (gcnew System::Windows::Forms::Label());
+			this->pictureBox18 = (gcnew System::Windows::Forms::PictureBox());
+			this->background = (gcnew System::Windows::Forms::Panel());
+			this->pictureBox16 = (gcnew System::Windows::Forms::PictureBox());
 			this->pn_login = (gcnew System::Windows::Forms::Panel());
 			this->label26 = (gcnew System::Windows::Forms::Label());
 			this->pictureBox8 = (gcnew System::Windows::Forms::PictureBox());
@@ -1645,15 +1656,48 @@ private: System::Windows::Forms::Button^ btn_search;
 			this->welcomeScreen = (gcnew System::Windows::Forms::PictureBox());
 			this->pn_thankyou = (gcnew System::Windows::Forms::Panel());
 			this->axWindowsMediaPlayer1 = (gcnew AxWMPLib::AxWindowsMediaPlayer());
+			this->pn_search = (gcnew System::Windows::Forms::Panel());
 			this->timerforexit = (gcnew System::Windows::Forms::Timer(this->components));
 			this->printPreviewDialog1 = (gcnew System::Windows::Forms::PrintPreviewDialog());
 			this->printDocument1 = (gcnew System::Drawing::Printing::PrintDocument());
 			this->colorDialog1 = (gcnew System::Windows::Forms::ColorDialog());
-			this->btn_search = (gcnew System::Windows::Forms::Button());
-			this->pn_search = (gcnew System::Windows::Forms::Panel());
 			this->pn_upper_bar->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_icon))->BeginInit();
 			this->pn_main_dashboard->SuspendLayout();
+			this->pn_defualt->SuspendLayout();
+			this->pn_products->SuspendLayout();
+			this->pn_main_category->SuspendLayout();
+			this->flowLayoutPanel2->SuspendLayout();
+			this->pn_pet_supplies_category->SuspendLayout();
+			this->pn_household_category->SuspendLayout();
+			this->pn_snacks_category->SuspendLayout();
+			this->pn_bakery_category->SuspendLayout();
+			this->pn_poultry_category->SuspendLayout();
+			this->pn_seafood_category->SuspendLayout();
+			this->pn_butchershop_category->SuspendLayout();
+			this->pn_dairy_category->SuspendLayout();
+			this->pn_vegetable_category->SuspendLayout();
+			this->pn_fruits_category->SuspendLayout();
+			this->pn_viewBill->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_theinvoice))->BeginInit();
+			this->pn->SuspendLayout();
+			this->flowLayoutPanel13->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
+			this->panel2->SuspendLayout();
+			this->pn_edit_information->SuspendLayout();
+			this->pn_currentInfo->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox13))->BeginInit();
+			this->pn_editInfo->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox11))->BeginInit();
+			this->pn_resetPassword->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox12))->BeginInit();
+			this->pn_blank->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_blankpicutre))->BeginInit();
+			this->pn_orders->SuspendLayout();
+			this->pn_left_bar->SuspendLayout();
+			this->flowLayoutPanel1->SuspendLayout();
+			this->pn_picture->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_profile))->BeginInit();
 			this->pn_admin->SuspendLayout();
 			this->analytics->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox17))->BeginInit();
@@ -1670,41 +1714,6 @@ private: System::Windows::Forms::Button^ btn_search;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox18))->BeginInit();
 			this->background->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox16))->BeginInit();
-			this->pn_defualt->SuspendLayout();
-			this->pn_viewBill->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_theinvoice))->BeginInit();
-			this->pn->SuspendLayout();
-			this->flowLayoutPanel13->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
-			this->panel2->SuspendLayout();
-			this->pn_products->SuspendLayout();
-			this->pn_main_category->SuspendLayout();
-			this->flowLayoutPanel2->SuspendLayout();
-			this->pn_pet_supplies_category->SuspendLayout();
-			this->pn_household_category->SuspendLayout();
-			this->pn_snacks_category->SuspendLayout();
-			this->pn_bakery_category->SuspendLayout();
-			this->pn_poultry_category->SuspendLayout();
-			this->pn_seafood_category->SuspendLayout();
-			this->pn_butchershop_category->SuspendLayout();
-			this->pn_dairy_category->SuspendLayout();
-			this->pn_vegetable_category->SuspendLayout();
-			this->pn_fruits_category->SuspendLayout();
-			this->flowLayoutPanel3->SuspendLayout();
-			this->pn_edit_information->SuspendLayout();
-			this->pn_currentInfo->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox13))->BeginInit();
-			this->pn_editInfo->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox11))->BeginInit();
-			this->pn_resetPassword->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox12))->BeginInit();
-			this->pn_blank->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_blankpicutre))->BeginInit();
-			this->pn_orders->SuspendLayout();
-			this->pn_left_bar->SuspendLayout();
-			this->flowLayoutPanel1->SuspendLayout();
-			this->pn_picture->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_profile))->BeginInit();
 			this->pn_login->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox8))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->BeginInit();
@@ -1814,368 +1823,6 @@ private: System::Windows::Forms::Button^ btn_search;
 			this->pn_main_dashboard->Size = System::Drawing::Size(1485, 745);
 			this->pn_main_dashboard->TabIndex = 1;
 			// 
-			// pn_admin
-			// 
-			this->pn_admin->Controls->Add(this->analytics);
-			this->pn_admin->Controls->Add(this->pn_users);
-			this->pn_admin->Controls->Add(this->order_history);
-			this->pn_admin->Controls->Add(this->dashboard);
-			this->pn_admin->Controls->Add(this->background);
-			this->pn_admin->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn_admin->Location = System::Drawing::Point(0, 0);
-			this->pn_admin->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->pn_admin->Name = L"pn_admin";
-			this->pn_admin->Size = System::Drawing::Size(1485, 745);
-			this->pn_admin->TabIndex = 5;
-			// 
-			// analytics
-			// 
-			this->analytics->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-				static_cast<System::Int32>(static_cast<System::Byte>(230)));
-			this->analytics->Controls->Add(this->pictureBox17);
-			this->analytics->Controls->Add(this->panel22);
-			this->analytics->Controls->Add(this->label61);
-			this->analytics->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->analytics->Location = System::Drawing::Point(296, 0);
-			this->analytics->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->analytics->Name = L"analytics";
-			this->analytics->Size = System::Drawing::Size(1189, 745);
-			this->analytics->TabIndex = 5;
-			// 
-			// pictureBox17
-			// 
-			this->pictureBox17->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox17.BackgroundImage")));
-			this->pictureBox17->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox17->Location = System::Drawing::Point(957, 15);
-			this->pictureBox17->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->pictureBox17->Name = L"pictureBox17";
-			this->pictureBox17->Size = System::Drawing::Size(203, 101);
-			this->pictureBox17->TabIndex = 3;
-			this->pictureBox17->TabStop = false;
-			// 
-			// panel22
-			// 
-			this->panel22->Controls->Add(this->flowLayoutPanel26);
-			this->panel22->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->panel22->Location = System::Drawing::Point(0, 127);
-			this->panel22->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->panel22->Name = L"panel22";
-			this->panel22->Size = System::Drawing::Size(1189, 618);
-			this->panel22->TabIndex = 2;
-			// 
-			// flowLayoutPanel26
-			// 
-			this->flowLayoutPanel26->Controls->Add(this->productChart);
-			this->flowLayoutPanel26->Controls->Add(this->userChart);
-			this->flowLayoutPanel26->Controls->Add(this->TotalSales);
-			this->flowLayoutPanel26->Location = System::Drawing::Point(5, 7);
-			this->flowLayoutPanel26->Name = L"flowLayoutPanel26";
-			this->flowLayoutPanel26->Size = System::Drawing::Size(1172, 597);
-			this->flowLayoutPanel26->TabIndex = 0;
-			// 
-			// productChart
-			// 
-			chartArea3->AxisY->Title = L"Sales";
-			chartArea3->AxisY->TitleFont = (gcnew System::Drawing::Font(L"Arial", 12));
-			chartArea3->Name = L"ChartArea1";
-			this->productChart->ChartAreas->Add(chartArea3);
-			legend3->Name = L"Legend1";
-			this->productChart->Legends->Add(legend3);
-			this->productChart->Location = System::Drawing::Point(3, 3);
-			this->productChart->Name = L"productChart";
-			series3->ChartArea = L"ChartArea1";
-			series3->Legend = L"Legend1";
-			series3->Name = L"Products";
-			this->productChart->Series->Add(series3);
-			this->productChart->Size = System::Drawing::Size(572, 449);
-			this->productChart->TabIndex = 0;
-			this->productChart->Text = L"productChart";
-			// 
-			// userChart
-			// 
-			chartArea4->AxisY->Title = L"Bills";
-			chartArea4->AxisY->TitleFont = (gcnew System::Drawing::Font(L"Arial", 12));
-			chartArea4->Name = L"ChartArea1";
-			this->userChart->ChartAreas->Add(chartArea4);
-			legend4->Name = L"Legend1";
-			this->userChart->Legends->Add(legend4);
-			this->userChart->Location = System::Drawing::Point(581, 3);
-			this->userChart->Name = L"userChart";
-			series4->ChartArea = L"ChartArea1";
-			series4->Legend = L"Legend1";
-			series4->Name = L"Users";
-			this->userChart->Series->Add(series4);
-			this->userChart->Size = System::Drawing::Size(572, 446);
-			this->userChart->TabIndex = 1;
-			this->userChart->Text = L"userChart";
-			// 
-			// TotalSales
-			// 
-			this->TotalSales->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->TotalSales->Location = System::Drawing::Point(3, 455);
-			this->TotalSales->Name = L"TotalSales";
-			this->TotalSales->Size = System::Drawing::Size(1152, 46);
-			this->TotalSales->TabIndex = 2;
-			// 
-			// label61
-			// 
-			this->label61->Dock = System::Windows::Forms::DockStyle::Top;
-			this->label61->Font = (gcnew System::Drawing::Font(L"Segoe UI", 48, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label61->Location = System::Drawing::Point(0, 0);
-			this->label61->Name = L"label61";
-			this->label61->Size = System::Drawing::Size(1189, 127);
-			this->label61->TabIndex = 1;
-			this->label61->Text = L"Analytics";
-			this->label61->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// pn_users
-			// 
-			this->pn_users->Anchor = System::Windows::Forms::AnchorStyles::Top;
-			this->pn_users->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-				static_cast<System::Int32>(static_cast<System::Byte>(239)));
-			this->pn_users->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pn_users->Controls->Add(this->panel6);
-			this->pn_users->Controls->Add(this->label44);
-			this->pn_users->Location = System::Drawing::Point(296, 0);
-			this->pn_users->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->pn_users->Name = L"pn_users";
-			this->pn_users->Size = System::Drawing::Size(1189, 745);
-			this->pn_users->TabIndex = 1;
-			// 
-			// panel6
-			// 
-			this->panel6->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-				static_cast<System::Int32>(static_cast<System::Byte>(230)));
-			this->panel6->Controls->Add(this->UsersList);
-			this->panel6->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->panel6->Location = System::Drawing::Point(0, 147);
-			this->panel6->Margin = System::Windows::Forms::Padding(4);
-			this->panel6->Name = L"panel6";
-			this->panel6->Size = System::Drawing::Size(1189, 598);
-			this->panel6->TabIndex = 2;
-			// 
-			// UsersList
-			// 
-			this->UsersList->AutoScroll = true;
-			this->UsersList->Location = System::Drawing::Point(0, 3);
-			this->UsersList->Name = L"UsersList";
-			this->UsersList->Size = System::Drawing::Size(1185, 609);
-			this->UsersList->TabIndex = 0;
-			// 
-			// label44
-			// 
-			this->label44->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-				static_cast<System::Int32>(static_cast<System::Byte>(230)));
-			this->label44->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->label44->Dock = System::Windows::Forms::DockStyle::Top;
-			this->label44->Font = (gcnew System::Drawing::Font(L"Segoe UI", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label44->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->label44->Location = System::Drawing::Point(0, 0);
-			this->label44->Name = L"label44";
-			this->label44->Size = System::Drawing::Size(1189, 147);
-			this->label44->TabIndex = 0;
-			this->label44->Text = L"Users List";
-			this->label44->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// order_history
-			// 
-			this->order_history->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-				static_cast<System::Int32>(static_cast<System::Byte>(239)));
-			this->order_history->Controls->Add(this->label46);
-			this->order_history->Controls->Add(this->orderspn);
-			this->order_history->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->order_history->Location = System::Drawing::Point(296, 0);
-			this->order_history->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->order_history->Name = L"order_history";
-			this->order_history->Size = System::Drawing::Size(1189, 745);
-			this->order_history->TabIndex = 3;
-			// 
-			// label46
-			// 
-			this->label46->Dock = System::Windows::Forms::DockStyle::Top;
-			this->label46->Font = (gcnew System::Drawing::Font(L"Segoe UI", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label46->Location = System::Drawing::Point(0, 0);
-			this->label46->Name = L"label46";
-			this->label46->Size = System::Drawing::Size(1189, 148);
-			this->label46->TabIndex = 2;
-			this->label46->Text = L"Orders List";
-			this->label46->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// orderspn
-			// 
-			this->orderspn->AutoScroll = true;
-			this->orderspn->Location = System::Drawing::Point(0, 148);
-			this->orderspn->Margin = System::Windows::Forms::Padding(4);
-			this->orderspn->Name = L"orderspn";
-			this->orderspn->Size = System::Drawing::Size(1189, 597);
-			this->orderspn->TabIndex = 3;
-			// 
-			// dashboard
-			// 
-			this->dashboard->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(51)), static_cast<System::Int32>(static_cast<System::Byte>(55)),
-				static_cast<System::Int32>(static_cast<System::Byte>(69)));
-			this->dashboard->Controls->Add(this->flowLayoutPanel27);
-			this->dashboard->Controls->Add(this->panel25);
-			this->dashboard->Dock = System::Windows::Forms::DockStyle::Left;
-			this->dashboard->Location = System::Drawing::Point(0, 0);
-			this->dashboard->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->dashboard->Name = L"dashboard";
-			this->dashboard->Size = System::Drawing::Size(296, 745);
-			this->dashboard->TabIndex = 0;
-			// 
-			// flowLayoutPanel27
-			// 
-			this->flowLayoutPanel27->Controls->Add(this->button20);
-			this->flowLayoutPanel27->Controls->Add(this->button22);
-			this->flowLayoutPanel27->Controls->Add(this->button23);
-			this->flowLayoutPanel27->Controls->Add(this->button24);
-			this->flowLayoutPanel27->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->flowLayoutPanel27->Location = System::Drawing::Point(0, 201);
-			this->flowLayoutPanel27->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->flowLayoutPanel27->Name = L"flowLayoutPanel27";
-			this->flowLayoutPanel27->Size = System::Drawing::Size(296, 544);
-			this->flowLayoutPanel27->TabIndex = 1;
-			// 
-			// button20
-			// 
-			this->button20->BackColor = System::Drawing::Color::DimGray;
-			this->button20->FlatAppearance->BorderSize = 0;
-			this->button20->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button20->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button20->ForeColor = System::Drawing::Color::White;
-			this->button20->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button20.Image")));
-			this->button20->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->button20->Location = System::Drawing::Point(3, 2);
-			this->button20->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->button20->Name = L"button20";
-			this->button20->Size = System::Drawing::Size(293, 74);
-			this->button20->TabIndex = 0;
-			this->button20->Text = L"Users";
-			this->button20->UseVisualStyleBackColor = false;
-			this->button20->Click += gcnew System::EventHandler(this, &MyForm::button20_Click);
-			// 
-			// button22
-			// 
-			this->button22->FlatAppearance->BorderSize = 0;
-			this->button22->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button22->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button22->ForeColor = System::Drawing::Color::White;
-			this->button22->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button22.Image")));
-			this->button22->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->button22->Location = System::Drawing::Point(3, 80);
-			this->button22->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->button22->Name = L"button22";
-			this->button22->Size = System::Drawing::Size(293, 74);
-			this->button22->TabIndex = 2;
-			this->button22->Text = L"Orders";
-			this->button22->UseVisualStyleBackColor = true;
-			this->button22->Click += gcnew System::EventHandler(this, &MyForm::button22_Click);
-			// 
-			// button23
-			// 
-			this->button23->FlatAppearance->BorderSize = 0;
-			this->button23->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button23->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button23->ForeColor = System::Drawing::Color::White;
-			this->button23->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button23.Image")));
-			this->button23->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->button23->Location = System::Drawing::Point(3, 158);
-			this->button23->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->button23->Name = L"button23";
-			this->button23->Size = System::Drawing::Size(293, 74);
-			this->button23->TabIndex = 4;
-			this->button23->Text = L"Analytics";
-			this->button23->UseVisualStyleBackColor = true;
-			this->button23->Click += gcnew System::EventHandler(this, &MyForm::button23_Click);
-			// 
-			// button24
-			// 
-			this->button24->Dock = System::Windows::Forms::DockStyle::Bottom;
-			this->button24->FlatAppearance->BorderSize = 0;
-			this->button24->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button24->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button24->ForeColor = System::Drawing::Color::White;
-			this->button24->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button24.Image")));
-			this->button24->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->button24->Location = System::Drawing::Point(3, 319);
-			this->button24->Margin = System::Windows::Forms::Padding(3, 85, 3, 2);
-			this->button24->Name = L"button24";
-			this->button24->Size = System::Drawing::Size(293, 98);
-			this->button24->TabIndex = 3;
-			this->button24->Text = L"Log out";
-			this->button24->UseVisualStyleBackColor = true;
-			this->button24->Click += gcnew System::EventHandler(this, &MyForm::btn_logout_Click);
-			// 
-			// panel25
-			// 
-			this->panel25->Controls->Add(this->label62);
-			this->panel25->Controls->Add(this->pictureBox18);
-			this->panel25->Dock = System::Windows::Forms::DockStyle::Top;
-			this->panel25->Location = System::Drawing::Point(0, 0);
-			this->panel25->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->panel25->Name = L"panel25";
-			this->panel25->Size = System::Drawing::Size(296, 201);
-			this->panel25->TabIndex = 0;
-			// 
-			// label62
-			// 
-			this->label62->BackColor = System::Drawing::Color::Transparent;
-			this->label62->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label62->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
-				static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->label62->Location = System::Drawing::Point(52, 169);
-			this->label62->Name = L"label62";
-			this->label62->Size = System::Drawing::Size(197, 23);
-			this->label62->TabIndex = 1;
-			this->label62->Text = L"ADMIN\r\n";
-			this->label62->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// pictureBox18
-			// 
-			this->pictureBox18->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox18.BackgroundImage")));
-			this->pictureBox18->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
-			this->pictureBox18->Location = System::Drawing::Point(45, 5);
-			this->pictureBox18->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->pictureBox18->Name = L"pictureBox18";
-			this->pictureBox18->Size = System::Drawing::Size(204, 161);
-			this->pictureBox18->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
-			this->pictureBox18->TabIndex = 0;
-			this->pictureBox18->TabStop = false;
-			// 
-			// background
-			// 
-			this->background->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-				static_cast<System::Int32>(static_cast<System::Byte>(230)));
-			this->background->Controls->Add(this->pictureBox16);
-			this->background->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->background->Location = System::Drawing::Point(0, 0);
-			this->background->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->background->Name = L"background";
-			this->background->Size = System::Drawing::Size(1485, 745);
-			this->background->TabIndex = 4;
-			// 
-			// pictureBox16
-			// 
-			this->pictureBox16->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->pictureBox16->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pictureBox16->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox16.Image")));
-			this->pictureBox16->Location = System::Drawing::Point(0, 0);
-			this->pictureBox16->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->pictureBox16->Name = L"pictureBox16";
-			this->pictureBox16->Size = System::Drawing::Size(1485, 745);
-			this->pictureBox16->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			this->pictureBox16->TabIndex = 2;
-			this->pictureBox16->TabStop = false;
-			// 
 			// pn_defualt
 			// 
 			this->pn_defualt->Controls->Add(this->pn_products);
@@ -2190,340 +1837,6 @@ private: System::Windows::Forms::Button^ btn_search;
 			this->pn_defualt->Name = L"pn_defualt";
 			this->pn_defualt->Size = System::Drawing::Size(1485, 745);
 			this->pn_defualt->TabIndex = 4;
-			// 
-			// pn_viewBill
-			// 
-			this->pn_viewBill->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-				static_cast<System::Int32>(static_cast<System::Byte>(230)));
-			this->pn_viewBill->Controls->Add(this->pb_theinvoice);
-			this->pn_viewBill->Controls->Add(this->pn);
-			this->pn_viewBill->Controls->Add(this->lb_theinvoice);
-			this->pn_viewBill->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn_viewBill->Location = System::Drawing::Point(296, 0);
-			this->pn_viewBill->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->pn_viewBill->Name = L"pn_viewBill";
-			this->pn_viewBill->Size = System::Drawing::Size(1189, 745);
-			this->pn_viewBill->TabIndex = 5;
-			// 
-			// pb_theinvoice
-			// 
-			this->pb_theinvoice->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pb_theinvoice.BackgroundImage")));
-			this->pb_theinvoice->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pb_theinvoice->Location = System::Drawing::Point(957, 15);
-			this->pb_theinvoice->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->pb_theinvoice->Name = L"pb_theinvoice";
-			this->pb_theinvoice->Size = System::Drawing::Size(203, 101);
-			this->pb_theinvoice->TabIndex = 3;
-			this->pb_theinvoice->TabStop = false;
-			// 
-			// pn
-			// 
-			this->pn->Controls->Add(this->btn_print);
-			this->pn->Controls->Add(this->flowLayoutPanel13);
-			this->pn->Controls->Add(this->tb_customername_theincoive);
-			this->pn->Controls->Add(this->lb_customername_theinvoice);
-			this->pn->Controls->Add(this->tb_date_theinvoice);
-			this->pn->Controls->Add(this->tb_invoicenumber_theinvoice);
-			this->pn->Controls->Add(this->lb_date_theinvice);
-			this->pn->Controls->Add(this->lb_invoicenumber_theinvoice);
-			this->pn->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn->Location = System::Drawing::Point(0, 127);
-			this->pn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->pn->Name = L"pn";
-			this->pn->Size = System::Drawing::Size(1189, 618);
-			this->pn->TabIndex = 2;
-			// 
-			// btn_print
-			// 
-			this->btn_print->BackColor = System::Drawing::Color::Purple;
-			this->btn_print->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->btn_print->ForeColor = System::Drawing::Color::Yellow;
-			this->btn_print->Location = System::Drawing::Point(927, 50);
-			this->btn_print->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->btn_print->Name = L"btn_print";
-			this->btn_print->Size = System::Drawing::Size(235, 62);
-			this->btn_print->TabIndex = 9;
-			this->btn_print->Text = L"Print";
-			this->btn_print->UseVisualStyleBackColor = false;
-			this->btn_print->Click += gcnew System::EventHandler(this, &MyForm::btn_print_Click);
-			// 
-			// flowLayoutPanel13
-			// 
-			this->flowLayoutPanel13->AutoScroll = true;
-			this->flowLayoutPanel13->Controls->Add(this->dataGridView1);
-			this->flowLayoutPanel13->Controls->Add(this->panel2);
-			this->flowLayoutPanel13->Location = System::Drawing::Point(9, 155);
-			this->flowLayoutPanel13->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->flowLayoutPanel13->Name = L"flowLayoutPanel13";
-			this->flowLayoutPanel13->Size = System::Drawing::Size(1176, 428);
-			this->flowLayoutPanel13->TabIndex = 8;
-			// 
-			// dataGridView1
-			// 
-			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
-			this->dataGridView1->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::AllCells;
-			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
-				this->colproduct,
-					this->colquantity, this->colunitprice, this->colsubtotal
-			});
-			this->dataGridView1->Location = System::Drawing::Point(3, 2);
-			this->dataGridView1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->RowHeadersWidth = 51;
-			this->dataGridView1->RowTemplate->Height = 24;
-			this->dataGridView1->Size = System::Drawing::Size(1149, 256);
-			this->dataGridView1->TabIndex = 7;
-			// 
-			// colproduct
-			// 
-			this->colproduct->HeaderText = L"Product";
-			this->colproduct->MinimumWidth = 6;
-			this->colproduct->Name = L"colproduct";
-			// 
-			// colquantity
-			// 
-			this->colquantity->HeaderText = L"Quantity";
-			this->colquantity->MinimumWidth = 6;
-			this->colquantity->Name = L"colquantity";
-			// 
-			// colunitprice
-			// 
-			this->colunitprice->HeaderText = L"Unit price";
-			this->colunitprice->MinimumWidth = 6;
-			this->colunitprice->Name = L"colunitprice";
-			// 
-			// colsubtotal
-			// 
-			this->colsubtotal->HeaderText = L"Subtotal";
-			this->colsubtotal->MinimumWidth = 6;
-			this->colsubtotal->Name = L"colsubtotal";
-			// 
-			// panel2
-			// 
-			this->panel2->Controls->Add(this->lb_total_number);
-			this->panel2->Controls->Add(this->lb_shipping_number);
-			this->panel2->Controls->Add(this->lb_vat_number);
-			this->panel2->Controls->Add(this->lb_discount_number);
-			this->panel2->Controls->Add(this->lb_shipping);
-			this->panel2->Controls->Add(this->lb_vat);
-			this->panel2->Controls->Add(this->lb_discount);
-			this->panel2->Controls->Add(this->lb_total);
-			this->panel2->Controls->Add(this->label22);
-			this->panel2->Controls->Add(this->lb_beforevat_number);
-			this->panel2->Controls->Add(this->lb_beforevat);
-			this->panel2->Location = System::Drawing::Point(3, 262);
-			this->panel2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(1137, 164);
-			this->panel2->TabIndex = 8;
-			// 
-			// lb_total_number
-			// 
-			this->lb_total_number->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lb_total_number->ForeColor = System::Drawing::Color::Purple;
-			this->lb_total_number->Location = System::Drawing::Point(780, 62);
-			this->lb_total_number->Name = L"lb_total_number";
-			this->lb_total_number->Size = System::Drawing::Size(353, 50);
-			this->lb_total_number->TabIndex = 10;
-			// 
-			// lb_shipping_number
-			// 
-			this->lb_shipping_number->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lb_shipping_number->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)),
-				static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->lb_shipping_number->Location = System::Drawing::Point(300, 102);
-			this->lb_shipping_number->Name = L"lb_shipping_number";
-			this->lb_shipping_number->Size = System::Drawing::Size(161, 37);
-			this->lb_shipping_number->TabIndex = 9;
-			// 
-			// lb_vat_number
-			// 
-			this->lb_vat_number->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lb_vat_number->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
-				static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->lb_vat_number->Location = System::Drawing::Point(300, 68);
-			this->lb_vat_number->Name = L"lb_vat_number";
-			this->lb_vat_number->Size = System::Drawing::Size(161, 37);
-			this->lb_vat_number->TabIndex = 8;
-			// 
-			// lb_discount_number
-			// 
-			this->lb_discount_number->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lb_discount_number->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)),
-				static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->lb_discount_number->Location = System::Drawing::Point(300, 34);
-			this->lb_discount_number->Name = L"lb_discount_number";
-			this->lb_discount_number->Size = System::Drawing::Size(161, 37);
-			this->lb_discount_number->TabIndex = 7;
-			// 
-			// lb_shipping
-			// 
-			this->lb_shipping->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lb_shipping->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
-				static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->lb_shipping->Location = System::Drawing::Point(4, 105);
-			this->lb_shipping->Name = L"lb_shipping";
-			this->lb_shipping->Size = System::Drawing::Size(284, 34);
-			this->lb_shipping->TabIndex = 6;
-			this->lb_shipping->Text = L"Shipping Cost:  ";
-			// 
-			// lb_vat
-			// 
-			this->lb_vat->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lb_vat->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
-				static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->lb_vat->Location = System::Drawing::Point(4, 71);
-			this->lb_vat->Name = L"lb_vat";
-			this->lb_vat->Size = System::Drawing::Size(268, 34);
-			this->lb_vat->TabIndex = 5;
-			this->lb_vat->Text = L"VAT(14%): ";
-			// 
-			// lb_discount
-			// 
-			this->lb_discount->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lb_discount->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
-				static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->lb_discount->Location = System::Drawing::Point(4, 37);
-			this->lb_discount->Name = L"lb_discount";
-			this->lb_discount->Size = System::Drawing::Size(284, 34);
-			this->lb_discount->TabIndex = 4;
-			this->lb_discount->Text = L"Discount Applied:  ";
-			// 
-			// lb_total
-			// 
-			this->lb_total->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lb_total->ForeColor = System::Drawing::Color::Purple;
-			this->lb_total->Location = System::Drawing::Point(569, 62);
-			this->lb_total->Name = L"lb_total";
-			this->lb_total->Size = System::Drawing::Size(257, 44);
-			this->lb_total->TabIndex = 3;
-			this->lb_total->Text = L"Total (After VAT):   ";
-			// 
-			// label22
-			// 
-			this->label22->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label22->ForeColor = System::Drawing::Color::Purple;
-			this->label22->Location = System::Drawing::Point(203, 81);
-			this->label22->Name = L"label22";
-			this->label22->Size = System::Drawing::Size(273, 44);
-			this->label22->TabIndex = 2;
-			// 
-			// lb_beforevat_number
-			// 
-			this->lb_beforevat_number->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lb_beforevat_number->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)),
-				static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->lb_beforevat_number->Location = System::Drawing::Point(300, 2);
-			this->lb_beforevat_number->Name = L"lb_beforevat_number";
-			this->lb_beforevat_number->Size = System::Drawing::Size(161, 37);
-			this->lb_beforevat_number->TabIndex = 1;
-			// 
-			// lb_beforevat
-			// 
-			this->lb_beforevat->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lb_beforevat->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
-				static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->lb_beforevat->Location = System::Drawing::Point(3, 6);
-			this->lb_beforevat->Name = L"lb_beforevat";
-			this->lb_beforevat->Size = System::Drawing::Size(297, 34);
-			this->lb_beforevat->TabIndex = 0;
-			this->lb_beforevat->Text = L"Total(Before VAT): ";
-			// 
-			// tb_customername_theincoive
-			// 
-			this->tb_customername_theincoive->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->tb_customername_theincoive->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)),
-				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(192)));
-			this->tb_customername_theincoive->Location = System::Drawing::Point(227, 100);
-			this->tb_customername_theincoive->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->tb_customername_theincoive->Name = L"tb_customername_theincoive";
-			this->tb_customername_theincoive->Size = System::Drawing::Size(611, 30);
-			this->tb_customername_theincoive->TabIndex = 5;
-			this->tb_customername_theincoive->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			this->tb_customername_theincoive->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MyForm::tb_customername_theincoive_KeyPress);
-			// 
-			// lb_customername_theinvoice
-			// 
-			this->lb_customername_theinvoice->Font = (gcnew System::Drawing::Font(L"Segoe UI", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lb_customername_theinvoice->Location = System::Drawing::Point(3, 100);
-			this->lb_customername_theinvoice->Name = L"lb_customername_theinvoice";
-			this->lb_customername_theinvoice->Size = System::Drawing::Size(236, 42);
-			this->lb_customername_theinvoice->TabIndex = 4;
-			this->lb_customername_theinvoice->Text = L"Customer name:";
-			// 
-			// tb_date_theinvoice
-			// 
-			this->tb_date_theinvoice->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->tb_date_theinvoice->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)),
-				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(192)));
-			this->tb_date_theinvoice->Location = System::Drawing::Point(227, 50);
-			this->tb_date_theinvoice->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->tb_date_theinvoice->Name = L"tb_date_theinvoice";
-			this->tb_date_theinvoice->Size = System::Drawing::Size(611, 30);
-			this->tb_date_theinvoice->TabIndex = 3;
-			this->tb_date_theinvoice->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			this->tb_date_theinvoice->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MyForm::tb_date_theinvoice_KeyPress);
-			// 
-			// tb_invoicenumber_theinvoice
-			// 
-			this->tb_invoicenumber_theinvoice->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->tb_invoicenumber_theinvoice->ForeColor = System::Drawing::Color::Red;
-			this->tb_invoicenumber_theinvoice->Location = System::Drawing::Point(227, 7);
-			this->tb_invoicenumber_theinvoice->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->tb_invoicenumber_theinvoice->Name = L"tb_invoicenumber_theinvoice";
-			this->tb_invoicenumber_theinvoice->Size = System::Drawing::Size(611, 30);
-			this->tb_invoicenumber_theinvoice->TabIndex = 2;
-			this->tb_invoicenumber_theinvoice->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			this->tb_invoicenumber_theinvoice->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MyForm::tb_invoicenumber_theinvoice_KeyPress);
-			// 
-			// lb_date_theinvice
-			// 
-			this->lb_date_theinvice->Font = (gcnew System::Drawing::Font(L"Segoe UI", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lb_date_theinvice->Location = System::Drawing::Point(3, 50);
-			this->lb_date_theinvice->Name = L"lb_date_theinvice";
-			this->lb_date_theinvice->Size = System::Drawing::Size(236, 42);
-			this->lb_date_theinvice->TabIndex = 1;
-			this->lb_date_theinvice->Text = L"The date:";
-			// 
-			// lb_invoicenumber_theinvoice
-			// 
-			this->lb_invoicenumber_theinvoice->Font = (gcnew System::Drawing::Font(L"Segoe UI", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lb_invoicenumber_theinvoice->Location = System::Drawing::Point(3, 2);
-			this->lb_invoicenumber_theinvoice->Name = L"lb_invoicenumber_theinvoice";
-			this->lb_invoicenumber_theinvoice->Size = System::Drawing::Size(236, 42);
-			this->lb_invoicenumber_theinvoice->TabIndex = 0;
-			this->lb_invoicenumber_theinvoice->Text = L"Invoice number:";
-			// 
-			// lb_theinvoice
-			// 
-			this->lb_theinvoice->Dock = System::Windows::Forms::DockStyle::Top;
-			this->lb_theinvoice->Font = (gcnew System::Drawing::Font(L"Segoe UI", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lb_theinvoice->Location = System::Drawing::Point(0, 0);
-			this->lb_theinvoice->Name = L"lb_theinvoice";
-			this->lb_theinvoice->Size = System::Drawing::Size(1189, 127);
-			this->lb_theinvoice->TabIndex = 1;
-			this->lb_theinvoice->Text = L"Total Bill";
-			this->lb_theinvoice->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// pn_products
 			// 
@@ -2558,6 +1871,21 @@ private: System::Windows::Forms::Button^ btn_search;
 			this->pn_main_category->Name = L"pn_main_category";
 			this->pn_main_category->Size = System::Drawing::Size(1189, 745);
 			this->pn_main_category->TabIndex = 14;
+			// 
+			// btn_search
+			// 
+			this->btn_search->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btn_search->Location = System::Drawing::Point(985, 47);
+			this->btn_search->Name = L"btn_search";
+			this->btn_search->Size = System::Drawing::Size(173, 54);
+			this->btn_search->TabIndex = 2;
+			this->btn_search->Text = L"Search bar";
+			this->btn_search->UseVisualStyleBackColor = true;
+			this->btn_search->Click += gcnew System::EventHandler(this, &MyForm::openSearchPanel);
+			this->btn_search->MouseEnter += gcnew System::EventHandler(this, &MyForm::btn_search_MouseEnter);
+			this->btn_search->MouseLeave += gcnew System::EventHandler(this, &MyForm::btn_search_MouseLeave);
+			this->btn_search->MouseHover += gcnew System::EventHandler(this, &MyForm::btn_search_MouseHover);
 			// 
 			// label2
 			// 
@@ -3007,13 +2335,346 @@ private: System::Windows::Forms::Button^ btn_search;
 			// flowLayoutPanel3
 			// 
 			this->flowLayoutPanel3->AutoScroll = true;
-			this->flowLayoutPanel3->Controls->Add(this->pn_search);
 			this->flowLayoutPanel3->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->flowLayoutPanel3->Location = System::Drawing::Point(0, 0);
 			this->flowLayoutPanel3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->flowLayoutPanel3->Name = L"flowLayoutPanel3";
 			this->flowLayoutPanel3->Size = System::Drawing::Size(1189, 745);
 			this->flowLayoutPanel3->TabIndex = 0;
+			// 
+			// pn_viewBill
+			// 
+			this->pn_viewBill->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
+				static_cast<System::Int32>(static_cast<System::Byte>(230)));
+			this->pn_viewBill->Controls->Add(this->pb_theinvoice);
+			this->pn_viewBill->Controls->Add(this->pn);
+			this->pn_viewBill->Controls->Add(this->lb_theinvoice);
+			this->pn_viewBill->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->pn_viewBill->Location = System::Drawing::Point(296, 0);
+			this->pn_viewBill->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->pn_viewBill->Name = L"pn_viewBill";
+			this->pn_viewBill->Size = System::Drawing::Size(1189, 745);
+			this->pn_viewBill->TabIndex = 5;
+			// 
+			// pb_theinvoice
+			// 
+			this->pb_theinvoice->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pb_theinvoice.BackgroundImage")));
+			this->pb_theinvoice->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pb_theinvoice->Location = System::Drawing::Point(957, 15);
+			this->pb_theinvoice->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->pb_theinvoice->Name = L"pb_theinvoice";
+			this->pb_theinvoice->Size = System::Drawing::Size(203, 101);
+			this->pb_theinvoice->TabIndex = 3;
+			this->pb_theinvoice->TabStop = false;
+			// 
+			// pn
+			// 
+			this->pn->Controls->Add(this->btn_print);
+			this->pn->Controls->Add(this->flowLayoutPanel13);
+			this->pn->Controls->Add(this->tb_customername_theincoive);
+			this->pn->Controls->Add(this->lb_customername_theinvoice);
+			this->pn->Controls->Add(this->tb_date_theinvoice);
+			this->pn->Controls->Add(this->tb_invoicenumber_theinvoice);
+			this->pn->Controls->Add(this->lb_date_theinvice);
+			this->pn->Controls->Add(this->lb_invoicenumber_theinvoice);
+			this->pn->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->pn->Location = System::Drawing::Point(0, 127);
+			this->pn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->pn->Name = L"pn";
+			this->pn->Size = System::Drawing::Size(1189, 618);
+			this->pn->TabIndex = 2;
+			// 
+			// btn_print
+			// 
+			this->btn_print->BackColor = System::Drawing::Color::Purple;
+			this->btn_print->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btn_print->ForeColor = System::Drawing::Color::Yellow;
+			this->btn_print->Location = System::Drawing::Point(927, 50);
+			this->btn_print->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->btn_print->Name = L"btn_print";
+			this->btn_print->Size = System::Drawing::Size(235, 62);
+			this->btn_print->TabIndex = 9;
+			this->btn_print->Text = L"Print";
+			this->btn_print->UseVisualStyleBackColor = false;
+			this->btn_print->Click += gcnew System::EventHandler(this, &MyForm::btn_print_Click);
+			// 
+			// flowLayoutPanel13
+			// 
+			this->flowLayoutPanel13->AutoScroll = true;
+			this->flowLayoutPanel13->Controls->Add(this->dataGridView1);
+			this->flowLayoutPanel13->Controls->Add(this->panel2);
+			this->flowLayoutPanel13->Location = System::Drawing::Point(9, 155);
+			this->flowLayoutPanel13->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->flowLayoutPanel13->Name = L"flowLayoutPanel13";
+			this->flowLayoutPanel13->Size = System::Drawing::Size(1176, 428);
+			this->flowLayoutPanel13->TabIndex = 8;
+			// 
+			// dataGridView1
+			// 
+			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
+			this->dataGridView1->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::AllCells;
+			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
+				this->colproduct,
+					this->colquantity, this->colunitprice, this->colsubtotal
+			});
+			this->dataGridView1->Location = System::Drawing::Point(3, 2);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->RowHeadersWidth = 51;
+			this->dataGridView1->RowTemplate->Height = 24;
+			this->dataGridView1->Size = System::Drawing::Size(1149, 256);
+			this->dataGridView1->TabIndex = 7;
+			// 
+			// colproduct
+			// 
+			this->colproduct->HeaderText = L"Product";
+			this->colproduct->MinimumWidth = 6;
+			this->colproduct->Name = L"colproduct";
+			// 
+			// colquantity
+			// 
+			this->colquantity->HeaderText = L"Quantity";
+			this->colquantity->MinimumWidth = 6;
+			this->colquantity->Name = L"colquantity";
+			// 
+			// colunitprice
+			// 
+			this->colunitprice->HeaderText = L"Unit price";
+			this->colunitprice->MinimumWidth = 6;
+			this->colunitprice->Name = L"colunitprice";
+			// 
+			// colsubtotal
+			// 
+			this->colsubtotal->HeaderText = L"Subtotal";
+			this->colsubtotal->MinimumWidth = 6;
+			this->colsubtotal->Name = L"colsubtotal";
+			// 
+			// panel2
+			// 
+			this->panel2->Controls->Add(this->lb_total_number);
+			this->panel2->Controls->Add(this->lb_shipping_number);
+			this->panel2->Controls->Add(this->lb_vat_number);
+			this->panel2->Controls->Add(this->lb_discount_number);
+			this->panel2->Controls->Add(this->lb_shipping);
+			this->panel2->Controls->Add(this->lb_vat);
+			this->panel2->Controls->Add(this->lb_discount);
+			this->panel2->Controls->Add(this->lb_total);
+			this->panel2->Controls->Add(this->label22);
+			this->panel2->Controls->Add(this->lb_beforevat_number);
+			this->panel2->Controls->Add(this->lb_beforevat);
+			this->panel2->Location = System::Drawing::Point(3, 262);
+			this->panel2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->panel2->Name = L"panel2";
+			this->panel2->Size = System::Drawing::Size(1137, 164);
+			this->panel2->TabIndex = 8;
+			// 
+			// lb_total_number
+			// 
+			this->lb_total_number->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lb_total_number->ForeColor = System::Drawing::Color::Purple;
+			this->lb_total_number->Location = System::Drawing::Point(780, 62);
+			this->lb_total_number->Name = L"lb_total_number";
+			this->lb_total_number->Size = System::Drawing::Size(353, 50);
+			this->lb_total_number->TabIndex = 10;
+			// 
+			// lb_shipping_number
+			// 
+			this->lb_shipping_number->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lb_shipping_number->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->lb_shipping_number->Location = System::Drawing::Point(300, 102);
+			this->lb_shipping_number->Name = L"lb_shipping_number";
+			this->lb_shipping_number->Size = System::Drawing::Size(161, 37);
+			this->lb_shipping_number->TabIndex = 9;
+			// 
+			// lb_vat_number
+			// 
+			this->lb_vat_number->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lb_vat_number->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->lb_vat_number->Location = System::Drawing::Point(300, 68);
+			this->lb_vat_number->Name = L"lb_vat_number";
+			this->lb_vat_number->Size = System::Drawing::Size(161, 37);
+			this->lb_vat_number->TabIndex = 8;
+			// 
+			// lb_discount_number
+			// 
+			this->lb_discount_number->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lb_discount_number->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->lb_discount_number->Location = System::Drawing::Point(300, 34);
+			this->lb_discount_number->Name = L"lb_discount_number";
+			this->lb_discount_number->Size = System::Drawing::Size(161, 37);
+			this->lb_discount_number->TabIndex = 7;
+			// 
+			// lb_shipping
+			// 
+			this->lb_shipping->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lb_shipping->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->lb_shipping->Location = System::Drawing::Point(4, 105);
+			this->lb_shipping->Name = L"lb_shipping";
+			this->lb_shipping->Size = System::Drawing::Size(284, 34);
+			this->lb_shipping->TabIndex = 6;
+			this->lb_shipping->Text = L"Shipping Cost:  ";
+			// 
+			// lb_vat
+			// 
+			this->lb_vat->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lb_vat->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->lb_vat->Location = System::Drawing::Point(4, 71);
+			this->lb_vat->Name = L"lb_vat";
+			this->lb_vat->Size = System::Drawing::Size(268, 34);
+			this->lb_vat->TabIndex = 5;
+			this->lb_vat->Text = L"VAT(14%): ";
+			// 
+			// lb_discount
+			// 
+			this->lb_discount->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lb_discount->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->lb_discount->Location = System::Drawing::Point(4, 37);
+			this->lb_discount->Name = L"lb_discount";
+			this->lb_discount->Size = System::Drawing::Size(284, 34);
+			this->lb_discount->TabIndex = 4;
+			this->lb_discount->Text = L"Discount Applied:  ";
+			// 
+			// lb_total
+			// 
+			this->lb_total->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lb_total->ForeColor = System::Drawing::Color::Purple;
+			this->lb_total->Location = System::Drawing::Point(569, 62);
+			this->lb_total->Name = L"lb_total";
+			this->lb_total->Size = System::Drawing::Size(257, 44);
+			this->lb_total->TabIndex = 3;
+			this->lb_total->Text = L"Total (After VAT):   ";
+			// 
+			// label22
+			// 
+			this->label22->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label22->ForeColor = System::Drawing::Color::Purple;
+			this->label22->Location = System::Drawing::Point(203, 81);
+			this->label22->Name = L"label22";
+			this->label22->Size = System::Drawing::Size(273, 44);
+			this->label22->TabIndex = 2;
+			// 
+			// lb_beforevat_number
+			// 
+			this->lb_beforevat_number->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lb_beforevat_number->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->lb_beforevat_number->Location = System::Drawing::Point(300, 2);
+			this->lb_beforevat_number->Name = L"lb_beforevat_number";
+			this->lb_beforevat_number->Size = System::Drawing::Size(161, 37);
+			this->lb_beforevat_number->TabIndex = 1;
+			// 
+			// lb_beforevat
+			// 
+			this->lb_beforevat->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lb_beforevat->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->lb_beforevat->Location = System::Drawing::Point(3, 6);
+			this->lb_beforevat->Name = L"lb_beforevat";
+			this->lb_beforevat->Size = System::Drawing::Size(297, 34);
+			this->lb_beforevat->TabIndex = 0;
+			this->lb_beforevat->Text = L"Total(Before VAT): ";
+			// 
+			// tb_customername_theincoive
+			// 
+			this->tb_customername_theincoive->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->tb_customername_theincoive->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->tb_customername_theincoive->Location = System::Drawing::Point(227, 100);
+			this->tb_customername_theincoive->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->tb_customername_theincoive->Name = L"tb_customername_theincoive";
+			this->tb_customername_theincoive->Size = System::Drawing::Size(611, 30);
+			this->tb_customername_theincoive->TabIndex = 5;
+			this->tb_customername_theincoive->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->tb_customername_theincoive->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MyForm::tb_customername_theincoive_KeyPress);
+			// 
+			// lb_customername_theinvoice
+			// 
+			this->lb_customername_theinvoice->Font = (gcnew System::Drawing::Font(L"Segoe UI", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lb_customername_theinvoice->Location = System::Drawing::Point(3, 100);
+			this->lb_customername_theinvoice->Name = L"lb_customername_theinvoice";
+			this->lb_customername_theinvoice->Size = System::Drawing::Size(236, 42);
+			this->lb_customername_theinvoice->TabIndex = 4;
+			this->lb_customername_theinvoice->Text = L"Customer name:";
+			// 
+			// tb_date_theinvoice
+			// 
+			this->tb_date_theinvoice->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->tb_date_theinvoice->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->tb_date_theinvoice->Location = System::Drawing::Point(227, 50);
+			this->tb_date_theinvoice->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->tb_date_theinvoice->Name = L"tb_date_theinvoice";
+			this->tb_date_theinvoice->Size = System::Drawing::Size(611, 30);
+			this->tb_date_theinvoice->TabIndex = 3;
+			this->tb_date_theinvoice->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->tb_date_theinvoice->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MyForm::tb_date_theinvoice_KeyPress);
+			// 
+			// tb_invoicenumber_theinvoice
+			// 
+			this->tb_invoicenumber_theinvoice->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->tb_invoicenumber_theinvoice->ForeColor = System::Drawing::Color::Red;
+			this->tb_invoicenumber_theinvoice->Location = System::Drawing::Point(227, 7);
+			this->tb_invoicenumber_theinvoice->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->tb_invoicenumber_theinvoice->Name = L"tb_invoicenumber_theinvoice";
+			this->tb_invoicenumber_theinvoice->Size = System::Drawing::Size(611, 30);
+			this->tb_invoicenumber_theinvoice->TabIndex = 2;
+			this->tb_invoicenumber_theinvoice->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->tb_invoicenumber_theinvoice->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MyForm::tb_invoicenumber_theinvoice_KeyPress);
+			// 
+			// lb_date_theinvice
+			// 
+			this->lb_date_theinvice->Font = (gcnew System::Drawing::Font(L"Segoe UI", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lb_date_theinvice->Location = System::Drawing::Point(3, 50);
+			this->lb_date_theinvice->Name = L"lb_date_theinvice";
+			this->lb_date_theinvice->Size = System::Drawing::Size(236, 42);
+			this->lb_date_theinvice->TabIndex = 1;
+			this->lb_date_theinvice->Text = L"The date:";
+			// 
+			// lb_invoicenumber_theinvoice
+			// 
+			this->lb_invoicenumber_theinvoice->Font = (gcnew System::Drawing::Font(L"Segoe UI", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lb_invoicenumber_theinvoice->Location = System::Drawing::Point(3, 2);
+			this->lb_invoicenumber_theinvoice->Name = L"lb_invoicenumber_theinvoice";
+			this->lb_invoicenumber_theinvoice->Size = System::Drawing::Size(236, 42);
+			this->lb_invoicenumber_theinvoice->TabIndex = 0;
+			this->lb_invoicenumber_theinvoice->Text = L"Invoice number:";
+			// 
+			// lb_theinvoice
+			// 
+			this->lb_theinvoice->Dock = System::Windows::Forms::DockStyle::Top;
+			this->lb_theinvoice->Font = (gcnew System::Drawing::Font(L"Segoe UI", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lb_theinvoice->Location = System::Drawing::Point(0, 0);
+			this->lb_theinvoice->Name = L"lb_theinvoice";
+			this->lb_theinvoice->Size = System::Drawing::Size(1189, 127);
+			this->lb_theinvoice->TabIndex = 1;
+			this->lb_theinvoice->Text = L"Total Bill";
+			this->lb_theinvoice->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// pn_edit_information
 			// 
@@ -3807,6 +3468,368 @@ private: System::Windows::Forms::Button^ btn_search;
 			this->pb_profile->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pb_profile->TabIndex = 0;
 			this->pb_profile->TabStop = false;
+			// 
+			// pn_admin
+			// 
+			this->pn_admin->Controls->Add(this->analytics);
+			this->pn_admin->Controls->Add(this->pn_users);
+			this->pn_admin->Controls->Add(this->order_history);
+			this->pn_admin->Controls->Add(this->dashboard);
+			this->pn_admin->Controls->Add(this->background);
+			this->pn_admin->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->pn_admin->Location = System::Drawing::Point(0, 0);
+			this->pn_admin->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->pn_admin->Name = L"pn_admin";
+			this->pn_admin->Size = System::Drawing::Size(1485, 745);
+			this->pn_admin->TabIndex = 5;
+			// 
+			// analytics
+			// 
+			this->analytics->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
+				static_cast<System::Int32>(static_cast<System::Byte>(230)));
+			this->analytics->Controls->Add(this->pictureBox17);
+			this->analytics->Controls->Add(this->panel22);
+			this->analytics->Controls->Add(this->label61);
+			this->analytics->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->analytics->Location = System::Drawing::Point(296, 0);
+			this->analytics->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->analytics->Name = L"analytics";
+			this->analytics->Size = System::Drawing::Size(1189, 745);
+			this->analytics->TabIndex = 5;
+			// 
+			// pictureBox17
+			// 
+			this->pictureBox17->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox17.BackgroundImage")));
+			this->pictureBox17->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pictureBox17->Location = System::Drawing::Point(957, 15);
+			this->pictureBox17->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->pictureBox17->Name = L"pictureBox17";
+			this->pictureBox17->Size = System::Drawing::Size(203, 101);
+			this->pictureBox17->TabIndex = 3;
+			this->pictureBox17->TabStop = false;
+			// 
+			// panel22
+			// 
+			this->panel22->Controls->Add(this->flowLayoutPanel26);
+			this->panel22->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->panel22->Location = System::Drawing::Point(0, 127);
+			this->panel22->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->panel22->Name = L"panel22";
+			this->panel22->Size = System::Drawing::Size(1189, 618);
+			this->panel22->TabIndex = 2;
+			// 
+			// flowLayoutPanel26
+			// 
+			this->flowLayoutPanel26->Controls->Add(this->productChart);
+			this->flowLayoutPanel26->Controls->Add(this->userChart);
+			this->flowLayoutPanel26->Controls->Add(this->TotalSales);
+			this->flowLayoutPanel26->Location = System::Drawing::Point(5, 7);
+			this->flowLayoutPanel26->Name = L"flowLayoutPanel26";
+			this->flowLayoutPanel26->Size = System::Drawing::Size(1172, 597);
+			this->flowLayoutPanel26->TabIndex = 0;
+			// 
+			// productChart
+			// 
+			chartArea1->AxisY->Title = L"Sales";
+			chartArea1->AxisY->TitleFont = (gcnew System::Drawing::Font(L"Arial", 12));
+			chartArea1->Name = L"ChartArea1";
+			this->productChart->ChartAreas->Add(chartArea1);
+			legend1->Name = L"Legend1";
+			this->productChart->Legends->Add(legend1);
+			this->productChart->Location = System::Drawing::Point(3, 3);
+			this->productChart->Name = L"productChart";
+			series1->ChartArea = L"ChartArea1";
+			series1->Legend = L"Legend1";
+			series1->Name = L"Products";
+			this->productChart->Series->Add(series1);
+			this->productChart->Size = System::Drawing::Size(572, 449);
+			this->productChart->TabIndex = 0;
+			this->productChart->Text = L"productChart";
+			// 
+			// userChart
+			// 
+			chartArea2->AxisY->Title = L"Bills";
+			chartArea2->AxisY->TitleFont = (gcnew System::Drawing::Font(L"Arial", 12));
+			chartArea2->Name = L"ChartArea1";
+			this->userChart->ChartAreas->Add(chartArea2);
+			legend2->Name = L"Legend1";
+			this->userChart->Legends->Add(legend2);
+			this->userChart->Location = System::Drawing::Point(581, 3);
+			this->userChart->Name = L"userChart";
+			series2->ChartArea = L"ChartArea1";
+			series2->Legend = L"Legend1";
+			series2->Name = L"Users";
+			this->userChart->Series->Add(series2);
+			this->userChart->Size = System::Drawing::Size(572, 446);
+			this->userChart->TabIndex = 1;
+			this->userChart->Text = L"userChart";
+			// 
+			// TotalSales
+			// 
+			this->TotalSales->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->TotalSales->Location = System::Drawing::Point(3, 455);
+			this->TotalSales->Name = L"TotalSales";
+			this->TotalSales->Size = System::Drawing::Size(1152, 46);
+			this->TotalSales->TabIndex = 2;
+			// 
+			// label61
+			// 
+			this->label61->Dock = System::Windows::Forms::DockStyle::Top;
+			this->label61->Font = (gcnew System::Drawing::Font(L"Segoe UI", 48, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label61->Location = System::Drawing::Point(0, 0);
+			this->label61->Name = L"label61";
+			this->label61->Size = System::Drawing::Size(1189, 127);
+			this->label61->TabIndex = 1;
+			this->label61->Text = L"Analytics";
+			this->label61->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// pn_users
+			// 
+			this->pn_users->Anchor = System::Windows::Forms::AnchorStyles::Top;
+			this->pn_users->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
+				static_cast<System::Int32>(static_cast<System::Byte>(239)));
+			this->pn_users->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pn_users->Controls->Add(this->panel6);
+			this->pn_users->Controls->Add(this->label44);
+			this->pn_users->Location = System::Drawing::Point(296, 0);
+			this->pn_users->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->pn_users->Name = L"pn_users";
+			this->pn_users->Size = System::Drawing::Size(1189, 745);
+			this->pn_users->TabIndex = 1;
+			// 
+			// panel6
+			// 
+			this->panel6->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
+				static_cast<System::Int32>(static_cast<System::Byte>(230)));
+			this->panel6->Controls->Add(this->UsersList);
+			this->panel6->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->panel6->Location = System::Drawing::Point(0, 147);
+			this->panel6->Margin = System::Windows::Forms::Padding(4);
+			this->panel6->Name = L"panel6";
+			this->panel6->Size = System::Drawing::Size(1189, 598);
+			this->panel6->TabIndex = 2;
+			// 
+			// UsersList
+			// 
+			this->UsersList->AutoScroll = true;
+			this->UsersList->Location = System::Drawing::Point(0, 3);
+			this->UsersList->Name = L"UsersList";
+			this->UsersList->Size = System::Drawing::Size(1185, 609);
+			this->UsersList->TabIndex = 0;
+			// 
+			// label44
+			// 
+			this->label44->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
+				static_cast<System::Int32>(static_cast<System::Byte>(230)));
+			this->label44->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->label44->Dock = System::Windows::Forms::DockStyle::Top;
+			this->label44->Font = (gcnew System::Drawing::Font(L"Segoe UI", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label44->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->label44->Location = System::Drawing::Point(0, 0);
+			this->label44->Name = L"label44";
+			this->label44->Size = System::Drawing::Size(1189, 147);
+			this->label44->TabIndex = 0;
+			this->label44->Text = L"Users List";
+			this->label44->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// order_history
+			// 
+			this->order_history->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
+				static_cast<System::Int32>(static_cast<System::Byte>(239)));
+			this->order_history->Controls->Add(this->label46);
+			this->order_history->Controls->Add(this->orderspn);
+			this->order_history->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->order_history->Location = System::Drawing::Point(296, 0);
+			this->order_history->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->order_history->Name = L"order_history";
+			this->order_history->Size = System::Drawing::Size(1189, 745);
+			this->order_history->TabIndex = 3;
+			// 
+			// label46
+			// 
+			this->label46->Dock = System::Windows::Forms::DockStyle::Top;
+			this->label46->Font = (gcnew System::Drawing::Font(L"Segoe UI", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label46->Location = System::Drawing::Point(0, 0);
+			this->label46->Name = L"label46";
+			this->label46->Size = System::Drawing::Size(1189, 148);
+			this->label46->TabIndex = 2;
+			this->label46->Text = L"Orders List";
+			this->label46->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// orderspn
+			// 
+			this->orderspn->AutoScroll = true;
+			this->orderspn->Location = System::Drawing::Point(0, 148);
+			this->orderspn->Margin = System::Windows::Forms::Padding(4);
+			this->orderspn->Name = L"orderspn";
+			this->orderspn->Size = System::Drawing::Size(1189, 597);
+			this->orderspn->TabIndex = 3;
+			// 
+			// dashboard
+			// 
+			this->dashboard->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(51)), static_cast<System::Int32>(static_cast<System::Byte>(55)),
+				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->dashboard->Controls->Add(this->flowLayoutPanel27);
+			this->dashboard->Controls->Add(this->panel25);
+			this->dashboard->Dock = System::Windows::Forms::DockStyle::Left;
+			this->dashboard->Location = System::Drawing::Point(0, 0);
+			this->dashboard->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->dashboard->Name = L"dashboard";
+			this->dashboard->Size = System::Drawing::Size(296, 745);
+			this->dashboard->TabIndex = 0;
+			// 
+			// flowLayoutPanel27
+			// 
+			this->flowLayoutPanel27->Controls->Add(this->button20);
+			this->flowLayoutPanel27->Controls->Add(this->button22);
+			this->flowLayoutPanel27->Controls->Add(this->button23);
+			this->flowLayoutPanel27->Controls->Add(this->button24);
+			this->flowLayoutPanel27->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->flowLayoutPanel27->Location = System::Drawing::Point(0, 201);
+			this->flowLayoutPanel27->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->flowLayoutPanel27->Name = L"flowLayoutPanel27";
+			this->flowLayoutPanel27->Size = System::Drawing::Size(296, 544);
+			this->flowLayoutPanel27->TabIndex = 1;
+			// 
+			// button20
+			// 
+			this->button20->BackColor = System::Drawing::Color::DimGray;
+			this->button20->FlatAppearance->BorderSize = 0;
+			this->button20->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button20->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button20->ForeColor = System::Drawing::Color::White;
+			this->button20->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button20.Image")));
+			this->button20->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->button20->Location = System::Drawing::Point(3, 2);
+			this->button20->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->button20->Name = L"button20";
+			this->button20->Size = System::Drawing::Size(293, 74);
+			this->button20->TabIndex = 0;
+			this->button20->Text = L"Users";
+			this->button20->UseVisualStyleBackColor = false;
+			this->button20->Click += gcnew System::EventHandler(this, &MyForm::button20_Click);
+			// 
+			// button22
+			// 
+			this->button22->FlatAppearance->BorderSize = 0;
+			this->button22->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button22->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button22->ForeColor = System::Drawing::Color::White;
+			this->button22->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button22.Image")));
+			this->button22->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->button22->Location = System::Drawing::Point(3, 80);
+			this->button22->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->button22->Name = L"button22";
+			this->button22->Size = System::Drawing::Size(293, 74);
+			this->button22->TabIndex = 2;
+			this->button22->Text = L"Orders";
+			this->button22->UseVisualStyleBackColor = true;
+			this->button22->Click += gcnew System::EventHandler(this, &MyForm::button22_Click);
+			// 
+			// button23
+			// 
+			this->button23->FlatAppearance->BorderSize = 0;
+			this->button23->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button23->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button23->ForeColor = System::Drawing::Color::White;
+			this->button23->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button23.Image")));
+			this->button23->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->button23->Location = System::Drawing::Point(3, 158);
+			this->button23->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->button23->Name = L"button23";
+			this->button23->Size = System::Drawing::Size(293, 74);
+			this->button23->TabIndex = 4;
+			this->button23->Text = L"Analytics";
+			this->button23->UseVisualStyleBackColor = true;
+			this->button23->Click += gcnew System::EventHandler(this, &MyForm::button23_Click);
+			// 
+			// button24
+			// 
+			this->button24->Dock = System::Windows::Forms::DockStyle::Bottom;
+			this->button24->FlatAppearance->BorderSize = 0;
+			this->button24->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button24->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button24->ForeColor = System::Drawing::Color::White;
+			this->button24->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button24.Image")));
+			this->button24->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->button24->Location = System::Drawing::Point(3, 319);
+			this->button24->Margin = System::Windows::Forms::Padding(3, 85, 3, 2);
+			this->button24->Name = L"button24";
+			this->button24->Size = System::Drawing::Size(293, 98);
+			this->button24->TabIndex = 3;
+			this->button24->Text = L"Log out";
+			this->button24->UseVisualStyleBackColor = true;
+			this->button24->Click += gcnew System::EventHandler(this, &MyForm::btn_logout_Click);
+			// 
+			// panel25
+			// 
+			this->panel25->Controls->Add(this->label62);
+			this->panel25->Controls->Add(this->pictureBox18);
+			this->panel25->Dock = System::Windows::Forms::DockStyle::Top;
+			this->panel25->Location = System::Drawing::Point(0, 0);
+			this->panel25->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->panel25->Name = L"panel25";
+			this->panel25->Size = System::Drawing::Size(296, 201);
+			this->panel25->TabIndex = 0;
+			// 
+			// label62
+			// 
+			this->label62->BackColor = System::Drawing::Color::Transparent;
+			this->label62->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label62->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->label62->Location = System::Drawing::Point(52, 169);
+			this->label62->Name = L"label62";
+			this->label62->Size = System::Drawing::Size(197, 23);
+			this->label62->TabIndex = 1;
+			this->label62->Text = L"ADMIN\r\n";
+			this->label62->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// pictureBox18
+			// 
+			this->pictureBox18->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox18.BackgroundImage")));
+			this->pictureBox18->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
+			this->pictureBox18->Location = System::Drawing::Point(45, 5);
+			this->pictureBox18->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->pictureBox18->Name = L"pictureBox18";
+			this->pictureBox18->Size = System::Drawing::Size(204, 161);
+			this->pictureBox18->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox18->TabIndex = 0;
+			this->pictureBox18->TabStop = false;
+			// 
+			// background
+			// 
+			this->background->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
+				static_cast<System::Int32>(static_cast<System::Byte>(230)));
+			this->background->Controls->Add(this->pictureBox16);
+			this->background->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->background->Location = System::Drawing::Point(0, 0);
+			this->background->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->background->Name = L"background";
+			this->background->Size = System::Drawing::Size(1485, 745);
+			this->background->TabIndex = 4;
+			// 
+			// pictureBox16
+			// 
+			this->pictureBox16->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->pictureBox16->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->pictureBox16->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox16.Image")));
+			this->pictureBox16->Location = System::Drawing::Point(0, 0);
+			this->pictureBox16->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->pictureBox16->Name = L"pictureBox16";
+			this->pictureBox16->Size = System::Drawing::Size(1485, 745);
+			this->pictureBox16->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox16->TabIndex = 2;
+			this->pictureBox16->TabStop = false;
 			// 
 			// pn_login
 			// 
@@ -4641,6 +4664,14 @@ private: System::Windows::Forms::Button^ btn_search;
 			this->axWindowsMediaPlayer1->TabIndex = 12;
 			this->axWindowsMediaPlayer1->PlayStateChange += gcnew AxWMPLib::_WMPOCXEvents_PlayStateChangeEventHandler(this, &MyForm::axWindowsMediaPlayer1_PlayStateChange_1);
 			// 
+			// pn_search
+			// 
+			this->pn_search->Location = System::Drawing::Point(296, 60);
+			this->pn_search->Name = L"pn_search";
+			this->pn_search->Size = System::Drawing::Size(1189, 745);
+			this->pn_search->TabIndex = 3;
+			this->pn_search->Visible = false;
+			// 
 			// timerforexit
 			// 
 			this->timerforexit->Interval = 3000;
@@ -4661,37 +4692,13 @@ private: System::Windows::Forms::Button^ btn_search;
 			// 
 			this->printDocument1->PrintPage += gcnew System::Drawing::Printing::PrintPageEventHandler(this, &MyForm::printDocument1_PrintPage);
 			// 
-			// btn_search
-			// 
-			this->btn_search->Location = System::Drawing::Point(985, 55);
-			this->btn_search->Name = L"btn_search";
-			this->btn_search->Size = System::Drawing::Size(173, 23);
-			this->btn_search->TabIndex = 2;
-			this->btn_search->Text = L"Search bar";
-			this->btn_search->UseVisualStyleBackColor = true;
-			this->btn_search->Click += gcnew System::EventHandler(this, &MyForm::openSearchPanel);
-
-			// 
-			// pn_search
-			// 
-			this->pn_search->Location = System::Drawing::Point(3, 3);
-			this->pn_search->Name = L"pn_search";
-			this->pn_search->Size = System::Drawing::Size(1189, 745);
-			this->pn_search->TabIndex = 3;
-			pn_search->AutoScroll = true;
-			this->pn_search->Visible = false;
-
-			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1485, 800);
 			this->Controls->Add(this->pn_main_dashboard);
-			/////////
 			this->Controls->Add(this->pn_search);
-
-			////////
 			this->Controls->Add(this->pn_upper_bar);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
@@ -4703,30 +4710,7 @@ private: System::Windows::Forms::Button^ btn_search;
 			this->pn_upper_bar->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_icon))->EndInit();
 			this->pn_main_dashboard->ResumeLayout(false);
-			this->pn_admin->ResumeLayout(false);
-			this->analytics->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox17))->EndInit();
-			this->panel22->ResumeLayout(false);
-			this->flowLayoutPanel26->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->productChart))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->userChart))->EndInit();
-			this->pn_users->ResumeLayout(false);
-			this->panel6->ResumeLayout(false);
-			this->order_history->ResumeLayout(false);
-			this->dashboard->ResumeLayout(false);
-			this->flowLayoutPanel27->ResumeLayout(false);
-			this->panel25->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox18))->EndInit();
-			this->background->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox16))->EndInit();
 			this->pn_defualt->ResumeLayout(false);
-			this->pn_viewBill->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_theinvoice))->EndInit();
-			this->pn->ResumeLayout(false);
-			this->pn->PerformLayout();
-			this->flowLayoutPanel13->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
-			this->panel2->ResumeLayout(false);
 			this->pn_products->ResumeLayout(false);
 			this->pn_main_category->ResumeLayout(false);
 			this->flowLayoutPanel2->ResumeLayout(false);
@@ -4740,7 +4724,13 @@ private: System::Windows::Forms::Button^ btn_search;
 			this->pn_dairy_category->ResumeLayout(false);
 			this->pn_vegetable_category->ResumeLayout(false);
 			this->pn_fruits_category->ResumeLayout(false);
-			this->flowLayoutPanel3->ResumeLayout(false);
+			this->pn_viewBill->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_theinvoice))->EndInit();
+			this->pn->ResumeLayout(false);
+			this->pn->PerformLayout();
+			this->flowLayoutPanel13->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
+			this->panel2->ResumeLayout(false);
 			this->pn_edit_information->ResumeLayout(false);
 			this->pn_currentInfo->ResumeLayout(false);
 			this->pn_currentInfo->PerformLayout();
@@ -4758,6 +4748,22 @@ private: System::Windows::Forms::Button^ btn_search;
 			this->flowLayoutPanel1->ResumeLayout(false);
 			this->pn_picture->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_profile))->EndInit();
+			this->pn_admin->ResumeLayout(false);
+			this->analytics->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox17))->EndInit();
+			this->panel22->ResumeLayout(false);
+			this->flowLayoutPanel26->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->productChart))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->userChart))->EndInit();
+			this->pn_users->ResumeLayout(false);
+			this->panel6->ResumeLayout(false);
+			this->order_history->ResumeLayout(false);
+			this->dashboard->ResumeLayout(false);
+			this->flowLayoutPanel27->ResumeLayout(false);
+			this->panel25->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox18))->EndInit();
+			this->background->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox16))->EndInit();
 			this->pn_login->ResumeLayout(false);
 			this->pn_login->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox8))->EndInit();
@@ -5231,6 +5237,7 @@ private: System::Windows::Forms::Button^ btn_search;
 		showCategoryPanel(pn_currentInfo);
 		populateCurrentUserInfo(sender, e);
 		MenuBGColor(btn_edit_information);
+		pn_search->Visible = false;
 	}
 	private: System::Void btn_saveEdit_Click(System::Object^ sender, System::EventArgs^ e) {
 		try {
@@ -5412,6 +5419,7 @@ private: System::Windows::Forms::Button^ btn_search;
 		showPanel(pn_products);
 		pn_main_category->BringToFront();
 		MenuBGColor(btn_products);
+		pn_search->Visible = false;
 	}
     private: System::Void btn_snacks_Click(System::Object^ sender, System::EventArgs^ e) {
 			   showCategoryPanel(pn_snacks_category);
@@ -5460,6 +5468,7 @@ private: System::Windows::Forms::Button^ btn_search;
 		showPanel(pn_orders);
 		loadCurrentUserOrder();
 		MenuBGColor(btn_orders);
+		pn_search->Visible = false;
 	}
     private: System::Void deleteProductFromOrder(String^ productName) {
 			if (orders[currentCustomerIndex] == nullptr) return;
@@ -5711,6 +5720,7 @@ private: System::Windows::Forms::Button^ btn_search;
 		selectedButton = btn_TotalBill;
 		showPanel(pn_viewBill);
 		MenuBGColor(btn_TotalBill);
+		pn_search->Visible = false;
 	}
 		   
 		   //log out
@@ -6331,6 +6341,18 @@ private: System::Void btn_search_Click(System::Object^ sender, System::EventArgs
 	  
 
  
+private: System::Void btn_search_MouseHover(System::Object^ sender, System::EventArgs^ e) {
+	btn_start->ForeColor = Color::Wheat;
+
+}
+private: System::Void btn_search_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
+	btn_start->BackColor = Color::FromArgb(218, 245, 242);
+	btn_start->ForeColor = Color::Black;
+}
+private: System::Void btn_search_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
+	btn_start->BackColor = Color::FromArgb(137, 207, 240);
+	btn_start->ForeColor = Color::White;
+}
 };
 }
 

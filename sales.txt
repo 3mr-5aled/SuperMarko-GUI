@@ -1,8 +1,9 @@
 Loose_Milk,4
 Packaged_Milk,2
 Apple,12
-Banana,7
+Banana,8
 Kibda_Lahma,2
 Orange,5
 Peas,1
 Carrot,2
+Kyzar,2
