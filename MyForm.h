@@ -4,6 +4,7 @@
 
 using namespace System;
 
+using namespace System::Collections::Generic;
 namespace SuperMarkoGUI
 {
 
@@ -43,6 +44,12 @@ public
 			}
 
 			InitializeComponent();
+			// Enable double buffering to reduce flickering
+			Prdoucts_Search->GetType()->InvokeMember("DoubleBuffered",
+				System::Reflection::BindingFlags::SetProperty |
+				System::Reflection::BindingFlags::Instance |
+				System::Reflection::BindingFlags::NonPublic,
+				nullptr, Prdoucts_Search, gcnew cli::array<Object^>{ true });
 
 			// Load by category into their dedicated panels
 			loadCategory("Fruit", flowLayoutPanel3);						// Fruits
@@ -61,63 +68,53 @@ public
 			UpdateUserChart();
 		}
 
-		void openSearchPanel(Object ^ sender, EventArgs ^ e)
+		// Global variables inside MyForm class
+		int searchResultIndex = 0;
+		List<PRODUCT^>^ matchedSearchResults = gcnew List<PRODUCT^>();
+
+		void openSearchPanel(Object^ sender, EventArgs^ e)
 		{
 			pn_search->Visible = true;
 			pn_search->BringToFront();
-
-			/*searchInput = gcnew TextBox();
-			searchInput->Size = Drawing::Size(750, 450);
-			searchInput->Location = Point(40, 30);
-			searchInput->TextChanged += gcnew EventHandler(this, &MyForm::performSearch);
-			pn_search->Controls->Add(searchInput);*/
-
-			/*Button^ closeBtn = gcnew Button();
-			closeBtn->Text = "X";
-			closeBtn->Location = Point(830, 20);
-			closeBtn->Size = Drawing::Size(40, 30);
-			closeBtn->Click += gcnew EventHandler(this, &MyForm::closeSearchPanel);
-			pn_search->Controls->Add(closeBtn);*/
-
-			/*searchResults = gcnew FlowLayoutPanel();
-			searchResults->Location = Point(20, 70);
-			searchResults->Size = Drawing::Size(900, 500);
-			searchResults->AutoScroll = true;
-			pn_search->Controls->Add(searchResults);*/
 		}
 
-		void performSearch(Object ^ sender, EventArgs ^ e)
+		void performSearch(Object^ sender, EventArgs^ e)
 		{
-			Prdoucts_Search->Controls->Clear();
-			String ^ query = SearchBox->Text->Trim()->ToLower();
+			matchedSearchResults->Clear();
+			searchResultIndex = 0;
 
-			// If search query is empty, show all products
+			String^ query = SearchBox->Text->Trim()->ToLower();
+
 			if (String::IsNullOrEmpty(query))
 			{
-				LoadAllProductsToSearch();
+				Prdoucts_Search->SuspendLayout();
+				Prdoucts_Search->Controls->Clear();
+				Prdoucts_Search->ResumeLayout();
 				return;
 			}
 
-			// Search for products matching the query in name, category, or code
+
 			for (int i = 0; i < numOfCategories; i++)
 			{
 				for (int j = 0; j < productCounts[i]; j++)
 				{
-					PRODUCT ^ p = products[i][j];
+					PRODUCT^ p = products[i][j];
 					if (p != nullptr &&
 						(p->Name->ToLower()->Contains(query) ||
-						 p->Category->ToLower()->Contains(query) ||
-						 p->Code->ToLower()->Contains(query)))
+							p->Category->ToLower()->Contains(query) ||
+							p->Code->ToLower()->Contains(query)))
 					{
-						CreateProductDisplayPanel(p);
+						matchedSearchResults->Add(p);
 					}
 				}
 			}
 
-			// If no products found, show a message
-			if (Prdoucts_Search->Controls->Count == 0)
+			Prdoucts_Search->SuspendLayout();
+			Prdoucts_Search->Controls->Clear();
+
+			if (matchedSearchResults->Count == 0)
 			{
-				Label ^ noResultsLabel = gcnew Label();
+				Label^ noResultsLabel = gcnew Label();
 				noResultsLabel->Text = "No products found matching '" + SearchBox->Text + "'";
 				noResultsLabel->Font = gcnew Drawing::Font("Segoe UI", 16, FontStyle::Regular);
 				noResultsLabel->ForeColor = Color::Gray;
@@ -125,55 +122,100 @@ public
 				noResultsLabel->Location = Point(50, 50);
 				Prdoucts_Search->Controls->Add(noResultsLabel);
 			}
+			else
+			{
+				LoadNextBatchFromSearch(nullptr, nullptr);
+			}
+
+			Prdoucts_Search->ResumeLayout();
 		}
 
-		void closeSearchPanel(Object ^ sender, EventArgs ^ e)
+
+		void LoadNextBatchFromSearch(Object^ sender, EventArgs^ e)
+		{
+			Prdoucts_Search->SuspendLayout();
+
+			// Remove previous "See More" button if it exists
+			for each (Control ^ c in Prdoucts_Search->Controls)
+			{
+				if (dynamic_cast<Button^>(c) != nullptr && ((Button^)c)->Text == "See More")
+				{
+					Prdoucts_Search->Controls->Remove(c);
+					break;
+				}
+			}
+
+			int count = 0;
+			while (searchResultIndex < matchedSearchResults->Count && count < 10)
+			{
+				CreateProductDisplayPanel(matchedSearchResults[searchResultIndex]);
+				searchResultIndex++;
+				count++;
+			}
+
+			if (searchResultIndex < matchedSearchResults->Count)
+			{
+				Button^ seeMoreBtn = gcnew Button();
+				seeMoreBtn->Text = "See More";
+				seeMoreBtn->Width = 200;
+				seeMoreBtn->Height = 40;
+				seeMoreBtn->BackColor = Color::LightGray;
+				seeMoreBtn->ForeColor = Color::Black;
+				seeMoreBtn->FlatStyle = FlatStyle::Flat;
+				seeMoreBtn->Click += gcnew EventHandler(this, &MyForm::LoadNextBatchFromSearch);
+				Prdoucts_Search->Controls->Add(seeMoreBtn);
+			}
+
+			Prdoucts_Search->ResumeLayout();
+		}
+
+
+		void closeSearchPanel(Object^ sender, EventArgs^ e)
 		{
 			pn_search->Visible = false;
 		}
 
 		void LoadAllProductsToSearch()
 		{
-			// Clear existing products
+			Prdoucts_Search->SuspendLayout();
 			Prdoucts_Search->Controls->Clear();
 
-			// Load all products from all categories
 			for (int i = 0; i < numOfCategories; i++)
 			{
 				for (int j = 0; j < productCounts[i]; j++)
 				{
-					PRODUCT ^ p = products[i][j];
+					PRODUCT^ p = products[i][j];
 					if (p != nullptr)
 					{
 						CreateProductDisplayPanel(p);
 					}
 				}
 			}
+
+			Prdoucts_Search->ResumeLayout();
 		}
 
-		void CreateProductDisplayPanel(PRODUCT ^ p)
+
+		void CreateProductDisplayPanel(PRODUCT^ p)
 		{
-			// Outer Panel
-			Panel ^ productPanel = gcnew Panel();
+			Panel^ productPanel = gcnew Panel();
 			productPanel->BackColor = Color::White;
 			productPanel->Size = Drawing::Size(230, 360);
 			productPanel->Margin = System::Windows::Forms::Padding(10);
 			productPanel->Padding = System::Windows::Forms::Padding(10);
 			productPanel->BorderStyle = BorderStyle::FixedSingle;
 
-			// Inner Panel
-			FlowLayoutPanel ^ innerPanel = gcnew FlowLayoutPanel();
+			FlowLayoutPanel^ innerPanel = gcnew FlowLayoutPanel();
 			innerPanel->FlowDirection = FlowDirection::TopDown;
 			innerPanel->WrapContents = false;
 			innerPanel->AutoSize = true;
 			innerPanel->Dock = DockStyle::Fill;
 			innerPanel->BackColor = Color::White;
 
-			// Image
-			PictureBox ^ img = gcnew PictureBox();
+			PictureBox^ img = gcnew PictureBox();
 			img->Size = Drawing::Size(200, 100);
 			img->SizeMode = PictureBoxSizeMode::Zoom;
-			String ^ imagePath = "images\\" + p->Name->Replace(" ", "_") + ".jpg";
+			String^ imagePath = "images\\" + p->Name->Replace(" ", "_") + ".jpg";
 			try
 			{
 				img->Image = Image::FromFile(imagePath);
@@ -184,8 +226,7 @@ public
 			}
 			innerPanel->Controls->Add(img);
 
-			// Product Name
-			Label ^ lblName = gcnew Label();
+			Label^ lblName = gcnew Label();
 			lblName->Text = "Name: " + p->Name;
 			lblName->Font = gcnew Drawing::Font("Arial", 10, FontStyle::Bold);
 			lblName->AutoSize = false;
@@ -193,17 +234,16 @@ public
 			lblName->TextAlign = ContentAlignment::MiddleCenter;
 			innerPanel->Controls->Add(lblName);
 
-			// Other Details
-			array<String ^> ^ details = {
+			array<String^>^ details = {
 				"Code: " + p->Code,
 				"Category: " + p->Category,
 				"Production Date: " + p->ProductionDate,
 				"Expiration Date: " + p->ExpiredDate,
-				"Price: " + p->Price.ToString("0.00") + " EGP"};
+				"Price: " + p->Price.ToString("0.00") + " EGP" };
 
 			for each (String ^ line in details)
 			{
-				Label ^ lbl = gcnew Label();
+				Label^ lbl = gcnew Label();
 				lbl->Text = line;
 				lbl->AutoSize = false;
 				lbl->Width = 210;
@@ -211,16 +251,14 @@ public
 				innerPanel->Controls->Add(lbl);
 			}
 
-			// Quantity Label
-			Label ^ qtyLabel = gcnew Label();
+			Label^ qtyLabel = gcnew Label();
 			qtyLabel->Text = "Quantity:";
 			qtyLabel->AutoSize = false;
 			qtyLabel->Width = 210;
 			qtyLabel->TextAlign = ContentAlignment::MiddleCenter;
 			innerPanel->Controls->Add(qtyLabel);
 
-			// Quantity Selector
-			NumericUpDown ^ quantitySelector = gcnew NumericUpDown();
+			NumericUpDown^ quantitySelector = gcnew NumericUpDown();
 			quantitySelector->Minimum = 0;
 			quantitySelector->Maximum = 10;
 			quantitySelector->DecimalPlaces = 0;
@@ -231,8 +269,7 @@ public
 			quantitySelector->Margin = System::Windows::Forms::Padding(75, 5, 75, 10);
 			innerPanel->Controls->Add(quantitySelector);
 
-			// Add to Cart Button
-			Button ^ addBtn = gcnew Button();
+			Button^ addBtn = gcnew Button();
 			addBtn->Text = "Add to Cart";
 			addBtn->Width = 210;
 			addBtn->Height = 35;
@@ -243,10 +280,10 @@ public
 			addBtn->Click += gcnew EventHandler(this, &MyForm::handleAddToCart);
 			innerPanel->Controls->Add(addBtn);
 
-			// Add to UI
 			productPanel->Controls->Add(innerPanel);
 			Prdoucts_Search->Controls->Add(productPanel);
 		}
+
 
 		void refreshOrderList()
 		{
@@ -257,28 +294,28 @@ public
 				if (orders[currentCustomerIndex]->Products[i] == nullptr)
 					continue;
 
-				Label ^ lblName = gcnew Label();
+				Label^ lblName = gcnew Label();
 				lblName->Text = "Product: " + orders[currentCustomerIndex]->Products[i]->Name;
 				lblName->AutoSize = false;
 				lblName->Width = 300;
 				lblName->Height = 30;
 				lblName->Location = Point(10, 10);
 
-				Label ^ lblQuantity = gcnew Label();
+				Label^ lblQuantity = gcnew Label();
 				lblQuantity->Text = "Quantity: " + (orders[currentCustomerIndex]->Amount[i] / orders[currentCustomerIndex]->Products[i]->Price).ToString();
 				lblQuantity->AutoSize = false;
 				lblQuantity->Width = 100;
 				lblQuantity->Height = 30;
 				lblQuantity->Location = Point(320, 10);
 
-				Button ^ btnDelete = gcnew Button();
+				Button^ btnDelete = gcnew Button();
 				btnDelete->Text = "Delete";
 				btnDelete->Width = 80;
 				btnDelete->Height = 30;
 				btnDelete->Location = Point(430, 10);
 				// btnDelete->Click += ... your delete code here
 
-				Button ^ btnModify = gcnew Button();
+				Button^ btnModify = gcnew Button();
 				btnModify->Text = "Modifys";
 				btnModify->Width = 80;
 				btnModify->Height = 30;
