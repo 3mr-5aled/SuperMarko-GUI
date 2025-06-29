@@ -65,12 +65,14 @@ namespace SuperMarkoGUI {
 			//
 
 		}
-		void closeSearchPanel(Object^ sender, EventArgs^ e) {
-			this->Controls->Remove(pn_search);
-			searchInput = nullptr;
-			searchResults = nullptr;
-		}
+		
 		void openSearchPanel(Object^ sender, EventArgs^ e) {
+			pn_search->Controls->Clear();
+			pn_search->Visible = true;
+			pn_search->BringToFront();
+
+			
+
 
 			searchInput = gcnew TextBox();
 			searchInput->Size = Drawing::Size(500, 30);
@@ -87,30 +89,26 @@ namespace SuperMarkoGUI {
 
 			searchResults = gcnew FlowLayoutPanel();
 			searchResults->Location = Point(20, 70);
-			searchResults->Size = Drawing::Size(650, 400);
+			searchResults->Size = Drawing::Size(900, 500);
 			searchResults->AutoScroll = true;
 			pn_search->Controls->Add(searchResults);
 		}
 
-
-
 		void performSearch(Object^ sender, EventArgs^ e) {
 			searchResults->Controls->Clear();
-			String^ input = searchInput->Text->ToLower()->Trim();
+			String^ query = searchInput->Text->Trim()->ToLower();
 
-			if (input == "") return;
+			for (int i = 0; i < numOfCategories; i++) {
+				for (int j = 0; j < productCounts[i]; j++) {
+					PRODUCT^ p = products[i][j];
+					if (p != nullptr && p->Name->ToLower()->Contains(query)) {
 
-			for (int cat = 0; cat < numOfCategories; cat++) {
-				for (int i = 0; i < productCounts[cat]; i++) {
-					PRODUCT^ p = products[cat][i];
-					if (p != nullptr && p->Name->ToLower()->Contains(input)) {
-						// === Create product panel ===
+						// Outer panel
 						Panel^ productPanel = gcnew Panel();
 						productPanel->BackColor = Color::White;
-						productPanel->Margin = System::Windows::Forms::Padding(10);
-						productPanel->Width = 250;
-						productPanel->AutoSize = true;
-						productPanel->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
+						productPanel->Size = Drawing::Size(250, 370);
+						productPanel->Margin = System::Windows::Forms::Padding(15, 10, 15, 20);
+
 
 						FlowLayoutPanel^ innerPanel = gcnew FlowLayoutPanel();
 						innerPanel->FlowDirection = FlowDirection::TopDown;
@@ -118,97 +116,88 @@ namespace SuperMarkoGUI {
 						innerPanel->BackColor = Color::White;
 						innerPanel->AutoSize = true;
 						innerPanel->Dock = DockStyle::Fill;
-						innerPanel->Padding = System::Windows::Forms::Padding(0, 0, 0, 10);
 
-						// === Image ===
-						PictureBox^ productImage = gcnew PictureBox();
-						productImage->Size = Drawing::Size(230, 100);
-						productImage->SizeMode = PictureBoxSizeMode::Zoom;
-
-						String^ imageName = p->Name->Replace(" ", "_")->Replace("(", "")->Replace(")", "")->Replace("\"", "") + ".jpg";
+						// Image
+						PictureBox^ img = gcnew PictureBox();
+						img->Size = Drawing::Size(230, 100);
+						img->SizeMode = PictureBoxSizeMode::Zoom;
+						String^ imageName = p->Name->Replace(" ", "_") + ".jpg";
 						String^ imagePath = "images\\" + imageName;
-
 						try {
-							productImage->Image = Image::FromFile(imagePath);
+							img->Image = Image::FromFile(imagePath);
 						}
 						catch (...) {
-							productImage->Image = Image::FromFile("images\\placeholder.jpg");
+							img->Image = Image::FromFile("images\\placeholder.jpg");
 						}
-						innerPanel->Controls->Add(productImage);
+						innerPanel->Controls->Add(img);
 
-						// === Labels ===
+						// Bold Name
+						Label^ lblName = gcnew Label();
+						lblName->Text = "Name: " + p->Name;
+						lblName->Font = gcnew Drawing::Font("Arial", 10, FontStyle::Bold);
+						lblName->AutoSize = true;
+						innerPanel->Controls->Add(lblName);
+
+						// Other Labels
 						array<String^>^ labels = {
-							"Name: " + p->Name,
 							"Code: " + p->Code,
 							"Category: " + p->Category,
 							"Production Date: " + p->ProductionDate,
 							"Expiration Date: " + p->ExpiredDate,
-							"Price: " + p->Price.ToString("F2") + " EGP"
+							"Price: " + p->Price.ToString("0.00") + " EGP"
 						};
 
 						for each (String ^ text in labels) {
 							Label^ lbl = gcnew Label();
 							lbl->Text = text;
-							lbl->AutoSize = false;
-							lbl->Width = 230;
-							lbl->TextAlign = ContentAlignment::MiddleCenter;
-							lbl->Font = gcnew Drawing::Font("Segoe UI", 10.0F, text->StartsWith("Name:") ? FontStyle::Bold : FontStyle::Regular);
+							lbl->AutoSize = true;
 							innerPanel->Controls->Add(lbl);
 						}
 
-						// === Quantity Selector ===
-						Panel^ quantityRow = gcnew Panel();
-						quantityRow->Width = 230;
-						quantityRow->Height = 30;
+						// Quantity label
+						Label^ qtyLabel = gcnew Label();
+						qtyLabel->Text = "Quantity:";
+						qtyLabel->AutoSize = true;
+						innerPanel->Controls->Add(qtyLabel);
 
-						Label^ lblQty = gcnew Label();
-						lblQty->Text = "Quantity:";
-						lblQty->Width = 70;
-						lblQty->Height = 22;
-						lblQty->Location = Point(0, 4);
-						lblQty->TextAlign = ContentAlignment::MiddleRight;
+						// Quantity input (with 2 decimal places)
+						// Quantity input (with 2 decimal places)
+						NumericUpDown^ quantitySelector = gcnew NumericUpDown();
+						quantitySelector->Minimum = Decimal(0.25);
+						quantitySelector->Maximum = Decimal(100);
+						quantitySelector->DecimalPlaces = 2;
+						quantitySelector->Increment = Decimal(0.25);
+						quantitySelector->Value = Decimal(1.00);
+						quantitySelector->Width = 100;
+						innerPanel->Controls->Add(quantitySelector);
 
-						NumericUpDown^ quantityBox = gcnew NumericUpDown();
-						quantityBox->Minimum = 0;
-						quantityBox->Maximum = 10;
-						quantityBox->DecimalPlaces = 2;
-						quantityBox->Size = Drawing::Size(140, 22);
-						quantityBox->Location = Point(80, 4);
 
-						quantityRow->Controls->Add(lblQty);
-						quantityRow->Controls->Add(quantityBox);
-						innerPanel->Controls->Add(quantityRow);
-
-						// === Add to Cart Button ===
-						Button^ btnAdd = gcnew Button();
-						btnAdd->Text = "Add to Cart";
-						btnAdd->Width = 230;
-						btnAdd->Height = 35;
-						btnAdd->Font = gcnew Drawing::Font("Microsoft Sans Serif", 10.2F, FontStyle::Regular);
-						btnAdd->BackColor = Color::FromArgb(230, 52, 98);
-						btnAdd->ForeColor = Color::White;
-						btnAdd->Tag = p; // optional: store product pointer
-						btnAdd->Click += gcnew EventHandler(this, &MyForm::handleAddToCart);
-
-						innerPanel->Controls->Add(btnAdd);
+						// Add to cart button
+						Button^ addBtn = gcnew Button();
+						addBtn->Text = "Add to Cart";
+						addBtn->Width = 230;
+						addBtn->Height = 35;
+						addBtn->BackColor = Color::FromArgb(230, 52, 98);
+						addBtn->ForeColor = Color::White;
+						addBtn->FlatStyle = FlatStyle::Flat;
+						addBtn->Tag = quantitySelector;
+						addBtn->Click += gcnew EventHandler(this, &MyForm::handleAddToCart);
+						innerPanel->Controls->Add(addBtn);
 
 						productPanel->Controls->Add(innerPanel);
 						searchResults->Controls->Add(productPanel);
 					}
 				}
 			}
-
-			// If nothing found
-			if (searchResults->Controls->Count == 0) {
-				Label^ notFound = gcnew Label();
-				notFound->Text = "No matching products found.";
-				notFound->Font = gcnew Drawing::Font("Segoe UI", 10, FontStyle::Italic);
-				notFound->AutoSize = true;
-				searchResults->Controls->Add(notFound);
-			}
 		}
 
-		
+
+
+
+		void closeSearchPanel(Object^ sender, EventArgs^ e) {
+			pn_search->Visible = false;
+		}
+
 
 		void refreshOrderList() {
 			orderList->Controls->Clear();
@@ -4680,7 +4669,8 @@ private: System::Windows::Forms::Button^ btn_search;
 			this->btn_search->TabIndex = 2;
 			this->btn_search->Text = L"Search bar";
 			this->btn_search->UseVisualStyleBackColor = true;
-			this->btn_search->Click += gcnew System::EventHandler(this, &MyForm::btn_search_Click);
+			this->btn_search->Click += gcnew System::EventHandler(this, &MyForm::openSearchPanel);
+
 			// 
 			// pn_search
 			// 
@@ -4688,6 +4678,9 @@ private: System::Windows::Forms::Button^ btn_search;
 			this->pn_search->Name = L"pn_search";
 			this->pn_search->Size = System::Drawing::Size(1189, 745);
 			this->pn_search->TabIndex = 3;
+			pn_search->AutoScroll = true;
+			this->pn_search->Visible = false;
+
 			// 
 			// MyForm
 			// 
@@ -4695,6 +4688,10 @@ private: System::Windows::Forms::Button^ btn_search;
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1485, 800);
 			this->Controls->Add(this->pn_main_dashboard);
+			/////////
+			this->Controls->Add(this->pn_search);
+
+			////////
 			this->Controls->Add(this->pn_upper_bar);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
