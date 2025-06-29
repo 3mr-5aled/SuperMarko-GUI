@@ -5586,6 +5586,13 @@ public
 	private:
 		System::Void btn_login_loginpanel_Click(System::Object ^ sender, System::EventArgs ^ e)
 		{
+			button20->ForeColor = Color::White;
+			button20->BackColor = Color::Transparent;
+			button23->ForeColor = Color::White;
+			button23->BackColor = Color::Transparent;
+			button22->ForeColor = Color::White;
+			button22->BackColor = Color::Transparent;
+
 			// Clear previous error messages
 			lb_username_message_login->Visible = false;
 			lb_password_message_login->Visible = false;
@@ -6699,6 +6706,13 @@ public
 			btn_products->BackColor = Color::Transparent;
 			btn_edit_information->ForeColor = Color::White;
 			btn_edit_information->BackColor = Color::Transparent;
+			button20->ForeColor = Color::White;
+			button20->BackColor = Color::Transparent;
+			button23->ForeColor = Color::White;
+			button23->BackColor = Color::Transparent;
+			button22->ForeColor = Color::White;
+			button22->BackColor = Color::Transparent;
+
 
 			pn->Visible = false;
 			Label ^ lb = gcnew Label();
