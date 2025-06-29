@@ -65,7 +65,148 @@ namespace SuperMarkoGUI {
 			//
 
 		}
+		void closeSearchPanel(Object^ sender, EventArgs^ e) {
+			this->Controls->Remove(pn_search);
+			searchInput = nullptr;
+			searchResults = nullptr;
+		}
+		void openSearchPanel(Object^ sender, EventArgs^ e) {
 
+			searchInput = gcnew TextBox();
+			searchInput->Size = Drawing::Size(500, 30);
+			searchInput->Location = Point(20, 20);
+			searchInput->TextChanged += gcnew EventHandler(this, &MyForm::performSearch);
+			pn_search->Controls->Add(searchInput);
+
+			Button^ closeBtn = gcnew Button();
+			closeBtn->Text = "X";
+			closeBtn->Location = Point(630, 20);
+			closeBtn->Size = Drawing::Size(40, 30);
+			closeBtn->Click += gcnew EventHandler(this, &MyForm::closeSearchPanel);
+			pn_search->Controls->Add(closeBtn);
+
+			searchResults = gcnew FlowLayoutPanel();
+			searchResults->Location = Point(20, 70);
+			searchResults->Size = Drawing::Size(650, 400);
+			searchResults->AutoScroll = true;
+			pn_search->Controls->Add(searchResults);
+		}
+
+
+
+		void performSearch(Object^ sender, EventArgs^ e) {
+			searchResults->Controls->Clear();
+			String^ input = searchInput->Text->ToLower()->Trim();
+
+			if (input == "") return;
+
+			for (int cat = 0; cat < numOfCategories; cat++) {
+				for (int i = 0; i < productCounts[cat]; i++) {
+					PRODUCT^ p = products[cat][i];
+					if (p != nullptr && p->Name->ToLower()->Contains(input)) {
+						// === Create product panel ===
+						Panel^ productPanel = gcnew Panel();
+						productPanel->BackColor = Color::White;
+						productPanel->Margin = System::Windows::Forms::Padding(10);
+						productPanel->Width = 250;
+						productPanel->AutoSize = true;
+						productPanel->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
+
+						FlowLayoutPanel^ innerPanel = gcnew FlowLayoutPanel();
+						innerPanel->FlowDirection = FlowDirection::TopDown;
+						innerPanel->WrapContents = false;
+						innerPanel->BackColor = Color::White;
+						innerPanel->AutoSize = true;
+						innerPanel->Dock = DockStyle::Fill;
+						innerPanel->Padding = System::Windows::Forms::Padding(0, 0, 0, 10);
+
+						// === Image ===
+						PictureBox^ productImage = gcnew PictureBox();
+						productImage->Size = Drawing::Size(230, 100);
+						productImage->SizeMode = PictureBoxSizeMode::Zoom;
+
+						String^ imageName = p->Name->Replace(" ", "_")->Replace("(", "")->Replace(")", "")->Replace("\"", "") + ".jpg";
+						String^ imagePath = "images\\" + imageName;
+
+						try {
+							productImage->Image = Image::FromFile(imagePath);
+						}
+						catch (...) {
+							productImage->Image = Image::FromFile("images\\placeholder.jpg");
+						}
+						innerPanel->Controls->Add(productImage);
+
+						// === Labels ===
+						array<String^>^ labels = {
+							"Name: " + p->Name,
+							"Code: " + p->Code,
+							"Category: " + p->Category,
+							"Production Date: " + p->ProductionDate,
+							"Expiration Date: " + p->ExpiredDate,
+							"Price: " + p->Price.ToString("F2") + " EGP"
+						};
+
+						for each (String ^ text in labels) {
+							Label^ lbl = gcnew Label();
+							lbl->Text = text;
+							lbl->AutoSize = false;
+							lbl->Width = 230;
+							lbl->TextAlign = ContentAlignment::MiddleCenter;
+							lbl->Font = gcnew Drawing::Font("Segoe UI", 10.0F, text->StartsWith("Name:") ? FontStyle::Bold : FontStyle::Regular);
+							innerPanel->Controls->Add(lbl);
+						}
+
+						// === Quantity Selector ===
+						Panel^ quantityRow = gcnew Panel();
+						quantityRow->Width = 230;
+						quantityRow->Height = 30;
+
+						Label^ lblQty = gcnew Label();
+						lblQty->Text = "Quantity:";
+						lblQty->Width = 70;
+						lblQty->Height = 22;
+						lblQty->Location = Point(0, 4);
+						lblQty->TextAlign = ContentAlignment::MiddleRight;
+
+						NumericUpDown^ quantityBox = gcnew NumericUpDown();
+						quantityBox->Minimum = 0;
+						quantityBox->Maximum = 10;
+						quantityBox->DecimalPlaces = 2;
+						quantityBox->Size = Drawing::Size(140, 22);
+						quantityBox->Location = Point(80, 4);
+
+						quantityRow->Controls->Add(lblQty);
+						quantityRow->Controls->Add(quantityBox);
+						innerPanel->Controls->Add(quantityRow);
+
+						// === Add to Cart Button ===
+						Button^ btnAdd = gcnew Button();
+						btnAdd->Text = "Add to Cart";
+						btnAdd->Width = 230;
+						btnAdd->Height = 35;
+						btnAdd->Font = gcnew Drawing::Font("Microsoft Sans Serif", 10.2F, FontStyle::Regular);
+						btnAdd->BackColor = Color::FromArgb(230, 52, 98);
+						btnAdd->ForeColor = Color::White;
+						btnAdd->Tag = p; // optional: store product pointer
+						btnAdd->Click += gcnew EventHandler(this, &MyForm::handleAddToCart);
+
+						innerPanel->Controls->Add(btnAdd);
+
+						productPanel->Controls->Add(innerPanel);
+						searchResults->Controls->Add(productPanel);
+					}
+				}
+			}
+
+			// If nothing found
+			if (searchResults->Controls->Count == 0) {
+				Label^ notFound = gcnew Label();
+				notFound->Text = "No matching products found.";
+				notFound->Font = gcnew Drawing::Font("Segoe UI", 10, FontStyle::Italic);
+				notFound->AutoSize = true;
+				searchResults->Controls->Add(notFound);
+			}
+		}
 
 		
 
@@ -1133,6 +1274,8 @@ private: System::Windows::Forms::DataVisualization::Charting::Chart^ userChart;
 
 private: System::Windows::Forms::Label^ TotalSales;
 private: System::Windows::Forms::FlowLayoutPanel^ UsersList;
+private: System::Windows::Forms::Panel^ pn_search;
+private: System::Windows::Forms::Button^ btn_search;
 
 
 
@@ -1224,7 +1367,11 @@ private: System::Windows::Forms::FlowLayoutPanel^ UsersList;
 
 
 
-
+	   
+		  
+			private:TextBox^ searchInput;
+		   private: FlowLayoutPanel^ searchResults;
+		   private: Button^ openSearchButton;
 
 
 
@@ -1292,12 +1439,12 @@ private: System::Windows::Forms::FlowLayoutPanel^ UsersList;
 		{
 			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea3 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea4 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend4 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series4 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->pn_upper_bar = (gcnew System::Windows::Forms::Panel());
 			this->lb_brand_name = (gcnew System::Windows::Forms::Label());
 			this->pb_icon = (gcnew System::Windows::Forms::PictureBox());
@@ -1305,9 +1452,6 @@ private: System::Windows::Forms::FlowLayoutPanel^ UsersList;
 			this->btn_close = (gcnew System::Windows::Forms::Button());
 			this->pn_main_dashboard = (gcnew System::Windows::Forms::Panel());
 			this->pn_admin = (gcnew System::Windows::Forms::Panel());
-			this->order_history = (gcnew System::Windows::Forms::Panel());
-			this->label46 = (gcnew System::Windows::Forms::Label());
-			this->orderspn = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->analytics = (gcnew System::Windows::Forms::Panel());
 			this->pictureBox17 = (gcnew System::Windows::Forms::PictureBox());
 			this->panel22 = (gcnew System::Windows::Forms::Panel());
@@ -1320,6 +1464,9 @@ private: System::Windows::Forms::FlowLayoutPanel^ UsersList;
 			this->panel6 = (gcnew System::Windows::Forms::Panel());
 			this->UsersList = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->label44 = (gcnew System::Windows::Forms::Label());
+			this->order_history = (gcnew System::Windows::Forms::Panel());
+			this->label46 = (gcnew System::Windows::Forms::Label());
+			this->orderspn = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->dashboard = (gcnew System::Windows::Forms::Panel());
 			this->flowLayoutPanel27 = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->button20 = (gcnew System::Windows::Forms::Button());
@@ -1513,11 +1660,12 @@ private: System::Windows::Forms::FlowLayoutPanel^ UsersList;
 			this->printPreviewDialog1 = (gcnew System::Windows::Forms::PrintPreviewDialog());
 			this->printDocument1 = (gcnew System::Drawing::Printing::PrintDocument());
 			this->colorDialog1 = (gcnew System::Windows::Forms::ColorDialog());
+			this->btn_search = (gcnew System::Windows::Forms::Button());
+			this->pn_search = (gcnew System::Windows::Forms::Panel());
 			this->pn_upper_bar->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_icon))->BeginInit();
 			this->pn_main_dashboard->SuspendLayout();
 			this->pn_admin->SuspendLayout();
-			this->order_history->SuspendLayout();
 			this->analytics->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox17))->BeginInit();
 			this->panel22->SuspendLayout();
@@ -1526,6 +1674,7 @@ private: System::Windows::Forms::FlowLayoutPanel^ UsersList;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->userChart))->BeginInit();
 			this->pn_users->SuspendLayout();
 			this->panel6->SuspendLayout();
+			this->order_history->SuspendLayout();
 			this->dashboard->SuspendLayout();
 			this->flowLayoutPanel27->SuspendLayout();
 			this->panel25->SuspendLayout();
@@ -1552,6 +1701,7 @@ private: System::Windows::Forms::FlowLayoutPanel^ UsersList;
 			this->pn_dairy_category->SuspendLayout();
 			this->pn_vegetable_category->SuspendLayout();
 			this->pn_fruits_category->SuspendLayout();
+			this->flowLayoutPanel3->SuspendLayout();
 			this->pn_edit_information->SuspendLayout();
 			this->pn_currentInfo->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox13))->BeginInit();
@@ -1662,8 +1812,8 @@ private: System::Windows::Forms::FlowLayoutPanel^ UsersList;
 			// pn_main_dashboard
 			// 
 			this->pn_main_dashboard->AllowDrop = true;
-			this->pn_main_dashboard->Controls->Add(this->pn_admin);
 			this->pn_main_dashboard->Controls->Add(this->pn_defualt);
+			this->pn_main_dashboard->Controls->Add(this->pn_admin);
 			this->pn_main_dashboard->Controls->Add(this->pn_login);
 			this->pn_main_dashboard->Controls->Add(this->pn_register);
 			this->pn_main_dashboard->Controls->Add(this->pn_start);
@@ -1688,40 +1838,6 @@ private: System::Windows::Forms::FlowLayoutPanel^ UsersList;
 			this->pn_admin->Name = L"pn_admin";
 			this->pn_admin->Size = System::Drawing::Size(1485, 745);
 			this->pn_admin->TabIndex = 5;
-			// 
-			// order_history
-			// 
-			this->order_history->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-				static_cast<System::Int32>(static_cast<System::Byte>(239)));
-			this->order_history->Controls->Add(this->label46);
-			this->order_history->Controls->Add(this->orderspn);
-			this->order_history->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->order_history->Location = System::Drawing::Point(296, 0);
-			this->order_history->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->order_history->Name = L"order_history";
-			this->order_history->Size = System::Drawing::Size(1189, 745);
-			this->order_history->TabIndex = 3;
-			// 
-			// label46
-			// 
-			this->label46->Dock = System::Windows::Forms::DockStyle::Top;
-			this->label46->Font = (gcnew System::Drawing::Font(L"Segoe UI", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label46->Location = System::Drawing::Point(0, 0);
-			this->label46->Name = L"label46";
-			this->label46->Size = System::Drawing::Size(1189, 148);
-			this->label46->TabIndex = 2;
-			this->label46->Text = L"Orders List";
-			this->label46->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// orderspn
-			// 
-			this->orderspn->AutoScroll = true;
-			this->orderspn->Location = System::Drawing::Point(0, 148);
-			this->orderspn->Margin = System::Windows::Forms::Padding(4);
-			this->orderspn->Name = L"orderspn";
-			this->orderspn->Size = System::Drawing::Size(1189, 597);
-			this->orderspn->TabIndex = 3;
 			// 
 			// analytics
 			// 
@@ -1770,36 +1886,36 @@ private: System::Windows::Forms::FlowLayoutPanel^ UsersList;
 			// 
 			// productChart
 			// 
-			chartArea1->AxisY->Title = L"Sales";
-			chartArea1->AxisY->TitleFont = (gcnew System::Drawing::Font(L"Arial", 12));
-			chartArea1->Name = L"ChartArea1";
-			this->productChart->ChartAreas->Add(chartArea1);
-			legend1->Name = L"Legend1";
-			this->productChart->Legends->Add(legend1);
+			chartArea3->AxisY->Title = L"Sales";
+			chartArea3->AxisY->TitleFont = (gcnew System::Drawing::Font(L"Arial", 12));
+			chartArea3->Name = L"ChartArea1";
+			this->productChart->ChartAreas->Add(chartArea3);
+			legend3->Name = L"Legend1";
+			this->productChart->Legends->Add(legend3);
 			this->productChart->Location = System::Drawing::Point(3, 3);
 			this->productChart->Name = L"productChart";
-			series1->ChartArea = L"ChartArea1";
-			series1->Legend = L"Legend1";
-			series1->Name = L"Products";
-			this->productChart->Series->Add(series1);
+			series3->ChartArea = L"ChartArea1";
+			series3->Legend = L"Legend1";
+			series3->Name = L"Products";
+			this->productChart->Series->Add(series3);
 			this->productChart->Size = System::Drawing::Size(572, 449);
 			this->productChart->TabIndex = 0;
 			this->productChart->Text = L"productChart";
 			// 
 			// userChart
 			// 
-			chartArea2->AxisY->Title = L"Bills";
-			chartArea2->AxisY->TitleFont = (gcnew System::Drawing::Font(L"Arial", 12));
-			chartArea2->Name = L"ChartArea1";
-			this->userChart->ChartAreas->Add(chartArea2);
-			legend2->Name = L"Legend1";
-			this->userChart->Legends->Add(legend2);
+			chartArea4->AxisY->Title = L"Bills";
+			chartArea4->AxisY->TitleFont = (gcnew System::Drawing::Font(L"Arial", 12));
+			chartArea4->Name = L"ChartArea1";
+			this->userChart->ChartAreas->Add(chartArea4);
+			legend4->Name = L"Legend1";
+			this->userChart->Legends->Add(legend4);
 			this->userChart->Location = System::Drawing::Point(581, 3);
 			this->userChart->Name = L"userChart";
-			series2->ChartArea = L"ChartArea1";
-			series2->Legend = L"Legend1";
-			series2->Name = L"Users";
-			this->userChart->Series->Add(series2);
+			series4->ChartArea = L"ChartArea1";
+			series4->Legend = L"Legend1";
+			series4->Name = L"Users";
+			this->userChart->Series->Add(series4);
 			this->userChart->Size = System::Drawing::Size(572, 446);
 			this->userChart->TabIndex = 1;
 			this->userChart->Text = L"userChart";
@@ -1874,6 +1990,40 @@ private: System::Windows::Forms::FlowLayoutPanel^ UsersList;
 			this->label44->TabIndex = 0;
 			this->label44->Text = L"Users List";
 			this->label44->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// order_history
+			// 
+			this->order_history->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
+				static_cast<System::Int32>(static_cast<System::Byte>(239)));
+			this->order_history->Controls->Add(this->label46);
+			this->order_history->Controls->Add(this->orderspn);
+			this->order_history->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->order_history->Location = System::Drawing::Point(296, 0);
+			this->order_history->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->order_history->Name = L"order_history";
+			this->order_history->Size = System::Drawing::Size(1189, 745);
+			this->order_history->TabIndex = 3;
+			// 
+			// label46
+			// 
+			this->label46->Dock = System::Windows::Forms::DockStyle::Top;
+			this->label46->Font = (gcnew System::Drawing::Font(L"Segoe UI", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label46->Location = System::Drawing::Point(0, 0);
+			this->label46->Name = L"label46";
+			this->label46->Size = System::Drawing::Size(1189, 148);
+			this->label46->TabIndex = 2;
+			this->label46->Text = L"Orders List";
+			this->label46->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// orderspn
+			// 
+			this->orderspn->AutoScroll = true;
+			this->orderspn->Location = System::Drawing::Point(0, 148);
+			this->orderspn->Margin = System::Windows::Forms::Padding(4);
+			this->orderspn->Name = L"orderspn";
+			this->orderspn->Size = System::Drawing::Size(1189, 597);
+			this->orderspn->TabIndex = 3;
 			// 
 			// dashboard
 			// 
@@ -2039,8 +2189,8 @@ private: System::Windows::Forms::FlowLayoutPanel^ UsersList;
 			// 
 			// pn_defualt
 			// 
-			this->pn_defualt->Controls->Add(this->pn_viewBill);
 			this->pn_defualt->Controls->Add(this->pn_products);
+			this->pn_defualt->Controls->Add(this->pn_viewBill);
 			this->pn_defualt->Controls->Add(this->pn_edit_information);
 			this->pn_defualt->Controls->Add(this->pn_blank);
 			this->pn_defualt->Controls->Add(this->pn_orders);
@@ -2410,6 +2560,7 @@ private: System::Windows::Forms::FlowLayoutPanel^ UsersList;
 			// 
 			// pn_main_category
 			// 
+			this->pn_main_category->Controls->Add(this->btn_search);
 			this->pn_main_category->Controls->Add(this->label2);
 			this->pn_main_category->Controls->Add(this->flowLayoutPanel2);
 			this->pn_main_category->Dock = System::Windows::Forms::DockStyle::Fill;
@@ -2867,6 +3018,7 @@ private: System::Windows::Forms::FlowLayoutPanel^ UsersList;
 			// flowLayoutPanel3
 			// 
 			this->flowLayoutPanel3->AutoScroll = true;
+			this->flowLayoutPanel3->Controls->Add(this->pn_search);
 			this->flowLayoutPanel3->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->flowLayoutPanel3->Location = System::Drawing::Point(0, 0);
 			this->flowLayoutPanel3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
@@ -4520,6 +4672,23 @@ private: System::Windows::Forms::FlowLayoutPanel^ UsersList;
 			// 
 			this->printDocument1->PrintPage += gcnew System::Drawing::Printing::PrintPageEventHandler(this, &MyForm::printDocument1_PrintPage);
 			// 
+			// btn_search
+			// 
+			this->btn_search->Location = System::Drawing::Point(985, 55);
+			this->btn_search->Name = L"btn_search";
+			this->btn_search->Size = System::Drawing::Size(173, 23);
+			this->btn_search->TabIndex = 2;
+			this->btn_search->Text = L"Search bar";
+			this->btn_search->UseVisualStyleBackColor = true;
+			this->btn_search->Click += gcnew System::EventHandler(this, &MyForm::btn_search_Click);
+			// 
+			// pn_search
+			// 
+			this->pn_search->Location = System::Drawing::Point(3, 3);
+			this->pn_search->Name = L"pn_search";
+			this->pn_search->Size = System::Drawing::Size(1189, 745);
+			this->pn_search->TabIndex = 3;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -4538,7 +4707,6 @@ private: System::Windows::Forms::FlowLayoutPanel^ UsersList;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_icon))->EndInit();
 			this->pn_main_dashboard->ResumeLayout(false);
 			this->pn_admin->ResumeLayout(false);
-			this->order_history->ResumeLayout(false);
 			this->analytics->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox17))->EndInit();
 			this->panel22->ResumeLayout(false);
@@ -4547,6 +4715,7 @@ private: System::Windows::Forms::FlowLayoutPanel^ UsersList;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->userChart))->EndInit();
 			this->pn_users->ResumeLayout(false);
 			this->panel6->ResumeLayout(false);
+			this->order_history->ResumeLayout(false);
 			this->dashboard->ResumeLayout(false);
 			this->flowLayoutPanel27->ResumeLayout(false);
 			this->panel25->ResumeLayout(false);
@@ -4574,6 +4743,7 @@ private: System::Windows::Forms::FlowLayoutPanel^ UsersList;
 			this->pn_dairy_category->ResumeLayout(false);
 			this->pn_vegetable_category->ResumeLayout(false);
 			this->pn_fruits_category->ResumeLayout(false);
+			this->flowLayoutPanel3->ResumeLayout(false);
 			this->pn_edit_information->ResumeLayout(false);
 			this->pn_currentInfo->ResumeLayout(false);
 			this->pn_currentInfo->PerformLayout();
@@ -6152,6 +6322,18 @@ private: System::Void button22_Click(System::Object^ sender, System::EventArgs^ 
 
 
 
+private: System::Void btn_search_Click(System::Object^ sender, System::EventArgs^ e) {
+	
+
+	showPanel(pn_search);
+	pn_viewBill->Visible = false;
+	
+
+	}
+	
+	  
+
+ 
 };
 }
 
