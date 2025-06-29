@@ -87,115 +87,161 @@ public
 			Prdoucts_Search->Controls->Clear();
 			String ^ query = SearchBox->Text->Trim()->ToLower();
 
+			// If search query is empty, show all products
+			if (String::IsNullOrEmpty(query))
+			{
+				LoadAllProductsToSearch();
+				return;
+			}
+
+			// Search for products matching the query in name, category, or code
 			for (int i = 0; i < numOfCategories; i++)
 			{
 				for (int j = 0; j < productCounts[i]; j++)
 				{
 					PRODUCT ^ p = products[i][j];
-					if (p != nullptr && p->Name->ToLower()->Contains(query))
+					if (p != nullptr &&
+						(p->Name->ToLower()->Contains(query) ||
+						 p->Category->ToLower()->Contains(query) ||
+						 p->Code->ToLower()->Contains(query)))
 					{
-
-						// Outer Panel
-						Panel ^ productPanel = gcnew Panel();
-						productPanel->BackColor = Color::White;
-						productPanel->Size = Drawing::Size(230, 360);
-						productPanel->Margin = System::Windows::Forms::Padding(10);
-						productPanel->Padding = System::Windows::Forms::Padding(10);
-						productPanel->BorderStyle = BorderStyle::FixedSingle;
-
-						// Inner Panel
-						FlowLayoutPanel ^ innerPanel = gcnew FlowLayoutPanel();
-						innerPanel->FlowDirection = FlowDirection::TopDown;
-						innerPanel->WrapContents = false;
-						innerPanel->AutoSize = true;
-						innerPanel->Dock = DockStyle::Fill;
-						innerPanel->BackColor = Color::White;
-
-						// Image
-						PictureBox ^ img = gcnew PictureBox();
-						img->Size = Drawing::Size(200, 100);
-						img->SizeMode = PictureBoxSizeMode::Zoom;
-						String ^ imagePath = "images\\" + p->Name->Replace(" ", "_") + ".jpg";
-						try
-						{
-							img->Image = Image::FromFile(imagePath);
-						}
-						catch (...)
-						{
-							img->Image = Image::FromFile("images\\placeholder.jpg");
-						}
-						innerPanel->Controls->Add(img);
-
-						// Product Name
-						Label ^ lblName = gcnew Label();
-						lblName->Text = "Name: " + p->Name;
-						lblName->Font = gcnew Drawing::Font("Arial", 10, FontStyle::Bold);
-						lblName->AutoSize = false;
-						lblName->Width = 210;
-						lblName->TextAlign = ContentAlignment::MiddleCenter;
-						innerPanel->Controls->Add(lblName);
-
-						// Other Details
-						array<String ^> ^ details = {
-							"Code: " + p->Code,
-							"Category: " + p->Category,
-							"Production Date: " + p->ProductionDate,
-							"Expiration Date: " + p->ExpiredDate,
-							"Price: " + p->Price.ToString("0.00") + " EGP"};
-
-						for each (String ^ line in details)
-						{
-							Label ^ lbl = gcnew Label();
-							lbl->Text = line;
-							lbl->AutoSize = false;
-							lbl->Width = 210;
-							lbl->TextAlign = ContentAlignment::MiddleCenter;
-							innerPanel->Controls->Add(lbl);
-						}
-
-						// Quantity Label
-						Label ^ qtyLabel = gcnew Label();
-						qtyLabel->Text = "Quantity:";
-						qtyLabel->AutoSize = false;
-						qtyLabel->Width = 210;
-						qtyLabel->TextAlign = ContentAlignment::MiddleCenter;
-						innerPanel->Controls->Add(qtyLabel);
-
-						// Quantity Selector
-						NumericUpDown ^ quantitySelector = gcnew NumericUpDown();
-						quantitySelector->Minimum = 0;
-						quantitySelector->Maximum = 10;
-						quantitySelector->DecimalPlaces = 0;
-						quantitySelector->Increment = 1;
-						quantitySelector->Value = 0;
-						quantitySelector->Width = 80;
-						quantitySelector->TextAlign = HorizontalAlignment::Center;
-						quantitySelector->Margin = System::Windows::Forms::Padding(75, 5, 75, 10);
-						innerPanel->Controls->Add(quantitySelector);
-
-						// Add to Cart Button
-						Button ^ addBtn = gcnew Button();
-						addBtn->Text = "Add to Cart";
-						addBtn->Width = 210;
-						addBtn->Height = 35;
-						addBtn->BackColor = Color::FromArgb(230, 52, 98);
-						addBtn->ForeColor = Color::White;
-						addBtn->FlatStyle = FlatStyle::Flat;
-						addBtn->Tag = quantitySelector;
-						addBtn->Click += gcnew EventHandler(this, &MyForm::handleAddToCart);
-						innerPanel->Controls->Add(addBtn);
-
-						// Add to UI
-						productPanel->Controls->Add(innerPanel);
-						Prdoucts_Search->Controls->Add(productPanel);
+						CreateProductDisplayPanel(p);
 					}
 				}
+			}
+
+			// If no products found, show a message
+			if (Prdoucts_Search->Controls->Count == 0)
+			{
+				Label ^ noResultsLabel = gcnew Label();
+				noResultsLabel->Text = "No products found matching '" + SearchBox->Text + "'";
+				noResultsLabel->Font = gcnew Drawing::Font("Segoe UI", 16, FontStyle::Regular);
+				noResultsLabel->ForeColor = Color::Gray;
+				noResultsLabel->AutoSize = true;
+				noResultsLabel->Location = Point(50, 50);
+				Prdoucts_Search->Controls->Add(noResultsLabel);
 			}
 		}
 
 		void closeSearchPanel(Object ^ sender, EventArgs ^ e)
 		{
 			pn_search->Visible = false;
+		}
+
+		void LoadAllProductsToSearch()
+		{
+			// Clear existing products
+			Prdoucts_Search->Controls->Clear();
+
+			// Load all products from all categories
+			for (int i = 0; i < numOfCategories; i++)
+			{
+				for (int j = 0; j < productCounts[i]; j++)
+				{
+					PRODUCT ^ p = products[i][j];
+					if (p != nullptr)
+					{
+						CreateProductDisplayPanel(p);
+					}
+				}
+			}
+		}
+
+		void CreateProductDisplayPanel(PRODUCT ^ p)
+		{
+			// Outer Panel
+			Panel ^ productPanel = gcnew Panel();
+			productPanel->BackColor = Color::White;
+			productPanel->Size = Drawing::Size(230, 360);
+			productPanel->Margin = System::Windows::Forms::Padding(10);
+			productPanel->Padding = System::Windows::Forms::Padding(10);
+			productPanel->BorderStyle = BorderStyle::FixedSingle;
+
+			// Inner Panel
+			FlowLayoutPanel ^ innerPanel = gcnew FlowLayoutPanel();
+			innerPanel->FlowDirection = FlowDirection::TopDown;
+			innerPanel->WrapContents = false;
+			innerPanel->AutoSize = true;
+			innerPanel->Dock = DockStyle::Fill;
+			innerPanel->BackColor = Color::White;
+
+			// Image
+			PictureBox ^ img = gcnew PictureBox();
+			img->Size = Drawing::Size(200, 100);
+			img->SizeMode = PictureBoxSizeMode::Zoom;
+			String ^ imagePath = "images\\" + p->Name->Replace(" ", "_") + ".jpg";
+			try
+			{
+				img->Image = Image::FromFile(imagePath);
+			}
+			catch (...)
+			{
+				img->Image = Image::FromFile("images\\placeholder.jpg");
+			}
+			innerPanel->Controls->Add(img);
+
+			// Product Name
+			Label ^ lblName = gcnew Label();
+			lblName->Text = "Name: " + p->Name;
+			lblName->Font = gcnew Drawing::Font("Arial", 10, FontStyle::Bold);
+			lblName->AutoSize = false;
+			lblName->Width = 210;
+			lblName->TextAlign = ContentAlignment::MiddleCenter;
+			innerPanel->Controls->Add(lblName);
+
+			// Other Details
+			array<String ^> ^ details = {
+				"Code: " + p->Code,
+				"Category: " + p->Category,
+				"Production Date: " + p->ProductionDate,
+				"Expiration Date: " + p->ExpiredDate,
+				"Price: " + p->Price.ToString("0.00") + " EGP"};
+
+			for each (String ^ line in details)
+			{
+				Label ^ lbl = gcnew Label();
+				lbl->Text = line;
+				lbl->AutoSize = false;
+				lbl->Width = 210;
+				lbl->TextAlign = ContentAlignment::MiddleCenter;
+				innerPanel->Controls->Add(lbl);
+			}
+
+			// Quantity Label
+			Label ^ qtyLabel = gcnew Label();
+			qtyLabel->Text = "Quantity:";
+			qtyLabel->AutoSize = false;
+			qtyLabel->Width = 210;
+			qtyLabel->TextAlign = ContentAlignment::MiddleCenter;
+			innerPanel->Controls->Add(qtyLabel);
+
+			// Quantity Selector
+			NumericUpDown ^ quantitySelector = gcnew NumericUpDown();
+			quantitySelector->Minimum = 0;
+			quantitySelector->Maximum = 10;
+			quantitySelector->DecimalPlaces = 0;
+			quantitySelector->Increment = 1;
+			quantitySelector->Value = 0;
+			quantitySelector->Width = 80;
+			quantitySelector->TextAlign = HorizontalAlignment::Center;
+			quantitySelector->Margin = System::Windows::Forms::Padding(75, 5, 75, 10);
+			innerPanel->Controls->Add(quantitySelector);
+
+			// Add to Cart Button
+			Button ^ addBtn = gcnew Button();
+			addBtn->Text = "Add to Cart";
+			addBtn->Width = 210;
+			addBtn->Height = 35;
+			addBtn->BackColor = Color::FromArgb(230, 52, 98);
+			addBtn->ForeColor = Color::White;
+			addBtn->FlatStyle = FlatStyle::Flat;
+			addBtn->Tag = quantitySelector;
+			addBtn->Click += gcnew EventHandler(this, &MyForm::handleAddToCart);
+			innerPanel->Controls->Add(addBtn);
+
+			// Add to UI
+			productPanel->Controls->Add(innerPanel);
+			Prdoucts_Search->Controls->Add(productPanel);
 		}
 
 		void refreshOrderList()
@@ -7334,9 +7380,11 @@ public
 	private:
 		System::Void btn_search_Click(System::Object ^ sender, System::EventArgs ^ e)
 		{
-
 			showPanel(pn_search);
 			pn_viewBill->Visible = false;
+			// Clear search box and load all products initially when search panel is opened
+			SearchBox->Text = "";
+			LoadAllProductsToSearch();
 		}
 
 	private:
