@@ -70,6 +70,8 @@ public
 
 		// Global variables inside MyForm class
 		int searchResultIndex = 0;
+	private: System::Windows::Forms::Label^ label28;
+	public:
 		List<PRODUCT^>^ matchedSearchResults = gcnew List<PRODUCT^>();
 
 		void openSearchPanel(Object^ sender, EventArgs^ e)
@@ -2017,15 +2019,16 @@ public
 
 	private:
 		System::Windows::Forms::Panel ^ analytics;
+private: System::Windows::Forms::Panel^ pn_dashboard;
 
 	private:
-		System::Windows::Forms::PictureBox ^ pictureBox17;
+
 
 	private:
-		System::Windows::Forms::Panel ^ panel22;
+
 
 	private:
-		System::Windows::Forms::Label ^ label61;
+
 
 	private:
 		System::Windows::Forms::Panel ^ panel6;
@@ -2100,13 +2103,13 @@ public
 		void InitializeComponent(void)
 		{
 			this->components = (gcnew System::ComponentModel::Container());
-			System::ComponentModel::ComponentResourceManager ^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
-			System::Windows::Forms::DataVisualization::Charting::ChartArea ^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend ^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series ^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::ChartArea ^ chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend ^ legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series ^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->pn_upper_bar = (gcnew System::Windows::Forms::Panel());
 			this->lb_brand_name = (gcnew System::Windows::Forms::Label());
 			this->pb_icon = (gcnew System::Windows::Forms::PictureBox());
@@ -2115,13 +2118,11 @@ public
 			this->pn_main_dashboard = (gcnew System::Windows::Forms::Panel());
 			this->pn_admin = (gcnew System::Windows::Forms::Panel());
 			this->analytics = (gcnew System::Windows::Forms::Panel());
-			this->pictureBox17 = (gcnew System::Windows::Forms::PictureBox());
-			this->panel22 = (gcnew System::Windows::Forms::Panel());
+			this->pn_dashboard = (gcnew System::Windows::Forms::Panel());
 			this->flowLayoutPanel26 = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->productChart = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->userChart = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->TotalSales = (gcnew System::Windows::Forms::Label());
-			this->label61 = (gcnew System::Windows::Forms::Label());
 			this->pn_users = (gcnew System::Windows::Forms::Panel());
 			this->panel6 = (gcnew System::Windows::Forms::Panel());
 			this->UsersList = (gcnew System::Windows::Forms::FlowLayoutPanel());
@@ -2330,27 +2331,27 @@ public
 			this->printPreviewDialog1 = (gcnew System::Windows::Forms::PrintPreviewDialog());
 			this->printDocument1 = (gcnew System::Drawing::Printing::PrintDocument());
 			this->colorDialog1 = (gcnew System::Windows::Forms::ColorDialog());
+			this->label28 = (gcnew System::Windows::Forms::Label());
 			this->pn_upper_bar->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pb_icon))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_icon))->BeginInit();
 			this->pn_main_dashboard->SuspendLayout();
 			this->pn_admin->SuspendLayout();
 			this->analytics->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox17))->BeginInit();
-			this->panel22->SuspendLayout();
+			this->pn_dashboard->SuspendLayout();
 			this->flowLayoutPanel26->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->productChart))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->userChart))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->productChart))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->userChart))->BeginInit();
 			this->pn_users->SuspendLayout();
 			this->panel6->SuspendLayout();
 			this->blank_admin->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox6))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox6))->BeginInit();
 			this->order_history->SuspendLayout();
 			this->dashboard->SuspendLayout();
 			this->flowLayoutPanel27->SuspendLayout();
 			this->panel25->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox18))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox18))->BeginInit();
 			this->background->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox16))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox16))->BeginInit();
 			this->pn_defualt->SuspendLayout();
 			this->pn_search->SuspendLayout();
 			this->pn_products->SuspendLayout();
@@ -2367,121 +2368,120 @@ public
 			this->pn_vegetable_category->SuspendLayout();
 			this->pn_fruits_category->SuspendLayout();
 			this->pn_blank->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pb_blankpicutre))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_blankpicutre))->BeginInit();
 			this->pn_viewBill->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pb_theinvoice))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_theinvoice))->BeginInit();
 			this->pn->SuspendLayout();
 			this->flowLayoutPanel13->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->dataGridView1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->panel2->SuspendLayout();
 			this->pn_edit_information->SuspendLayout();
 			this->pn_currentInfo->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox13))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox13))->BeginInit();
 			this->pn_editInfo->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox11))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox11))->BeginInit();
 			this->pn_resetPassword->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox12))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox12))->BeginInit();
 			this->pn_orders->SuspendLayout();
 			this->pn_left_bar->SuspendLayout();
 			this->flowLayoutPanel1->SuspendLayout();
 			this->pn_picture->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pb_profile))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_profile))->BeginInit();
 			this->pn_login->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox8))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox7))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox2))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox8))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			this->pn_start->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox5))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox4))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox3))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->welcomeScreen))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->welcomeScreen))->BeginInit();
 			this->pn_register->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox9))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox10))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox9))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox10))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->pn_thankyou->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->axWindowsMediaPlayer1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->axWindowsMediaPlayer1))->BeginInit();
 			this->SuspendLayout();
-			//
+			// 
 			// pn_upper_bar
-			//
+			// 
 			this->pn_upper_bar->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(51)), static_cast<System::Int32>(static_cast<System::Byte>(55)),
-																			 static_cast<System::Int32>(static_cast<System::Byte>(69)));
+				static_cast<System::Int32>(static_cast<System::Byte>(69)));
 			this->pn_upper_bar->Controls->Add(this->lb_brand_name);
 			this->pn_upper_bar->Controls->Add(this->pb_icon);
 			this->pn_upper_bar->Controls->Add(this->btn_minimize);
 			this->pn_upper_bar->Controls->Add(this->btn_close);
 			this->pn_upper_bar->Dock = System::Windows::Forms::DockStyle::Top;
 			this->pn_upper_bar->Location = System::Drawing::Point(0, 0);
-			this->pn_upper_bar->Margin = System::Windows::Forms::Padding(2);
+			this->pn_upper_bar->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pn_upper_bar->Name = L"pn_upper_bar";
-			this->pn_upper_bar->Size = System::Drawing::Size(1114, 45);
+			this->pn_upper_bar->Size = System::Drawing::Size(1485, 55);
 			this->pn_upper_bar->TabIndex = 0;
-			//
+			// 
 			// lb_brand_name
-			//
+			// 
 			this->lb_brand_name->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																	 static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->lb_brand_name->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(254)), static_cast<System::Int32>(static_cast<System::Byte>(134)),
-																			  static_cast<System::Int32>(static_cast<System::Byte>(6)));
-			this->lb_brand_name->Location = System::Drawing::Point(57, 5);
-			this->lb_brand_name->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+				static_cast<System::Int32>(static_cast<System::Byte>(6)));
+			this->lb_brand_name->Location = System::Drawing::Point(76, 6);
 			this->lb_brand_name->Name = L"lb_brand_name";
-			this->lb_brand_name->Size = System::Drawing::Size(188, 35);
+			this->lb_brand_name->Size = System::Drawing::Size(251, 43);
 			this->lb_brand_name->TabIndex = 4;
 			this->lb_brand_name->Text = L"SUPERMARKO";
-			//
+			// 
 			// pb_icon
-			//
-			this->pb_icon->BackgroundImage = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"pb_icon.BackgroundImage")));
+			// 
+			this->pb_icon->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pb_icon.BackgroundImage")));
 			this->pb_icon->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pb_icon->Location = System::Drawing::Point(2, 2);
-			this->pb_icon->Margin = System::Windows::Forms::Padding(2);
+			this->pb_icon->Location = System::Drawing::Point(3, 2);
+			this->pb_icon->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pb_icon->Name = L"pb_icon";
-			this->pb_icon->Size = System::Drawing::Size(70, 41);
+			this->pb_icon->Size = System::Drawing::Size(93, 50);
 			this->pb_icon->TabIndex = 3;
 			this->pb_icon->TabStop = false;
-			//
+			// 
 			// btn_minimize
-			//
+			// 
 			this->btn_minimize->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->btn_minimize->BackgroundImage = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"btn_minimize.BackgroundImage")));
+			this->btn_minimize->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_minimize.BackgroundImage")));
 			this->btn_minimize->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->btn_minimize->FlatAppearance->BorderSize = 0;
 			this->btn_minimize->FlatAppearance->MouseDownBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(102)),
-																									  static_cast<System::Int32>(static_cast<System::Byte>(106)), static_cast<System::Int32>(static_cast<System::Byte>(120)));
+				static_cast<System::Int32>(static_cast<System::Byte>(106)), static_cast<System::Int32>(static_cast<System::Byte>(120)));
 			this->btn_minimize->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(127)),
-																									  static_cast<System::Int32>(static_cast<System::Byte>(131)), static_cast<System::Int32>(static_cast<System::Byte>(145)));
+				static_cast<System::Int32>(static_cast<System::Byte>(131)), static_cast<System::Int32>(static_cast<System::Byte>(145)));
 			this->btn_minimize->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btn_minimize->Location = System::Drawing::Point(1007, 4);
-			this->btn_minimize->Margin = System::Windows::Forms::Padding(2);
+			this->btn_minimize->Location = System::Drawing::Point(1343, 5);
+			this->btn_minimize->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btn_minimize->Name = L"btn_minimize";
-			this->btn_minimize->Size = System::Drawing::Size(49, 37);
+			this->btn_minimize->Size = System::Drawing::Size(65, 46);
 			this->btn_minimize->TabIndex = 2;
 			this->btn_minimize->UseVisualStyleBackColor = true;
 			this->btn_minimize->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
-			//
+			// 
 			// btn_close
-			//
+			// 
 			this->btn_close->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->btn_close->BackgroundImage = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"btn_close.BackgroundImage")));
+			this->btn_close->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_close.BackgroundImage")));
 			this->btn_close->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->btn_close->FlatAppearance->BorderSize = 0;
 			this->btn_close->FlatAppearance->MouseDownBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(102)),
-																								   static_cast<System::Int32>(static_cast<System::Byte>(106)), static_cast<System::Int32>(static_cast<System::Byte>(120)));
+				static_cast<System::Int32>(static_cast<System::Byte>(106)), static_cast<System::Int32>(static_cast<System::Byte>(120)));
 			this->btn_close->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(127)),
-																								   static_cast<System::Int32>(static_cast<System::Byte>(131)), static_cast<System::Int32>(static_cast<System::Byte>(145)));
+				static_cast<System::Int32>(static_cast<System::Byte>(131)), static_cast<System::Int32>(static_cast<System::Byte>(145)));
 			this->btn_close->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btn_close->Location = System::Drawing::Point(1051, 4);
-			this->btn_close->Margin = System::Windows::Forms::Padding(4);
+			this->btn_close->Location = System::Drawing::Point(1401, 5);
+			this->btn_close->Margin = System::Windows::Forms::Padding(5, 5, 5, 5);
 			this->btn_close->Name = L"btn_close";
-			this->btn_close->Size = System::Drawing::Size(60, 37);
+			this->btn_close->Size = System::Drawing::Size(80, 46);
 			this->btn_close->TabIndex = 1;
 			this->btn_close->UseVisualStyleBackColor = true;
 			this->btn_close->Click += gcnew System::EventHandler(this, &MyForm::btn_close_Click);
-			//
+			// 
 			// pn_main_dashboard
-			//
+			// 
 			this->pn_main_dashboard->AllowDrop = true;
 			this->pn_main_dashboard->Controls->Add(this->pn_admin);
 			this->pn_main_dashboard->Controls->Add(this->pn_defualt);
@@ -2490,414 +2490,394 @@ public
 			this->pn_main_dashboard->Controls->Add(this->pn_register);
 			this->pn_main_dashboard->Controls->Add(this->pn_thankyou);
 			this->pn_main_dashboard->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn_main_dashboard->Location = System::Drawing::Point(0, 45);
-			this->pn_main_dashboard->Margin = System::Windows::Forms::Padding(2);
+			this->pn_main_dashboard->Location = System::Drawing::Point(0, 55);
+			this->pn_main_dashboard->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pn_main_dashboard->Name = L"pn_main_dashboard";
-			this->pn_main_dashboard->Size = System::Drawing::Size(1114, 605);
+			this->pn_main_dashboard->Size = System::Drawing::Size(1485, 745);
 			this->pn_main_dashboard->TabIndex = 1;
-			//
+			// 
 			// pn_admin
-			//
+			// 
 			this->pn_admin->Controls->Add(this->analytics);
+			this->pn_admin->Controls->Add(this->order_history);
 			this->pn_admin->Controls->Add(this->pn_users);
 			this->pn_admin->Controls->Add(this->blank_admin);
-			this->pn_admin->Controls->Add(this->order_history);
 			this->pn_admin->Controls->Add(this->dashboard);
 			this->pn_admin->Controls->Add(this->background);
 			this->pn_admin->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_admin->Location = System::Drawing::Point(0, 0);
-			this->pn_admin->Margin = System::Windows::Forms::Padding(2);
+			this->pn_admin->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pn_admin->Name = L"pn_admin";
-			this->pn_admin->Size = System::Drawing::Size(1114, 605);
+			this->pn_admin->Size = System::Drawing::Size(1485, 745);
 			this->pn_admin->TabIndex = 5;
-			//
+			// 
 			// analytics
-			//
+			// 
 			this->analytics->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-																		  static_cast<System::Int32>(static_cast<System::Byte>(230)));
-			this->analytics->Controls->Add(this->pictureBox17);
-			this->analytics->Controls->Add(this->panel22);
-			this->analytics->Controls->Add(this->label61);
+				static_cast<System::Int32>(static_cast<System::Byte>(230)));
+			this->analytics->Controls->Add(this->pn_dashboard);
+			this->analytics->Controls->Add(this->label28);
 			this->analytics->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->analytics->Location = System::Drawing::Point(222, 0);
-			this->analytics->Margin = System::Windows::Forms::Padding(2);
+			this->analytics->Location = System::Drawing::Point(296, 0);
+			this->analytics->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->analytics->Name = L"analytics";
-			this->analytics->Size = System::Drawing::Size(892, 605);
+			this->analytics->Size = System::Drawing::Size(1189, 745);
 			this->analytics->TabIndex = 5;
-			//
-			// pictureBox17
-			//
-			this->pictureBox17->BackgroundImage = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"pictureBox17.BackgroundImage")));
-			this->pictureBox17->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox17->Location = System::Drawing::Point(718, 12);
-			this->pictureBox17->Margin = System::Windows::Forms::Padding(2);
-			this->pictureBox17->Name = L"pictureBox17";
-			this->pictureBox17->Size = System::Drawing::Size(152, 82);
-			this->pictureBox17->TabIndex = 3;
-			this->pictureBox17->TabStop = false;
-			//
-			// panel22
-			//
-			this->panel22->Controls->Add(this->flowLayoutPanel26);
-			this->panel22->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->panel22->Location = System::Drawing::Point(0, 103);
-			this->panel22->Margin = System::Windows::Forms::Padding(2);
-			this->panel22->Name = L"panel22";
-			this->panel22->Size = System::Drawing::Size(892, 502);
-			this->panel22->TabIndex = 2;
-			//
+			// 
+			// pn_dashboard
+			// 
+			this->pn_dashboard->Controls->Add(this->flowLayoutPanel26);
+			this->pn_dashboard->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->pn_dashboard->Location = System::Drawing::Point(0, 148);
+			this->pn_dashboard->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->pn_dashboard->Name = L"pn_dashboard";
+			this->pn_dashboard->Size = System::Drawing::Size(1189, 597);
+			this->pn_dashboard->TabIndex = 2;
+			// 
 			// flowLayoutPanel26
-			//
+			// 
 			this->flowLayoutPanel26->Controls->Add(this->productChart);
 			this->flowLayoutPanel26->Controls->Add(this->userChart);
 			this->flowLayoutPanel26->Controls->Add(this->TotalSales);
-			this->flowLayoutPanel26->Location = System::Drawing::Point(4, 6);
-			this->flowLayoutPanel26->Margin = System::Windows::Forms::Padding(2);
+			this->flowLayoutPanel26->Location = System::Drawing::Point(5, 7);
+			this->flowLayoutPanel26->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->flowLayoutPanel26->Name = L"flowLayoutPanel26";
-			this->flowLayoutPanel26->Size = System::Drawing::Size(879, 485);
+			this->flowLayoutPanel26->Size = System::Drawing::Size(1172, 597);
 			this->flowLayoutPanel26->TabIndex = 0;
-			//
+			// 
 			// productChart
-			//
+			// 
 			this->productChart->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-																			 static_cast<System::Int32>(static_cast<System::Byte>(230)));
+				static_cast<System::Int32>(static_cast<System::Byte>(230)));
 			chartArea1->AxisY->Title = L"Sales";
 			chartArea1->AxisY->TitleFont = (gcnew System::Drawing::Font(L"Arial", 12));
 			chartArea1->Name = L"ChartArea1";
 			this->productChart->ChartAreas->Add(chartArea1);
 			legend1->Name = L"Legend1";
 			this->productChart->Legends->Add(legend1);
-			this->productChart->Location = System::Drawing::Point(2, 2);
-			this->productChart->Margin = System::Windows::Forms::Padding(2);
+			this->productChart->Location = System::Drawing::Point(3, 2);
+			this->productChart->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->productChart->Name = L"productChart";
 			series1->ChartArea = L"ChartArea1";
 			series1->Legend = L"Legend1";
 			series1->Name = L"Products";
 			this->productChart->Series->Add(series1);
-			this->productChart->Size = System::Drawing::Size(429, 365);
+			this->productChart->Size = System::Drawing::Size(572, 449);
 			this->productChart->TabIndex = 0;
 			this->productChart->Text = L"productChart";
-			//
+			// 
 			// userChart
-			//
+			// 
 			this->userChart->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-																		  static_cast<System::Int32>(static_cast<System::Byte>(230)));
+				static_cast<System::Int32>(static_cast<System::Byte>(230)));
 			chartArea2->AxisY->Title = L"Bills";
 			chartArea2->AxisY->TitleFont = (gcnew System::Drawing::Font(L"Arial", 12));
 			chartArea2->Name = L"ChartArea1";
 			this->userChart->ChartAreas->Add(chartArea2);
 			legend2->Name = L"Legend1";
 			this->userChart->Legends->Add(legend2);
-			this->userChart->Location = System::Drawing::Point(435, 2);
-			this->userChart->Margin = System::Windows::Forms::Padding(2);
+			this->userChart->Location = System::Drawing::Point(581, 2);
+			this->userChart->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->userChart->Name = L"userChart";
 			series2->ChartArea = L"ChartArea1";
 			series2->Legend = L"Legend1";
 			series2->Name = L"Users";
 			this->userChart->Series->Add(series2);
-			this->userChart->Size = System::Drawing::Size(429, 362);
+			this->userChart->Size = System::Drawing::Size(572, 446);
 			this->userChart->TabIndex = 1;
 			this->userChart->Text = L"userChart";
-			//
+			// 
 			// TotalSales
-			//
+			// 
 			this->TotalSales->Font = (gcnew System::Drawing::Font(L"Segoe UI", 21.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																  static_cast<System::Byte>(0)));
-			this->TotalSales->Location = System::Drawing::Point(2, 369);
-			this->TotalSales->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+				static_cast<System::Byte>(0)));
+			this->TotalSales->Location = System::Drawing::Point(3, 453);
 			this->TotalSales->Name = L"TotalSales";
-			this->TotalSales->Size = System::Drawing::Size(864, 37);
+			this->TotalSales->Size = System::Drawing::Size(1152, 46);
 			this->TotalSales->TabIndex = 2;
 			this->TotalSales->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			//
-			// label61
-			//
-			this->label61->Dock = System::Windows::Forms::DockStyle::Top;
-			this->label61->Font = (gcnew System::Drawing::Font(L"Segoe UI", 48, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															   static_cast<System::Byte>(0)));
-			this->label61->Location = System::Drawing::Point(0, 0);
-			this->label61->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-			this->label61->Name = L"label61";
-			this->label61->Size = System::Drawing::Size(892, 103);
-			this->label61->TabIndex = 1;
-			this->label61->Text = L"Analytics";
-			this->label61->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			//
+			// 
 			// pn_users
-			//
+			// 
 			this->pn_users->Anchor = System::Windows::Forms::AnchorStyles::Top;
 			this->pn_users->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-																		 static_cast<System::Int32>(static_cast<System::Byte>(239)));
+				static_cast<System::Int32>(static_cast<System::Byte>(239)));
 			this->pn_users->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->pn_users->Controls->Add(this->panel6);
 			this->pn_users->Controls->Add(this->label44);
-			this->pn_users->Location = System::Drawing::Point(222, 0);
-			this->pn_users->Margin = System::Windows::Forms::Padding(2);
+			this->pn_users->Location = System::Drawing::Point(296, 0);
+			this->pn_users->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pn_users->Name = L"pn_users";
-			this->pn_users->Size = System::Drawing::Size(892, 605);
+			this->pn_users->Size = System::Drawing::Size(1189, 745);
 			this->pn_users->TabIndex = 1;
-			//
+			// 
 			// panel6
-			//
+			// 
 			this->panel6->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-																	   static_cast<System::Int32>(static_cast<System::Byte>(230)));
+				static_cast<System::Int32>(static_cast<System::Byte>(230)));
 			this->panel6->Controls->Add(this->UsersList);
 			this->panel6->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->panel6->Location = System::Drawing::Point(0, 120);
+			this->panel6->Location = System::Drawing::Point(0, 147);
+			this->panel6->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->panel6->Name = L"panel6";
-			this->panel6->Size = System::Drawing::Size(892, 485);
+			this->panel6->Size = System::Drawing::Size(1189, 598);
 			this->panel6->TabIndex = 2;
-			//
+			// 
 			// UsersList
-			//
+			// 
 			this->UsersList->AutoScroll = true;
 			this->UsersList->Location = System::Drawing::Point(0, 2);
-			this->UsersList->Margin = System::Windows::Forms::Padding(2);
+			this->UsersList->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->UsersList->Name = L"UsersList";
-			this->UsersList->Size = System::Drawing::Size(889, 495);
+			this->UsersList->Size = System::Drawing::Size(1185, 609);
 			this->UsersList->TabIndex = 0;
-			//
+			// 
 			// label44
-			//
-			this->label44->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-																		static_cast<System::Int32>(static_cast<System::Byte>(230)));
+			// 
+			this->label44->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(52)), static_cast<System::Int32>(static_cast<System::Byte>(73)),
+				static_cast<System::Int32>(static_cast<System::Byte>(94)));
 			this->label44->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->label44->Dock = System::Windows::Forms::DockStyle::Top;
-			this->label44->Font = (gcnew System::Drawing::Font(L"Segoe UI", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															   static_cast<System::Byte>(0)));
+			this->label44->Font = (gcnew System::Drawing::Font(L"Segoe UI", 28.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label44->ForeColor = System::Drawing::Color::White;
 			this->label44->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->label44->Location = System::Drawing::Point(0, 0);
-			this->label44->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label44->Name = L"label44";
-			this->label44->Size = System::Drawing::Size(892, 120);
+			this->label44->Padding = System::Windows::Forms::Padding(40, 0, 0, 0);
+			this->label44->Size = System::Drawing::Size(1189, 147);
 			this->label44->TabIndex = 0;
 			this->label44->Text = L"Users List";
-			this->label44->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			//
+			this->label44->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			// 
 			// blank_admin
-			//
+			// 
 			this->blank_admin->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-																			static_cast<System::Int32>(static_cast<System::Byte>(230)));
+				static_cast<System::Int32>(static_cast<System::Byte>(230)));
 			this->blank_admin->Controls->Add(this->pictureBox6);
 			this->blank_admin->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->blank_admin->Location = System::Drawing::Point(222, 0);
-			this->blank_admin->Margin = System::Windows::Forms::Padding(2);
+			this->blank_admin->Location = System::Drawing::Point(296, 0);
+			this->blank_admin->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->blank_admin->Name = L"blank_admin";
-			this->blank_admin->Size = System::Drawing::Size(892, 605);
+			this->blank_admin->Size = System::Drawing::Size(1189, 745);
 			this->blank_admin->TabIndex = 7;
-			//
+			// 
 			// pictureBox6
-			//
+			// 
 			this->pictureBox6->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->pictureBox6->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pictureBox6->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"pictureBox6.Image")));
+			this->pictureBox6->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox6.Image")));
 			this->pictureBox6->Location = System::Drawing::Point(0, 0);
-			this->pictureBox6->Margin = System::Windows::Forms::Padding(2);
+			this->pictureBox6->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pictureBox6->Name = L"pictureBox6";
-			this->pictureBox6->Size = System::Drawing::Size(892, 605);
+			this->pictureBox6->Size = System::Drawing::Size(1189, 745);
 			this->pictureBox6->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox6->TabIndex = 2;
 			this->pictureBox6->TabStop = false;
-			//
+			// 
 			// order_history
-			//
+			// 
 			this->order_history->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-																			  static_cast<System::Int32>(static_cast<System::Byte>(239)));
+				static_cast<System::Int32>(static_cast<System::Byte>(239)));
 			this->order_history->Controls->Add(this->label46);
 			this->order_history->Controls->Add(this->orderspn);
 			this->order_history->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->order_history->Location = System::Drawing::Point(222, 0);
-			this->order_history->Margin = System::Windows::Forms::Padding(2);
+			this->order_history->Location = System::Drawing::Point(296, 0);
+			this->order_history->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->order_history->Name = L"order_history";
-			this->order_history->Size = System::Drawing::Size(892, 605);
+			this->order_history->Size = System::Drawing::Size(1189, 745);
 			this->order_history->TabIndex = 3;
-			//
+			// 
 			// label46
-			//
+			// 
+			this->label46->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(52)), static_cast<System::Int32>(static_cast<System::Byte>(73)),
+				static_cast<System::Int32>(static_cast<System::Byte>(94)));
 			this->label46->Dock = System::Windows::Forms::DockStyle::Top;
-			this->label46->Font = (gcnew System::Drawing::Font(L"Segoe UI", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															   static_cast<System::Byte>(0)));
+			this->label46->Font = (gcnew System::Drawing::Font(L"Segoe UI", 28.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label46->ForeColor = System::Drawing::Color::White;
 			this->label46->Location = System::Drawing::Point(0, 0);
-			this->label46->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label46->Name = L"label46";
-			this->label46->Size = System::Drawing::Size(892, 120);
+			this->label46->Padding = System::Windows::Forms::Padding(40, 0, 0, 0);
+			this->label46->Size = System::Drawing::Size(1189, 148);
 			this->label46->TabIndex = 2;
 			this->label46->Text = L"Orders List";
-			this->label46->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			//
+			this->label46->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			// 
 			// orderspn
-			//
+			// 
 			this->orderspn->AutoScroll = true;
-			this->orderspn->Location = System::Drawing::Point(0, 120);
+			this->orderspn->Location = System::Drawing::Point(0, 148);
+			this->orderspn->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->orderspn->Name = L"orderspn";
-			this->orderspn->Size = System::Drawing::Size(892, 485);
+			this->orderspn->Size = System::Drawing::Size(1189, 597);
 			this->orderspn->TabIndex = 3;
-			//
+			// 
 			// dashboard
-			//
+			// 
 			this->dashboard->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(51)), static_cast<System::Int32>(static_cast<System::Byte>(55)),
-																		  static_cast<System::Int32>(static_cast<System::Byte>(69)));
+				static_cast<System::Int32>(static_cast<System::Byte>(69)));
 			this->dashboard->Controls->Add(this->flowLayoutPanel27);
 			this->dashboard->Controls->Add(this->panel25);
 			this->dashboard->Dock = System::Windows::Forms::DockStyle::Left;
 			this->dashboard->Location = System::Drawing::Point(0, 0);
-			this->dashboard->Margin = System::Windows::Forms::Padding(2);
+			this->dashboard->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->dashboard->Name = L"dashboard";
-			this->dashboard->Size = System::Drawing::Size(222, 605);
+			this->dashboard->Size = System::Drawing::Size(296, 745);
 			this->dashboard->TabIndex = 0;
-			//
+			// 
 			// flowLayoutPanel27
-			//
+			// 
+			this->flowLayoutPanel27->Controls->Add(this->button23);
 			this->flowLayoutPanel27->Controls->Add(this->button20);
 			this->flowLayoutPanel27->Controls->Add(this->button22);
-			this->flowLayoutPanel27->Controls->Add(this->button23);
 			this->flowLayoutPanel27->Controls->Add(this->button24);
 			this->flowLayoutPanel27->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->flowLayoutPanel27->Location = System::Drawing::Point(0, 163);
-			this->flowLayoutPanel27->Margin = System::Windows::Forms::Padding(2);
+			this->flowLayoutPanel27->Location = System::Drawing::Point(0, 201);
+			this->flowLayoutPanel27->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->flowLayoutPanel27->Name = L"flowLayoutPanel27";
-			this->flowLayoutPanel27->Size = System::Drawing::Size(222, 442);
+			this->flowLayoutPanel27->Size = System::Drawing::Size(296, 544);
 			this->flowLayoutPanel27->TabIndex = 1;
-			//
+			// 
 			// button20
-			//
-			this->button20->BackColor = System::Drawing::Color::DimGray;
+			// 
+			this->button20->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(51)), static_cast<System::Int32>(static_cast<System::Byte>(55)),
+				static_cast<System::Int32>(static_cast<System::Byte>(69)));
 			this->button20->FlatAppearance->BorderSize = 0;
 			this->button20->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button20->Font = (gcnew System::Drawing::Font(L"Segoe UI", 17.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->button20->ForeColor = System::Drawing::Color::White;
-			this->button20->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"button20.Image")));
+			this->button20->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button20.Image")));
 			this->button20->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->button20->Location = System::Drawing::Point(2, 2);
-			this->button20->Margin = System::Windows::Forms::Padding(2);
+			this->button20->Location = System::Drawing::Point(3, 80);
+			this->button20->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button20->Name = L"button20";
-			this->button20->Size = System::Drawing::Size(220, 60);
+			this->button20->Size = System::Drawing::Size(293, 74);
 			this->button20->TabIndex = 0;
 			this->button20->Text = L"Users";
 			this->button20->UseVisualStyleBackColor = false;
 			this->button20->Click += gcnew System::EventHandler(this, &MyForm::button20_Click);
-			//
+			// 
 			// button22
-			//
+			// 
 			this->button22->FlatAppearance->BorderSize = 0;
 			this->button22->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button22->Font = (gcnew System::Drawing::Font(L"Segoe UI", 17.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->button22->ForeColor = System::Drawing::Color::White;
-			this->button22->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"button22.Image")));
+			this->button22->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button22.Image")));
 			this->button22->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->button22->Location = System::Drawing::Point(2, 66);
-			this->button22->Margin = System::Windows::Forms::Padding(2);
+			this->button22->Location = System::Drawing::Point(3, 158);
+			this->button22->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button22->Name = L"button22";
-			this->button22->Size = System::Drawing::Size(220, 60);
+			this->button22->Size = System::Drawing::Size(293, 74);
 			this->button22->TabIndex = 2;
 			this->button22->Text = L"Orders";
 			this->button22->UseVisualStyleBackColor = true;
 			this->button22->Click += gcnew System::EventHandler(this, &MyForm::button22_Click);
-			//
+			// 
 			// button23
-			//
+			// 
 			this->button23->FlatAppearance->BorderSize = 0;
 			this->button23->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button23->Font = (gcnew System::Drawing::Font(L"Segoe UI", 17.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->button23->ForeColor = System::Drawing::Color::White;
-			this->button23->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"button23.Image")));
+			this->button23->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button23.Image")));
 			this->button23->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->button23->Location = System::Drawing::Point(2, 130);
-			this->button23->Margin = System::Windows::Forms::Padding(2);
+			this->button23->Location = System::Drawing::Point(3, 2);
+			this->button23->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button23->Name = L"button23";
-			this->button23->Size = System::Drawing::Size(220, 60);
+			this->button23->Size = System::Drawing::Size(293, 74);
 			this->button23->TabIndex = 4;
 			this->button23->Text = L"Analytics";
 			this->button23->UseVisualStyleBackColor = true;
 			this->button23->Click += gcnew System::EventHandler(this, &MyForm::button23_Click);
-			//
+			// 
 			// button24
-			//
+			// 
 			this->button24->Dock = System::Windows::Forms::DockStyle::Bottom;
 			this->button24->FlatAppearance->BorderSize = 0;
 			this->button24->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button24->Font = (gcnew System::Drawing::Font(L"Segoe UI", 17.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->button24->ForeColor = System::Drawing::Color::White;
-			this->button24->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"button24.Image")));
+			this->button24->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button24.Image")));
 			this->button24->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->button24->Location = System::Drawing::Point(2, 261);
-			this->button24->Margin = System::Windows::Forms::Padding(2, 69, 2, 2);
+			this->button24->Location = System::Drawing::Point(3, 319);
+			this->button24->Margin = System::Windows::Forms::Padding(3, 85, 3, 2);
 			this->button24->Name = L"button24";
-			this->button24->Size = System::Drawing::Size(220, 80);
+			this->button24->Size = System::Drawing::Size(293, 98);
 			this->button24->TabIndex = 3;
 			this->button24->Text = L"Log out";
 			this->button24->UseVisualStyleBackColor = true;
 			this->button24->Click += gcnew System::EventHandler(this, &MyForm::btn_logout_Click);
-			//
+			// 
 			// panel25
-			//
+			// 
 			this->panel25->Controls->Add(this->label62);
 			this->panel25->Controls->Add(this->pictureBox18);
 			this->panel25->Dock = System::Windows::Forms::DockStyle::Top;
 			this->panel25->Location = System::Drawing::Point(0, 0);
-			this->panel25->Margin = System::Windows::Forms::Padding(2);
+			this->panel25->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->panel25->Name = L"panel25";
-			this->panel25->Size = System::Drawing::Size(222, 163);
+			this->panel25->Size = System::Drawing::Size(296, 201);
 			this->panel25->TabIndex = 0;
-			//
+			// 
 			// label62
-			//
+			// 
 			this->label62->BackColor = System::Drawing::Color::Transparent;
 			this->label62->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															   static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->label62->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
-																		static_cast<System::Int32>(static_cast<System::Byte>(255)));
-			this->label62->Location = System::Drawing::Point(39, 137);
-			this->label62->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->label62->Location = System::Drawing::Point(52, 169);
 			this->label62->Name = L"label62";
-			this->label62->Size = System::Drawing::Size(148, 19);
+			this->label62->Size = System::Drawing::Size(197, 23);
 			this->label62->TabIndex = 1;
 			this->label62->Text = L"ADMIN\r\n";
 			this->label62->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			//
+			// 
 			// pictureBox18
-			//
-			this->pictureBox18->BackgroundImage = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"pictureBox18.BackgroundImage")));
+			// 
+			this->pictureBox18->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox18.BackgroundImage")));
 			this->pictureBox18->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
-			this->pictureBox18->Location = System::Drawing::Point(34, 4);
-			this->pictureBox18->Margin = System::Windows::Forms::Padding(2);
+			this->pictureBox18->Location = System::Drawing::Point(45, 5);
+			this->pictureBox18->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pictureBox18->Name = L"pictureBox18";
-			this->pictureBox18->Size = System::Drawing::Size(153, 131);
+			this->pictureBox18->Size = System::Drawing::Size(204, 161);
 			this->pictureBox18->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureBox18->TabIndex = 0;
 			this->pictureBox18->TabStop = false;
-			//
+			// 
 			// background
-			//
+			// 
 			this->background->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-																		   static_cast<System::Int32>(static_cast<System::Byte>(230)));
+				static_cast<System::Int32>(static_cast<System::Byte>(230)));
 			this->background->Controls->Add(this->pictureBox16);
 			this->background->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->background->Location = System::Drawing::Point(0, 0);
-			this->background->Margin = System::Windows::Forms::Padding(2);
+			this->background->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->background->Name = L"background";
-			this->background->Size = System::Drawing::Size(1114, 605);
+			this->background->Size = System::Drawing::Size(1485, 745);
 			this->background->TabIndex = 4;
-			//
+			// 
 			// pictureBox16
-			//
+			// 
 			this->pictureBox16->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->pictureBox16->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pictureBox16->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"pictureBox16.Image")));
+			this->pictureBox16->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox16.Image")));
 			this->pictureBox16->Location = System::Drawing::Point(0, 0);
-			this->pictureBox16->Margin = System::Windows::Forms::Padding(2);
+			this->pictureBox16->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pictureBox16->Name = L"pictureBox16";
-			this->pictureBox16->Size = System::Drawing::Size(1114, 605);
+			this->pictureBox16->Size = System::Drawing::Size(1485, 745);
 			this->pictureBox16->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox16->TabIndex = 2;
 			this->pictureBox16->TabStop = false;
-			//
+			// 
 			// pn_defualt
-			//
+			// 
 			this->pn_defualt->Controls->Add(this->pn_search);
 			this->pn_defualt->Controls->Add(this->pn_products);
 			this->pn_defualt->Controls->Add(this->pn_blank);
@@ -2907,80 +2887,81 @@ public
 			this->pn_defualt->Controls->Add(this->pn_left_bar);
 			this->pn_defualt->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_defualt->Location = System::Drawing::Point(0, 0);
-			this->pn_defualt->Margin = System::Windows::Forms::Padding(2);
+			this->pn_defualt->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pn_defualt->Name = L"pn_defualt";
-			this->pn_defualt->Size = System::Drawing::Size(1114, 605);
+			this->pn_defualt->Size = System::Drawing::Size(1485, 745);
 			this->pn_defualt->TabIndex = 4;
-			//
+			// 
 			// pn_search
-			//
+			// 
 			this->pn_search->Controls->Add(this->label27);
 			this->pn_search->Controls->Add(this->Prdoucts_Search);
 			this->pn_search->Controls->Add(this->closeBtn);
 			this->pn_search->Controls->Add(this->SearchBox);
 			this->pn_search->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn_search->Location = System::Drawing::Point(222, 0);
-			this->pn_search->Margin = System::Windows::Forms::Padding(2);
+			this->pn_search->Location = System::Drawing::Point(296, 0);
+			this->pn_search->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pn_search->Name = L"pn_search";
-			this->pn_search->Size = System::Drawing::Size(892, 605);
+			this->pn_search->Size = System::Drawing::Size(1189, 745);
 			this->pn_search->TabIndex = 3;
 			this->pn_search->Visible = false;
-			//
+			// 
 			// label27
-			//
+			// 
 			this->label27->Font = (gcnew System::Drawing::Font(L"Segoe UI", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															   static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->label27->ForeColor = System::Drawing::Color::Black;
-			this->label27->Location = System::Drawing::Point(10, 22);
-			this->label27->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label27->Location = System::Drawing::Point(13, 27);
 			this->label27->Name = L"label27";
-			this->label27->Size = System::Drawing::Size(156, 40);
+			this->label27->Size = System::Drawing::Size(208, 49);
 			this->label27->TabIndex = 5;
 			this->label27->Text = L"Search for";
-			//
+			// 
 			// Prdoucts_Search
-			//
+			// 
 			this->Prdoucts_Search->AutoScroll = true;
-			this->Prdoucts_Search->Location = System::Drawing::Point(16, 80);
+			this->Prdoucts_Search->Location = System::Drawing::Point(21, 98);
+			this->Prdoucts_Search->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Prdoucts_Search->Name = L"Prdoucts_Search";
-			this->Prdoucts_Search->Size = System::Drawing::Size(843, 505);
+			this->Prdoucts_Search->Size = System::Drawing::Size(1124, 622);
 			this->Prdoucts_Search->TabIndex = 6;
-			//
+			// 
 			// closeBtn
-			//
+			// 
 			this->closeBtn->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->closeBtn->BackgroundImage = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"closeBtn.BackgroundImage")));
+			this->closeBtn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"closeBtn.BackgroundImage")));
 			this->closeBtn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->closeBtn->FlatAppearance->BorderSize = 0;
 			this->closeBtn->FlatAppearance->MouseDownBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(102)),
-																								  static_cast<System::Int32>(static_cast<System::Byte>(106)), static_cast<System::Int32>(static_cast<System::Byte>(120)));
+				static_cast<System::Int32>(static_cast<System::Byte>(106)), static_cast<System::Int32>(static_cast<System::Byte>(120)));
 			this->closeBtn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(127)),
-																								  static_cast<System::Int32>(static_cast<System::Byte>(131)), static_cast<System::Int32>(static_cast<System::Byte>(145)));
+				static_cast<System::Int32>(static_cast<System::Byte>(131)), static_cast<System::Int32>(static_cast<System::Byte>(145)));
 			this->closeBtn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->closeBtn->Location = System::Drawing::Point(799, 22);
-			this->closeBtn->Margin = System::Windows::Forms::Padding(4);
+			this->closeBtn->Location = System::Drawing::Point(1065, 27);
+			this->closeBtn->Margin = System::Windows::Forms::Padding(5, 5, 5, 5);
 			this->closeBtn->Name = L"closeBtn";
-			this->closeBtn->Size = System::Drawing::Size(60, 37);
+			this->closeBtn->Size = System::Drawing::Size(80, 46);
 			this->closeBtn->TabIndex = 5;
 			this->closeBtn->UseVisualStyleBackColor = true;
 			this->closeBtn->Click += gcnew System::EventHandler(this, &MyForm::closeSearchPanel);
-			//
+			// 
 			// SearchBox
-			//
+			// 
 			this->SearchBox->BackColor = System::Drawing::Color::White;
 			this->SearchBox->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->SearchBox->Font = (gcnew System::Drawing::Font(L"Segoe UI Semibold", 21.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																 static_cast<System::Byte>(0)));
-			this->SearchBox->Location = System::Drawing::Point(170, 22);
+				static_cast<System::Byte>(0)));
+			this->SearchBox->Location = System::Drawing::Point(227, 27);
+			this->SearchBox->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->SearchBox->Name = L"SearchBox";
-			this->SearchBox->Size = System::Drawing::Size(604, 46);
+			this->SearchBox->Size = System::Drawing::Size(805, 56);
 			this->SearchBox->TabIndex = 0;
 			this->SearchBox->TextChanged += gcnew System::EventHandler(this, &MyForm::performSearch);
-			//
+			// 
 			// pn_products
-			//
+			// 
 			this->pn_products->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-																			static_cast<System::Int32>(static_cast<System::Byte>(239)));
+				static_cast<System::Int32>(static_cast<System::Byte>(239)));
 			this->pn_products->Controls->Add(this->pn_main_category);
 			this->pn_products->Controls->Add(this->pn_pet_supplies_category);
 			this->pn_products->Controls->Add(this->pn_household_category);
@@ -2993,35 +2974,35 @@ public
 			this->pn_products->Controls->Add(this->pn_vegetable_category);
 			this->pn_products->Controls->Add(this->pn_fruits_category);
 			this->pn_products->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn_products->Location = System::Drawing::Point(222, 0);
-			this->pn_products->Margin = System::Windows::Forms::Padding(2);
+			this->pn_products->Location = System::Drawing::Point(296, 0);
+			this->pn_products->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pn_products->Name = L"pn_products";
-			this->pn_products->Size = System::Drawing::Size(892, 605);
+			this->pn_products->Size = System::Drawing::Size(1189, 745);
 			this->pn_products->TabIndex = 2;
-			//
+			// 
 			// pn_main_category
-			//
+			// 
 			this->pn_main_category->Controls->Add(this->btn_search);
 			this->pn_main_category->Controls->Add(this->label2);
 			this->pn_main_category->Controls->Add(this->flowLayoutPanel2);
 			this->pn_main_category->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_main_category->Location = System::Drawing::Point(0, 0);
-			this->pn_main_category->Margin = System::Windows::Forms::Padding(2);
+			this->pn_main_category->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pn_main_category->Name = L"pn_main_category";
-			this->pn_main_category->Size = System::Drawing::Size(892, 605);
+			this->pn_main_category->Size = System::Drawing::Size(1189, 745);
 			this->pn_main_category->TabIndex = 14;
-			//
+			// 
 			// btn_search
-			//
+			// 
 			this->btn_search->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-																  static_cast<System::Byte>(0)));
-			this->btn_search->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"btn_search.Image")));
+				static_cast<System::Byte>(0)));
+			this->btn_search->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_search.Image")));
 			this->btn_search->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->btn_search->Location = System::Drawing::Point(725, 39);
-			this->btn_search->Margin = System::Windows::Forms::Padding(2);
+			this->btn_search->Location = System::Drawing::Point(967, 48);
+			this->btn_search->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btn_search->Name = L"btn_search";
-			this->btn_search->Padding = System::Windows::Forms::Padding(5, 2, 5, 2);
-			this->btn_search->Size = System::Drawing::Size(146, 43);
+			this->btn_search->Padding = System::Windows::Forms::Padding(7, 2, 7, 2);
+			this->btn_search->Size = System::Drawing::Size(195, 53);
 			this->btn_search->TabIndex = 2;
 			this->btn_search->Text = L"Search";
 			this->btn_search->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
@@ -3030,25 +3011,24 @@ public
 			this->btn_search->MouseEnter += gcnew System::EventHandler(this, &MyForm::btn_search_MouseEnter);
 			this->btn_search->MouseLeave += gcnew System::EventHandler(this, &MyForm::btn_search_MouseLeave);
 			this->btn_search->MouseHover += gcnew System::EventHandler(this, &MyForm::btn_search_MouseHover);
-			//
+			// 
 			// label2
-			//
+			// 
 			this->label2->Dock = System::Windows::Forms::DockStyle::Top;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Segoe UI", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															  static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->label2->Location = System::Drawing::Point(0, 0);
-			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(892, 120);
+			this->label2->Size = System::Drawing::Size(1189, 148);
 			this->label2->TabIndex = 1;
 			this->label2->Text = L"Products";
 			this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			//
+			// 
 			// flowLayoutPanel2
-			//
+			// 
 			this->flowLayoutPanel2->AutoScroll = true;
 			this->flowLayoutPanel2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)),
-																				 static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(230)));
+				static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(230)));
 			this->flowLayoutPanel2->Controls->Add(this->btn_fruits);
 			this->flowLayoutPanel2->Controls->Add(this->btn_vegetabe);
 			this->flowLayoutPanel2->Controls->Add(this->btn_dairy);
@@ -3059,27 +3039,27 @@ public
 			this->flowLayoutPanel2->Controls->Add(this->btn_snacks);
 			this->flowLayoutPanel2->Controls->Add(this->btn_household);
 			this->flowLayoutPanel2->Controls->Add(this->btn_pet);
-			this->flowLayoutPanel2->Location = System::Drawing::Point(-5, 120);
-			this->flowLayoutPanel2->Margin = System::Windows::Forms::Padding(2);
+			this->flowLayoutPanel2->Location = System::Drawing::Point(-7, 148);
+			this->flowLayoutPanel2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->flowLayoutPanel2->Name = L"flowLayoutPanel2";
-			this->flowLayoutPanel2->Padding = System::Windows::Forms::Padding(10, 0, 0, 0);
-			this->flowLayoutPanel2->Size = System::Drawing::Size(895, 485);
+			this->flowLayoutPanel2->Padding = System::Windows::Forms::Padding(13, 0, 0, 0);
+			this->flowLayoutPanel2->Size = System::Drawing::Size(1193, 597);
 			this->flowLayoutPanel2->TabIndex = 0;
-			//
+			// 
 			// btn_fruits
-			//
+			// 
 			this->btn_fruits->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(254)), static_cast<System::Int32>(static_cast<System::Byte>(160)),
-																		   static_cast<System::Int32>(static_cast<System::Byte>(52)));
+				static_cast<System::Int32>(static_cast<System::Byte>(52)));
 			this->btn_fruits->FlatAppearance->BorderSize = 0;
 			this->btn_fruits->Font = (gcnew System::Drawing::Font(L"Segoe UI", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																  static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->btn_fruits->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->btn_fruits->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"btn_fruits.Image")));
+			this->btn_fruits->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_fruits.Image")));
 			this->btn_fruits->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			this->btn_fruits->Location = System::Drawing::Point(15, 6);
-			this->btn_fruits->Margin = System::Windows::Forms::Padding(5, 6, 4, 4);
+			this->btn_fruits->Location = System::Drawing::Point(20, 7);
+			this->btn_fruits->Margin = System::Windows::Forms::Padding(7, 7, 5, 5);
 			this->btn_fruits->Name = L"btn_fruits";
-			this->btn_fruits->Size = System::Drawing::Size(420, 110);
+			this->btn_fruits->Size = System::Drawing::Size(560, 135);
 			this->btn_fruits->TabIndex = 0;
 			this->btn_fruits->Text = L"Fresh Fruits";
 			this->btn_fruits->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -3088,21 +3068,21 @@ public
 			this->btn_fruits->UseMnemonic = false;
 			this->btn_fruits->UseVisualStyleBackColor = false;
 			this->btn_fruits->Click += gcnew System::EventHandler(this, &MyForm::btn_fruits_Click);
-			//
+			// 
 			// btn_vegetabe
-			//
+			// 
 			this->btn_vegetabe->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(230)), static_cast<System::Int32>(static_cast<System::Byte>(52)),
-																			 static_cast<System::Int32>(static_cast<System::Byte>(98)));
+				static_cast<System::Int32>(static_cast<System::Byte>(98)));
 			this->btn_vegetabe->FlatAppearance->BorderSize = 0;
 			this->btn_vegetabe->Font = (gcnew System::Drawing::Font(L"Segoe UI", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																	static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->btn_vegetabe->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->btn_vegetabe->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"btn_vegetabe.Image")));
+			this->btn_vegetabe->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_vegetabe.Image")));
 			this->btn_vegetabe->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			this->btn_vegetabe->Location = System::Drawing::Point(444, 6);
-			this->btn_vegetabe->Margin = System::Windows::Forms::Padding(5, 6, 4, 4);
+			this->btn_vegetabe->Location = System::Drawing::Point(592, 7);
+			this->btn_vegetabe->Margin = System::Windows::Forms::Padding(7, 7, 5, 5);
 			this->btn_vegetabe->Name = L"btn_vegetabe";
-			this->btn_vegetabe->Size = System::Drawing::Size(420, 110);
+			this->btn_vegetabe->Size = System::Drawing::Size(560, 135);
 			this->btn_vegetabe->TabIndex = 1;
 			this->btn_vegetabe->Text = L"Fresh Vegetables";
 			this->btn_vegetabe->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -3110,21 +3090,21 @@ public
 			this->btn_vegetabe->UseCompatibleTextRendering = true;
 			this->btn_vegetabe->UseVisualStyleBackColor = false;
 			this->btn_vegetabe->Click += gcnew System::EventHandler(this, &MyForm::btn_vegetabe_Click);
-			//
+			// 
 			// btn_dairy
-			//
+			// 
 			this->btn_dairy->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(230)), static_cast<System::Int32>(static_cast<System::Byte>(52)),
-																		  static_cast<System::Int32>(static_cast<System::Byte>(98)));
+				static_cast<System::Int32>(static_cast<System::Byte>(98)));
 			this->btn_dairy->FlatAppearance->BorderSize = 0;
 			this->btn_dairy->Font = (gcnew System::Drawing::Font(L"Segoe UI", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																 static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->btn_dairy->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->btn_dairy->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"btn_dairy.Image")));
+			this->btn_dairy->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_dairy.Image")));
 			this->btn_dairy->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			this->btn_dairy->Location = System::Drawing::Point(15, 126);
-			this->btn_dairy->Margin = System::Windows::Forms::Padding(5, 6, 4, 4);
+			this->btn_dairy->Location = System::Drawing::Point(20, 154);
+			this->btn_dairy->Margin = System::Windows::Forms::Padding(7, 7, 5, 5);
 			this->btn_dairy->Name = L"btn_dairy";
-			this->btn_dairy->Size = System::Drawing::Size(420, 110);
+			this->btn_dairy->Size = System::Drawing::Size(560, 135);
 			this->btn_dairy->TabIndex = 2;
 			this->btn_dairy->Text = L"Dairy and Eggs";
 			this->btn_dairy->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -3132,21 +3112,21 @@ public
 			this->btn_dairy->UseCompatibleTextRendering = true;
 			this->btn_dairy->UseVisualStyleBackColor = false;
 			this->btn_dairy->Click += gcnew System::EventHandler(this, &MyForm::btn_dairy_Click);
-			//
+			// 
 			// btn_butcher
-			//
+			// 
 			this->btn_butcher->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(254)), static_cast<System::Int32>(static_cast<System::Byte>(160)),
-																			static_cast<System::Int32>(static_cast<System::Byte>(52)));
+				static_cast<System::Int32>(static_cast<System::Byte>(52)));
 			this->btn_butcher->FlatAppearance->BorderSize = 0;
 			this->btn_butcher->Font = (gcnew System::Drawing::Font(L"Segoe UI", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																   static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->btn_butcher->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->btn_butcher->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"btn_butcher.Image")));
+			this->btn_butcher->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_butcher.Image")));
 			this->btn_butcher->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			this->btn_butcher->Location = System::Drawing::Point(444, 126);
-			this->btn_butcher->Margin = System::Windows::Forms::Padding(5, 6, 4, 4);
+			this->btn_butcher->Location = System::Drawing::Point(592, 154);
+			this->btn_butcher->Margin = System::Windows::Forms::Padding(7, 7, 5, 5);
 			this->btn_butcher->Name = L"btn_butcher";
-			this->btn_butcher->Size = System::Drawing::Size(420, 110);
+			this->btn_butcher->Size = System::Drawing::Size(560, 135);
 			this->btn_butcher->TabIndex = 3;
 			this->btn_butcher->Text = L"Bucher shop";
 			this->btn_butcher->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -3154,21 +3134,21 @@ public
 			this->btn_butcher->UseCompatibleTextRendering = true;
 			this->btn_butcher->UseVisualStyleBackColor = false;
 			this->btn_butcher->Click += gcnew System::EventHandler(this, &MyForm::btn_butcher_Click);
-			//
+			// 
 			// btn_seafood
-			//
+			// 
 			this->btn_seafood->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(254)), static_cast<System::Int32>(static_cast<System::Byte>(160)),
-																			static_cast<System::Int32>(static_cast<System::Byte>(52)));
+				static_cast<System::Int32>(static_cast<System::Byte>(52)));
 			this->btn_seafood->FlatAppearance->BorderSize = 0;
 			this->btn_seafood->Font = (gcnew System::Drawing::Font(L"Segoe UI", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																   static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->btn_seafood->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->btn_seafood->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"btn_seafood.Image")));
+			this->btn_seafood->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_seafood.Image")));
 			this->btn_seafood->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			this->btn_seafood->Location = System::Drawing::Point(15, 246);
-			this->btn_seafood->Margin = System::Windows::Forms::Padding(5, 6, 4, 4);
+			this->btn_seafood->Location = System::Drawing::Point(20, 301);
+			this->btn_seafood->Margin = System::Windows::Forms::Padding(7, 7, 5, 5);
 			this->btn_seafood->Name = L"btn_seafood";
-			this->btn_seafood->Size = System::Drawing::Size(420, 110);
+			this->btn_seafood->Size = System::Drawing::Size(560, 135);
 			this->btn_seafood->TabIndex = 4;
 			this->btn_seafood->Text = L"Seafood";
 			this->btn_seafood->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -3176,21 +3156,21 @@ public
 			this->btn_seafood->UseCompatibleTextRendering = true;
 			this->btn_seafood->UseVisualStyleBackColor = false;
 			this->btn_seafood->Click += gcnew System::EventHandler(this, &MyForm::btn_seafood_Click);
-			//
+			// 
 			// btn_poultry
-			//
+			// 
 			this->btn_poultry->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(230)), static_cast<System::Int32>(static_cast<System::Byte>(52)),
-																			static_cast<System::Int32>(static_cast<System::Byte>(98)));
+				static_cast<System::Int32>(static_cast<System::Byte>(98)));
 			this->btn_poultry->FlatAppearance->BorderSize = 0;
 			this->btn_poultry->Font = (gcnew System::Drawing::Font(L"Segoe UI", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																   static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->btn_poultry->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->btn_poultry->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"btn_poultry.Image")));
+			this->btn_poultry->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_poultry.Image")));
 			this->btn_poultry->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			this->btn_poultry->Location = System::Drawing::Point(444, 246);
-			this->btn_poultry->Margin = System::Windows::Forms::Padding(5, 6, 4, 4);
+			this->btn_poultry->Location = System::Drawing::Point(592, 301);
+			this->btn_poultry->Margin = System::Windows::Forms::Padding(7, 7, 5, 5);
 			this->btn_poultry->Name = L"btn_poultry";
-			this->btn_poultry->Size = System::Drawing::Size(420, 110);
+			this->btn_poultry->Size = System::Drawing::Size(560, 135);
 			this->btn_poultry->TabIndex = 5;
 			this->btn_poultry->Text = L"Poultry";
 			this->btn_poultry->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -3198,21 +3178,21 @@ public
 			this->btn_poultry->UseCompatibleTextRendering = true;
 			this->btn_poultry->UseVisualStyleBackColor = false;
 			this->btn_poultry->Click += gcnew System::EventHandler(this, &MyForm::btn_poultry_Click);
-			//
+			// 
 			// btn_bakery
-			//
+			// 
 			this->btn_bakery->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(230)), static_cast<System::Int32>(static_cast<System::Byte>(52)),
-																		   static_cast<System::Int32>(static_cast<System::Byte>(98)));
+				static_cast<System::Int32>(static_cast<System::Byte>(98)));
 			this->btn_bakery->FlatAppearance->BorderSize = 0;
 			this->btn_bakery->Font = (gcnew System::Drawing::Font(L"Segoe UI", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																  static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->btn_bakery->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->btn_bakery->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"btn_bakery.Image")));
+			this->btn_bakery->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_bakery.Image")));
 			this->btn_bakery->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			this->btn_bakery->Location = System::Drawing::Point(15, 366);
-			this->btn_bakery->Margin = System::Windows::Forms::Padding(5, 6, 4, 4);
+			this->btn_bakery->Location = System::Drawing::Point(20, 448);
+			this->btn_bakery->Margin = System::Windows::Forms::Padding(7, 7, 5, 5);
 			this->btn_bakery->Name = L"btn_bakery";
-			this->btn_bakery->Size = System::Drawing::Size(420, 110);
+			this->btn_bakery->Size = System::Drawing::Size(560, 135);
 			this->btn_bakery->TabIndex = 6;
 			this->btn_bakery->Text = L"Bakery and Bread";
 			this->btn_bakery->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -3220,21 +3200,21 @@ public
 			this->btn_bakery->UseCompatibleTextRendering = true;
 			this->btn_bakery->UseVisualStyleBackColor = false;
 			this->btn_bakery->Click += gcnew System::EventHandler(this, &MyForm::btn_bakery_Click);
-			//
+			// 
 			// btn_snacks
-			//
+			// 
 			this->btn_snacks->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(254)), static_cast<System::Int32>(static_cast<System::Byte>(160)),
-																		   static_cast<System::Int32>(static_cast<System::Byte>(52)));
+				static_cast<System::Int32>(static_cast<System::Byte>(52)));
 			this->btn_snacks->FlatAppearance->BorderSize = 0;
 			this->btn_snacks->Font = (gcnew System::Drawing::Font(L"Segoe UI", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																  static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->btn_snacks->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->btn_snacks->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"btn_snacks.Image")));
+			this->btn_snacks->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_snacks.Image")));
 			this->btn_snacks->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			this->btn_snacks->Location = System::Drawing::Point(444, 366);
-			this->btn_snacks->Margin = System::Windows::Forms::Padding(5, 6, 4, 4);
+			this->btn_snacks->Location = System::Drawing::Point(592, 448);
+			this->btn_snacks->Margin = System::Windows::Forms::Padding(7, 7, 5, 5);
 			this->btn_snacks->Name = L"btn_snacks";
-			this->btn_snacks->Size = System::Drawing::Size(420, 110);
+			this->btn_snacks->Size = System::Drawing::Size(560, 135);
 			this->btn_snacks->TabIndex = 7;
 			this->btn_snacks->Text = L"Snacks and Sweets";
 			this->btn_snacks->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -3242,21 +3222,21 @@ public
 			this->btn_snacks->UseCompatibleTextRendering = true;
 			this->btn_snacks->UseVisualStyleBackColor = false;
 			this->btn_snacks->Click += gcnew System::EventHandler(this, &MyForm::btn_snacks_Click);
-			//
+			// 
 			// btn_household
-			//
+			// 
 			this->btn_household->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(254)), static_cast<System::Int32>(static_cast<System::Byte>(160)),
-																			  static_cast<System::Int32>(static_cast<System::Byte>(52)));
+				static_cast<System::Int32>(static_cast<System::Byte>(52)));
 			this->btn_household->FlatAppearance->BorderSize = 0;
 			this->btn_household->Font = (gcnew System::Drawing::Font(L"Segoe UI", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																	 static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->btn_household->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->btn_household->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"btn_household.Image")));
+			this->btn_household->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_household.Image")));
 			this->btn_household->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			this->btn_household->Location = System::Drawing::Point(15, 486);
-			this->btn_household->Margin = System::Windows::Forms::Padding(5, 6, 4, 4);
+			this->btn_household->Location = System::Drawing::Point(20, 595);
+			this->btn_household->Margin = System::Windows::Forms::Padding(7, 7, 5, 5);
 			this->btn_household->Name = L"btn_household";
-			this->btn_household->Size = System::Drawing::Size(420, 110);
+			this->btn_household->Size = System::Drawing::Size(560, 135);
 			this->btn_household->TabIndex = 8;
 			this->btn_household->Text = L"Household and Cleaning supplies";
 			this->btn_household->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -3264,21 +3244,21 @@ public
 			this->btn_household->UseCompatibleTextRendering = true;
 			this->btn_household->UseVisualStyleBackColor = false;
 			this->btn_household->Click += gcnew System::EventHandler(this, &MyForm::btn_household_Click);
-			//
+			// 
 			// btn_pet
-			//
+			// 
 			this->btn_pet->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(230)), static_cast<System::Int32>(static_cast<System::Byte>(52)),
-																		static_cast<System::Int32>(static_cast<System::Byte>(98)));
+				static_cast<System::Int32>(static_cast<System::Byte>(98)));
 			this->btn_pet->FlatAppearance->BorderSize = 0;
 			this->btn_pet->Font = (gcnew System::Drawing::Font(L"Segoe UI", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															   static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->btn_pet->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->btn_pet->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"btn_pet.Image")));
+			this->btn_pet->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_pet.Image")));
 			this->btn_pet->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			this->btn_pet->Location = System::Drawing::Point(444, 486);
-			this->btn_pet->Margin = System::Windows::Forms::Padding(5, 6, 4, 4);
+			this->btn_pet->Location = System::Drawing::Point(592, 595);
+			this->btn_pet->Margin = System::Windows::Forms::Padding(7, 7, 5, 5);
 			this->btn_pet->Name = L"btn_pet";
-			this->btn_pet->Size = System::Drawing::Size(420, 110);
+			this->btn_pet->Size = System::Drawing::Size(560, 135);
 			this->btn_pet->TabIndex = 9;
 			this->btn_pet->Text = L"Pet Supplies";
 			this->btn_pet->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -3286,259 +3266,259 @@ public
 			this->btn_pet->UseCompatibleTextRendering = true;
 			this->btn_pet->UseVisualStyleBackColor = false;
 			this->btn_pet->Click += gcnew System::EventHandler(this, &MyForm::btn_pet_Click);
-			//
+			// 
 			// pn_pet_supplies_category
-			//
+			// 
 			this->pn_pet_supplies_category->Controls->Add(this->flowLayoutPanel12);
 			this->pn_pet_supplies_category->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_pet_supplies_category->Location = System::Drawing::Point(0, 0);
-			this->pn_pet_supplies_category->Margin = System::Windows::Forms::Padding(2);
+			this->pn_pet_supplies_category->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pn_pet_supplies_category->Name = L"pn_pet_supplies_category";
-			this->pn_pet_supplies_category->Size = System::Drawing::Size(892, 605);
+			this->pn_pet_supplies_category->Size = System::Drawing::Size(1189, 745);
 			this->pn_pet_supplies_category->TabIndex = 6;
-			//
+			// 
 			// flowLayoutPanel12
-			//
+			// 
 			this->flowLayoutPanel12->AutoScroll = true;
 			this->flowLayoutPanel12->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->flowLayoutPanel12->Location = System::Drawing::Point(0, 0);
-			this->flowLayoutPanel12->Margin = System::Windows::Forms::Padding(2);
+			this->flowLayoutPanel12->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->flowLayoutPanel12->Name = L"flowLayoutPanel12";
-			this->flowLayoutPanel12->Size = System::Drawing::Size(892, 605);
+			this->flowLayoutPanel12->Size = System::Drawing::Size(1189, 745);
 			this->flowLayoutPanel12->TabIndex = 0;
-			//
+			// 
 			// pn_household_category
-			//
+			// 
 			this->pn_household_category->Controls->Add(this->flowLayoutPanel11);
 			this->pn_household_category->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_household_category->Location = System::Drawing::Point(0, 0);
-			this->pn_household_category->Margin = System::Windows::Forms::Padding(2);
+			this->pn_household_category->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pn_household_category->Name = L"pn_household_category";
-			this->pn_household_category->Size = System::Drawing::Size(892, 605);
+			this->pn_household_category->Size = System::Drawing::Size(1189, 745);
 			this->pn_household_category->TabIndex = 17;
-			//
+			// 
 			// flowLayoutPanel11
-			//
+			// 
 			this->flowLayoutPanel11->AutoScroll = true;
 			this->flowLayoutPanel11->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->flowLayoutPanel11->Location = System::Drawing::Point(0, 0);
-			this->flowLayoutPanel11->Margin = System::Windows::Forms::Padding(2);
+			this->flowLayoutPanel11->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->flowLayoutPanel11->Name = L"flowLayoutPanel11";
-			this->flowLayoutPanel11->Size = System::Drawing::Size(892, 605);
+			this->flowLayoutPanel11->Size = System::Drawing::Size(1189, 745);
 			this->flowLayoutPanel11->TabIndex = 0;
-			//
+			// 
 			// pn_snacks_category
-			//
+			// 
 			this->pn_snacks_category->Controls->Add(this->flowLayoutPanel10);
 			this->pn_snacks_category->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_snacks_category->Location = System::Drawing::Point(0, 0);
-			this->pn_snacks_category->Margin = System::Windows::Forms::Padding(2);
+			this->pn_snacks_category->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pn_snacks_category->Name = L"pn_snacks_category";
-			this->pn_snacks_category->Size = System::Drawing::Size(892, 605);
+			this->pn_snacks_category->Size = System::Drawing::Size(1189, 745);
 			this->pn_snacks_category->TabIndex = 16;
-			//
+			// 
 			// flowLayoutPanel10
-			//
+			// 
 			this->flowLayoutPanel10->AutoScroll = true;
 			this->flowLayoutPanel10->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->flowLayoutPanel10->Location = System::Drawing::Point(0, 0);
-			this->flowLayoutPanel10->Margin = System::Windows::Forms::Padding(2);
+			this->flowLayoutPanel10->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->flowLayoutPanel10->Name = L"flowLayoutPanel10";
-			this->flowLayoutPanel10->Size = System::Drawing::Size(892, 605);
+			this->flowLayoutPanel10->Size = System::Drawing::Size(1189, 745);
 			this->flowLayoutPanel10->TabIndex = 0;
-			//
+			// 
 			// pn_bakery_category
-			//
+			// 
 			this->pn_bakery_category->Controls->Add(this->flowLayoutPanel9);
 			this->pn_bakery_category->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_bakery_category->Location = System::Drawing::Point(0, 0);
-			this->pn_bakery_category->Margin = System::Windows::Forms::Padding(2);
+			this->pn_bakery_category->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pn_bakery_category->Name = L"pn_bakery_category";
-			this->pn_bakery_category->Size = System::Drawing::Size(892, 605);
+			this->pn_bakery_category->Size = System::Drawing::Size(1189, 745);
 			this->pn_bakery_category->TabIndex = 18;
-			//
+			// 
 			// flowLayoutPanel9
-			//
+			// 
 			this->flowLayoutPanel9->AutoScroll = true;
 			this->flowLayoutPanel9->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->flowLayoutPanel9->Location = System::Drawing::Point(0, 0);
-			this->flowLayoutPanel9->Margin = System::Windows::Forms::Padding(2);
+			this->flowLayoutPanel9->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->flowLayoutPanel9->Name = L"flowLayoutPanel9";
-			this->flowLayoutPanel9->Size = System::Drawing::Size(892, 605);
+			this->flowLayoutPanel9->Size = System::Drawing::Size(1189, 745);
 			this->flowLayoutPanel9->TabIndex = 0;
-			//
+			// 
 			// pn_poultry_category
-			//
+			// 
 			this->pn_poultry_category->Controls->Add(this->flowLayoutPanel8);
 			this->pn_poultry_category->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_poultry_category->Location = System::Drawing::Point(0, 0);
-			this->pn_poultry_category->Margin = System::Windows::Forms::Padding(2);
+			this->pn_poultry_category->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pn_poultry_category->Name = L"pn_poultry_category";
-			this->pn_poultry_category->Size = System::Drawing::Size(892, 605);
+			this->pn_poultry_category->Size = System::Drawing::Size(1189, 745);
 			this->pn_poultry_category->TabIndex = 15;
-			//
+			// 
 			// flowLayoutPanel8
-			//
+			// 
 			this->flowLayoutPanel8->AutoScroll = true;
 			this->flowLayoutPanel8->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->flowLayoutPanel8->Location = System::Drawing::Point(0, 0);
-			this->flowLayoutPanel8->Margin = System::Windows::Forms::Padding(2);
+			this->flowLayoutPanel8->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->flowLayoutPanel8->Name = L"flowLayoutPanel8";
-			this->flowLayoutPanel8->Size = System::Drawing::Size(892, 605);
+			this->flowLayoutPanel8->Size = System::Drawing::Size(1189, 745);
 			this->flowLayoutPanel8->TabIndex = 0;
-			//
+			// 
 			// pn_seafood_category
-			//
+			// 
 			this->pn_seafood_category->Controls->Add(this->flowLayoutPanel7);
 			this->pn_seafood_category->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_seafood_category->Location = System::Drawing::Point(0, 0);
-			this->pn_seafood_category->Margin = System::Windows::Forms::Padding(2);
+			this->pn_seafood_category->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pn_seafood_category->Name = L"pn_seafood_category";
-			this->pn_seafood_category->Size = System::Drawing::Size(892, 605);
+			this->pn_seafood_category->Size = System::Drawing::Size(1189, 745);
 			this->pn_seafood_category->TabIndex = 7;
-			//
+			// 
 			// flowLayoutPanel7
-			//
+			// 
 			this->flowLayoutPanel7->AutoScroll = true;
 			this->flowLayoutPanel7->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->flowLayoutPanel7->Location = System::Drawing::Point(0, 0);
-			this->flowLayoutPanel7->Margin = System::Windows::Forms::Padding(2);
+			this->flowLayoutPanel7->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->flowLayoutPanel7->Name = L"flowLayoutPanel7";
-			this->flowLayoutPanel7->Size = System::Drawing::Size(892, 605);
+			this->flowLayoutPanel7->Size = System::Drawing::Size(1189, 745);
 			this->flowLayoutPanel7->TabIndex = 0;
-			//
+			// 
 			// pn_butchershop_category
-			//
+			// 
 			this->pn_butchershop_category->Controls->Add(this->flowLayoutPanel6);
 			this->pn_butchershop_category->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_butchershop_category->Location = System::Drawing::Point(0, 0);
-			this->pn_butchershop_category->Margin = System::Windows::Forms::Padding(2);
+			this->pn_butchershop_category->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pn_butchershop_category->Name = L"pn_butchershop_category";
-			this->pn_butchershop_category->Size = System::Drawing::Size(892, 605);
+			this->pn_butchershop_category->Size = System::Drawing::Size(1189, 745);
 			this->pn_butchershop_category->TabIndex = 8;
-			//
+			// 
 			// flowLayoutPanel6
-			//
+			// 
 			this->flowLayoutPanel6->AutoScroll = true;
 			this->flowLayoutPanel6->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->flowLayoutPanel6->Location = System::Drawing::Point(0, 0);
-			this->flowLayoutPanel6->Margin = System::Windows::Forms::Padding(2);
+			this->flowLayoutPanel6->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->flowLayoutPanel6->Name = L"flowLayoutPanel6";
-			this->flowLayoutPanel6->Size = System::Drawing::Size(892, 605);
+			this->flowLayoutPanel6->Size = System::Drawing::Size(1189, 745);
 			this->flowLayoutPanel6->TabIndex = 0;
-			//
+			// 
 			// pn_dairy_category
-			//
+			// 
 			this->pn_dairy_category->Controls->Add(this->flowLayoutPanel5);
 			this->pn_dairy_category->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_dairy_category->Location = System::Drawing::Point(0, 0);
-			this->pn_dairy_category->Margin = System::Windows::Forms::Padding(2);
+			this->pn_dairy_category->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pn_dairy_category->Name = L"pn_dairy_category";
-			this->pn_dairy_category->Size = System::Drawing::Size(892, 605);
+			this->pn_dairy_category->Size = System::Drawing::Size(1189, 745);
 			this->pn_dairy_category->TabIndex = 5;
-			//
+			// 
 			// flowLayoutPanel5
-			//
+			// 
 			this->flowLayoutPanel5->AutoScroll = true;
 			this->flowLayoutPanel5->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->flowLayoutPanel5->Location = System::Drawing::Point(0, 0);
-			this->flowLayoutPanel5->Margin = System::Windows::Forms::Padding(2);
+			this->flowLayoutPanel5->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->flowLayoutPanel5->Name = L"flowLayoutPanel5";
-			this->flowLayoutPanel5->Size = System::Drawing::Size(892, 605);
+			this->flowLayoutPanel5->Size = System::Drawing::Size(1189, 745);
 			this->flowLayoutPanel5->TabIndex = 0;
-			//
+			// 
 			// pn_vegetable_category
-			//
+			// 
 			this->pn_vegetable_category->Controls->Add(this->flowLayoutPanel4);
 			this->pn_vegetable_category->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_vegetable_category->Location = System::Drawing::Point(0, 0);
-			this->pn_vegetable_category->Margin = System::Windows::Forms::Padding(2);
+			this->pn_vegetable_category->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pn_vegetable_category->Name = L"pn_vegetable_category";
-			this->pn_vegetable_category->Size = System::Drawing::Size(892, 605);
+			this->pn_vegetable_category->Size = System::Drawing::Size(1189, 745);
 			this->pn_vegetable_category->TabIndex = 19;
-			//
+			// 
 			// flowLayoutPanel4
-			//
+			// 
 			this->flowLayoutPanel4->AutoScroll = true;
 			this->flowLayoutPanel4->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->flowLayoutPanel4->Location = System::Drawing::Point(0, 0);
-			this->flowLayoutPanel4->Margin = System::Windows::Forms::Padding(2);
+			this->flowLayoutPanel4->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->flowLayoutPanel4->Name = L"flowLayoutPanel4";
-			this->flowLayoutPanel4->Size = System::Drawing::Size(892, 605);
+			this->flowLayoutPanel4->Size = System::Drawing::Size(1189, 745);
 			this->flowLayoutPanel4->TabIndex = 0;
-			//
+			// 
 			// pn_fruits_category
-			//
+			// 
 			this->pn_fruits_category->Controls->Add(this->flowLayoutPanel3);
 			this->pn_fruits_category->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_fruits_category->Location = System::Drawing::Point(0, 0);
-			this->pn_fruits_category->Margin = System::Windows::Forms::Padding(2);
+			this->pn_fruits_category->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pn_fruits_category->Name = L"pn_fruits_category";
-			this->pn_fruits_category->Size = System::Drawing::Size(892, 605);
+			this->pn_fruits_category->Size = System::Drawing::Size(1189, 745);
 			this->pn_fruits_category->TabIndex = 20;
-			//
+			// 
 			// flowLayoutPanel3
-			//
+			// 
 			this->flowLayoutPanel3->AutoScroll = true;
 			this->flowLayoutPanel3->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->flowLayoutPanel3->Location = System::Drawing::Point(0, 0);
-			this->flowLayoutPanel3->Margin = System::Windows::Forms::Padding(2);
+			this->flowLayoutPanel3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->flowLayoutPanel3->Name = L"flowLayoutPanel3";
-			this->flowLayoutPanel3->Size = System::Drawing::Size(892, 605);
+			this->flowLayoutPanel3->Size = System::Drawing::Size(1189, 745);
 			this->flowLayoutPanel3->TabIndex = 0;
-			//
+			// 
 			// pn_blank
-			//
+			// 
 			this->pn_blank->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-																		 static_cast<System::Int32>(static_cast<System::Byte>(230)));
+				static_cast<System::Int32>(static_cast<System::Byte>(230)));
 			this->pn_blank->Controls->Add(this->pb_blankpicutre);
 			this->pn_blank->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn_blank->Location = System::Drawing::Point(222, 0);
-			this->pn_blank->Margin = System::Windows::Forms::Padding(2);
+			this->pn_blank->Location = System::Drawing::Point(296, 0);
+			this->pn_blank->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pn_blank->Name = L"pn_blank";
-			this->pn_blank->Size = System::Drawing::Size(892, 605);
+			this->pn_blank->Size = System::Drawing::Size(1189, 745);
 			this->pn_blank->TabIndex = 6;
-			//
+			// 
 			// pb_blankpicutre
-			//
+			// 
 			this->pb_blankpicutre->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->pb_blankpicutre->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pb_blankpicutre->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"pb_blankpicutre.Image")));
+			this->pb_blankpicutre->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pb_blankpicutre.Image")));
 			this->pb_blankpicutre->Location = System::Drawing::Point(0, 0);
-			this->pb_blankpicutre->Margin = System::Windows::Forms::Padding(2);
+			this->pb_blankpicutre->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pb_blankpicutre->Name = L"pb_blankpicutre";
-			this->pb_blankpicutre->Size = System::Drawing::Size(892, 605);
+			this->pb_blankpicutre->Size = System::Drawing::Size(1189, 745);
 			this->pb_blankpicutre->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pb_blankpicutre->TabIndex = 2;
 			this->pb_blankpicutre->TabStop = false;
-			//
+			// 
 			// pn_viewBill
-			//
+			// 
 			this->pn_viewBill->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-																			static_cast<System::Int32>(static_cast<System::Byte>(230)));
+				static_cast<System::Int32>(static_cast<System::Byte>(230)));
 			this->pn_viewBill->Controls->Add(this->pb_theinvoice);
 			this->pn_viewBill->Controls->Add(this->pn);
 			this->pn_viewBill->Controls->Add(this->lb_theinvoice);
 			this->pn_viewBill->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn_viewBill->Location = System::Drawing::Point(222, 0);
-			this->pn_viewBill->Margin = System::Windows::Forms::Padding(2);
+			this->pn_viewBill->Location = System::Drawing::Point(296, 0);
+			this->pn_viewBill->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pn_viewBill->Name = L"pn_viewBill";
-			this->pn_viewBill->Size = System::Drawing::Size(892, 605);
+			this->pn_viewBill->Size = System::Drawing::Size(1189, 745);
 			this->pn_viewBill->TabIndex = 5;
-			//
+			// 
 			// pb_theinvoice
-			//
-			this->pb_theinvoice->BackgroundImage = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"pb_theinvoice.BackgroundImage")));
+			// 
+			this->pb_theinvoice->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pb_theinvoice.BackgroundImage")));
 			this->pb_theinvoice->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pb_theinvoice->Location = System::Drawing::Point(718, 12);
-			this->pb_theinvoice->Margin = System::Windows::Forms::Padding(2);
+			this->pb_theinvoice->Location = System::Drawing::Point(957, 15);
+			this->pb_theinvoice->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pb_theinvoice->Name = L"pb_theinvoice";
-			this->pb_theinvoice->Size = System::Drawing::Size(152, 82);
+			this->pb_theinvoice->Size = System::Drawing::Size(203, 101);
 			this->pb_theinvoice->TabIndex = 3;
 			this->pb_theinvoice->TabStop = false;
-			//
+			// 
 			// pn
-			//
+			// 
 			this->pn->Controls->Add(this->btn_print);
 			this->pn->Controls->Add(this->flowLayoutPanel13);
 			this->pn->Controls->Add(this->tb_customername_theincoive);
@@ -3548,80 +3528,81 @@ public
 			this->pn->Controls->Add(this->lb_date_theinvice);
 			this->pn->Controls->Add(this->lb_invoicenumber_theinvoice);
 			this->pn->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn->Location = System::Drawing::Point(0, 103);
-			this->pn->Margin = System::Windows::Forms::Padding(2);
+			this->pn->Location = System::Drawing::Point(0, 127);
+			this->pn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pn->Name = L"pn";
-			this->pn->Size = System::Drawing::Size(892, 502);
+			this->pn->Size = System::Drawing::Size(1189, 618);
 			this->pn->TabIndex = 2;
-			//
+			// 
 			// btn_print
-			//
+			// 
 			this->btn_print->BackColor = System::Drawing::Color::Purple;
 			this->btn_print->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																 static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->btn_print->ForeColor = System::Drawing::Color::Yellow;
-			this->btn_print->Location = System::Drawing::Point(695, 41);
-			this->btn_print->Margin = System::Windows::Forms::Padding(2);
+			this->btn_print->Location = System::Drawing::Point(927, 50);
+			this->btn_print->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btn_print->Name = L"btn_print";
-			this->btn_print->Size = System::Drawing::Size(176, 50);
+			this->btn_print->Size = System::Drawing::Size(235, 62);
 			this->btn_print->TabIndex = 9;
 			this->btn_print->Text = L"Print";
 			this->btn_print->UseVisualStyleBackColor = false;
 			this->btn_print->Click += gcnew System::EventHandler(this, &MyForm::btn_print_Click);
-			//
+			// 
 			// flowLayoutPanel13
-			//
+			// 
 			this->flowLayoutPanel13->AutoScroll = true;
 			this->flowLayoutPanel13->Controls->Add(this->dataGridView1);
 			this->flowLayoutPanel13->Controls->Add(this->panel2);
-			this->flowLayoutPanel13->Location = System::Drawing::Point(7, 126);
-			this->flowLayoutPanel13->Margin = System::Windows::Forms::Padding(2);
+			this->flowLayoutPanel13->Location = System::Drawing::Point(9, 155);
+			this->flowLayoutPanel13->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->flowLayoutPanel13->Name = L"flowLayoutPanel13";
-			this->flowLayoutPanel13->Size = System::Drawing::Size(882, 348);
+			this->flowLayoutPanel13->Size = System::Drawing::Size(1176, 428);
 			this->flowLayoutPanel13->TabIndex = 8;
-			//
+			// 
 			// dataGridView1
-			//
+			// 
 			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->dataGridView1->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::AllCells;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array<System::Windows::Forms::DataGridViewColumn ^>(4){
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
 				this->colproduct,
-				this->colquantity, this->colunitprice, this->colsubtotal});
-			this->dataGridView1->Location = System::Drawing::Point(2, 2);
-			this->dataGridView1->Margin = System::Windows::Forms::Padding(2);
+					this->colquantity, this->colunitprice, this->colsubtotal
+			});
+			this->dataGridView1->Location = System::Drawing::Point(3, 2);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
-			this->dataGridView1->Size = System::Drawing::Size(862, 208);
+			this->dataGridView1->Size = System::Drawing::Size(1149, 256);
 			this->dataGridView1->TabIndex = 7;
-			//
+			// 
 			// colproduct
-			//
+			// 
 			this->colproduct->HeaderText = L"Product";
 			this->colproduct->MinimumWidth = 6;
 			this->colproduct->Name = L"colproduct";
-			//
+			// 
 			// colquantity
-			//
+			// 
 			this->colquantity->HeaderText = L"Quantity";
 			this->colquantity->MinimumWidth = 6;
 			this->colquantity->Name = L"colquantity";
-			//
+			// 
 			// colunitprice
-			//
+			// 
 			this->colunitprice->HeaderText = L"Unit price";
 			this->colunitprice->MinimumWidth = 6;
 			this->colunitprice->Name = L"colunitprice";
-			//
+			// 
 			// colsubtotal
-			//
+			// 
 			this->colsubtotal->HeaderText = L"Subtotal";
 			this->colsubtotal->MinimumWidth = 6;
 			this->colsubtotal->Name = L"colsubtotal";
-			//
+			// 
 			// panel2
-			//
+			// 
 			this->panel2->Controls->Add(this->lb_total_number);
 			this->panel2->Controls->Add(this->lb_shipping_number);
 			this->panel2->Controls->Add(this->lb_vat_number);
@@ -3633,253 +3614,238 @@ public
 			this->panel2->Controls->Add(this->label22);
 			this->panel2->Controls->Add(this->lb_beforevat_number);
 			this->panel2->Controls->Add(this->lb_beforevat);
-			this->panel2->Location = System::Drawing::Point(2, 214);
-			this->panel2->Margin = System::Windows::Forms::Padding(2);
+			this->panel2->Location = System::Drawing::Point(3, 262);
+			this->panel2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(853, 133);
+			this->panel2->Size = System::Drawing::Size(1137, 164);
 			this->panel2->TabIndex = 8;
-			//
+			// 
 			// lb_total_number
-			//
+			// 
 			this->lb_total_number->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																	   static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->lb_total_number->ForeColor = System::Drawing::Color::Purple;
-			this->lb_total_number->Location = System::Drawing::Point(585, 50);
-			this->lb_total_number->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->lb_total_number->Location = System::Drawing::Point(780, 62);
 			this->lb_total_number->Name = L"lb_total_number";
-			this->lb_total_number->Size = System::Drawing::Size(265, 41);
+			this->lb_total_number->Size = System::Drawing::Size(353, 50);
 			this->lb_total_number->TabIndex = 10;
-			//
+			// 
 			// lb_shipping_number
-			//
+			// 
 			this->lb_shipping_number->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																		  static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->lb_shipping_number->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)),
-																				   static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->lb_shipping_number->Location = System::Drawing::Point(225, 83);
-			this->lb_shipping_number->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+				static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->lb_shipping_number->Location = System::Drawing::Point(300, 102);
 			this->lb_shipping_number->Name = L"lb_shipping_number";
-			this->lb_shipping_number->Size = System::Drawing::Size(121, 30);
+			this->lb_shipping_number->Size = System::Drawing::Size(161, 37);
 			this->lb_shipping_number->TabIndex = 9;
-			//
+			// 
 			// lb_vat_number
-			//
+			// 
 			this->lb_vat_number->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																	 static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->lb_vat_number->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
-																			  static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->lb_vat_number->Location = System::Drawing::Point(225, 55);
-			this->lb_vat_number->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->lb_vat_number->Location = System::Drawing::Point(300, 68);
 			this->lb_vat_number->Name = L"lb_vat_number";
-			this->lb_vat_number->Size = System::Drawing::Size(121, 30);
+			this->lb_vat_number->Size = System::Drawing::Size(161, 37);
 			this->lb_vat_number->TabIndex = 8;
-			//
+			// 
 			// lb_discount_number
-			//
+			// 
 			this->lb_discount_number->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																		  static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->lb_discount_number->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)),
-																				   static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->lb_discount_number->Location = System::Drawing::Point(225, 28);
-			this->lb_discount_number->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+				static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->lb_discount_number->Location = System::Drawing::Point(300, 34);
 			this->lb_discount_number->Name = L"lb_discount_number";
-			this->lb_discount_number->Size = System::Drawing::Size(121, 30);
+			this->lb_discount_number->Size = System::Drawing::Size(161, 37);
 			this->lb_discount_number->TabIndex = 7;
-			//
+			// 
 			// lb_shipping
-			//
+			// 
 			this->lb_shipping->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																   static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->lb_shipping->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
-																			static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->lb_shipping->Location = System::Drawing::Point(3, 85);
-			this->lb_shipping->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->lb_shipping->Location = System::Drawing::Point(4, 105);
 			this->lb_shipping->Name = L"lb_shipping";
-			this->lb_shipping->Size = System::Drawing::Size(213, 28);
+			this->lb_shipping->Size = System::Drawing::Size(284, 34);
 			this->lb_shipping->TabIndex = 6;
 			this->lb_shipping->Text = L"Shipping Cost:  ";
-			//
+			// 
 			// lb_vat
-			//
+			// 
 			this->lb_vat->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															  static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->lb_vat->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
-																	   static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->lb_vat->Location = System::Drawing::Point(3, 58);
-			this->lb_vat->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->lb_vat->Location = System::Drawing::Point(4, 71);
 			this->lb_vat->Name = L"lb_vat";
-			this->lb_vat->Size = System::Drawing::Size(201, 28);
+			this->lb_vat->Size = System::Drawing::Size(268, 34);
 			this->lb_vat->TabIndex = 5;
 			this->lb_vat->Text = L"VAT(14%): ";
-			//
+			// 
 			// lb_discount
-			//
+			// 
 			this->lb_discount->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																   static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->lb_discount->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
-																			static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->lb_discount->Location = System::Drawing::Point(3, 30);
-			this->lb_discount->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->lb_discount->Location = System::Drawing::Point(4, 37);
 			this->lb_discount->Name = L"lb_discount";
-			this->lb_discount->Size = System::Drawing::Size(213, 28);
+			this->lb_discount->Size = System::Drawing::Size(284, 34);
 			this->lb_discount->TabIndex = 4;
 			this->lb_discount->Text = L"Discount Applied:  ";
-			//
+			// 
 			// lb_total
-			//
+			// 
 			this->lb_total->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->lb_total->ForeColor = System::Drawing::Color::Purple;
-			this->lb_total->Location = System::Drawing::Point(427, 50);
-			this->lb_total->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->lb_total->Location = System::Drawing::Point(569, 62);
 			this->lb_total->Name = L"lb_total";
-			this->lb_total->Size = System::Drawing::Size(193, 36);
+			this->lb_total->Size = System::Drawing::Size(257, 44);
 			this->lb_total->TabIndex = 3;
 			this->lb_total->Text = L"Total (After VAT):   ";
-			//
+			// 
 			// label22
-			//
+			// 
 			this->label22->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															   static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->label22->ForeColor = System::Drawing::Color::Purple;
-			this->label22->Location = System::Drawing::Point(152, 66);
-			this->label22->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label22->Location = System::Drawing::Point(203, 81);
 			this->label22->Name = L"label22";
-			this->label22->Size = System::Drawing::Size(205, 36);
+			this->label22->Size = System::Drawing::Size(273, 44);
 			this->label22->TabIndex = 2;
-			//
+			// 
 			// lb_beforevat_number
-			//
+			// 
 			this->lb_beforevat_number->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																		   static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->lb_beforevat_number->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)),
-																					static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->lb_beforevat_number->Location = System::Drawing::Point(225, 2);
-			this->lb_beforevat_number->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+				static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->lb_beforevat_number->Location = System::Drawing::Point(300, 2);
 			this->lb_beforevat_number->Name = L"lb_beforevat_number";
-			this->lb_beforevat_number->Size = System::Drawing::Size(121, 30);
+			this->lb_beforevat_number->Size = System::Drawing::Size(161, 37);
 			this->lb_beforevat_number->TabIndex = 1;
-			//
+			// 
 			// lb_beforevat
-			//
+			// 
 			this->lb_beforevat->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																	static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->lb_beforevat->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
-																			 static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->lb_beforevat->Location = System::Drawing::Point(2, 5);
-			this->lb_beforevat->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->lb_beforevat->Location = System::Drawing::Point(3, 6);
 			this->lb_beforevat->Name = L"lb_beforevat";
-			this->lb_beforevat->Size = System::Drawing::Size(223, 28);
+			this->lb_beforevat->Size = System::Drawing::Size(297, 34);
 			this->lb_beforevat->TabIndex = 0;
 			this->lb_beforevat->Text = L"Total(Before VAT): ";
-			//
+			// 
 			// tb_customername_theincoive
-			//
+			// 
 			this->tb_customername_theincoive->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold,
-																				  System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->tb_customername_theincoive->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)),
-																						   static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(192)));
-			this->tb_customername_theincoive->Location = System::Drawing::Point(170, 81);
-			this->tb_customername_theincoive->Margin = System::Windows::Forms::Padding(2);
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->tb_customername_theincoive->Location = System::Drawing::Point(227, 100);
+			this->tb_customername_theincoive->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->tb_customername_theincoive->Name = L"tb_customername_theincoive";
-			this->tb_customername_theincoive->Size = System::Drawing::Size(459, 26);
+			this->tb_customername_theincoive->Size = System::Drawing::Size(611, 30);
 			this->tb_customername_theincoive->TabIndex = 5;
 			this->tb_customername_theincoive->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			this->tb_customername_theincoive->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MyForm::tb_customername_theincoive_KeyPress);
-			//
+			// 
 			// lb_customername_theinvoice
-			//
+			// 
 			this->lb_customername_theinvoice->Font = (gcnew System::Drawing::Font(L"Segoe UI", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																				  static_cast<System::Byte>(0)));
-			this->lb_customername_theinvoice->Location = System::Drawing::Point(2, 81);
-			this->lb_customername_theinvoice->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+				static_cast<System::Byte>(0)));
+			this->lb_customername_theinvoice->Location = System::Drawing::Point(3, 100);
 			this->lb_customername_theinvoice->Name = L"lb_customername_theinvoice";
-			this->lb_customername_theinvoice->Size = System::Drawing::Size(177, 34);
+			this->lb_customername_theinvoice->Size = System::Drawing::Size(236, 42);
 			this->lb_customername_theinvoice->TabIndex = 4;
 			this->lb_customername_theinvoice->Text = L"Customer name:";
-			//
+			// 
 			// tb_date_theinvoice
-			//
+			// 
 			this->tb_date_theinvoice->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																		  static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->tb_date_theinvoice->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)),
-																				   static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(192)));
-			this->tb_date_theinvoice->Location = System::Drawing::Point(170, 41);
-			this->tb_date_theinvoice->Margin = System::Windows::Forms::Padding(2);
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->tb_date_theinvoice->Location = System::Drawing::Point(227, 50);
+			this->tb_date_theinvoice->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->tb_date_theinvoice->Name = L"tb_date_theinvoice";
-			this->tb_date_theinvoice->Size = System::Drawing::Size(459, 26);
+			this->tb_date_theinvoice->Size = System::Drawing::Size(611, 30);
 			this->tb_date_theinvoice->TabIndex = 3;
 			this->tb_date_theinvoice->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			this->tb_date_theinvoice->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MyForm::tb_date_theinvoice_KeyPress);
-			//
+			// 
 			// tb_invoicenumber_theinvoice
-			//
+			// 
 			this->tb_invoicenumber_theinvoice->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold,
-																				   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->tb_invoicenumber_theinvoice->ForeColor = System::Drawing::Color::Red;
-			this->tb_invoicenumber_theinvoice->Location = System::Drawing::Point(170, 6);
-			this->tb_invoicenumber_theinvoice->Margin = System::Windows::Forms::Padding(2);
+			this->tb_invoicenumber_theinvoice->Location = System::Drawing::Point(227, 7);
+			this->tb_invoicenumber_theinvoice->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->tb_invoicenumber_theinvoice->Name = L"tb_invoicenumber_theinvoice";
-			this->tb_invoicenumber_theinvoice->Size = System::Drawing::Size(459, 26);
+			this->tb_invoicenumber_theinvoice->Size = System::Drawing::Size(611, 30);
 			this->tb_invoicenumber_theinvoice->TabIndex = 2;
 			this->tb_invoicenumber_theinvoice->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			this->tb_invoicenumber_theinvoice->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MyForm::tb_invoicenumber_theinvoice_KeyPress);
-			//
+			// 
 			// lb_date_theinvice
-			//
+			// 
 			this->lb_date_theinvice->Font = (gcnew System::Drawing::Font(L"Segoe UI", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																		 static_cast<System::Byte>(0)));
-			this->lb_date_theinvice->Location = System::Drawing::Point(2, 41);
-			this->lb_date_theinvice->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+				static_cast<System::Byte>(0)));
+			this->lb_date_theinvice->Location = System::Drawing::Point(3, 50);
 			this->lb_date_theinvice->Name = L"lb_date_theinvice";
-			this->lb_date_theinvice->Size = System::Drawing::Size(177, 34);
+			this->lb_date_theinvice->Size = System::Drawing::Size(236, 42);
 			this->lb_date_theinvice->TabIndex = 1;
 			this->lb_date_theinvice->Text = L"The date:";
-			//
+			// 
 			// lb_invoicenumber_theinvoice
-			//
+			// 
 			this->lb_invoicenumber_theinvoice->Font = (gcnew System::Drawing::Font(L"Segoe UI", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																				   static_cast<System::Byte>(0)));
-			this->lb_invoicenumber_theinvoice->Location = System::Drawing::Point(2, 2);
-			this->lb_invoicenumber_theinvoice->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+				static_cast<System::Byte>(0)));
+			this->lb_invoicenumber_theinvoice->Location = System::Drawing::Point(3, 2);
 			this->lb_invoicenumber_theinvoice->Name = L"lb_invoicenumber_theinvoice";
-			this->lb_invoicenumber_theinvoice->Size = System::Drawing::Size(177, 34);
+			this->lb_invoicenumber_theinvoice->Size = System::Drawing::Size(236, 42);
 			this->lb_invoicenumber_theinvoice->TabIndex = 0;
 			this->lb_invoicenumber_theinvoice->Text = L"Invoice number:";
-			//
+			// 
 			// lb_theinvoice
-			//
+			// 
 			this->lb_theinvoice->Dock = System::Windows::Forms::DockStyle::Top;
 			this->lb_theinvoice->Font = (gcnew System::Drawing::Font(L"Segoe UI", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																	 static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->lb_theinvoice->Location = System::Drawing::Point(0, 0);
-			this->lb_theinvoice->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->lb_theinvoice->Name = L"lb_theinvoice";
-			this->lb_theinvoice->Size = System::Drawing::Size(892, 103);
+			this->lb_theinvoice->Size = System::Drawing::Size(1189, 127);
 			this->lb_theinvoice->TabIndex = 1;
 			this->lb_theinvoice->Text = L"Total Bill";
 			this->lb_theinvoice->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			//
+			// 
 			// pn_edit_information
-			//
+			// 
 			this->pn_edit_information->Anchor = System::Windows::Forms::AnchorStyles::Top;
 			this->pn_edit_information->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)),
-																					static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)));
+				static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)));
 			this->pn_edit_information->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->pn_edit_information->Controls->Add(this->pn_currentInfo);
 			this->pn_edit_information->Controls->Add(this->pn_editInfo);
 			this->pn_edit_information->Controls->Add(this->pn_resetPassword);
 			this->pn_edit_information->Controls->Add(this->label1);
-			this->pn_edit_information->Location = System::Drawing::Point(222, 0);
-			this->pn_edit_information->Margin = System::Windows::Forms::Padding(2);
+			this->pn_edit_information->Location = System::Drawing::Point(296, 0);
+			this->pn_edit_information->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pn_edit_information->Name = L"pn_edit_information";
-			this->pn_edit_information->Size = System::Drawing::Size(892, 605);
+			this->pn_edit_information->Size = System::Drawing::Size(1189, 745);
 			this->pn_edit_information->TabIndex = 1;
-			//
+			// 
 			// pn_currentInfo
-			//
+			// 
 			this->pn_currentInfo->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-																			   static_cast<System::Int32>(static_cast<System::Byte>(230)));
+				static_cast<System::Int32>(static_cast<System::Byte>(230)));
 			this->pn_currentInfo->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->pn_currentInfo->Controls->Add(this->pictureBox13);
 			this->pn_currentInfo->Controls->Add(this->btn_seepassword_editinfo);
@@ -3895,167 +3861,180 @@ public
 			this->pn_currentInfo->Controls->Add(this->tb_currentUsername);
 			this->pn_currentInfo->Controls->Add(this->label5);
 			this->pn_currentInfo->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn_currentInfo->Location = System::Drawing::Point(0, 120);
+			this->pn_currentInfo->Location = System::Drawing::Point(0, 147);
+			this->pn_currentInfo->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pn_currentInfo->Name = L"pn_currentInfo";
-			this->pn_currentInfo->Size = System::Drawing::Size(892, 485);
+			this->pn_currentInfo->Size = System::Drawing::Size(1189, 598);
 			this->pn_currentInfo->TabIndex = 1;
-			//
+			// 
 			// pictureBox13
-			//
-			this->pictureBox13->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"pictureBox13.Image")));
-			this->pictureBox13->Location = System::Drawing::Point(325, 24);
+			// 
+			this->pictureBox13->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox13.Image")));
+			this->pictureBox13->Location = System::Drawing::Point(433, 30);
+			this->pictureBox13->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pictureBox13->Name = L"pictureBox13";
-			this->pictureBox13->Size = System::Drawing::Size(38, 30);
+			this->pictureBox13->Size = System::Drawing::Size(51, 37);
 			this->pictureBox13->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureBox13->TabIndex = 24;
 			this->pictureBox13->TabStop = false;
-			//
+			// 
 			// btn_seepassword_editinfo
-			//
+			// 
 			this->btn_seepassword_editinfo->BackColor = System::Drawing::SystemColors::Control;
-			this->btn_seepassword_editinfo->BackgroundImage = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"btn_seepassword_editinfo.BackgroundImage")));
+			this->btn_seepassword_editinfo->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_seepassword_editinfo.BackgroundImage")));
 			this->btn_seepassword_editinfo->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->btn_seepassword_editinfo->FlatAppearance->BorderSize = 0;
 			this->btn_seepassword_editinfo->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btn_seepassword_editinfo->Location = System::Drawing::Point(688, 257);
-			this->btn_seepassword_editinfo->Margin = System::Windows::Forms::Padding(2);
+			this->btn_seepassword_editinfo->Location = System::Drawing::Point(917, 316);
+			this->btn_seepassword_editinfo->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btn_seepassword_editinfo->Name = L"btn_seepassword_editinfo";
-			this->btn_seepassword_editinfo->Size = System::Drawing::Size(31, 18);
+			this->btn_seepassword_editinfo->Size = System::Drawing::Size(41, 22);
 			this->btn_seepassword_editinfo->TabIndex = 23;
 			this->btn_seepassword_editinfo->UseVisualStyleBackColor = false;
 			this->btn_seepassword_editinfo->Click += gcnew System::EventHandler(this, &MyForm::btn_seepassword_editinfo_Click);
-			//
+			// 
 			// btn_reset
-			//
+			// 
 			this->btn_reset->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(230)), static_cast<System::Int32>(static_cast<System::Byte>(52)),
-																		  static_cast<System::Int32>(static_cast<System::Byte>(98)));
+				static_cast<System::Int32>(static_cast<System::Byte>(98)));
 			this->btn_reset->FlatAppearance->BorderSize = 0;
 			this->btn_reset->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_reset->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																 static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->btn_reset->ForeColor = System::Drawing::Color::Black;
-			this->btn_reset->Location = System::Drawing::Point(418, 338);
+			this->btn_reset->Location = System::Drawing::Point(557, 416);
+			this->btn_reset->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btn_reset->Name = L"btn_reset";
-			this->btn_reset->Size = System::Drawing::Size(186, 54);
+			this->btn_reset->Size = System::Drawing::Size(248, 66);
 			this->btn_reset->TabIndex = 22;
 			this->btn_reset->Text = L"Reset Password";
 			this->btn_reset->UseVisualStyleBackColor = false;
 			this->btn_reset->Click += gcnew System::EventHandler(this, &MyForm::btn_reset_Click);
-			//
+			// 
 			// label16
-			//
+			// 
 			this->label16->AutoSize = true;
 			this->label16->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Underline)),
-															   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->label16->Location = System::Drawing::Point(369, 20);
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->label16->Location = System::Drawing::Point(492, 25);
+			this->label16->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label16->Name = L"label16";
-			this->label16->Size = System::Drawing::Size(155, 32);
+			this->label16->Size = System::Drawing::Size(191, 41);
 			this->label16->TabIndex = 21;
 			this->label16->Text = L"Current Info";
-			//
+			// 
 			// btn_editInfo
-			//
+			// 
 			this->btn_editInfo->FlatAppearance->BorderColor = System::Drawing::Color::Black;
 			this->btn_editInfo->FlatAppearance->BorderSize = 3;
 			this->btn_editInfo->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_editInfo->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																	static_cast<System::Byte>(0)));
-			this->btn_editInfo->Location = System::Drawing::Point(289, 338);
+				static_cast<System::Byte>(0)));
+			this->btn_editInfo->Location = System::Drawing::Point(385, 416);
+			this->btn_editInfo->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btn_editInfo->Name = L"btn_editInfo";
-			this->btn_editInfo->Size = System::Drawing::Size(98, 54);
+			this->btn_editInfo->Size = System::Drawing::Size(131, 66);
 			this->btn_editInfo->TabIndex = 8;
 			this->btn_editInfo->Text = L"Edit";
 			this->btn_editInfo->UseVisualStyleBackColor = true;
 			this->btn_editInfo->Click += gcnew System::EventHandler(this, &MyForm::btn_editInfo_Click);
-			//
+			// 
 			// tb_currentPassword
-			//
+			// 
 			this->tb_currentPassword->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-																		  static_cast<System::Byte>(0)));
-			this->tb_currentPassword->Location = System::Drawing::Point(431, 247);
+				static_cast<System::Byte>(0)));
+			this->tb_currentPassword->Location = System::Drawing::Point(575, 304);
+			this->tb_currentPassword->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->tb_currentPassword->Name = L"tb_currentPassword";
 			this->tb_currentPassword->ReadOnly = true;
-			this->tb_currentPassword->Size = System::Drawing::Size(251, 35);
+			this->tb_currentPassword->Size = System::Drawing::Size(333, 42);
 			this->tb_currentPassword->TabIndex = 7;
-			//
+			// 
 			// label8
-			//
+			// 
 			this->label8->AutoSize = true;
 			this->label8->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															  static_cast<System::Byte>(0)));
-			this->label8->Location = System::Drawing::Point(210, 245);
+				static_cast<System::Byte>(0)));
+			this->label8->Location = System::Drawing::Point(280, 302);
+			this->label8->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(122, 32);
+			this->label8->Size = System::Drawing::Size(150, 41);
 			this->label8->TabIndex = 6;
 			this->label8->Text = L"Password";
-			//
+			// 
 			// tb_currentPhoneNumber
-			//
+			// 
 			this->tb_currentPhoneNumber->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-																			 static_cast<System::Byte>(0)));
-			this->tb_currentPhoneNumber->Location = System::Drawing::Point(431, 136);
+				static_cast<System::Byte>(0)));
+			this->tb_currentPhoneNumber->Location = System::Drawing::Point(575, 167);
+			this->tb_currentPhoneNumber->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->tb_currentPhoneNumber->Name = L"tb_currentPhoneNumber";
 			this->tb_currentPhoneNumber->ReadOnly = true;
-			this->tb_currentPhoneNumber->Size = System::Drawing::Size(251, 35);
+			this->tb_currentPhoneNumber->Size = System::Drawing::Size(333, 42);
 			this->tb_currentPhoneNumber->TabIndex = 5;
-			//
+			// 
 			// label7
-			//
+			// 
 			this->label7->AutoSize = true;
 			this->label7->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															  static_cast<System::Byte>(0)));
-			this->label7->Location = System::Drawing::Point(210, 133);
+				static_cast<System::Byte>(0)));
+			this->label7->Location = System::Drawing::Point(280, 164);
+			this->label7->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(187, 32);
+			this->label7->Size = System::Drawing::Size(230, 41);
 			this->label7->TabIndex = 4;
 			this->label7->Text = L"Phone Number";
-			//
+			// 
 			// tb_currentLocation
-			//
+			// 
 			this->tb_currentLocation->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-																		  static_cast<System::Byte>(0)));
-			this->tb_currentLocation->Location = System::Drawing::Point(431, 193);
+				static_cast<System::Byte>(0)));
+			this->tb_currentLocation->Location = System::Drawing::Point(575, 238);
+			this->tb_currentLocation->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->tb_currentLocation->Name = L"tb_currentLocation";
 			this->tb_currentLocation->ReadOnly = true;
-			this->tb_currentLocation->Size = System::Drawing::Size(251, 35);
+			this->tb_currentLocation->Size = System::Drawing::Size(333, 42);
 			this->tb_currentLocation->TabIndex = 3;
-			//
+			// 
 			// label6
-			//
+			// 
 			this->label6->AutoSize = true;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															  static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(210, 191);
+				static_cast<System::Byte>(0)));
+			this->label6->Location = System::Drawing::Point(280, 235);
+			this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(112, 32);
+			this->label6->Size = System::Drawing::Size(138, 41);
 			this->label6->TabIndex = 2;
 			this->label6->Text = L"Location";
-			//
+			// 
 			// tb_currentUsername
-			//
+			// 
 			this->tb_currentUsername->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-																		  static_cast<System::Byte>(0)));
-			this->tb_currentUsername->Location = System::Drawing::Point(431, 84);
+				static_cast<System::Byte>(0)));
+			this->tb_currentUsername->Location = System::Drawing::Point(575, 103);
+			this->tb_currentUsername->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->tb_currentUsername->Name = L"tb_currentUsername";
 			this->tb_currentUsername->ReadOnly = true;
-			this->tb_currentUsername->Size = System::Drawing::Size(251, 35);
+			this->tb_currentUsername->Size = System::Drawing::Size(333, 42);
 			this->tb_currentUsername->TabIndex = 1;
-			//
+			// 
 			// label5
-			//
+			// 
 			this->label5->AutoSize = true;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															  static_cast<System::Byte>(0)));
-			this->label5->Location = System::Drawing::Point(210, 79);
+				static_cast<System::Byte>(0)));
+			this->label5->Location = System::Drawing::Point(280, 97);
+			this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(132, 32);
+			this->label5->Size = System::Drawing::Size(164, 41);
 			this->label5->TabIndex = 0;
 			this->label5->Text = L"UserName";
-			//
+			// 
 			// pn_editInfo
-			//
+			// 
 			this->pn_editInfo->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-																			static_cast<System::Int32>(static_cast<System::Byte>(230)));
+				static_cast<System::Int32>(static_cast<System::Byte>(230)));
 			this->pn_editInfo->Controls->Add(this->lb_errorLocation);
 			this->pn_editInfo->Controls->Add(this->lb_errorPhone);
 			this->pn_editInfo->Controls->Add(this->lb_errorUsername);
@@ -4070,164 +4049,178 @@ public
 			this->pn_editInfo->Controls->Add(this->tb_edit_username);
 			this->pn_editInfo->Controls->Add(this->label11);
 			this->pn_editInfo->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn_editInfo->Location = System::Drawing::Point(0, 120);
+			this->pn_editInfo->Location = System::Drawing::Point(0, 147);
+			this->pn_editInfo->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pn_editInfo->Name = L"pn_editInfo";
-			this->pn_editInfo->Size = System::Drawing::Size(892, 485);
+			this->pn_editInfo->Size = System::Drawing::Size(1189, 598);
 			this->pn_editInfo->TabIndex = 2;
-			//
+			// 
 			// lb_errorLocation
-			//
+			// 
 			this->lb_errorLocation->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																		static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->lb_errorLocation->ForeColor = System::Drawing::Color::Red;
-			this->lb_errorLocation->Location = System::Drawing::Point(428, 295);
+			this->lb_errorLocation->Location = System::Drawing::Point(571, 363);
+			this->lb_errorLocation->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lb_errorLocation->Name = L"lb_errorLocation";
-			this->lb_errorLocation->Size = System::Drawing::Size(363, 40);
+			this->lb_errorLocation->Size = System::Drawing::Size(484, 49);
 			this->lb_errorLocation->TabIndex = 27;
 			this->lb_errorLocation->Text = L"Error ";
 			this->lb_errorLocation->Visible = false;
-			//
+			// 
 			// lb_errorPhone
-			//
+			// 
 			this->lb_errorPhone->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																	 static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->lb_errorPhone->ForeColor = System::Drawing::Color::Red;
-			this->lb_errorPhone->Location = System::Drawing::Point(431, 218);
+			this->lb_errorPhone->Location = System::Drawing::Point(575, 268);
+			this->lb_errorPhone->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lb_errorPhone->Name = L"lb_errorPhone";
-			this->lb_errorPhone->Size = System::Drawing::Size(360, 39);
+			this->lb_errorPhone->Size = System::Drawing::Size(480, 48);
 			this->lb_errorPhone->TabIndex = 26;
 			this->lb_errorPhone->Text = L"Error ";
 			this->lb_errorPhone->Visible = false;
-			//
+			// 
 			// lb_errorUsername
-			//
+			// 
 			this->lb_errorUsername->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																		static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->lb_errorUsername->ForeColor = System::Drawing::Color::Red;
-			this->lb_errorUsername->Location = System::Drawing::Point(432, 142);
+			this->lb_errorUsername->Location = System::Drawing::Point(576, 175);
+			this->lb_errorUsername->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lb_errorUsername->Name = L"lb_errorUsername";
-			this->lb_errorUsername->Size = System::Drawing::Size(359, 37);
+			this->lb_errorUsername->Size = System::Drawing::Size(479, 46);
 			this->lb_errorUsername->TabIndex = 25;
 			this->lb_errorUsername->Text = L"Error ";
 			this->lb_errorUsername->Visible = false;
-			//
+			// 
 			// pictureBox11
-			//
-			this->pictureBox11->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"pictureBox11.Image")));
-			this->pictureBox11->Location = System::Drawing::Point(247, 32);
+			// 
+			this->pictureBox11->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox11.Image")));
+			this->pictureBox11->Location = System::Drawing::Point(329, 39);
+			this->pictureBox11->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pictureBox11->Name = L"pictureBox11";
-			this->pictureBox11->Size = System::Drawing::Size(38, 30);
+			this->pictureBox11->Size = System::Drawing::Size(51, 37);
 			this->pictureBox11->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureBox11->TabIndex = 22;
 			this->pictureBox11->TabStop = false;
-			//
+			// 
 			// label15
-			//
+			// 
 			this->label15->AutoSize = true;
 			this->label15->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Underline)),
-															   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->label15->Location = System::Drawing::Point(292, 30);
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->label15->Location = System::Drawing::Point(389, 37);
+			this->label15->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label15->Name = L"label15";
-			this->label15->Size = System::Drawing::Size(308, 32);
+			this->label15->Size = System::Drawing::Size(379, 41);
 			this->label15->TabIndex = 21;
 			this->label15->Text = L"Edit Personal Information";
-			//
+			// 
 			// btn_cancelEdit
-			//
+			// 
 			this->btn_cancelEdit->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(230)), static_cast<System::Int32>(static_cast<System::Byte>(52)),
-																			   static_cast<System::Int32>(static_cast<System::Byte>(98)));
+				static_cast<System::Int32>(static_cast<System::Byte>(98)));
 			this->btn_cancelEdit->FlatAppearance->BorderSize = 0;
 			this->btn_cancelEdit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_cancelEdit->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																	  static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->btn_cancelEdit->ForeColor = System::Drawing::Color::Black;
-			this->btn_cancelEdit->Location = System::Drawing::Point(453, 347);
+			this->btn_cancelEdit->Location = System::Drawing::Point(604, 427);
+			this->btn_cancelEdit->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btn_cancelEdit->Name = L"btn_cancelEdit";
-			this->btn_cancelEdit->Size = System::Drawing::Size(109, 54);
+			this->btn_cancelEdit->Size = System::Drawing::Size(145, 66);
 			this->btn_cancelEdit->TabIndex = 13;
 			this->btn_cancelEdit->Text = L"Cancel";
 			this->btn_cancelEdit->UseVisualStyleBackColor = false;
 			this->btn_cancelEdit->Click += gcnew System::EventHandler(this, &MyForm::btn_cancelEdit_Click);
-			//
+			// 
 			// btn_saveEdit
-			//
+			// 
 			this->btn_saveEdit->FlatAppearance->BorderColor = System::Drawing::Color::Black;
 			this->btn_saveEdit->FlatAppearance->BorderSize = 3;
 			this->btn_saveEdit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_saveEdit->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																	static_cast<System::Byte>(0)));
-			this->btn_saveEdit->Location = System::Drawing::Point(330, 347);
+				static_cast<System::Byte>(0)));
+			this->btn_saveEdit->Location = System::Drawing::Point(440, 427);
+			this->btn_saveEdit->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btn_saveEdit->Name = L"btn_saveEdit";
-			this->btn_saveEdit->Size = System::Drawing::Size(98, 54);
+			this->btn_saveEdit->Size = System::Drawing::Size(131, 66);
 			this->btn_saveEdit->TabIndex = 12;
 			this->btn_saveEdit->Text = L"Save";
 			this->btn_saveEdit->UseVisualStyleBackColor = true;
 			this->btn_saveEdit->Click += gcnew System::EventHandler(this, &MyForm::btn_saveEdit_Click);
-			//
+			// 
 			// tb_edit_phonenumber
-			//
+			// 
 			this->tb_edit_phonenumber->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-																		   static_cast<System::Byte>(0)));
-			this->tb_edit_phonenumber->Location = System::Drawing::Point(431, 178);
+				static_cast<System::Byte>(0)));
+			this->tb_edit_phonenumber->Location = System::Drawing::Point(575, 219);
+			this->tb_edit_phonenumber->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->tb_edit_phonenumber->Name = L"tb_edit_phonenumber";
-			this->tb_edit_phonenumber->Size = System::Drawing::Size(251, 35);
+			this->tb_edit_phonenumber->Size = System::Drawing::Size(333, 42);
 			this->tb_edit_phonenumber->TabIndex = 11;
-			//
+			// 
 			// label9
-			//
+			// 
 			this->label9->AutoSize = true;
 			this->label9->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															  static_cast<System::Byte>(0)));
-			this->label9->Location = System::Drawing::Point(210, 175);
+				static_cast<System::Byte>(0)));
+			this->label9->Location = System::Drawing::Point(280, 215);
+			this->label9->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(187, 32);
+			this->label9->Size = System::Drawing::Size(230, 41);
 			this->label9->TabIndex = 10;
 			this->label9->Text = L"Phone Number";
-			//
+			// 
 			// tb_edit_location
-			//
+			// 
 			this->tb_edit_location->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-																		static_cast<System::Byte>(0)));
-			this->tb_edit_location->Location = System::Drawing::Point(431, 257);
+				static_cast<System::Byte>(0)));
+			this->tb_edit_location->Location = System::Drawing::Point(575, 316);
+			this->tb_edit_location->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->tb_edit_location->Name = L"tb_edit_location";
-			this->tb_edit_location->Size = System::Drawing::Size(251, 35);
+			this->tb_edit_location->Size = System::Drawing::Size(333, 42);
 			this->tb_edit_location->TabIndex = 9;
-			//
+			// 
 			// label10
-			//
+			// 
 			this->label10->AutoSize = true;
 			this->label10->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															   static_cast<System::Byte>(0)));
-			this->label10->Location = System::Drawing::Point(210, 255);
+				static_cast<System::Byte>(0)));
+			this->label10->Location = System::Drawing::Point(280, 314);
+			this->label10->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(112, 32);
+			this->label10->Size = System::Drawing::Size(138, 41);
 			this->label10->TabIndex = 8;
 			this->label10->Text = L"Location";
-			//
+			// 
 			// tb_edit_username
-			//
+			// 
 			this->tb_edit_username->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-																		static_cast<System::Byte>(0)));
-			this->tb_edit_username->Location = System::Drawing::Point(431, 106);
+				static_cast<System::Byte>(0)));
+			this->tb_edit_username->Location = System::Drawing::Point(575, 130);
+			this->tb_edit_username->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->tb_edit_username->Name = L"tb_edit_username";
-			this->tb_edit_username->Size = System::Drawing::Size(251, 35);
+			this->tb_edit_username->Size = System::Drawing::Size(333, 42);
 			this->tb_edit_username->TabIndex = 7;
-			//
+			// 
 			// label11
-			//
+			// 
 			this->label11->AutoSize = true;
 			this->label11->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															   static_cast<System::Byte>(0)));
-			this->label11->Location = System::Drawing::Point(210, 101);
+				static_cast<System::Byte>(0)));
+			this->label11->Location = System::Drawing::Point(280, 124);
+			this->label11->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(132, 32);
+			this->label11->Size = System::Drawing::Size(164, 41);
 			this->label11->TabIndex = 6;
 			this->label11->Text = L"UserName";
-			//
+			// 
 			// pn_resetPassword
-			//
+			// 
 			this->pn_resetPassword->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)),
-																				 static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(230)));
+				static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(230)));
 			this->pn_resetPassword->Controls->Add(this->lb_newpassword);
 			this->pn_resetPassword->Controls->Add(this->pictureBox12);
 			this->pn_resetPassword->Controls->Add(this->tb_confirmPassword);
@@ -4240,232 +4233,243 @@ public
 			this->pn_resetPassword->Controls->Add(this->tb_newPassword);
 			this->pn_resetPassword->Controls->Add(this->label13);
 			this->pn_resetPassword->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn_resetPassword->Location = System::Drawing::Point(0, 120);
+			this->pn_resetPassword->Location = System::Drawing::Point(0, 147);
+			this->pn_resetPassword->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pn_resetPassword->Name = L"pn_resetPassword";
-			this->pn_resetPassword->Size = System::Drawing::Size(892, 485);
+			this->pn_resetPassword->Size = System::Drawing::Size(1189, 598);
 			this->pn_resetPassword->TabIndex = 2;
-			//
+			// 
 			// lb_newpassword
-			//
+			// 
 			this->lb_newpassword->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																	  static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->lb_newpassword->ForeColor = System::Drawing::Color::Red;
-			this->lb_newpassword->Location = System::Drawing::Point(205, 257);
+			this->lb_newpassword->Location = System::Drawing::Point(273, 316);
+			this->lb_newpassword->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lb_newpassword->Name = L"lb_newpassword";
-			this->lb_newpassword->Size = System::Drawing::Size(511, 23);
+			this->lb_newpassword->Size = System::Drawing::Size(681, 28);
 			this->lb_newpassword->TabIndex = 24;
 			this->lb_newpassword->Text = L"Error ";
 			this->lb_newpassword->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			this->lb_newpassword->Visible = false;
-			//
+			// 
 			// pictureBox12
-			//
-			this->pictureBox12->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"pictureBox12.Image")));
-			this->pictureBox12->Location = System::Drawing::Point(307, 24);
+			// 
+			this->pictureBox12->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox12.Image")));
+			this->pictureBox12->Location = System::Drawing::Point(409, 30);
+			this->pictureBox12->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pictureBox12->Name = L"pictureBox12";
-			this->pictureBox12->Size = System::Drawing::Size(38, 30);
+			this->pictureBox12->Size = System::Drawing::Size(51, 37);
 			this->pictureBox12->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureBox12->TabIndex = 23;
 			this->pictureBox12->TabStop = false;
-			//
+			// 
 			// tb_confirmPassword
-			//
+			// 
 			this->tb_confirmPassword->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-																		  static_cast<System::Byte>(0)));
-			this->tb_confirmPassword->Location = System::Drawing::Point(440, 196);
+				static_cast<System::Byte>(0)));
+			this->tb_confirmPassword->Location = System::Drawing::Point(587, 241);
+			this->tb_confirmPassword->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->tb_confirmPassword->Name = L"tb_confirmPassword";
 			this->tb_confirmPassword->PasswordChar = '*';
-			this->tb_confirmPassword->Size = System::Drawing::Size(251, 35);
+			this->tb_confirmPassword->Size = System::Drawing::Size(333, 42);
 			this->tb_confirmPassword->TabIndex = 22;
-			//
+			// 
 			// label17
-			//
+			// 
 			this->label17->AutoSize = true;
 			this->label17->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															   static_cast<System::Byte>(0)));
-			this->label17->Location = System::Drawing::Point(202, 200);
+				static_cast<System::Byte>(0)));
+			this->label17->Location = System::Drawing::Point(269, 246);
+			this->label17->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label17->Name = L"label17";
-			this->label17->Size = System::Drawing::Size(222, 32);
+			this->label17->Size = System::Drawing::Size(273, 41);
 			this->label17->TabIndex = 21;
 			this->label17->Text = L"Confirm Password";
-			//
+			// 
 			// label14
-			//
+			// 
 			this->label14->AutoSize = true;
 			this->label14->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Underline)),
-															   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->label14->Location = System::Drawing::Point(351, 20);
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->label14->Location = System::Drawing::Point(468, 25);
+			this->label14->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label14->Name = L"label14";
-			this->label14->Size = System::Drawing::Size(190, 32);
+			this->label14->Size = System::Drawing::Size(234, 41);
 			this->label14->TabIndex = 20;
 			this->label14->Text = L"Reset Password";
-			//
+			// 
 			// button2
-			//
+			// 
 			this->button2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(230)), static_cast<System::Int32>(static_cast<System::Byte>(52)),
-																		static_cast<System::Int32>(static_cast<System::Byte>(98)));
+				static_cast<System::Int32>(static_cast<System::Byte>(98)));
 			this->button2->FlatAppearance->BorderSize = 0;
 			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button2->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															   static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->button2->ForeColor = System::Drawing::Color::Black;
-			this->button2->Location = System::Drawing::Point(453, 312);
+			this->button2->Location = System::Drawing::Point(604, 384);
+			this->button2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(109, 54);
+			this->button2->Size = System::Drawing::Size(145, 66);
 			this->button2->TabIndex = 19;
 			this->button2->Text = L"Cancel";
 			this->button2->UseVisualStyleBackColor = false;
 			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
-			//
+			// 
 			// btn_saveResetPassword
-			//
+			// 
 			this->btn_saveResetPassword->FlatAppearance->BorderColor = System::Drawing::Color::Black;
 			this->btn_saveResetPassword->FlatAppearance->BorderSize = 3;
 			this->btn_saveResetPassword->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_saveResetPassword->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																			 static_cast<System::Byte>(0)));
-			this->btn_saveResetPassword->Location = System::Drawing::Point(330, 312);
+				static_cast<System::Byte>(0)));
+			this->btn_saveResetPassword->Location = System::Drawing::Point(440, 384);
+			this->btn_saveResetPassword->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btn_saveResetPassword->Name = L"btn_saveResetPassword";
-			this->btn_saveResetPassword->Size = System::Drawing::Size(98, 54);
+			this->btn_saveResetPassword->Size = System::Drawing::Size(131, 66);
 			this->btn_saveResetPassword->TabIndex = 18;
 			this->btn_saveResetPassword->Text = L"Save";
 			this->btn_saveResetPassword->UseVisualStyleBackColor = true;
 			this->btn_saveResetPassword->Click += gcnew System::EventHandler(this, &MyForm::button3_Click);
-			//
+			// 
 			// textBox8
-			//
+			// 
 			this->textBox8->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-																static_cast<System::Byte>(0)));
-			this->textBox8->Location = System::Drawing::Point(439, 87);
+				static_cast<System::Byte>(0)));
+			this->textBox8->Location = System::Drawing::Point(585, 107);
+			this->textBox8->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox8->Name = L"textBox8";
 			this->textBox8->ReadOnly = true;
-			this->textBox8->Size = System::Drawing::Size(251, 35);
+			this->textBox8->Size = System::Drawing::Size(333, 42);
 			this->textBox8->TabIndex = 17;
-			//
+			// 
 			// label12
-			//
+			// 
 			this->label12->AutoSize = true;
 			this->label12->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															   static_cast<System::Byte>(0)));
-			this->label12->Location = System::Drawing::Point(211, 91);
+				static_cast<System::Byte>(0)));
+			this->label12->Location = System::Drawing::Point(281, 112);
+			this->label12->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(216, 32);
+			this->label12->Size = System::Drawing::Size(265, 41);
 			this->label12->TabIndex = 16;
 			this->label12->Text = L"Current Password";
-			//
+			// 
 			// tb_newPassword
-			//
+			// 
 			this->tb_newPassword->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-																	  static_cast<System::Byte>(0)));
-			this->tb_newPassword->Location = System::Drawing::Point(439, 144);
+				static_cast<System::Byte>(0)));
+			this->tb_newPassword->Location = System::Drawing::Point(585, 177);
+			this->tb_newPassword->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->tb_newPassword->Name = L"tb_newPassword";
 			this->tb_newPassword->PasswordChar = '*';
-			this->tb_newPassword->Size = System::Drawing::Size(251, 35);
+			this->tb_newPassword->Size = System::Drawing::Size(333, 42);
 			this->tb_newPassword->TabIndex = 15;
-			//
+			// 
 			// label13
-			//
+			// 
 			this->label13->AutoSize = true;
 			this->label13->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															   static_cast<System::Byte>(0)));
-			this->label13->Location = System::Drawing::Point(230, 147);
+				static_cast<System::Byte>(0)));
+			this->label13->Location = System::Drawing::Point(307, 181);
+			this->label13->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(180, 32);
+			this->label13->Size = System::Drawing::Size(222, 41);
 			this->label13->TabIndex = 14;
 			this->label13->Text = L"New Password";
-			//
+			// 
 			// label1
-			//
+			// 
 			this->label1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-																	   static_cast<System::Int32>(static_cast<System::Byte>(230)));
+				static_cast<System::Int32>(static_cast<System::Byte>(230)));
 			this->label1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->label1->Dock = System::Windows::Forms::DockStyle::Top;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															  static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->label1->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->label1->Location = System::Drawing::Point(0, 0);
-			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(892, 120);
+			this->label1->Size = System::Drawing::Size(1189, 147);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Edit Your Information";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			//
+			// 
 			// pn_orders
-			//
+			// 
 			this->pn_orders->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-																		  static_cast<System::Int32>(static_cast<System::Byte>(239)));
+				static_cast<System::Int32>(static_cast<System::Byte>(239)));
 			this->pn_orders->Controls->Add(this->label19);
 			this->pn_orders->Controls->Add(this->orderList);
 			this->pn_orders->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pn_orders->Location = System::Drawing::Point(222, 0);
-			this->pn_orders->Margin = System::Windows::Forms::Padding(2);
+			this->pn_orders->Location = System::Drawing::Point(296, 0);
+			this->pn_orders->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pn_orders->Name = L"pn_orders";
-			this->pn_orders->Size = System::Drawing::Size(892, 605);
+			this->pn_orders->Size = System::Drawing::Size(1189, 745);
 			this->pn_orders->TabIndex = 3;
-			//
+			// 
 			// label19
-			//
+			// 
 			this->label19->Dock = System::Windows::Forms::DockStyle::Top;
 			this->label19->Font = (gcnew System::Drawing::Font(L"Segoe UI", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															   static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->label19->Location = System::Drawing::Point(0, 0);
-			this->label19->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label19->Name = L"label19";
-			this->label19->Size = System::Drawing::Size(892, 120);
+			this->label19->Size = System::Drawing::Size(1189, 148);
 			this->label19->TabIndex = 2;
 			this->label19->Text = L"Order";
 			this->label19->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			//
+			// 
 			// orderList
-			//
+			// 
 			this->orderList->AutoScroll = true;
-			this->orderList->Location = System::Drawing::Point(0, 120);
+			this->orderList->Location = System::Drawing::Point(0, 148);
+			this->orderList->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->orderList->Name = L"orderList";
-			this->orderList->Size = System::Drawing::Size(892, 485);
+			this->orderList->Size = System::Drawing::Size(1189, 597);
 			this->orderList->TabIndex = 3;
-			//
+			// 
 			// pn_left_bar
-			//
+			// 
 			this->pn_left_bar->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(51)), static_cast<System::Int32>(static_cast<System::Byte>(55)),
-																			static_cast<System::Int32>(static_cast<System::Byte>(69)));
+				static_cast<System::Int32>(static_cast<System::Byte>(69)));
 			this->pn_left_bar->Controls->Add(this->flowLayoutPanel1);
 			this->pn_left_bar->Controls->Add(this->pn_picture);
 			this->pn_left_bar->Dock = System::Windows::Forms::DockStyle::Left;
 			this->pn_left_bar->Location = System::Drawing::Point(0, 0);
-			this->pn_left_bar->Margin = System::Windows::Forms::Padding(2);
+			this->pn_left_bar->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pn_left_bar->Name = L"pn_left_bar";
-			this->pn_left_bar->Size = System::Drawing::Size(222, 605);
+			this->pn_left_bar->Size = System::Drawing::Size(296, 745);
 			this->pn_left_bar->TabIndex = 0;
-			//
+			// 
 			// flowLayoutPanel1
-			//
+			// 
 			this->flowLayoutPanel1->Controls->Add(this->btn_edit_information);
 			this->flowLayoutPanel1->Controls->Add(this->btn_products);
 			this->flowLayoutPanel1->Controls->Add(this->btn_orders);
 			this->flowLayoutPanel1->Controls->Add(this->btn_TotalBill);
 			this->flowLayoutPanel1->Controls->Add(this->btn_login);
 			this->flowLayoutPanel1->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->flowLayoutPanel1->Location = System::Drawing::Point(0, 163);
-			this->flowLayoutPanel1->Margin = System::Windows::Forms::Padding(2);
+			this->flowLayoutPanel1->Location = System::Drawing::Point(0, 201);
+			this->flowLayoutPanel1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->flowLayoutPanel1->Name = L"flowLayoutPanel1";
-			this->flowLayoutPanel1->Size = System::Drawing::Size(222, 442);
+			this->flowLayoutPanel1->Size = System::Drawing::Size(296, 544);
 			this->flowLayoutPanel1->TabIndex = 1;
-			//
+			// 
 			// btn_edit_information
-			//
+			// 
 			this->btn_edit_information->BackColor = System::Drawing::Color::DimGray;
 			this->btn_edit_information->FlatAppearance->BorderSize = 0;
 			this->btn_edit_information->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_edit_information->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular,
-																			System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->btn_edit_information->ForeColor = System::Drawing::Color::White;
-			this->btn_edit_information->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"btn_edit_information.Image")));
+			this->btn_edit_information->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_edit_information.Image")));
 			this->btn_edit_information->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->btn_edit_information->Location = System::Drawing::Point(2, 2);
-			this->btn_edit_information->Margin = System::Windows::Forms::Padding(2);
+			this->btn_edit_information->Location = System::Drawing::Point(3, 2);
+			this->btn_edit_information->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btn_edit_information->Name = L"btn_edit_information";
-			this->btn_edit_information->Size = System::Drawing::Size(220, 60);
+			this->btn_edit_information->Size = System::Drawing::Size(293, 74);
 			this->btn_edit_information->TabIndex = 0;
 			this->btn_edit_information->Text = L"Edit Information";
 			this->btn_edit_information->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
@@ -4473,128 +4477,127 @@ public
 			this->btn_edit_information->Click += gcnew System::EventHandler(this, &MyForm::btn_edit_information_Click);
 			this->btn_edit_information->MouseEnter += gcnew System::EventHandler(this, &MyForm::btn_edit_information_MouseEnter);
 			this->btn_edit_information->MouseLeave += gcnew System::EventHandler(this, &MyForm::btn_edit_information_MouseLeave);
-			//
+			// 
 			// btn_products
-			//
+			// 
 			this->btn_products->FlatAppearance->BorderSize = 0;
 			this->btn_products->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_products->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-																	static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->btn_products->ForeColor = System::Drawing::Color::White;
-			this->btn_products->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"btn_products.Image")));
+			this->btn_products->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_products.Image")));
 			this->btn_products->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->btn_products->Location = System::Drawing::Point(2, 66);
-			this->btn_products->Margin = System::Windows::Forms::Padding(2);
+			this->btn_products->Location = System::Drawing::Point(3, 80);
+			this->btn_products->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btn_products->Name = L"btn_products";
-			this->btn_products->Size = System::Drawing::Size(220, 60);
+			this->btn_products->Size = System::Drawing::Size(293, 74);
 			this->btn_products->TabIndex = 1;
 			this->btn_products->Text = L"Products";
 			this->btn_products->UseVisualStyleBackColor = true;
 			this->btn_products->Click += gcnew System::EventHandler(this, &MyForm::btn_products_Click);
 			this->btn_products->MouseEnter += gcnew System::EventHandler(this, &MyForm::btn_products_MouseEnter);
 			this->btn_products->MouseLeave += gcnew System::EventHandler(this, &MyForm::btn_products_MouseLeave);
-			//
+			// 
 			// btn_orders
-			//
+			// 
 			this->btn_orders->FlatAppearance->BorderSize = 0;
 			this->btn_orders->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_orders->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-																  static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->btn_orders->ForeColor = System::Drawing::Color::White;
-			this->btn_orders->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"btn_orders.Image")));
+			this->btn_orders->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_orders.Image")));
 			this->btn_orders->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->btn_orders->Location = System::Drawing::Point(2, 130);
-			this->btn_orders->Margin = System::Windows::Forms::Padding(2);
+			this->btn_orders->Location = System::Drawing::Point(3, 158);
+			this->btn_orders->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btn_orders->Name = L"btn_orders";
-			this->btn_orders->Size = System::Drawing::Size(220, 60);
+			this->btn_orders->Size = System::Drawing::Size(293, 74);
 			this->btn_orders->TabIndex = 2;
 			this->btn_orders->Text = L"Orders";
 			this->btn_orders->UseVisualStyleBackColor = true;
 			this->btn_orders->Click += gcnew System::EventHandler(this, &MyForm::btn_orders_Click);
 			this->btn_orders->MouseEnter += gcnew System::EventHandler(this, &MyForm::btn_orders_MouseEnter);
 			this->btn_orders->MouseLeave += gcnew System::EventHandler(this, &MyForm::btn_orders_MouseLeave);
-			//
+			// 
 			// btn_TotalBill
-			//
+			// 
 			this->btn_TotalBill->FlatAppearance->BorderSize = 0;
 			this->btn_TotalBill->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_TotalBill->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-																	 static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->btn_TotalBill->ForeColor = System::Drawing::Color::White;
-			this->btn_TotalBill->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"btn_TotalBill.Image")));
+			this->btn_TotalBill->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_TotalBill.Image")));
 			this->btn_TotalBill->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->btn_TotalBill->Location = System::Drawing::Point(2, 194);
-			this->btn_TotalBill->Margin = System::Windows::Forms::Padding(2);
+			this->btn_TotalBill->Location = System::Drawing::Point(3, 236);
+			this->btn_TotalBill->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btn_TotalBill->Name = L"btn_TotalBill";
-			this->btn_TotalBill->Size = System::Drawing::Size(220, 60);
+			this->btn_TotalBill->Size = System::Drawing::Size(293, 74);
 			this->btn_TotalBill->TabIndex = 4;
 			this->btn_TotalBill->Text = L"Total Bill";
 			this->btn_TotalBill->UseVisualStyleBackColor = true;
 			this->btn_TotalBill->Click += gcnew System::EventHandler(this, &MyForm::btn_TotalBill_Click);
 			this->btn_TotalBill->MouseEnter += gcnew System::EventHandler(this, &MyForm::btn_TotalBill_MouseEnter);
 			this->btn_TotalBill->MouseLeave += gcnew System::EventHandler(this, &MyForm::btn_TotalBill_MouseLeave);
-			//
+			// 
 			// btn_login
-			//
+			// 
 			this->btn_login->Dock = System::Windows::Forms::DockStyle::Bottom;
 			this->btn_login->FlatAppearance->BorderSize = 0;
 			this->btn_login->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_login->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-																 static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->btn_login->ForeColor = System::Drawing::Color::White;
-			this->btn_login->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"btn_login.Image")));
+			this->btn_login->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_login.Image")));
 			this->btn_login->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->btn_login->Location = System::Drawing::Point(2, 325);
-			this->btn_login->Margin = System::Windows::Forms::Padding(2, 69, 2, 2);
+			this->btn_login->Location = System::Drawing::Point(3, 397);
+			this->btn_login->Margin = System::Windows::Forms::Padding(3, 85, 3, 2);
 			this->btn_login->Name = L"btn_login";
-			this->btn_login->Size = System::Drawing::Size(220, 80);
+			this->btn_login->Size = System::Drawing::Size(293, 98);
 			this->btn_login->TabIndex = 3;
 			this->btn_login->Text = L"Log out";
 			this->btn_login->UseVisualStyleBackColor = true;
 			this->btn_login->Click += gcnew System::EventHandler(this, &MyForm::btn_logout_Click);
-			//
+			// 
 			// pn_picture
-			//
+			// 
 			this->pn_picture->Controls->Add(this->lb_profile);
 			this->pn_picture->Controls->Add(this->pb_profile);
 			this->pn_picture->Dock = System::Windows::Forms::DockStyle::Top;
 			this->pn_picture->Location = System::Drawing::Point(0, 0);
-			this->pn_picture->Margin = System::Windows::Forms::Padding(2);
+			this->pn_picture->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pn_picture->Name = L"pn_picture";
-			this->pn_picture->Size = System::Drawing::Size(222, 163);
+			this->pn_picture->Size = System::Drawing::Size(296, 201);
 			this->pn_picture->TabIndex = 0;
-			//
+			// 
 			// lb_profile
-			//
+			// 
 			this->lb_profile->BackColor = System::Drawing::Color::Transparent;
 			this->lb_profile->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																  static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->lb_profile->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
-																		   static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->lb_profile->Location = System::Drawing::Point(39, 137);
-			this->lb_profile->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->lb_profile->Location = System::Drawing::Point(52, 169);
 			this->lb_profile->Name = L"lb_profile";
-			this->lb_profile->Size = System::Drawing::Size(148, 19);
+			this->lb_profile->Size = System::Drawing::Size(197, 23);
 			this->lb_profile->TabIndex = 1;
 			this->lb_profile->Text = L"USERNAME";
 			this->lb_profile->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			//
+			// 
 			// pb_profile
-			//
-			this->pb_profile->BackgroundImage = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"pb_profile.BackgroundImage")));
+			// 
+			this->pb_profile->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pb_profile.BackgroundImage")));
 			this->pb_profile->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
-			this->pb_profile->Location = System::Drawing::Point(34, 4);
-			this->pb_profile->Margin = System::Windows::Forms::Padding(2);
+			this->pb_profile->Location = System::Drawing::Point(45, 5);
+			this->pb_profile->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pb_profile->Name = L"pb_profile";
-			this->pb_profile->Size = System::Drawing::Size(153, 131);
+			this->pb_profile->Size = System::Drawing::Size(204, 161);
 			this->pb_profile->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pb_profile->TabIndex = 0;
 			this->pb_profile->TabStop = false;
-			//
+			// 
 			// pn_login
-			//
+			// 
 			this->pn_login->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(51)), static_cast<System::Int32>(static_cast<System::Byte>(55)),
-																		 static_cast<System::Int32>(static_cast<System::Byte>(69)));
+				static_cast<System::Int32>(static_cast<System::Byte>(69)));
 			this->pn_login->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->pn_login->Controls->Add(this->label26);
 			this->pn_login->Controls->Add(this->pictureBox8);
@@ -4615,251 +4618,252 @@ public
 			this->pn_login->Controls->Add(this->btn_login_loginpanel);
 			this->pn_login->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_login->Location = System::Drawing::Point(0, 0);
-			this->pn_login->Margin = System::Windows::Forms::Padding(2);
+			this->pn_login->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pn_login->Name = L"pn_login";
-			this->pn_login->Size = System::Drawing::Size(1114, 605);
+			this->pn_login->Size = System::Drawing::Size(1485, 745);
 			this->pn_login->TabIndex = 2;
-			//
+			// 
 			// label26
-			//
+			// 
 			this->label26->Font = (gcnew System::Drawing::Font(L"Segoe UI", 11.25F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Underline)),
-															   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->label26->ForeColor = System::Drawing::Color::White;
-			this->label26->Location = System::Drawing::Point(496, 341);
+			this->label26->Location = System::Drawing::Point(661, 420);
+			this->label26->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label26->Name = L"label26";
-			this->label26->Size = System::Drawing::Size(201, 23);
+			this->label26->Size = System::Drawing::Size(268, 28);
 			this->label26->TabIndex = 26;
 			this->label26->Text = L"You don\'t have an account\?";
-			//
+			// 
 			// pictureBox8
-			//
-			this->pictureBox8->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"pictureBox8.Image")));
-			this->pictureBox8->Location = System::Drawing::Point(-29, 412);
+			// 
+			this->pictureBox8->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox8.Image")));
+			this->pictureBox8->Location = System::Drawing::Point(-39, 507);
+			this->pictureBox8->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pictureBox8->Name = L"pictureBox8";
-			this->pictureBox8->Size = System::Drawing::Size(324, 279);
+			this->pictureBox8->Size = System::Drawing::Size(432, 343);
 			this->pictureBox8->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureBox8->TabIndex = 25;
 			this->pictureBox8->TabStop = false;
-			//
+			// 
 			// pictureBox7
-			//
-			this->pictureBox7->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"pictureBox7.Image")));
-			this->pictureBox7->Location = System::Drawing::Point(820, 412);
+			// 
+			this->pictureBox7->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox7.Image")));
+			this->pictureBox7->Location = System::Drawing::Point(1093, 507);
+			this->pictureBox7->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pictureBox7->Name = L"pictureBox7";
-			this->pictureBox7->Size = System::Drawing::Size(324, 279);
+			this->pictureBox7->Size = System::Drawing::Size(432, 343);
 			this->pictureBox7->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureBox7->TabIndex = 24;
 			this->pictureBox7->TabStop = false;
-			//
+			// 
 			// pictureBox2
-			//
+			// 
 			this->pictureBox2->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"pictureBox2.Image")));
-			this->pictureBox2->Location = System::Drawing::Point(441, 44);
+			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
+			this->pictureBox2->Location = System::Drawing::Point(588, 54);
+			this->pictureBox2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(65, 50);
+			this->pictureBox2->Size = System::Drawing::Size(87, 62);
 			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureBox2->TabIndex = 23;
 			this->pictureBox2->TabStop = false;
-			//
+			// 
 			// label3
-			//
+			// 
 			this->label3->BackColor = System::Drawing::Color::Transparent;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Segoe UI", 27.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															  static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->label3->ForeColor = System::Drawing::Color::White;
-			this->label3->Location = System::Drawing::Point(513, 39);
+			this->label3->Location = System::Drawing::Point(684, 48);
+			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(160, 55);
+			this->label3->Size = System::Drawing::Size(213, 68);
 			this->label3->TabIndex = 22;
 			this->label3->Text = L"Login";
-			//
+			// 
 			// lb_password_message_login
-			//
+			// 
 			this->lb_password_message_login->BackColor = System::Drawing::Color::Transparent;
 			this->lb_password_message_login->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular,
-																				 System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->lb_password_message_login->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(254)),
-																						  static_cast<System::Int32>(static_cast<System::Byte>(95)), static_cast<System::Int32>(static_cast<System::Byte>(85)));
-			this->lb_password_message_login->Location = System::Drawing::Point(490, 294);
-			this->lb_password_message_login->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+				static_cast<System::Int32>(static_cast<System::Byte>(95)), static_cast<System::Int32>(static_cast<System::Byte>(85)));
+			this->lb_password_message_login->Location = System::Drawing::Point(653, 362);
 			this->lb_password_message_login->Name = L"lb_password_message_login";
-			this->lb_password_message_login->Size = System::Drawing::Size(244, 19);
+			this->lb_password_message_login->Size = System::Drawing::Size(325, 23);
 			this->lb_password_message_login->TabIndex = 21;
 			this->lb_password_message_login->Text = L"Please enter the password";
 			this->lb_password_message_login->Visible = false;
-			//
+			// 
 			// lb_username_message_login
-			//
+			// 
 			this->lb_username_message_login->BackColor = System::Drawing::Color::Transparent;
 			this->lb_username_message_login->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular,
-																				 System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->lb_username_message_login->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(254)),
-																						  static_cast<System::Int32>(static_cast<System::Byte>(95)), static_cast<System::Int32>(static_cast<System::Byte>(85)));
-			this->lb_username_message_login->Location = System::Drawing::Point(486, 205);
-			this->lb_username_message_login->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+				static_cast<System::Int32>(static_cast<System::Byte>(95)), static_cast<System::Int32>(static_cast<System::Byte>(85)));
+			this->lb_username_message_login->Location = System::Drawing::Point(648, 252);
 			this->lb_username_message_login->Name = L"lb_username_message_login";
-			this->lb_username_message_login->Size = System::Drawing::Size(244, 19);
+			this->lb_username_message_login->Size = System::Drawing::Size(325, 23);
 			this->lb_username_message_login->TabIndex = 20;
 			this->lb_username_message_login->Text = L" Please enter the username";
 			this->lb_username_message_login->Visible = false;
-			//
+			// 
 			// btn_refresh_password_login
-			//
+			// 
 			this->btn_refresh_password_login->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(51)),
-																						   static_cast<System::Int32>(static_cast<System::Byte>(55)), static_cast<System::Int32>(static_cast<System::Byte>(69)));
-			this->btn_refresh_password_login->BackgroundImage = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"btn_refresh_password_login.BackgroundImage")));
+				static_cast<System::Int32>(static_cast<System::Byte>(55)), static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->btn_refresh_password_login->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_refresh_password_login.BackgroundImage")));
 			this->btn_refresh_password_login->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->btn_refresh_password_login->FlatAppearance->BorderSize = 0;
 			this->btn_refresh_password_login->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btn_refresh_password_login->Location = System::Drawing::Point(746, 269);
-			this->btn_refresh_password_login->Margin = System::Windows::Forms::Padding(2);
+			this->btn_refresh_password_login->Location = System::Drawing::Point(995, 331);
+			this->btn_refresh_password_login->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btn_refresh_password_login->Name = L"btn_refresh_password_login";
-			this->btn_refresh_password_login->Size = System::Drawing::Size(29, 19);
+			this->btn_refresh_password_login->Size = System::Drawing::Size(39, 23);
 			this->btn_refresh_password_login->TabIndex = 19;
 			this->btn_refresh_password_login->UseVisualStyleBackColor = false;
 			this->btn_refresh_password_login->Click += gcnew System::EventHandler(this, &MyForm::btn_refresh_password_login_Click);
-			//
+			// 
 			// btn_refresh_username_login
-			//
+			// 
 			this->btn_refresh_username_login->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(51)),
-																						   static_cast<System::Int32>(static_cast<System::Byte>(55)), static_cast<System::Int32>(static_cast<System::Byte>(69)));
-			this->btn_refresh_username_login->BackgroundImage = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"btn_refresh_username_login.BackgroundImage")));
+				static_cast<System::Int32>(static_cast<System::Byte>(55)), static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->btn_refresh_username_login->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_refresh_username_login.BackgroundImage")));
 			this->btn_refresh_username_login->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->btn_refresh_username_login->FlatAppearance->BorderSize = 0;
 			this->btn_refresh_username_login->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_refresh_username_login->ForeColor = System::Drawing::Color::White;
-			this->btn_refresh_username_login->Location = System::Drawing::Point(746, 176);
-			this->btn_refresh_username_login->Margin = System::Windows::Forms::Padding(2);
+			this->btn_refresh_username_login->Location = System::Drawing::Point(995, 217);
+			this->btn_refresh_username_login->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btn_refresh_username_login->Name = L"btn_refresh_username_login";
-			this->btn_refresh_username_login->Size = System::Drawing::Size(29, 19);
+			this->btn_refresh_username_login->Size = System::Drawing::Size(39, 23);
 			this->btn_refresh_username_login->TabIndex = 18;
 			this->btn_refresh_username_login->UseVisualStyleBackColor = false;
 			this->btn_refresh_username_login->Click += gcnew System::EventHandler(this, &MyForm::btn_refresh_username_login_Click);
-			//
+			// 
 			// btn_seepasword_login
-			//
+			// 
 			this->btn_seepasword_login->BackColor = System::Drawing::Color::White;
-			this->btn_seepasword_login->BackgroundImage = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"btn_seepasword_login.BackgroundImage")));
+			this->btn_seepasword_login->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_seepasword_login.BackgroundImage")));
 			this->btn_seepasword_login->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->btn_seepasword_login->FlatAppearance->BorderSize = 0;
 			this->btn_seepasword_login->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btn_seepasword_login->Location = System::Drawing::Point(705, 263);
-			this->btn_seepasword_login->Margin = System::Windows::Forms::Padding(2);
+			this->btn_seepasword_login->Location = System::Drawing::Point(940, 324);
+			this->btn_seepasword_login->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btn_seepasword_login->Name = L"btn_seepasword_login";
-			this->btn_seepasword_login->Size = System::Drawing::Size(25, 28);
+			this->btn_seepasword_login->Size = System::Drawing::Size(33, 34);
 			this->btn_seepasword_login->TabIndex = 15;
 			this->btn_seepasword_login->UseVisualStyleBackColor = false;
 			this->btn_seepasword_login->Click += gcnew System::EventHandler(this, &MyForm::btn_seepasword_login_Click);
-			//
+			// 
 			// tb_password_login
-			//
+			// 
 			this->tb_password_login->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->tb_password_login->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
-																		 System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->tb_password_login->Location = System::Drawing::Point(484, 262);
-			this->tb_password_login->Margin = System::Windows::Forms::Padding(2);
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->tb_password_login->Location = System::Drawing::Point(645, 322);
+			this->tb_password_login->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->tb_password_login->Name = L"tb_password_login";
-			this->tb_password_login->Size = System::Drawing::Size(248, 31);
+			this->tb_password_login->Size = System::Drawing::Size(330, 37);
 			this->tb_password_login->TabIndex = 1;
 			this->tb_password_login->UseSystemPasswordChar = true;
-			//
+			// 
 			// tb_username_login
-			//
+			// 
 			this->tb_username_login->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->tb_username_login->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
-																		 System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->tb_username_login->Location = System::Drawing::Point(484, 171);
-			this->tb_username_login->Margin = System::Windows::Forms::Padding(2);
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->tb_username_login->Location = System::Drawing::Point(645, 210);
+			this->tb_username_login->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->tb_username_login->Name = L"tb_username_login";
-			this->tb_username_login->Size = System::Drawing::Size(248, 31);
+			this->tb_username_login->Size = System::Drawing::Size(330, 37);
 			this->tb_username_login->TabIndex = 0;
-			//
+			// 
 			// lb_password
-			//
+			// 
 			this->lb_password->BackColor = System::Drawing::Color::Transparent;
 			this->lb_password->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																   static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->lb_password->ForeColor = System::Drawing::Color::White;
-			this->lb_password->Location = System::Drawing::Point(339, 259);
-			this->lb_password->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->lb_password->Location = System::Drawing::Point(452, 319);
 			this->lb_password->Name = L"lb_password";
-			this->lb_password->Size = System::Drawing::Size(133, 28);
+			this->lb_password->Size = System::Drawing::Size(177, 34);
 			this->lb_password->TabIndex = 4;
 			this->lb_password->Text = L"Password";
-			//
+			// 
 			// lb_username
-			//
+			// 
 			this->lb_username->BackColor = System::Drawing::Color::Transparent;
 			this->lb_username->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																   static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->lb_username->ForeColor = System::Drawing::Color::White;
-			this->lb_username->Location = System::Drawing::Point(339, 167);
-			this->lb_username->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->lb_username->Location = System::Drawing::Point(452, 206);
 			this->lb_username->Name = L"lb_username";
-			this->lb_username->Size = System::Drawing::Size(133, 28);
+			this->lb_username->Size = System::Drawing::Size(177, 34);
 			this->lb_username->TabIndex = 3;
 			this->lb_username->Text = L"Username";
-			//
+			// 
 			// btn_register_loginpanel
-			//
+			// 
 			this->btn_register_loginpanel->BackColor = System::Drawing::Color::LightCoral;
 			this->btn_register_loginpanel->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
 			this->btn_register_loginpanel->FlatAppearance->BorderSize = 0;
 			this->btn_register_loginpanel->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_register_loginpanel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold,
-																			   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->btn_register_loginpanel->ForeColor = System::Drawing::Color::White;
-			this->btn_register_loginpanel->Location = System::Drawing::Point(702, 335);
-			this->btn_register_loginpanel->Margin = System::Windows::Forms::Padding(2);
+			this->btn_register_loginpanel->Location = System::Drawing::Point(936, 412);
+			this->btn_register_loginpanel->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btn_register_loginpanel->Name = L"btn_register_loginpanel";
-			this->btn_register_loginpanel->Size = System::Drawing::Size(93, 30);
+			this->btn_register_loginpanel->Size = System::Drawing::Size(124, 37);
 			this->btn_register_loginpanel->TabIndex = 3;
 			this->btn_register_loginpanel->Text = L"Register";
 			this->btn_register_loginpanel->UseVisualStyleBackColor = false;
 			this->btn_register_loginpanel->Click += gcnew System::EventHandler(this, &MyForm::btn_register_loginpanel_Click);
-			//
+			// 
 			// btn_back_loginpanal
-			//
+			// 
 			this->btn_back_loginpanal->BackColor = System::Drawing::Color::DarkGray;
 			this->btn_back_loginpanal->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
 			this->btn_back_loginpanal->FlatAppearance->BorderSize = 0;
 			this->btn_back_loginpanal->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_back_loginpanal->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular,
-																		   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->btn_back_loginpanal->ForeColor = System::Drawing::Color::White;
-			this->btn_back_loginpanal->Location = System::Drawing::Point(498, 493);
-			this->btn_back_loginpanal->Margin = System::Windows::Forms::Padding(2);
+			this->btn_back_loginpanal->Location = System::Drawing::Point(664, 607);
+			this->btn_back_loginpanal->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btn_back_loginpanal->Name = L"btn_back_loginpanal";
-			this->btn_back_loginpanal->Size = System::Drawing::Size(114, 43);
+			this->btn_back_loginpanal->Size = System::Drawing::Size(152, 53);
 			this->btn_back_loginpanal->TabIndex = 4;
 			this->btn_back_loginpanal->Text = L"Back";
 			this->btn_back_loginpanal->UseVisualStyleBackColor = false;
 			this->btn_back_loginpanal->Click += gcnew System::EventHandler(this, &MyForm::btn_back_loginpanal_Click);
-			//
+			// 
 			// btn_login_loginpanel
-			//
+			// 
 			this->btn_login_loginpanel->BackColor = System::Drawing::Color::Turquoise;
 			this->btn_login_loginpanel->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
 			this->btn_login_loginpanel->FlatAppearance->BorderSize = 0;
 			this->btn_login_loginpanel->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_login_loginpanel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 17.25F, System::Drawing::FontStyle::Bold,
-																			System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->btn_login_loginpanel->ForeColor = System::Drawing::Color::White;
-			this->btn_login_loginpanel->Location = System::Drawing::Point(469, 422);
-			this->btn_login_loginpanel->Margin = System::Windows::Forms::Padding(2);
+			this->btn_login_loginpanel->Location = System::Drawing::Point(625, 519);
+			this->btn_login_loginpanel->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btn_login_loginpanel->Name = L"btn_login_loginpanel";
-			this->btn_login_loginpanel->Size = System::Drawing::Size(172, 47);
+			this->btn_login_loginpanel->Size = System::Drawing::Size(229, 58);
 			this->btn_login_loginpanel->TabIndex = 2;
 			this->btn_login_loginpanel->Text = L"Log in";
 			this->btn_login_loginpanel->UseVisualStyleBackColor = false;
 			this->btn_login_loginpanel->Click += gcnew System::EventHandler(this, &MyForm::btn_login_loginpanel_Click);
-			//
+			// 
 			// pn_start
-			//
+			// 
 			this->pn_start->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(51)), static_cast<System::Int32>(static_cast<System::Byte>(55)),
-																		 static_cast<System::Int32>(static_cast<System::Byte>(69)));
+				static_cast<System::Int32>(static_cast<System::Byte>(69)));
 			this->pn_start->Controls->Add(this->label25);
 			this->pn_start->Controls->Add(this->label24);
 			this->pn_start->Controls->Add(this->pictureBox5);
@@ -4874,173 +4878,183 @@ public
 			this->pn_start->Controls->Add(this->welcomeScreen);
 			this->pn_start->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_start->Location = System::Drawing::Point(0, 0);
-			this->pn_start->Margin = System::Windows::Forms::Padding(2);
+			this->pn_start->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pn_start->Name = L"pn_start";
-			this->pn_start->Size = System::Drawing::Size(1114, 605);
+			this->pn_start->Size = System::Drawing::Size(1485, 745);
 			this->pn_start->TabIndex = 3;
-			//
+			// 
 			// label25
-			//
+			// 
 			this->label25->AutoSize = true;
 			this->label25->BackColor = System::Drawing::Color::White;
 			this->label25->Font = (gcnew System::Drawing::Font(L"Britannic Bold", 15.75F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
-															   static_cast<System::Byte>(0)));
-			this->label25->Location = System::Drawing::Point(786, 64);
+				static_cast<System::Byte>(0)));
+			this->label25->Location = System::Drawing::Point(1048, 79);
+			this->label25->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label25->Name = L"label25";
-			this->label25->Size = System::Drawing::Size(138, 23);
+			this->label25->Size = System::Drawing::Size(178, 30);
 			this->label25->TabIndex = 11;
 			this->label25->Text = L"SUPERMARKO";
 			this->label25->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			//
+			// 
 			// label24
-			//
+			// 
 			this->label24->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(230)), static_cast<System::Int32>(static_cast<System::Byte>(52)),
-																		static_cast<System::Int32>(static_cast<System::Byte>(98)));
-			this->label24->Location = System::Drawing::Point(42, 295);
+				static_cast<System::Int32>(static_cast<System::Byte>(98)));
+			this->label24->Location = System::Drawing::Point(56, 363);
+			this->label24->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label24->Name = L"label24";
-			this->label24->Size = System::Drawing::Size(10, 122);
+			this->label24->Size = System::Drawing::Size(13, 150);
 			this->label24->TabIndex = 10;
-			//
+			// 
 			// pictureBox5
-			//
-			this->pictureBox5->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"pictureBox5.Image")));
-			this->pictureBox5->Location = System::Drawing::Point(115, 165);
+			// 
+			this->pictureBox5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox5.Image")));
+			this->pictureBox5->Location = System::Drawing::Point(153, 203);
+			this->pictureBox5->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pictureBox5->Name = L"pictureBox5";
-			this->pictureBox5->Size = System::Drawing::Size(77, 20);
+			this->pictureBox5->Size = System::Drawing::Size(103, 25);
 			this->pictureBox5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox5->TabIndex = 9;
 			this->pictureBox5->TabStop = false;
-			//
+			// 
 			// pictureBox4
-			//
-			this->pictureBox4->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"pictureBox4.Image")));
-			this->pictureBox4->Location = System::Drawing::Point(310, 164);
+			// 
+			this->pictureBox4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox4.Image")));
+			this->pictureBox4->Location = System::Drawing::Point(413, 202);
+			this->pictureBox4->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pictureBox4->Name = L"pictureBox4";
-			this->pictureBox4->Size = System::Drawing::Size(77, 20);
+			this->pictureBox4->Size = System::Drawing::Size(103, 25);
 			this->pictureBox4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox4->TabIndex = 8;
 			this->pictureBox4->TabStop = false;
-			//
+			// 
 			// label23
-			//
+			// 
 			this->label23->BackColor = System::Drawing::Color::Transparent;
 			this->label23->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-															   static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->label23->ForeColor = System::Drawing::Color::White;
-			this->label23->Location = System::Drawing::Point(60, 291);
+			this->label23->Location = System::Drawing::Point(80, 358);
+			this->label23->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label23->Name = L"label23";
-			this->label23->Size = System::Drawing::Size(553, 143);
+			this->label23->Size = System::Drawing::Size(737, 176);
 			this->label23->TabIndex = 7;
 			this->label23->Text = resources->GetString(L"label23.Text");
-			//
+			// 
 			// pictureBox3
-			//
+			// 
 			this->pictureBox3->BackColor = System::Drawing::Color::Transparent;
-			this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"pictureBox3.Image")));
-			this->pictureBox3->Location = System::Drawing::Point(34, 203);
+			this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.Image")));
+			this->pictureBox3->Location = System::Drawing::Point(45, 250);
+			this->pictureBox3->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pictureBox3->Name = L"pictureBox3";
-			this->pictureBox3->Size = System::Drawing::Size(84, 86);
+			this->pictureBox3->Size = System::Drawing::Size(112, 106);
 			this->pictureBox3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox3->TabIndex = 6;
 			this->pictureBox3->TabStop = false;
-			//
+			// 
 			// label21
-			//
+			// 
 			this->label21->AutoSize = true;
 			this->label21->BackColor = System::Drawing::Color::Transparent;
 			this->label21->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 48, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															   static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->label21->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(254)), static_cast<System::Int32>(static_cast<System::Byte>(134)),
-																		static_cast<System::Int32>(static_cast<System::Byte>(6)));
-			this->label21->Location = System::Drawing::Point(104, 195);
+				static_cast<System::Int32>(static_cast<System::Byte>(6)));
+			this->label21->Location = System::Drawing::Point(139, 240);
+			this->label21->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label21->Name = L"label21";
-			this->label21->Size = System::Drawing::Size(409, 90);
+			this->label21->Size = System::Drawing::Size(508, 111);
 			this->label21->TabIndex = 5;
 			this->label21->Text = L"SuperMarko";
 			this->label21->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			//
+			// 
 			// label18
-			//
+			// 
 			this->label18->BackColor = System::Drawing::Color::Transparent;
 			this->label18->Font = (gcnew System::Drawing::Font(L"Segoe Script", 48, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
-															   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->label18->ForeColor = System::Drawing::Color::White;
-			this->label18->Location = System::Drawing::Point(62, 54);
+			this->label18->Location = System::Drawing::Point(83, 66);
+			this->label18->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label18->Name = L"label18";
-			this->label18->Size = System::Drawing::Size(385, 94);
+			this->label18->Size = System::Drawing::Size(513, 116);
 			this->label18->TabIndex = 3;
 			this->label18->Text = L"Welcome";
 			this->label18->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			//
+			// 
 			// label20
-			//
+			// 
 			this->label20->BackColor = System::Drawing::Color::Transparent;
 			this->label20->Font = (gcnew System::Drawing::Font(L"Segoe UI", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															   static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->label20->ForeColor = System::Drawing::Color::White;
-			this->label20->Location = System::Drawing::Point(39, 126);
+			this->label20->Location = System::Drawing::Point(52, 155);
+			this->label20->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label20->Name = L"label20";
-			this->label20->Size = System::Drawing::Size(426, 107);
+			this->label20->Size = System::Drawing::Size(568, 132);
 			this->label20->TabIndex = 4;
 			this->label20->Text = L"━━━━━  TO THE  ━━━━━";
 			this->label20->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			//
+			// 
 			// btn_start
-			//
+			// 
 			this->btn_start->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(218)), static_cast<System::Int32>(static_cast<System::Byte>(245)),
-																		  static_cast<System::Int32>(static_cast<System::Byte>(242)));
+				static_cast<System::Int32>(static_cast<System::Byte>(242)));
 			this->btn_start->FlatAppearance->BorderColor = System::Drawing::Color::Black;
 			this->btn_start->FlatAppearance->BorderSize = 2;
 			this->btn_start->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_start->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-																 static_cast<System::Byte>(0)));
-			this->btn_start->Location = System::Drawing::Point(40, 442);
-			this->btn_start->Margin = System::Windows::Forms::Padding(2);
+				static_cast<System::Byte>(0)));
+			this->btn_start->Location = System::Drawing::Point(53, 544);
+			this->btn_start->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btn_start->Name = L"btn_start";
-			this->btn_start->Size = System::Drawing::Size(169, 42);
+			this->btn_start->Size = System::Drawing::Size(225, 52);
 			this->btn_start->TabIndex = 1;
 			this->btn_start->Text = L"Start";
 			this->btn_start->UseVisualStyleBackColor = false;
 			this->btn_start->Click += gcnew System::EventHandler(this, &MyForm::btn_start_Click);
 			this->btn_start->MouseEnter += gcnew System::EventHandler(this, &MyForm::btn_start_MouseEnter);
 			this->btn_start->MouseLeave += gcnew System::EventHandler(this, &MyForm::btn_start_MouseLeave);
-			//
+			// 
 			// btn_exit
-			//
+			// 
 			this->btn_exit->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(218)), static_cast<System::Int32>(static_cast<System::Byte>(245)),
-																		 static_cast<System::Int32>(static_cast<System::Byte>(242)));
+				static_cast<System::Int32>(static_cast<System::Byte>(242)));
 			this->btn_exit->FlatAppearance->BorderColor = System::Drawing::Color::Black;
 			this->btn_exit->FlatAppearance->BorderSize = 2;
 			this->btn_exit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_exit->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-																static_cast<System::Byte>(0)));
-			this->btn_exit->Location = System::Drawing::Point(225, 442);
-			this->btn_exit->Margin = System::Windows::Forms::Padding(2);
+				static_cast<System::Byte>(0)));
+			this->btn_exit->Location = System::Drawing::Point(300, 544);
+			this->btn_exit->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btn_exit->Name = L"btn_exit";
-			this->btn_exit->Size = System::Drawing::Size(169, 42);
+			this->btn_exit->Size = System::Drawing::Size(225, 52);
 			this->btn_exit->TabIndex = 0;
 			this->btn_exit->Text = L"Exit";
 			this->btn_exit->UseVisualStyleBackColor = false;
 			this->btn_exit->Click += gcnew System::EventHandler(this, &MyForm::btn_exit_Click);
 			this->btn_exit->MouseEnter += gcnew System::EventHandler(this, &MyForm::btn_exit_MouseEnter);
 			this->btn_exit->MouseLeave += gcnew System::EventHandler(this, &MyForm::btn_exit_MouseLeave);
-			//
+			// 
 			// welcomeScreen
-			//
+			// 
 			this->welcomeScreen->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(239)),
-																			  static_cast<System::Int32>(static_cast<System::Byte>(239)));
-			this->welcomeScreen->BackgroundImage = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"welcomeScreen.BackgroundImage")));
+				static_cast<System::Int32>(static_cast<System::Byte>(239)));
+			this->welcomeScreen->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"welcomeScreen.BackgroundImage")));
 			this->welcomeScreen->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->welcomeScreen->Location = System::Drawing::Point(0, 0);
+			this->welcomeScreen->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->welcomeScreen->Name = L"welcomeScreen";
-			this->welcomeScreen->Size = System::Drawing::Size(1114, 605);
+			this->welcomeScreen->Size = System::Drawing::Size(1485, 745);
 			this->welcomeScreen->TabIndex = 2;
 			this->welcomeScreen->TabStop = false;
-			//
+			// 
 			// pn_register
-			//
+			// 
 			this->pn_register->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(51)), static_cast<System::Int32>(static_cast<System::Byte>(55)),
-																			static_cast<System::Int32>(static_cast<System::Byte>(69)));
+				static_cast<System::Int32>(static_cast<System::Byte>(69)));
 			this->pn_register->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->pn_register->Controls->Add(this->pictureBox9);
 			this->pn_register->Controls->Add(this->pictureBox10);
@@ -5067,410 +5081,422 @@ public
 			this->pn_register->Controls->Add(this->lb_username_register);
 			this->pn_register->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pn_register->Location = System::Drawing::Point(0, 0);
-			this->pn_register->Margin = System::Windows::Forms::Padding(2);
+			this->pn_register->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pn_register->Name = L"pn_register";
-			this->pn_register->Size = System::Drawing::Size(1114, 605);
+			this->pn_register->Size = System::Drawing::Size(1485, 745);
 			this->pn_register->TabIndex = 1;
-			//
+			// 
 			// pictureBox9
-			//
-			this->pictureBox9->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"pictureBox9.Image")));
-			this->pictureBox9->Location = System::Drawing::Point(-29, 412);
+			// 
+			this->pictureBox9->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox9.Image")));
+			this->pictureBox9->Location = System::Drawing::Point(-39, 507);
+			this->pictureBox9->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pictureBox9->Name = L"pictureBox9";
-			this->pictureBox9->Size = System::Drawing::Size(324, 279);
+			this->pictureBox9->Size = System::Drawing::Size(432, 343);
 			this->pictureBox9->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureBox9->TabIndex = 27;
 			this->pictureBox9->TabStop = false;
-			//
+			// 
 			// pictureBox10
-			//
-			this->pictureBox10->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"pictureBox10.Image")));
-			this->pictureBox10->Location = System::Drawing::Point(820, 412);
+			// 
+			this->pictureBox10->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox10.Image")));
+			this->pictureBox10->Location = System::Drawing::Point(1093, 507);
+			this->pictureBox10->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pictureBox10->Name = L"pictureBox10";
-			this->pictureBox10->Size = System::Drawing::Size(324, 279);
+			this->pictureBox10->Size = System::Drawing::Size(432, 343);
 			this->pictureBox10->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureBox10->TabIndex = 26;
 			this->pictureBox10->TabStop = false;
-			//
+			// 
 			// link_login
-			//
+			// 
 			this->link_login->BackColor = System::Drawing::Color::DarkGray;
 			this->link_login->FlatAppearance->BorderSize = 0;
 			this->link_login->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->link_login->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																  static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->link_login->ForeColor = System::Drawing::Color::White;
-			this->link_login->Location = System::Drawing::Point(498, 491);
-			this->link_login->Margin = System::Windows::Forms::Padding(2);
+			this->link_login->Location = System::Drawing::Point(664, 604);
+			this->link_login->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->link_login->Name = L"link_login";
-			this->link_login->Size = System::Drawing::Size(115, 45);
+			this->link_login->Size = System::Drawing::Size(153, 55);
 			this->link_login->TabIndex = 22;
 			this->link_login->Text = L"Login";
 			this->link_login->UseVisualStyleBackColor = false;
 			this->link_login->Click += gcnew System::EventHandler(this, &MyForm::link_login_Click);
-			//
+			// 
 			// pictureBox1
-			//
+			// 
 			this->pictureBox1->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(441, 44);
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(588, 54);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(65, 50);
+			this->pictureBox1->Size = System::Drawing::Size(87, 62);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureBox1->TabIndex = 21;
 			this->pictureBox1->TabStop = false;
-			//
+			// 
 			// label4
-			//
+			// 
 			this->label4->BackColor = System::Drawing::Color::Transparent;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Segoe UI", 27.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															  static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->label4->ForeColor = System::Drawing::Color::White;
-			this->label4->Location = System::Drawing::Point(513, 39);
+			this->label4->Location = System::Drawing::Point(684, 48);
+			this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(175, 55);
+			this->label4->Size = System::Drawing::Size(233, 68);
 			this->label4->TabIndex = 20;
 			this->label4->Text = L"Register";
-			//
+			// 
 			// btn_refresh_location_register
-			//
+			// 
 			this->btn_refresh_location_register->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(51)),
-																							  static_cast<System::Int32>(static_cast<System::Byte>(55)), static_cast<System::Int32>(static_cast<System::Byte>(69)));
-			this->btn_refresh_location_register->BackgroundImage = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"btn_refresh_location_register.BackgroundImage")));
+				static_cast<System::Int32>(static_cast<System::Byte>(55)), static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->btn_refresh_location_register->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_refresh_location_register.BackgroundImage")));
 			this->btn_refresh_location_register->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->btn_refresh_location_register->FlatAppearance->BorderSize = 0;
 			this->btn_refresh_location_register->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_refresh_location_register->ForeColor = System::Drawing::Color::Transparent;
-			this->btn_refresh_location_register->Location = System::Drawing::Point(979, 266);
-			this->btn_refresh_location_register->Margin = System::Windows::Forms::Padding(2);
+			this->btn_refresh_location_register->Location = System::Drawing::Point(1305, 327);
+			this->btn_refresh_location_register->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btn_refresh_location_register->Name = L"btn_refresh_location_register";
-			this->btn_refresh_location_register->Padding = System::Windows::Forms::Padding(2);
-			this->btn_refresh_location_register->Size = System::Drawing::Size(29, 19);
+			this->btn_refresh_location_register->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->btn_refresh_location_register->Size = System::Drawing::Size(39, 23);
 			this->btn_refresh_location_register->TabIndex = 18;
 			this->btn_refresh_location_register->UseVisualStyleBackColor = false;
 			this->btn_refresh_location_register->Click += gcnew System::EventHandler(this, &MyForm::btn_refresh_location_register_Click);
-			//
+			// 
 			// btn_refresh_phonenumber_register
-			//
+			// 
 			this->btn_refresh_phonenumber_register->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(51)),
-																								 static_cast<System::Int32>(static_cast<System::Byte>(55)), static_cast<System::Int32>(static_cast<System::Byte>(69)));
-			this->btn_refresh_phonenumber_register->BackgroundImage = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"btn_refresh_phonenumber_register.BackgroundImage")));
+				static_cast<System::Int32>(static_cast<System::Byte>(55)), static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->btn_refresh_phonenumber_register->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_refresh_phonenumber_register.BackgroundImage")));
 			this->btn_refresh_phonenumber_register->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->btn_refresh_phonenumber_register->FlatAppearance->BorderSize = 0;
 			this->btn_refresh_phonenumber_register->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_refresh_phonenumber_register->ForeColor = System::Drawing::Color::Transparent;
-			this->btn_refresh_phonenumber_register->Location = System::Drawing::Point(511, 264);
-			this->btn_refresh_phonenumber_register->Margin = System::Windows::Forms::Padding(2);
+			this->btn_refresh_phonenumber_register->Location = System::Drawing::Point(681, 325);
+			this->btn_refresh_phonenumber_register->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btn_refresh_phonenumber_register->Name = L"btn_refresh_phonenumber_register";
-			this->btn_refresh_phonenumber_register->Padding = System::Windows::Forms::Padding(2);
-			this->btn_refresh_phonenumber_register->Size = System::Drawing::Size(29, 19);
+			this->btn_refresh_phonenumber_register->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->btn_refresh_phonenumber_register->Size = System::Drawing::Size(39, 23);
 			this->btn_refresh_phonenumber_register->TabIndex = 17;
 			this->btn_refresh_phonenumber_register->UseVisualStyleBackColor = false;
 			this->btn_refresh_phonenumber_register->Click += gcnew System::EventHandler(this, &MyForm::btn_refresh_phonenumber_register_Click);
-			//
+			// 
 			// btn_refresh_password_register
-			//
+			// 
 			this->btn_refresh_password_register->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(51)),
-																							  static_cast<System::Int32>(static_cast<System::Byte>(55)), static_cast<System::Int32>(static_cast<System::Byte>(69)));
-			this->btn_refresh_password_register->BackgroundImage = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"btn_refresh_password_register.BackgroundImage")));
+				static_cast<System::Int32>(static_cast<System::Byte>(55)), static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->btn_refresh_password_register->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_refresh_password_register.BackgroundImage")));
 			this->btn_refresh_password_register->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->btn_refresh_password_register->FlatAppearance->BorderSize = 0;
 			this->btn_refresh_password_register->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_refresh_password_register->ForeColor = System::Drawing::Color::Transparent;
-			this->btn_refresh_password_register->Location = System::Drawing::Point(984, 171);
-			this->btn_refresh_password_register->Margin = System::Windows::Forms::Padding(2);
+			this->btn_refresh_password_register->Location = System::Drawing::Point(1312, 210);
+			this->btn_refresh_password_register->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btn_refresh_password_register->Name = L"btn_refresh_password_register";
-			this->btn_refresh_password_register->Padding = System::Windows::Forms::Padding(2);
-			this->btn_refresh_password_register->Size = System::Drawing::Size(29, 19);
+			this->btn_refresh_password_register->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->btn_refresh_password_register->Size = System::Drawing::Size(39, 23);
 			this->btn_refresh_password_register->TabIndex = 16;
 			this->btn_refresh_password_register->UseVisualStyleBackColor = false;
 			this->btn_refresh_password_register->Click += gcnew System::EventHandler(this, &MyForm::btn_refresh_password_register_Click);
-			//
+			// 
 			// btn_refresh_username_register
-			//
+			// 
 			this->btn_refresh_username_register->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(51)),
-																							  static_cast<System::Int32>(static_cast<System::Byte>(55)), static_cast<System::Int32>(static_cast<System::Byte>(69)));
-			this->btn_refresh_username_register->BackgroundImage = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"btn_refresh_username_register.BackgroundImage")));
+				static_cast<System::Int32>(static_cast<System::Byte>(55)), static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->btn_refresh_username_register->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_refresh_username_register.BackgroundImage")));
 			this->btn_refresh_username_register->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->btn_refresh_username_register->FlatAppearance->BorderSize = 0;
 			this->btn_refresh_username_register->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_refresh_username_register->ForeColor = System::Drawing::Color::Transparent;
-			this->btn_refresh_username_register->Location = System::Drawing::Point(510, 172);
-			this->btn_refresh_username_register->Margin = System::Windows::Forms::Padding(2);
+			this->btn_refresh_username_register->Location = System::Drawing::Point(680, 212);
+			this->btn_refresh_username_register->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btn_refresh_username_register->Name = L"btn_refresh_username_register";
-			this->btn_refresh_username_register->Padding = System::Windows::Forms::Padding(2);
-			this->btn_refresh_username_register->Size = System::Drawing::Size(29, 19);
+			this->btn_refresh_username_register->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->btn_refresh_username_register->Size = System::Drawing::Size(39, 23);
 			this->btn_refresh_username_register->TabIndex = 15;
 			this->btn_refresh_username_register->UseVisualStyleBackColor = false;
 			this->btn_refresh_username_register->Click += gcnew System::EventHandler(this, &MyForm::btn_refresh_username_register_Click);
-			//
+			// 
 			// btn_seepassword
-			//
+			// 
 			this->btn_seepassword->BackColor = System::Drawing::Color::White;
-			this->btn_seepassword->BackgroundImage = (cli::safe_cast<System::Drawing::Image ^>(resources->GetObject(L"btn_seepassword.BackgroundImage")));
+			this->btn_seepassword->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_seepassword.BackgroundImage")));
 			this->btn_seepassword->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->btn_seepassword->FlatAppearance->BorderSize = 0;
 			this->btn_seepassword->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btn_seepassword->Location = System::Drawing::Point(954, 170);
-			this->btn_seepassword->Margin = System::Windows::Forms::Padding(2);
+			this->btn_seepassword->Location = System::Drawing::Point(1272, 209);
+			this->btn_seepassword->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btn_seepassword->Name = L"btn_seepassword";
-			this->btn_seepassword->Size = System::Drawing::Size(25, 24);
+			this->btn_seepassword->Size = System::Drawing::Size(33, 30);
 			this->btn_seepassword->TabIndex = 14;
 			this->btn_seepassword->UseVisualStyleBackColor = false;
 			this->btn_seepassword->Click += gcnew System::EventHandler(this, &MyForm::btn_seepassword_Click);
-			//
+			// 
 			// lb_location_message
-			//
+			// 
 			this->lb_location_message->BackColor = System::Drawing::Color::Transparent;
 			this->lb_location_message->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular,
-																		   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->lb_location_message->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(254)),
-																					static_cast<System::Int32>(static_cast<System::Byte>(95)), static_cast<System::Int32>(static_cast<System::Byte>(85)));
-			this->lb_location_message->Location = System::Drawing::Point(734, 297);
-			this->lb_location_message->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+				static_cast<System::Int32>(static_cast<System::Byte>(95)), static_cast<System::Int32>(static_cast<System::Byte>(85)));
+			this->lb_location_message->Location = System::Drawing::Point(979, 366);
 			this->lb_location_message->Name = L"lb_location_message";
-			this->lb_location_message->Size = System::Drawing::Size(244, 54);
+			this->lb_location_message->Size = System::Drawing::Size(325, 66);
 			this->lb_location_message->TabIndex = 12;
 			this->lb_location_message->Text = L"Enter the location";
-			//
+			// 
 			// lb_phonenumber_message
-			//
+			// 
 			this->lb_phonenumber_message->BackColor = System::Drawing::Color::Transparent;
 			this->lb_phonenumber_message->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular,
-																			  System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->lb_phonenumber_message->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(254)),
-																					   static_cast<System::Int32>(static_cast<System::Byte>(95)), static_cast<System::Int32>(static_cast<System::Byte>(85)));
-			this->lb_phonenumber_message->Location = System::Drawing::Point(263, 294);
-			this->lb_phonenumber_message->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+				static_cast<System::Int32>(static_cast<System::Byte>(95)), static_cast<System::Int32>(static_cast<System::Byte>(85)));
+			this->lb_phonenumber_message->Location = System::Drawing::Point(351, 362);
 			this->lb_phonenumber_message->Name = L"lb_phonenumber_message";
-			this->lb_phonenumber_message->Size = System::Drawing::Size(244, 59);
+			this->lb_phonenumber_message->Size = System::Drawing::Size(325, 73);
 			this->lb_phonenumber_message->TabIndex = 11;
 			this->lb_phonenumber_message->Text = L"Enter the phone number";
-			//
+			// 
 			// lb_password_message
-			//
+			// 
 			this->lb_password_message->BackColor = System::Drawing::Color::Transparent;
 			this->lb_password_message->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular,
-																		   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->lb_password_message->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(254)),
-																					static_cast<System::Int32>(static_cast<System::Byte>(95)), static_cast<System::Int32>(static_cast<System::Byte>(85)));
-			this->lb_password_message->Location = System::Drawing::Point(736, 203);
-			this->lb_password_message->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+				static_cast<System::Int32>(static_cast<System::Byte>(95)), static_cast<System::Int32>(static_cast<System::Byte>(85)));
+			this->lb_password_message->Location = System::Drawing::Point(981, 250);
 			this->lb_password_message->Name = L"lb_password_message";
-			this->lb_password_message->Size = System::Drawing::Size(244, 40);
+			this->lb_password_message->Size = System::Drawing::Size(325, 49);
 			this->lb_password_message->TabIndex = 10;
 			this->lb_password_message->Text = L"Enter the password";
-			//
+			// 
 			// lb_username_message
-			//
+			// 
 			this->lb_username_message->BackColor = System::Drawing::Color::Transparent;
 			this->lb_username_message->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular,
-																		   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->lb_username_message->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(254)),
-																					static_cast<System::Int32>(static_cast<System::Byte>(95)), static_cast<System::Int32>(static_cast<System::Byte>(85)));
-			this->lb_username_message->Location = System::Drawing::Point(261, 203);
-			this->lb_username_message->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+				static_cast<System::Int32>(static_cast<System::Byte>(95)), static_cast<System::Int32>(static_cast<System::Byte>(85)));
+			this->lb_username_message->Location = System::Drawing::Point(348, 250);
 			this->lb_username_message->Name = L"lb_username_message";
-			this->lb_username_message->Size = System::Drawing::Size(244, 50);
+			this->lb_username_message->Size = System::Drawing::Size(325, 62);
 			this->lb_username_message->TabIndex = 9;
 			this->lb_username_message->Text = L"Enter the username";
-			//
+			// 
 			// btn_register_registerpanel
-			//
+			// 
 			this->btn_register_registerpanel->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(230)),
-																						   static_cast<System::Int32>(static_cast<System::Byte>(52)), static_cast<System::Int32>(static_cast<System::Byte>(98)));
+				static_cast<System::Int32>(static_cast<System::Byte>(52)), static_cast<System::Int32>(static_cast<System::Byte>(98)));
 			this->btn_register_registerpanel->FlatAppearance->BorderSize = 0;
 			this->btn_register_registerpanel->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_register_registerpanel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold,
-																				  System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->btn_register_registerpanel->ForeColor = System::Drawing::Color::White;
-			this->btn_register_registerpanel->Location = System::Drawing::Point(471, 422);
-			this->btn_register_registerpanel->Margin = System::Windows::Forms::Padding(2);
+			this->btn_register_registerpanel->Location = System::Drawing::Point(628, 519);
+			this->btn_register_registerpanel->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btn_register_registerpanel->Name = L"btn_register_registerpanel";
-			this->btn_register_registerpanel->Size = System::Drawing::Size(170, 47);
+			this->btn_register_registerpanel->Size = System::Drawing::Size(227, 58);
 			this->btn_register_registerpanel->TabIndex = 8;
 			this->btn_register_registerpanel->Text = L"Register";
 			this->btn_register_registerpanel->UseVisualStyleBackColor = false;
 			this->btn_register_registerpanel->Click += gcnew System::EventHandler(this, &MyForm::btn_register_registerpanel_Click);
-			//
+			// 
 			// tb_location_register
-			//
+			// 
 			this->tb_location_register->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->tb_location_register->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-																			static_cast<System::Byte>(0)));
-			this->tb_location_register->Location = System::Drawing::Point(731, 260);
-			this->tb_location_register->Margin = System::Windows::Forms::Padding(2);
+				static_cast<System::Byte>(0)));
+			this->tb_location_register->Location = System::Drawing::Point(975, 320);
+			this->tb_location_register->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->tb_location_register->Name = L"tb_location_register";
-			this->tb_location_register->Size = System::Drawing::Size(245, 33);
+			this->tb_location_register->Size = System::Drawing::Size(326, 39);
 			this->tb_location_register->TabIndex = 7;
-			//
+			// 
 			// tb_phonenumber_register
-			//
+			// 
 			this->tb_phonenumber_register->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->tb_phonenumber_register->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-																			   static_cast<System::Byte>(0)));
-			this->tb_phonenumber_register->Location = System::Drawing::Point(263, 258);
-			this->tb_phonenumber_register->Margin = System::Windows::Forms::Padding(2);
+				static_cast<System::Byte>(0)));
+			this->tb_phonenumber_register->Location = System::Drawing::Point(351, 318);
+			this->tb_phonenumber_register->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->tb_phonenumber_register->Name = L"tb_phonenumber_register";
-			this->tb_phonenumber_register->Size = System::Drawing::Size(245, 33);
+			this->tb_phonenumber_register->Size = System::Drawing::Size(326, 39);
 			this->tb_phonenumber_register->TabIndex = 6;
-			//
+			// 
 			// tb_password_register
-			//
+			// 
 			this->tb_password_register->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->tb_password_register->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-																			static_cast<System::Byte>(0)));
-			this->tb_password_register->Location = System::Drawing::Point(736, 165);
-			this->tb_password_register->Margin = System::Windows::Forms::Padding(2);
+				static_cast<System::Byte>(0)));
+			this->tb_password_register->Location = System::Drawing::Point(981, 203);
+			this->tb_password_register->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->tb_password_register->Name = L"tb_password_register";
-			this->tb_password_register->Size = System::Drawing::Size(245, 33);
+			this->tb_password_register->Size = System::Drawing::Size(326, 39);
 			this->tb_password_register->TabIndex = 5;
 			this->tb_password_register->UseSystemPasswordChar = true;
-			//
+			// 
 			// tb_username_register
-			//
+			// 
 			this->tb_username_register->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->tb_username_register->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-																			static_cast<System::Byte>(0)));
-			this->tb_username_register->Location = System::Drawing::Point(261, 165);
-			this->tb_username_register->Margin = System::Windows::Forms::Padding(2);
+				static_cast<System::Byte>(0)));
+			this->tb_username_register->Location = System::Drawing::Point(348, 203);
+			this->tb_username_register->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->tb_username_register->Name = L"tb_username_register";
-			this->tb_username_register->Size = System::Drawing::Size(245, 33);
+			this->tb_username_register->Size = System::Drawing::Size(326, 39);
 			this->tb_username_register->TabIndex = 4;
-			//
+			// 
 			// lb_password_register
-			//
+			// 
 			this->lb_password_register->AutoSize = true;
 			this->lb_password_register->BackColor = System::Drawing::Color::Transparent;
 			this->lb_password_register->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																			static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->lb_password_register->ForeColor = System::Drawing::Color::White;
-			this->lb_password_register->Location = System::Drawing::Point(584, 166);
-			this->lb_password_register->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->lb_password_register->Location = System::Drawing::Point(779, 204);
 			this->lb_password_register->Name = L"lb_password_register";
-			this->lb_password_register->Size = System::Drawing::Size(136, 32);
+			this->lb_password_register->Size = System::Drawing::Size(166, 41);
 			this->lb_password_register->TabIndex = 3;
 			this->lb_password_register->Text = L"Password :";
-			//
+			// 
 			// lb_phonenumber_register
-			//
+			// 
 			this->lb_phonenumber_register->AutoSize = true;
 			this->lb_phonenumber_register->BackColor = System::Drawing::Color::Transparent;
 			this->lb_phonenumber_register->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																			   static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->lb_phonenumber_register->ForeColor = System::Drawing::Color::White;
-			this->lb_phonenumber_register->Location = System::Drawing::Point(62, 255);
-			this->lb_phonenumber_register->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->lb_phonenumber_register->Location = System::Drawing::Point(83, 314);
 			this->lb_phonenumber_register->Name = L"lb_phonenumber_register";
-			this->lb_phonenumber_register->Size = System::Drawing::Size(197, 32);
+			this->lb_phonenumber_register->Size = System::Drawing::Size(240, 41);
 			this->lb_phonenumber_register->TabIndex = 2;
 			this->lb_phonenumber_register->Text = L"Phone number :";
-			//
+			// 
 			// lb_location
-			//
+			// 
 			this->lb_location->AutoSize = true;
 			this->lb_location->BackColor = System::Drawing::Color::Transparent;
 			this->lb_location->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																   static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->lb_location->ForeColor = System::Drawing::Color::White;
-			this->lb_location->Location = System::Drawing::Point(584, 259);
-			this->lb_location->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->lb_location->Location = System::Drawing::Point(779, 319);
 			this->lb_location->Name = L"lb_location";
-			this->lb_location->Size = System::Drawing::Size(126, 32);
+			this->lb_location->Size = System::Drawing::Size(154, 41);
 			this->lb_location->TabIndex = 1;
 			this->lb_location->Text = L"Location :";
-			//
+			// 
 			// lb_username_register
-			//
+			// 
 			this->lb_username_register->AutoSize = true;
 			this->lb_username_register->BackColor = System::Drawing::Color::Transparent;
 			this->lb_username_register->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																			static_cast<System::Byte>(0)));
+				static_cast<System::Byte>(0)));
 			this->lb_username_register->ForeColor = System::Drawing::Color::White;
-			this->lb_username_register->Location = System::Drawing::Point(99, 161);
-			this->lb_username_register->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->lb_username_register->Location = System::Drawing::Point(132, 198);
 			this->lb_username_register->Name = L"lb_username_register";
-			this->lb_username_register->Size = System::Drawing::Size(142, 32);
+			this->lb_username_register->Size = System::Drawing::Size(174, 41);
 			this->lb_username_register->TabIndex = 0;
 			this->lb_username_register->Text = L"Username :";
-			//
+			// 
 			// pn_thankyou
-			//
+			// 
 			this->pn_thankyou->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(51)), static_cast<System::Int32>(static_cast<System::Byte>(55)),
-																			static_cast<System::Int32>(static_cast<System::Byte>(69)));
+				static_cast<System::Int32>(static_cast<System::Byte>(69)));
 			this->pn_thankyou->Controls->Add(this->axWindowsMediaPlayer1);
 			this->pn_thankyou->Location = System::Drawing::Point(0, 0);
-			this->pn_thankyou->Margin = System::Windows::Forms::Padding(2);
+			this->pn_thankyou->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pn_thankyou->Name = L"pn_thankyou";
-			this->pn_thankyou->Size = System::Drawing::Size(1114, 605);
+			this->pn_thankyou->Size = System::Drawing::Size(1485, 745);
 			this->pn_thankyou->TabIndex = 0;
-			//
+			// 
 			// axWindowsMediaPlayer1
-			//
+			// 
 			this->axWindowsMediaPlayer1->Enabled = true;
 			this->axWindowsMediaPlayer1->Location = System::Drawing::Point(2, 0);
+			this->axWindowsMediaPlayer1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->axWindowsMediaPlayer1->Name = L"axWindowsMediaPlayer1";
-			this->axWindowsMediaPlayer1->OcxState = (cli::safe_cast<System::Windows::Forms::AxHost::State ^>(resources->GetObject(L"axWindowsMediaPlayer1.OcxState")));
+			this->axWindowsMediaPlayer1->OcxState = (cli::safe_cast<System::Windows::Forms::AxHost::State^>(resources->GetObject(L"axWindowsMediaPlayer1.OcxState")));
 			this->axWindowsMediaPlayer1->Size = System::Drawing::Size(1110, 602);
 			this->axWindowsMediaPlayer1->TabIndex = 12;
 			this->axWindowsMediaPlayer1->PlayStateChange += gcnew AxWMPLib::_WMPOCXEvents_PlayStateChangeEventHandler(this, &MyForm::axWindowsMediaPlayer1_PlayStateChange_1);
-			//
+			// 
 			// timerforexit
-			//
+			// 
 			this->timerforexit->Interval = 3000;
 			this->timerforexit->Tick += gcnew System::EventHandler(this, &MyForm::timer1_Tick);
-			//
+			// 
 			// printPreviewDialog1
-			//
+			// 
 			this->printPreviewDialog1->AutoScrollMargin = System::Drawing::Size(0, 0);
 			this->printPreviewDialog1->AutoScrollMinSize = System::Drawing::Size(0, 0);
 			this->printPreviewDialog1->ClientSize = System::Drawing::Size(400, 300);
 			this->printPreviewDialog1->Document = this->printDocument1;
 			this->printPreviewDialog1->Enabled = true;
-			this->printPreviewDialog1->Icon = (cli::safe_cast<System::Drawing::Icon ^>(resources->GetObject(L"printPreviewDialog1.Icon")));
+			this->printPreviewDialog1->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"printPreviewDialog1.Icon")));
 			this->printPreviewDialog1->Name = L"printPreviewDialog1";
 			this->printPreviewDialog1->Visible = false;
-			//
+			// 
 			// printDocument1
-			//
+			// 
 			this->printDocument1->PrintPage += gcnew System::Drawing::Printing::PrintPageEventHandler(this, &MyForm::printDocument1_PrintPage);
-			//
+			// 
+			// label28
+			// 
+			this->label28->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(52)), static_cast<System::Int32>(static_cast<System::Byte>(73)),
+				static_cast<System::Int32>(static_cast<System::Byte>(94)));
+			this->label28->Dock = System::Windows::Forms::DockStyle::Top;
+			this->label28->Font = (gcnew System::Drawing::Font(L"Segoe UI", 28.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label28->ForeColor = System::Drawing::Color::White;
+			this->label28->Location = System::Drawing::Point(0, 0);
+			this->label28->Name = L"label28";
+			this->label28->Padding = System::Windows::Forms::Padding(40, 0, 0, 0);
+			this->label28->Size = System::Drawing::Size(1189, 148);
+			this->label28->TabIndex = 4;
+			this->label28->Text = L"Analytics Dashboard";
+			this->label28->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			// 
 			// MyForm
-			//
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1114, 650);
+			this->ClientSize = System::Drawing::Size(1485, 800);
 			this->Controls->Add(this->pn_main_dashboard);
 			this->Controls->Add(this->pn_upper_bar);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
-			this->Icon = (cli::safe_cast<System::Drawing::Icon ^>(resources->GetObject(L"$this.Icon")));
-			this->Margin = System::Windows::Forms::Padding(2);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"MyForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"SuperMarko";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->pn_upper_bar->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pb_icon))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_icon))->EndInit();
 			this->pn_main_dashboard->ResumeLayout(false);
 			this->pn_admin->ResumeLayout(false);
 			this->analytics->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox17))->EndInit();
-			this->panel22->ResumeLayout(false);
+			this->pn_dashboard->ResumeLayout(false);
 			this->flowLayoutPanel26->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->productChart))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->userChart))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->productChart))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->userChart))->EndInit();
 			this->pn_users->ResumeLayout(false);
 			this->panel6->ResumeLayout(false);
 			this->blank_admin->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox6))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox6))->EndInit();
 			this->order_history->ResumeLayout(false);
 			this->dashboard->ResumeLayout(false);
 			this->flowLayoutPanel27->ResumeLayout(false);
 			this->panel25->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox18))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox18))->EndInit();
 			this->background->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox16))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox16))->EndInit();
 			this->pn_defualt->ResumeLayout(false);
 			this->pn_search->ResumeLayout(false);
 			this->pn_search->PerformLayout();
@@ -5488,48 +5514,49 @@ public
 			this->pn_vegetable_category->ResumeLayout(false);
 			this->pn_fruits_category->ResumeLayout(false);
 			this->pn_blank->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pb_blankpicutre))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_blankpicutre))->EndInit();
 			this->pn_viewBill->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pb_theinvoice))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_theinvoice))->EndInit();
 			this->pn->ResumeLayout(false);
 			this->pn->PerformLayout();
 			this->flowLayoutPanel13->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->dataGridView1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->panel2->ResumeLayout(false);
 			this->pn_edit_information->ResumeLayout(false);
 			this->pn_currentInfo->ResumeLayout(false);
 			this->pn_currentInfo->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox13))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox13))->EndInit();
 			this->pn_editInfo->ResumeLayout(false);
 			this->pn_editInfo->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox11))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox11))->EndInit();
 			this->pn_resetPassword->ResumeLayout(false);
 			this->pn_resetPassword->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox12))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox12))->EndInit();
 			this->pn_orders->ResumeLayout(false);
 			this->pn_left_bar->ResumeLayout(false);
 			this->flowLayoutPanel1->ResumeLayout(false);
 			this->pn_picture->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pb_profile))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_profile))->EndInit();
 			this->pn_login->ResumeLayout(false);
 			this->pn_login->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox8))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox7))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox2))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox8))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			this->pn_start->ResumeLayout(false);
 			this->pn_start->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox5))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox4))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox3))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->welcomeScreen))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->welcomeScreen))->EndInit();
 			this->pn_register->ResumeLayout(false);
 			this->pn_register->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox9))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox10))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->pictureBox1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox9))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox10))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->pn_thankyou->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize ^>(this->axWindowsMediaPlayer1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->axWindowsMediaPlayer1))->EndInit();
 			this->ResumeLayout(false);
+
 		}
 		// the code start here
 #pragma endregion
@@ -7459,37 +7486,37 @@ public
 		void CreateModernAnalyticsDashboard()
 		{
 			// Clear existing controls
-			this->analytics->Controls->Clear();
+			this->pn_dashboard->Controls->Clear();
 
-			// Set modern background and enable scrolling
-			this->analytics->BackColor = System::Drawing::Color::FromArgb(248, 249, 250);
-			this->analytics->AutoScroll = true;
+			//// Set modern background and enable scrolling
+			//this->pn_dashboard->BackColor = System::Drawing::Color::FromArgb(248, 249, 250);
+			this->pn_dashboard->AutoScroll = true;
 
 			// Create a main container panel to hold all content
-			Panel ^ mainContainer = gcnew Panel();
-			mainContainer->Size = System::Drawing::Size(870, 750); // Adequate height for all content
-			mainContainer->Location = System::Drawing::Point(0, 0);
-			mainContainer->BackColor = System::Drawing::Color::Transparent;
+			//Panel ^ mainContainer = gcnew Panel();
+			//mainContainer->Size = System::Drawing::Size(870, 750); // Adequate height for all content
+			//mainContainer->Location = System::Drawing::Point(0, 0);
+			//mainContainer->BackColor = System::Drawing::Color::Transparent;
 
 			// Header Section
-			Panel ^ headerPanel = gcnew Panel();
+			/*Panel ^ headerPanel = gcnew Panel();
 			headerPanel->Size = System::Drawing::Size(870, 80);
 			headerPanel->Location = System::Drawing::Point(0, 0);
-			headerPanel->BackColor = System::Drawing::Color::FromArgb(52, 73, 94);
+			headerPanel->BackColor = System::Drawing::Color::FromArgb(52, 73, 94);*/
 
-			Label ^ titleLabel = gcnew Label();
-			titleLabel->Text = "Analytics Dashboard";
-			titleLabel->Font = gcnew System::Drawing::Font("Segoe UI", 24, FontStyle::Bold);
-			titleLabel->ForeColor = System::Drawing::Color::White;
-			titleLabel->AutoSize = true;
-			titleLabel->Location = System::Drawing::Point(30, 25); // Centered vertically
+			//Label ^ titleLabel = gcnew Label();
+			//titleLabel->Text = "Analytics Dashboard";
+			//titleLabel->Font = gcnew System::Drawing::Font("Segoe UI", 24, FontStyle::Bold);
+			//titleLabel->ForeColor = System::Drawing::Color::White;
+			//titleLabel->AutoSize = true;
+			//titleLabel->Location = System::Drawing::Point(30, 25); // Centered vertically
 
-			headerPanel->Controls->Add(titleLabel);
+			//headerPanel->Controls->Add(titleLabel);
 
 			// KPI Cards Section
 			Panel ^ kpiSection = gcnew Panel();
-			kpiSection->Size = System::Drawing::Size(870, 120);
-			kpiSection->Location = System::Drawing::Point(0, 80);
+			kpiSection->Size = System::Drawing::Size(850, 120);
+			kpiSection->Location = System::Drawing::Point(20, 20);
 			kpiSection->BackColor = System::Drawing::Color::Transparent;
 
 			CreateKPICards(kpiSection);
@@ -7497,7 +7524,7 @@ public
 			// Charts Section
 			Panel ^ chartsSection = gcnew Panel();
 			chartsSection->Size = System::Drawing::Size(870, 320); // Reduced height
-			chartsSection->Location = System::Drawing::Point(0, 200);
+			chartsSection->Location = System::Drawing::Point(0, 140);
 			chartsSection->BackColor = System::Drawing::Color::Transparent;
 
 			CreateEnhancedCharts(chartsSection);
@@ -7505,19 +7532,19 @@ public
 			// Customer Insights Section
 			Panel ^ insightsSection = gcnew Panel();
 			insightsSection->Size = System::Drawing::Size(870, 140);
-			insightsSection->Location = System::Drawing::Point(0, 520);
+			insightsSection->Location = System::Drawing::Point(0, 460);
 			insightsSection->BackColor = System::Drawing::Color::Transparent;
 
 			CreateCustomerInsights(insightsSection);
 
 			// Add all sections to the main container
-			mainContainer->Controls->Add(headerPanel);
-			mainContainer->Controls->Add(kpiSection);
-			mainContainer->Controls->Add(chartsSection);
-			mainContainer->Controls->Add(insightsSection);
+			//pn_dashboard->Controls->Add(headerPanel);
+			pn_dashboard->Controls->Add(kpiSection);
+			pn_dashboard->Controls->Add(chartsSection);
+			pn_dashboard->Controls->Add(insightsSection);
 
 			// Add the main container to the analytics panel
-			this->analytics->Controls->Add(mainContainer);
+			//this->analytics->Controls->Add(mainContainer);
 		}
 
 		void CreateKPICards(Panel ^ parent)
@@ -7544,19 +7571,19 @@ public
 
 			// KPI Card 1: Total Customers
 			Panel ^ card1 = CreateKPICard("Total Customers", totalCustomers.ToString(),
-										  System::Drawing::Color::FromArgb(52, 152, 219), 0);
+										  System::Drawing::Color::FromArgb(52, 152, 219), 10);
 
 			// KPI Card 2: Total Orders
 			Panel ^ card2 = CreateKPICard("Total Orders", totalOrders.ToString(),
-										  System::Drawing::Color::FromArgb(155, 89, 182), 180);
+										  System::Drawing::Color::FromArgb(155, 89, 182), 220);
 
 			// KPI Card 3: Total Revenue
 			Panel ^ card3 = CreateKPICard("Total Revenue", totalRevenue.ToString("F2") + " EGP",
-										  System::Drawing::Color::FromArgb(46, 204, 113), 360);
+										  System::Drawing::Color::FromArgb(46, 204, 113), 430);
 
 			// KPI Card 4: Average Order Value
 			Panel ^ card4 = CreateKPICard("Avg Order Value", avgOrderValue.ToString("F2") + " EGP",
-										  System::Drawing::Color::FromArgb(231, 76, 60), 540);
+										  System::Drawing::Color::FromArgb(231, 76, 60), 640);
 
 			parent->Controls->Add(card1);
 			parent->Controls->Add(card2);
@@ -7566,14 +7593,14 @@ public
 
 		Panel ^ CreateKPICard(String ^ title, String ^ value, Color color, int xPos) {
 			Panel ^ card = gcnew Panel();
-			card->Size = System::Drawing::Size(160, 100);
-			card->Location = System::Drawing::Point(xPos + 20, 10);
+			card->Size = System::Drawing::Size(200, 100);
+			card->Location = System::Drawing::Point(xPos, 10);
 			card->BackColor = System::Drawing::Color::White;
 
 			// Shadow effect
 			Panel ^ shadow = gcnew Panel();
-			shadow->Size = System::Drawing::Size(160, 100);
-			shadow->Location = System::Drawing::Point(xPos + 23, 13);
+			shadow->Size = System::Drawing::Size(200, 100);
+			shadow->Location = System::Drawing::Point(xPos + 3, 13);
 			shadow->BackColor = System::Drawing::Color::FromArgb(220, 220, 220);
 
 			// Color accent bar
@@ -7585,10 +7612,10 @@ public
 			// Value label
 			Label ^ valueLabel = gcnew Label();
 			valueLabel->Text = value;
-			valueLabel->Font = gcnew System::Drawing::Font("Segoe UI", 18, FontStyle::Bold);
+			valueLabel->Font = gcnew System::Drawing::Font("Segoe UI", 16, FontStyle::Bold);
 			valueLabel->ForeColor = color;
 			valueLabel->AutoSize = true;
-			valueLabel->Location = System::Drawing::Point(15, 20);
+			valueLabel->Location = System::Drawing::Point(12, 20);
 
 			// Title label
 			Label ^ titleLabel = gcnew Label();
@@ -7609,13 +7636,13 @@ public
 		{
 			// Enhanced Product Chart
 			this->productChart->Size = System::Drawing::Size(415, 300);
-			this->productChart->Location = System::Drawing::Point(10, 10);
+			this->productChart->Location = System::Drawing::Point(30, 10);
 			this->productChart->BackColor = System::Drawing::Color::White;
 			this->productChart->Visible = true;
 
 			// Enhanced User Chart
 			this->userChart->Size = System::Drawing::Size(415, 300);
-			this->userChart->Location = System::Drawing::Point(435, 10);
+			this->userChart->Location = System::Drawing::Point(455, 10);
 			this->userChart->BackColor = System::Drawing::Color::White;
 			this->userChart->Visible = true;
 
