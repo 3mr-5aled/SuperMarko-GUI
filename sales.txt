@@ -1,2 +1,12 @@
-Peas,1
-Moza,10
+Watermelon,1
+White_Chicken,1
+Baldy_Bread,2
+Sausage,1
+Onion,3
+Popcorn,2
+Rish_Dany,3
+Sourdough_Bread,2
+Broccoli,3
+Cat_Food(Dry),2
+Toilet_Cleaner,1
+Loose_Milk,1

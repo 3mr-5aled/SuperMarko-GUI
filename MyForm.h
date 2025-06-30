@@ -557,10 +557,10 @@ public
 				return false;
 			}
 
-			// Check if location is at least 5 characters long
-			if (location->Length < 5)
+			// Check if location is at least 4 characters long
+			if (location->Length < 4)
 			{
-				lb_location_message->Text = "Location must be at least 5 characters long.";
+				lb_location_message->Text = "Location must be at least 4 characters long.";
 				return false;
 			}
 
