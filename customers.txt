@@ -1,6 +1,6 @@
 1,Amr,01024713596,Nasr City,xW9@t8Rf
 2,Omar,01256321874,Heliopolis,Mp!2eL5z
-3,Mohanad,01183694520,Maadi,Gh3@pZ7m
+3,Mahmoud,01183694520,Maadi,Gh3@pZ7m
 4,Mohammed,01537498211,Shubra,Dc9#kQ2x
-5,Mahmoud,01091847265,Garden City,Fv*7Ls1q
+5,Mohanad,01091847265,Garden City,Fv*7Ls1q
 6,Essam,01246718390,New Cairo,Rb!5mJ8w
