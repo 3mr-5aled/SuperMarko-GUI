@@ -62,7 +62,11 @@
 3. 🏅 Mahmoud Mohammed AbdelSalam  
 4. 🏅 Mohammed Gamal Abbas  
 5. 🏅 Mohanad Refaye Hussein  
-6. 🏅 Essam Mohammed El-Shahat  
+6. 🏅 Essam Mohammed El-Shahat
+
+<a href="https://github.com/3mr-5aled/SuperMarko-GUI/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=3mr-5aled/SuperMarko-GUI" />
+</a>
 
 ---
 
